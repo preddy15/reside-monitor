@@ -5,6 +5,7 @@ import re
 import sys
 import time
 from difflib import SequenceMatcher
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote_plus, urljoin
@@ -28,7 +29,7 @@ FIELD_LABEL = os.getenv("AIRTABLE_FIELD_LABEL", "Project Applying For")
 ADD_UNIT_TEXT = os.getenv("AIRTABLE_ADD_UNIT_TEXT", "Add unit")
 
 RESIDE_LISTINGS_URL = "https://residenewyork.com/property-listings/"
-RESIDE_REQUEST_TIMEOUT = (3.0, 5.0)
+RESIDE_REQUEST_TIMEOUT = (2.5, 4.0)
 
 STATE_PATH = Path(os.getenv("STATE_PATH", "state.json"))
 HISTORY_PATH = Path(os.getenv("HISTORY_PATH", "history.json"))
@@ -717,12 +718,43 @@ def validate_direct_reside_page(parsed: dict, url: str) -> dict | None:
 def try_direct_reside_match(parsed: dict) -> dict | None:
     candidates = direct_reside_url_candidates(parsed)
 
-    # Try the generated variants in priority order. Building-level candidates
-    # are included because Reside sometimes groups many units on one property page.
-    for url in candidates:
-        match = validate_direct_reside_page(parsed, url)
-        if match:
-            return match
+    if not candidates:
+        return None
+
+    # v5.7 speed optimization:
+    # Reside slug variants are independent HTTP requests, so try a bounded
+    # number concurrently instead of paying each failed timeout sequentially.
+    #
+    # Four workers is enough to cover the most common variants in parallel
+    # without hammering Reside.
+    max_workers = min(4, len(candidates))
+
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_url = {
+            executor.submit(validate_direct_reside_page, parsed, url): url
+            for url in candidates
+        }
+
+        try:
+            for future in as_completed(future_to_url):
+                url = future_to_url[future]
+                try:
+                    match = future.result()
+                except Exception as exc:
+                    print(f"Parallel Reside candidate failed: {url} -> {exc}")
+                    continue
+
+                if match:
+                    # Cancel candidates that have not started yet. Running HTTP
+                    # requests cannot always be interrupted, but we stop waiting
+                    # for additional validation results once a valid match exists.
+                    for other in future_to_url:
+                        if other is not future:
+                            other.cancel()
+                    return match
+        finally:
+            # Executor cleanup happens automatically at context exit.
+            pass
 
     return None
 
