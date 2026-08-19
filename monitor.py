@@ -471,6 +471,200 @@ def candidate_listing_identity(title: str) -> tuple[str, str | None]:
     return normalize_street_for_match(title), (unit.casefold() if unit else None)
 
 
+
+def slugify_reside_piece(value: str) -> str:
+    value = normalize(value).casefold()
+    value = value.replace("–", " ").replace("—", " ")
+    value = re.sub(r"[^a-z0-9]+", "-", value)
+    return value.strip("-")
+
+
+def ordinalize_street_number(token: str) -> str:
+    """
+    Reside slugs often write numbered streets as 184th / 32nd / 167th even
+    when Airtable says "184th Street" or "184 Street".
+    """
+    m = re.fullmatch(r"(\d+)(?:st|nd|rd|th)?", token.casefold())
+    if not m:
+        return token
+
+    n = int(m.group(1))
+    if 10 <= (n % 100) <= 20:
+        suffix = "th"
+    else:
+        suffix = {1: "st", 2: "nd", 3: "rd"}.get(n % 10, "th")
+    return f"{n}{suffix}"
+
+
+def direct_reside_url_candidates(parsed: dict) -> list[str]:
+    """
+    Build a small set of likely WordPress property slugs directly from the
+    Airtable address + unit.
+
+    Example Airtable:
+      364 East 184th Street - Apt 3A
+
+    Known Reside page:
+      /property/364-east-184th-apartments-unit-3a/
+
+    We deliberately generate several variants because Reside's historical
+    slugs are inconsistent about Street/St and Apartment/Apartments.
+    """
+    address = normalize(parsed.get("address", ""))
+    unit = normalize(parsed.get("unit", ""))
+    if not address or not unit:
+        return []
+
+    tokens = address.split()
+    if not tokens:
+        return []
+
+    # Canonicalize street suffixes and numbered street tokens.
+    suffixes = {"street", "st", "st.", "avenue", "ave", "ave.", "road", "rd", "rd."}
+    core_tokens = []
+    street_suffix = None
+
+    for token in tokens:
+        clean = token.strip(",.")
+        if clean.casefold() in suffixes:
+            street_suffix = clean.casefold().rstrip(".")
+            continue
+
+        # Ordinalize numbered street names after the house number/direction.
+        if re.fullmatch(r"\d+(?:st|nd|rd|th)?", clean.casefold()):
+            # Do not ordinalize the first token (house number).
+            if core_tokens:
+                clean = ordinalize_street_number(clean)
+
+        core_tokens.append(clean)
+
+    if not core_tokens:
+        return []
+
+    base_no_suffix = "-".join(slugify_reside_piece(t) for t in core_tokens if t)
+    unit_slug = slugify_reside_piece(unit)
+
+    # Generate only a handful of highly plausible variants to keep latency low.
+    stems = [
+        f"{base_no_suffix}-apartments-unit-{unit_slug}",
+        f"{base_no_suffix}-apartment-unit-{unit_slug}",
+    ]
+
+    if street_suffix:
+        normalized_suffix = {
+            "street": "street",
+            "st": "st",
+            "avenue": "ave",
+            "ave": "ave",
+            "road": "road",
+            "rd": "rd",
+        }.get(street_suffix, street_suffix)
+
+        stems.extend(
+            [
+                f"{base_no_suffix}-{normalized_suffix}-apartments-unit-{unit_slug}",
+                f"{base_no_suffix}-{normalized_suffix}-apartment-unit-{unit_slug}",
+            ]
+        )
+
+    # Also support pages phrased "-apt-3a".
+    stems.extend(
+        [
+            f"{base_no_suffix}-apt-{unit_slug}",
+            f"{base_no_suffix}-unit-{unit_slug}",
+        ]
+    )
+
+    seen = set()
+    urls = []
+    for stem in stems:
+        stem = re.sub(r"-+", "-", stem).strip("-")
+        url = urljoin(RESIDE_LISTINGS_URL, f"/property/{stem}/")
+        if url not in seen:
+            seen.add(url)
+            urls.append(url)
+
+    return urls
+
+
+def validate_direct_reside_page(parsed: dict, url: str) -> dict | None:
+    """
+    GET a candidate direct URL and verify the resulting property page contains
+    the expected unit and enough of the street address to trust the match.
+    """
+    try:
+        response = requests.get(
+            url,
+            headers={
+                "User-Agent": (
+                    "reside-airtable-monitor/5.4 "
+                    "(personal NYC housing availability notifier)"
+                )
+            },
+            timeout=RESIDE_REQUEST_TIMEOUT,
+            allow_redirects=True,
+        )
+        if response.status_code != 200:
+            return None
+    except Exception as exc:
+        print(f"Direct Reside candidate failed: {url} -> {exc}")
+        return None
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    title = normalize(
+        (soup.find("h1").get_text(" ", strip=True) if soup.find("h1") else "")
+    )
+    page_text = normalize(soup.get_text(" ", strip=True))
+
+    if not title or "property" not in response.url:
+        return None
+
+    expected_unit = normalize(parsed.get("unit", "")).casefold()
+    if expected_unit:
+        # Require a unit marker so e.g. 3A cannot accidentally match 3B.
+        unit_pattern = rf"\b(?:unit|apt|apartment)\s*#?\s*{re.escape(expected_unit)}\b"
+        if not re.search(unit_pattern, page_text, flags=re.I):
+            return None
+
+    target_address = normalize_street_for_match(parsed.get("address", ""))
+    cand_address, cand_unit = candidate_listing_identity(title)
+
+    # Require the same house number.
+    target_num = re.match(r"^(\d+)\b", target_address)
+    cand_num = re.match(r"^(\d+)\b", cand_address)
+    if target_num and cand_num and target_num.group(1) != cand_num.group(1):
+        return None
+
+    # Require either strong normalized title similarity or strong token overlap.
+    similarity = SequenceMatcher(None, target_address, cand_address).ratio()
+    target_tokens = set(target_address.split())
+    cand_tokens = set(cand_address.split())
+    overlap = len(target_tokens & cand_tokens) / max(1, len(target_tokens))
+
+    if similarity < 0.55 and overlap < 0.60:
+        return None
+
+    print(f'Direct Reside match: "{title}" -> {response.url}')
+    return {
+        "title": title,
+        "url": response.url,
+        "score": max(similarity, overlap),
+    }
+
+
+def try_direct_reside_match(parsed: dict) -> dict | None:
+    candidates = direct_reside_url_candidates(parsed)
+
+    # Try the most likely 4 variants first. This bounds worst-case direct URL
+    # lookup latency while covering Reside's common slug patterns.
+    for url in candidates[:4]:
+        match = validate_direct_reside_page(parsed, url)
+        if match:
+            return match
+
+    return None
+
+
 def find_reside_property(parsed: dict) -> dict | None:
     """
     Fetch Reside's listings index and find the best address+unit match.
@@ -781,7 +975,14 @@ def extract_reside_details(property_match: dict) -> dict | None:
 
 
 def enrich_from_reside(parsed: dict) -> dict | None:
-    match = find_reside_property(parsed)
+    # Reside's /property-listings/ page does not always surface every live
+    # direct property page. Try predictable direct slugs first, then fall back
+    # to the listings index matcher.
+    match = try_direct_reside_match(parsed)
+
+    if not match:
+        match = find_reside_property(parsed)
+
     if not match:
         return None
 
