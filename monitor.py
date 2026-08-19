@@ -990,7 +990,7 @@ def wheel_fallback(page) -> bool:
 
 def scrape_options() -> list[str]:
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=True)
+        browser = p.chromium.launch(channel="chrome", headless=True)
         page = browser.new_page(
             viewport={"width": 1440, "height": 1100},
             user_agent=(
