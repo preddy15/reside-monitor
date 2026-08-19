@@ -2,14 +2,17 @@ import json
 import os
 import re
 import sys
+import time
 from datetime import datetime, timezone
 from pathlib import Path
+from urllib.parse import quote_plus
 
 import requests
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
 
 SCRAPER_VERSION = 3
+NOTIFICATION_VERSION = 4
 
 FORM_URL = os.getenv(
     "AIRTABLE_FORM_URL",
@@ -22,6 +25,7 @@ DEBUG_DIR = Path("debug")
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+TEST_LISTING = os.getenv("TEST_LISTING", "").strip()
 
 IGNORE_TEXT = {
     "",
@@ -60,6 +64,247 @@ def send_telegram(message: str) -> None:
     payload = r.json()
     if not payload.get("ok"):
         raise RuntimeError(f"Telegram API error: {payload}")
+
+
+
+NYC_COUNTY_TO_BOROUGH = {
+    "new york county": "Manhattan",
+    "kings county": "Brooklyn",
+    "bronx county": "Bronx",
+    "queens county": "Queens",
+    "richmond county": "Staten Island",
+}
+
+BOROUGH_ALIASES = {
+    "manhattan": "Manhattan",
+    "new york": "Manhattan",
+    "brooklyn": "Brooklyn",
+    "kings": "Brooklyn",
+    "bronx": "Bronx",
+    "the bronx": "Bronx",
+    "queens": "Queens",
+    "staten island": "Staten Island",
+    "richmond": "Staten Island",
+}
+
+
+def parse_listing_row(row: str) -> dict:
+    """
+    Example:
+      2140 Matthews Ave - Apt 4A - $2941.02 -
+
+    Returns address/unit/rent while remaining tolerant of missing pieces.
+    """
+    row = normalize(row)
+    parts = [normalize(p) for p in row.split(" - ") if normalize(p)]
+
+    result = {
+        "raw": row,
+        "address": parts[0] if parts else row,
+        "unit": None,
+        "rent": None,
+    }
+
+    for part in parts[1:]:
+        unit_match = re.match(
+            r"^(?:apt|apartment|unit|#)\s*\.?\s*(.+)$",
+            part,
+            flags=re.I,
+        )
+        if unit_match and not result["unit"]:
+            unit_value = normalize(unit_match.group(1))
+            if unit_value:
+                result["unit"] = unit_value
+            continue
+
+        rent_match = re.search(r"\$\s*([\d,]+(?:\.\d{1,2})?)", part)
+        if rent_match and not result["rent"]:
+            try:
+                amount = float(rent_match.group(1).replace(",", ""))
+                result["rent"] = f"${amount:,.2f}"
+            except ValueError:
+                result["rent"] = "$" + rent_match.group(1)
+
+    # Also scan the full row in case a slightly different delimiter is used.
+    if not result["rent"]:
+        rent_match = re.search(r"\$\s*([\d,]+(?:\.\d{1,2})?)", row)
+        if rent_match:
+            try:
+                amount = float(rent_match.group(1).replace(",", ""))
+                result["rent"] = f"${amount:,.2f}"
+            except ValueError:
+                result["rent"] = "$" + rent_match.group(1)
+
+    return result
+
+
+def normalize_borough(value: str | None) -> str | None:
+    if not value:
+        return None
+
+    cleaned = normalize(value)
+    key = cleaned.casefold()
+
+    if key in BOROUGH_ALIASES:
+        return BOROUGH_ALIASES[key]
+
+    if key.endswith(" county"):
+        return NYC_COUNTY_TO_BOROUGH.get(key)
+
+    return None
+
+
+def geocode_nyc_address(address: str) -> dict | None:
+    """
+    Free geocoding through the public OpenStreetMap Nominatim endpoint.
+
+    We use it only for newly-added listings (or a manual test), not on every
+    5-minute scrape. That keeps usage extremely light and within the public
+    service policy.
+    """
+    if not address:
+        return None
+
+    url = "https://nominatim.openstreetmap.org/search"
+    params = {
+        "q": f"{address}, New York City, New York, USA",
+        "format": "jsonv2",
+        "addressdetails": 1,
+        "limit": 1,
+        "countrycodes": "us",
+    }
+    headers = {
+        "User-Agent": (
+            "reside-airtable-monitor/4.0 "
+            "(personal NYC housing availability notifier)"
+        ),
+        "Accept-Language": "en",
+    }
+
+    try:
+        response = requests.get(
+            url,
+            params=params,
+            headers=headers,
+            timeout=20,
+        )
+        response.raise_for_status()
+        results = response.json()
+
+        if not results:
+            print(f'Geocoder found no result for "{address}".')
+            return None
+
+        result = results[0]
+        addr = result.get("address") or {}
+
+        county = normalize(addr.get("county"))
+        borough = (
+            NYC_COUNTY_TO_BOROUGH.get(county.casefold())
+            if county
+            else None
+        )
+
+        if not borough:
+            for key in ("borough", "city_district", "suburb", "city"):
+                borough = normalize_borough(addr.get(key))
+                if borough:
+                    break
+
+        neighborhood = None
+        for key in (
+            "neighbourhood",
+            "quarter",
+            "residential",
+            "suburb",
+            "city_district",
+        ):
+            candidate = normalize(addr.get(key))
+            if not candidate:
+                continue
+            if normalize_borough(candidate):
+                continue
+            if candidate.casefold() in {"new york", "new york city"}:
+                continue
+            neighborhood = candidate
+            break
+
+        postcode = normalize(addr.get("postcode")) or None
+
+        return {
+            "neighborhood": neighborhood,
+            "borough": borough,
+            "postcode": postcode,
+            "lat": result.get("lat"),
+            "lon": result.get("lon"),
+            "display_name": result.get("display_name"),
+        }
+
+    except Exception as exc:
+        # Location enrichment should never prevent a listing alert.
+        print(f'Location lookup failed for "{address}": {exc}')
+        return None
+
+
+def google_maps_url(address: str) -> str:
+    query = f"{address}, New York, NY"
+    return "https://www.google.com/maps/search/?api=1&query=" + quote_plus(query)
+
+
+def build_listing_notification(row: str, is_test: bool = False) -> str:
+    parsed = parse_listing_row(row)
+    location = geocode_nyc_address(parsed["address"])
+
+    heading = (
+        "🧪 TEST — RESIDE LISTING ALERT"
+        if is_test
+        else "🚨 NEW RESIDE RE-RENTAL"
+    )
+
+    title = parsed["address"]
+    if parsed["unit"]:
+        title += f" — Apt {parsed['unit']}"
+
+    lines = [
+        heading,
+        "",
+        f"🏠 {title}",
+    ]
+
+    if parsed["rent"]:
+        lines.append(f"💰 {parsed['rent']}/mo")
+
+    if location:
+        neighborhood = location.get("neighborhood")
+        borough = location.get("borough")
+        postcode = location.get("postcode")
+
+        if neighborhood and borough:
+            lines.append(f"📍 {neighborhood}, {borough}")
+        elif borough:
+            lines.append(f"📍 {borough}")
+        elif neighborhood:
+            lines.append(f"📍 {neighborhood}")
+
+        if postcode:
+            lines.append(f"📮 {postcode}")
+    else:
+        lines.append("📍 Location lookup unavailable")
+
+    lines.extend(
+        [
+            "",
+            "🗺️ Google Maps:",
+            google_maps_url(parsed["address"]),
+            "",
+            "📝 Reside application:",
+            FORM_URL,
+            "",
+            "Location data: © OpenStreetMap contributors",
+        ]
+    )
+
+    return "\n".join(lines)
 
 
 def load_state() -> dict:
@@ -482,6 +727,14 @@ def scrape_options() -> list[str]:
 
 
 def main() -> int:
+    # Manual GitHub Actions test mode. If a test row was provided, enrich it,
+    # send one Telegram message, and exit without touching the saved baseline.
+    if TEST_LISTING:
+        print(f"Sending enrichment test for: {TEST_LISTING}")
+        send_telegram(build_listing_notification(TEST_LISTING, is_test=True))
+        print("Test notification sent.")
+        return 0
+
     state = load_state()
     old_options = {
         normalize(x) for x in state.get("options", []) if normalize(x)
@@ -523,15 +776,17 @@ def main() -> int:
     removed_options = sorted(old_options - current_options, key=str.casefold)
 
     if new_options:
-        lines = "\n".join(f"• {item}" for item in new_options)
-        send_telegram(
-            "🚨 NEW RESIDE RE-RENTAL OPTION\n\n"
-            f"{lines}\n\n"
-            f"Open the application form:\n{FORM_URL}"
-        )
         print("New option(s):")
-        for item in new_options:
+        for index, item in enumerate(new_options):
             print(f"  + {item}")
+
+            # Nominatim's public-service policy requires very light usage.
+            # There is normally only one new listing at a time, but if several
+            # arrive together we space requests out.
+            if index > 0:
+                time.sleep(1.1)
+
+            send_telegram(build_listing_notification(item))
     else:
         print("No new options.")
 
