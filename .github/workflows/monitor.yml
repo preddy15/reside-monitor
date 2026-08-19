@@ -40,6 +40,8 @@ jobs:
         run: python -m playwright install --with-deps chromium
 
       - name: Check Airtable and notify Telegram
+        id: monitor
+        continue-on-error: true
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
@@ -49,24 +51,33 @@ jobs:
           TEST_LISTING: ${{ inputs.test_listing || '' }}
         run: python monitor.py
 
-      - name: Save latest snapshot
-        if: success()
+      - name: Save monitor state, history, and health
+        if: always()
         run: |
-          if git diff --quiet -- state.json; then
-            echo "No state change."
-            exit 0
-          fi
           git config user.name "airtable-monitor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add state.json
-          git commit -m "Update Airtable monitor state [skip ci]"
+
+          git add state.json history.json health.json 2>/dev/null || true
+
+          if git diff --cached --quiet; then
+            echo "No persistent monitor changes."
+            exit 0
+          fi
+
+          git commit -m "Update Airtable monitor data [skip ci]"
           git push
 
-      - name: Upload debug files if scraping fails
-        if: failure()
+      - name: Upload debug files if monitor failed
+        if: steps.monitor.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
           name: airtable-debug
           path: debug/
           if-no-files-found: ignore
           retention-days: 7
+
+      - name: Mark workflow failed when monitor failed
+        if: steps.monitor.outcome == 'failure'
+        run: |
+          echo "The monitor step failed. Persistent health state was saved above."
+          exit 1
