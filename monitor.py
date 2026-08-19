@@ -1,3 +1,4 @@
+import html
 import json
 import os
 import re
@@ -6,13 +7,16 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote_plus
+from zoneinfo import ZoneInfo
 
 import requests
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
 
+# Scraper version stays at 3 because v3 fixed the Airtable virtualized scrolling.
+# Keeping this value means upgrading from v4 -> v5 does NOT reset your baseline.
 SCRAPER_VERSION = 3
-NOTIFICATION_VERSION = 4
+FEATURE_VERSION = 5
 
 FORM_URL = os.getenv(
     "AIRTABLE_FORM_URL",
@@ -20,12 +24,17 @@ FORM_URL = os.getenv(
 )
 FIELD_LABEL = os.getenv("AIRTABLE_FIELD_LABEL", "Project Applying For")
 ADD_UNIT_TEXT = os.getenv("AIRTABLE_ADD_UNIT_TEXT", "Add unit")
+
 STATE_PATH = Path(os.getenv("STATE_PATH", "state.json"))
+HISTORY_PATH = Path(os.getenv("HISTORY_PATH", "history.json"))
+HEALTH_PATH = Path(os.getenv("HEALTH_PATH", "health.json"))
 DEBUG_DIR = Path("debug")
 
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "").strip()
 TEST_LISTING = os.getenv("TEST_LISTING", "").strip()
+
+NY_TZ = ZoneInfo("America/New_York")
 
 IGNORE_TEXT = {
     "",
@@ -39,33 +48,6 @@ IGNORE_TEXT = {
     "no results found",
     "add unit",
 }
-
-
-def normalize(text: str) -> str:
-    return re.sub(r"\s+", " ", text or "").strip()
-
-
-def send_telegram(message: str) -> None:
-    if not BOT_TOKEN or not CHAT_ID:
-        raise RuntimeError(
-            "Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID environment variable."
-        )
-
-    r = requests.post(
-        f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
-        data={
-            "chat_id": CHAT_ID,
-            "text": message,
-            "disable_web_page_preview": True,
-        },
-        timeout=30,
-    )
-    r.raise_for_status()
-    payload = r.json()
-    if not payload.get("ok"):
-        raise RuntimeError(f"Telegram API error: {payload}")
-
-
 
 NYC_COUNTY_TO_BOROUGH = {
     "new york county": "Manhattan",
@@ -86,6 +68,272 @@ BOROUGH_ALIASES = {
     "staten island": "Staten Island",
     "richmond": "Staten Island",
 }
+
+# Your target geography: Williamsburg plus Manhattan at/below the UWS/UES
+# boundary you previously defined. These names are used as a fallback if the
+# geocoder returns no coordinates.
+TARGET_NEIGHBORHOODS = {
+    "williamsburg",
+    "upper west side",
+    "lincoln square",
+    "morningside heights",
+    "upper east side",
+    "yorkville",
+    "carnegie hill",
+    "hell's kitchen",
+    "clinton",
+    "hudson yards",
+    "chelsea",
+    "flatiron district",
+    "flatiron",
+    "gramercy park",
+    "gramercy",
+    "kips bay",
+    "murray hill",
+    "midtown",
+    "midtown east",
+    "midtown south",
+    "greenwich village",
+    "west village",
+    "east village",
+    "lower east side",
+    "soho",
+    "nolita",
+    "noho",
+    "tribeca",
+    "chinatown",
+    "civic center",
+    "financial district",
+    "battery park city",
+    "two bridges",
+}
+
+HEALTH_ALERT_THRESHOLD = 3
+
+
+class IncompleteScrapeError(RuntimeError):
+    pass
+
+
+def normalize(text: str) -> str:
+    return re.sub(r"\s+", " ", text or "").strip()
+
+
+def utc_now_iso() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def parse_iso(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    try:
+        dt = datetime.fromisoformat(value)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt
+    except Exception:
+        return None
+
+
+def format_et(value: str | None) -> str:
+    dt = parse_iso(value)
+    if not dt:
+        return "Unknown"
+    local = dt.astimezone(NY_TZ)
+    hour = local.strftime("%I").lstrip("0") or "0"
+    return f"{local.strftime('%b %d, %Y')} {hour}:{local.strftime('%M %p')} ET"
+
+
+def human_duration(start_iso: str | None, end_iso: str | None) -> str | None:
+    start = parse_iso(start_iso)
+    end = parse_iso(end_iso)
+    if not start or not end or end <= start:
+        return None
+
+    seconds = int((end - start).total_seconds())
+    days, seconds = divmod(seconds, 86400)
+    hours, seconds = divmod(seconds, 3600)
+    minutes = seconds // 60
+
+    if days:
+        return f"{days}d {hours}h"
+    if hours:
+        return f"{hours}h {minutes}m"
+    return f"{max(1, minutes)}m"
+
+
+def send_telegram(message: str, parse_mode: str | None = None) -> None:
+    if not BOT_TOKEN or not CHAT_ID:
+        raise RuntimeError(
+            "Missing TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID environment variable."
+        )
+
+    data = {
+        "chat_id": CHAT_ID,
+        "text": message,
+        "disable_web_page_preview": True,
+    }
+    if parse_mode:
+        data["parse_mode"] = parse_mode
+
+    response = requests.post(
+        f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage",
+        data=data,
+        timeout=30,
+    )
+    response.raise_for_status()
+    payload = response.json()
+    if not payload.get("ok"):
+        raise RuntimeError(f"Telegram API returned an error: {payload}")
+
+
+def load_state() -> dict:
+    if not STATE_PATH.exists():
+        return {"initialized": False, "options": [], "scraper_version": None}
+
+    data = json.loads(STATE_PATH.read_text())
+    return {
+        "initialized": bool(data.get("initialized", False)),
+        "options": list(data.get("options", [])),
+        "updated_at": data.get("updated_at"),
+        "scraper_version": data.get("scraper_version"),
+    }
+
+
+def save_state(options: list[str]) -> None:
+    STATE_PATH.write_text(
+        json.dumps(
+            {
+                "initialized": True,
+                "scraper_version": SCRAPER_VERSION,
+                "feature_version": FEATURE_VERSION,
+                "options": sorted(options, key=str.casefold),
+                "updated_at": utc_now_iso(),
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+        + "\n"
+    )
+
+
+def load_history() -> dict:
+    if not HISTORY_PATH.exists():
+        return {
+            "version": 1,
+            "created_at": utc_now_iso(),
+            "listings": {},
+        }
+
+    try:
+        data = json.loads(HISTORY_PATH.read_text())
+        if not isinstance(data.get("listings"), dict):
+            data["listings"] = {}
+        return data
+    except Exception as exc:
+        raise RuntimeError(f"Could not read {HISTORY_PATH}: {exc}") from exc
+
+
+def save_history(history: dict) -> None:
+    history["version"] = 1
+    history["updated_at"] = utc_now_iso()
+    HISTORY_PATH.write_text(
+        json.dumps(history, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
+    )
+
+
+def load_health() -> dict:
+    if not HEALTH_PATH.exists():
+        return {
+            "consecutive_failures": 0,
+            "failure_alert_sent": False,
+            "last_success": None,
+            "last_failure": None,
+            "last_error": None,
+        }
+
+    try:
+        data = json.loads(HEALTH_PATH.read_text())
+    except Exception:
+        data = {}
+
+    return {
+        "consecutive_failures": int(data.get("consecutive_failures", 0)),
+        "failure_alert_sent": bool(data.get("failure_alert_sent", False)),
+        "last_success": data.get("last_success"),
+        "last_failure": data.get("last_failure"),
+        "last_error": data.get("last_error"),
+    }
+
+
+def save_health(health: dict) -> None:
+    HEALTH_PATH.write_text(
+        json.dumps(health, indent=2, ensure_ascii=False) + "\n"
+    )
+
+
+def record_success(health: dict) -> None:
+    had_alert = bool(health.get("failure_alert_sent"))
+    previous_failures = int(health.get("consecutive_failures", 0))
+
+    health["consecutive_failures"] = 0
+    health["failure_alert_sent"] = False
+    health["last_success"] = utc_now_iso()
+    health["last_error"] = None
+    save_health(health)
+
+    if had_alert:
+        try:
+            send_telegram(
+                "✅ Reside monitor recovered\n"
+                f"A successful check completed after {previous_failures} consecutive failures."
+            )
+        except Exception as exc:
+            # Recovery messaging should never turn a healthy scrape into a failure.
+            print(f"Could not send recovery Telegram message: {exc}")
+
+
+def record_failure(health: dict, error: Exception) -> None:
+    count = int(health.get("consecutive_failures", 0)) + 1
+    health["consecutive_failures"] = count
+    health["last_failure"] = utc_now_iso()
+    health["last_error"] = f"{type(error).__name__}: {error}"
+
+    should_alert = (
+        count >= HEALTH_ALERT_THRESHOLD
+        and not health.get("failure_alert_sent", False)
+    )
+
+    if should_alert:
+        try:
+            safe_error = normalize(str(error))
+            if len(safe_error) > 450:
+                safe_error = safe_error[:447] + "..."
+            send_telegram(
+                "⚠️ Reside monitor health alert\n\n"
+                f"The monitor has failed {count} consecutive checks.\n"
+                f"Latest error: {safe_error}\n\n"
+                "Your previous listing baseline has been preserved. "
+                "Check the latest GitHub Actions run/debug artifact."
+            )
+            health["failure_alert_sent"] = True
+        except Exception as alert_exc:
+            print(f"Could not send health alert: {alert_exc}")
+
+    save_health(health)
+
+
+def save_debug(page, reason: str) -> None:
+    DEBUG_DIR.mkdir(exist_ok=True)
+    safe = re.sub(r"[^a-zA-Z0-9_-]+", "_", reason)[:50]
+    try:
+        page.screenshot(path=str(DEBUG_DIR / f"{safe}.png"), full_page=True)
+    except Exception:
+        pass
+    try:
+        (DEBUG_DIR / f"{safe}.html").write_text(page.content(), encoding="utf-8")
+    except Exception:
+        pass
 
 
 def parse_listing_row(row: str) -> dict:
@@ -112,9 +360,7 @@ def parse_listing_row(row: str) -> dict:
             flags=re.I,
         )
         if unit_match and not result["unit"]:
-            unit_value = normalize(unit_match.group(1))
-            if unit_value:
-                result["unit"] = unit_value
+            result["unit"] = normalize(unit_match.group(1))
             continue
 
         rent_match = re.search(r"\$\s*([\d,]+(?:\.\d{1,2})?)", part)
@@ -125,7 +371,6 @@ def parse_listing_row(row: str) -> dict:
             except ValueError:
                 result["rent"] = "$" + rent_match.group(1)
 
-    # Also scan the full row in case a slightly different delimiter is used.
     if not result["rent"]:
         rent_match = re.search(r"\$\s*([\d,]+(?:\.\d{1,2})?)", row)
         if rent_match:
@@ -136,6 +381,16 @@ def parse_listing_row(row: str) -> dict:
                 result["rent"] = "$" + rent_match.group(1)
 
     return result
+
+
+def listing_key(parsed: dict) -> str:
+    """
+    Identity is address + unit, intentionally excluding rent. This keeps a rent
+    change from looking like a completely different apartment.
+    """
+    address = re.sub(r"[^a-z0-9]+", " ", parsed.get("address", "").casefold()).strip()
+    unit = re.sub(r"[^a-z0-9]+", " ", (parsed.get("unit") or "").casefold()).strip()
+    return f"{address}||{unit}"
 
 
 def normalize_borough(value: str | None) -> str | None:
@@ -156,11 +411,8 @@ def normalize_borough(value: str | None) -> str | None:
 
 def geocode_nyc_address(address: str) -> dict | None:
     """
-    Free geocoding through the public OpenStreetMap Nominatim endpoint.
-
-    We use it only for newly-added listings (or a manual test), not on every
-    5-minute scrape. That keeps usage extremely light and within the public
-    service policy.
+    Uses the public OpenStreetMap Nominatim endpoint only for new/reappearing
+    listings. Multiple new lookups are spaced by >1 second by the caller.
     """
     if not address:
         return None
@@ -175,7 +427,7 @@ def geocode_nyc_address(address: str) -> dict | None:
     }
     headers = {
         "User-Agent": (
-            "reside-airtable-monitor/4.0 "
+            "reside-airtable-monitor/5.0 "
             "(personal NYC housing availability notifier)"
         ),
         "Accept-Language": "en",
@@ -229,143 +481,296 @@ def geocode_nyc_address(address: str) -> dict | None:
             neighborhood = candidate
             break
 
-        postcode = normalize(addr.get("postcode")) or None
-
         return {
             "neighborhood": neighborhood,
             "borough": borough,
-            "postcode": postcode,
+            "postcode": normalize(addr.get("postcode")) or None,
             "lat": result.get("lat"),
             "lon": result.get("lon"),
             "display_name": result.get("display_name"),
         }
 
     except Exception as exc:
-        # Location enrichment should never prevent a listing alert.
+        # Enrichment should never block a listing alert.
         print(f'Location lookup failed for "{address}": {exc}')
         return None
 
 
+def find_cached_location(history: dict, address: str) -> dict | None:
+    wanted = normalize(address).casefold()
+    if not wanted:
+        return None
+
+    for entry in history.get("listings", {}).values():
+        if normalize(entry.get("address", "")).casefold() != wanted:
+            continue
+        location = entry.get("location")
+        if isinstance(location, dict) and location:
+            return location
+
+    return None
+
+
 def google_maps_url(address: str) -> str:
-    query = f"{address}, New York, NY"
-    return "https://www.google.com/maps/search/?api=1&query=" + quote_plus(query)
-
-
-def build_listing_notification(row: str, is_test: bool = False) -> str:
-    parsed = parse_listing_row(row)
-    location = geocode_nyc_address(parsed["address"])
-
-    heading = (
-        "🧪 TEST — RESIDE LISTING ALERT"
-        if is_test
-        else "🚨 NEW RESIDE RE-RENTAL"
+    return (
+        "https://www.google.com/maps/search/?api=1&query="
+        + quote_plus(f"{address}, New York, NY")
     )
 
-    title = parsed["address"]
-    if parsed["unit"]:
-        title += f" — Apt {parsed['unit']}"
+
+def priority_for_location(location: dict | None) -> dict:
+    """
+    Score:
+      3/3 HIGH PRIORITY: Williamsburg or Manhattan inside the user's target
+                           UWS/UES-and-south geography.
+      2/3 REVIEW:         Manhattan/Brooklyn but location detail is insufficient
+                           to confidently apply the target-area rule.
+      1/3 LOWER PRIORITY: known outside the target geography.
+
+    Manhattan boundary approximation:
+      west side -> at/below ~W 110th
+      east side -> at/below ~E 96th
+    The neighborhood-name fallback is used when coordinates are unavailable.
+    """
+    if not location:
+        return {
+            "score": 2,
+            "label": "REVIEW",
+            "emoji": "🟢",
+            "reason": "location could not be verified",
+        }
+
+    neighborhood = normalize(location.get("neighborhood")).casefold()
+    borough = normalize(location.get("borough"))
+
+    if "williamsburg" in neighborhood:
+        return {
+            "score": 3,
+            "label": "HIGH PRIORITY",
+            "emoji": "🔥",
+            "reason": "Williamsburg target",
+        }
+
+    if borough == "Manhattan":
+        lat = None
+        lon = None
+        try:
+            lat = float(location.get("lat"))
+            lon = float(location.get("lon"))
+        except (TypeError, ValueError):
+            pass
+
+        if lat is not None and lon is not None:
+            # Approximate east/west split through Central Park.
+            # West side uses the W110 target; east side uses the E96 target.
+            max_lat = 40.8015 if lon <= -73.965 else 40.7925
+            if lat <= max_lat:
+                return {
+                    "score": 3,
+                    "label": "HIGH PRIORITY",
+                    "emoji": "🔥",
+                    "reason": "Manhattan target area",
+                }
+            return {
+                "score": 1,
+                "label": "LOWER PRIORITY",
+                "emoji": "⚪",
+                "reason": "north of preferred Manhattan boundary",
+            }
+
+        if neighborhood in TARGET_NEIGHBORHOODS:
+            return {
+                "score": 3,
+                "label": "HIGH PRIORITY",
+                "emoji": "🔥",
+                "reason": "preferred Manhattan neighborhood",
+            }
+
+        return {
+            "score": 2,
+            "label": "REVIEW",
+            "emoji": "🟢",
+            "reason": "Manhattan location needs review",
+        }
+
+    if borough == "Brooklyn":
+        return {
+            "score": 1,
+            "label": "LOWER PRIORITY",
+            "emoji": "⚪",
+            "reason": "Brooklyn outside confirmed Williamsburg match",
+        }
+
+    if borough:
+        return {
+            "score": 1,
+            "label": "LOWER PRIORITY",
+            "emoji": "⚪",
+            "reason": f"outside target area ({borough})",
+        }
+
+    return {
+        "score": 2,
+        "label": "REVIEW",
+        "emoji": "🟢",
+        "reason": "borough could not be verified",
+    }
+
+
+def build_listing_notification(
+    parsed: dict,
+    location: dict | None,
+    event_type: str,
+    first_seen: str,
+    last_removed_at: str | None = None,
+    is_test: bool = False,
+) -> str:
+    priority = priority_for_location(location)
+
+    if is_test:
+        heading = "🧪 <b>TEST — RESIDE LISTING ALERT</b>"
+    elif event_type == "reappeared":
+        heading = "🔄 <b>RESIDE LISTING REAPPEARED</b>"
+    else:
+        heading = "🚨 <b>NEW RESIDE RE-RENTAL</b>"
+
+    address = html.escape(parsed.get("address") or parsed.get("raw") or "Unknown")
+    unit = html.escape(parsed.get("unit") or "")
+    title = address + (f" — Apt {unit}" if unit else "")
 
     lines = [
         heading,
+        f"{priority['emoji']} <b>{priority['label']} · {priority['score']}/3</b>",
+        f"<i>{html.escape(priority['reason'])}</i>",
         "",
-        f"🏠 {title}",
+        f"🏠 <b>{title}</b>",
     ]
 
-    if parsed["rent"]:
-        lines.append(f"💰 {parsed['rent']}/mo")
+    if parsed.get("rent"):
+        lines.append(f"💰 <b>{html.escape(parsed['rent'])}/mo</b>")
 
     if location:
-        neighborhood = location.get("neighborhood")
-        borough = location.get("borough")
-        postcode = location.get("postcode")
+        neighborhood = normalize(location.get("neighborhood"))
+        borough = normalize(location.get("borough"))
+        postcode = normalize(location.get("postcode"))
 
         if neighborhood and borough:
-            lines.append(f"📍 {neighborhood}, {borough}")
+            lines.append(
+                f"📍 <b>{html.escape(neighborhood)}, {html.escape(borough)}</b>"
+            )
         elif borough:
-            lines.append(f"📍 {borough}")
+            lines.append(f"📍 <b>{html.escape(borough)}</b>")
         elif neighborhood:
-            lines.append(f"📍 {neighborhood}")
+            lines.append(f"📍 <b>{html.escape(neighborhood)}</b>")
 
         if postcode:
-            lines.append(f"📮 {postcode}")
+            lines.append(f"📮 {html.escape(postcode)}")
     else:
         lines.append("📍 Location lookup unavailable")
+
+    lines.append(f"🕐 First detected: <b>{html.escape(format_et(first_seen))}</b>")
+
+    if event_type == "reappeared" and last_removed_at:
+        duration = human_duration(last_removed_at, utc_now_iso())
+        if duration:
+            lines.append(f"↩️ Reappeared after <b>{html.escape(duration)}</b>")
+        else:
+            lines.append(
+                f"↩️ Last removed: <b>{html.escape(format_et(last_removed_at))}</b>"
+            )
+
+    maps = html.escape(google_maps_url(parsed.get("address", "")), quote=True)
+    form = html.escape(FORM_URL, quote=True)
 
     lines.extend(
         [
             "",
-            "🗺️ Google Maps:",
-            google_maps_url(parsed["address"]),
+            f'🗺️ <a href="{maps}">Open in Google Maps</a>',
+            f'📝 <a href="{form}">Open Reside application</a>',
             "",
-            "📝 Reside application:",
-            FORM_URL,
-            "",
-            "Location data: © OpenStreetMap contributors",
+            "<i>Location data: © OpenStreetMap contributors</i>",
         ]
     )
 
     return "\n".join(lines)
 
 
-def load_state() -> dict:
-    if not STATE_PATH.exists():
-        return {
-            "initialized": False,
-            "options": [],
-            "scraper_version": None,
+def ensure_history_seeded(history: dict, old_options: set[str]) -> None:
+    """
+    v5 introduces history.json. Existing baseline rows are seeded without
+    generating alerts. Since we did not observe when they originally appeared,
+    first_seen_source records that limitation.
+    """
+    listings = history.setdefault("listings", {})
+    if listings or not old_options:
+        return
+
+    seeded_at = utc_now_iso()
+    for row in sorted(old_options, key=str.casefold):
+        parsed = parse_listing_row(row)
+        key = listing_key(parsed)
+        listings[key] = {
+            "address": parsed.get("address"),
+            "unit": parsed.get("unit"),
+            "rent": parsed.get("rent"),
+            "raw": parsed.get("raw"),
+            "first_seen": seeded_at,
+            "first_seen_source": "v5_history_migration",
+            "last_seen": seeded_at,
+            "active": True,
+            "appearance_count": 1,
+            "removal_count": 0,
+            "last_removed_at": None,
+            "location": None,
         }
 
-    try:
-        data = json.loads(STATE_PATH.read_text())
-    except Exception as exc:
-        raise RuntimeError(f"Could not read {STATE_PATH}: {exc}") from exc
-
-    return {
-        "initialized": bool(data.get("initialized", False)),
-        "options": list(data.get("options", [])),
-        "updated_at": data.get("updated_at"),
-        "scraper_version": data.get("scraper_version"),
-    }
+    print(f"Seeded history for {len(listings)} existing baseline listing(s).")
 
 
-def save_state(options: list[str]) -> None:
-    STATE_PATH.write_text(
-        json.dumps(
-            {
-                "initialized": True,
-                "scraper_version": SCRAPER_VERSION,
-                "options": sorted(options, key=str.casefold),
-                "updated_at": datetime.now(timezone.utc).isoformat(),
-            },
-            indent=2,
-            ensure_ascii=False,
+def validate_scrape(current_options: set[str], previous_options: set[str]) -> None:
+    """
+    Protect the baseline from a partial virtualized-list scrape.
+
+    A sudden collapse from a healthy list to a tiny subset is treated as a
+    scraper failure, not as dozens of legitimate removals.
+    """
+    current_count = len(current_options)
+    previous_count = len(previous_options)
+
+    if current_count == 0:
+        raise IncompleteScrapeError(
+            "Captured 0 listings. Refusing to replace the previous baseline."
         )
-        + "\n"
-    )
 
+    if previous_count == 0:
+        return
 
-def save_debug(page, reason: str) -> None:
-    DEBUG_DIR.mkdir(exist_ok=True)
-    safe = re.sub(r"[^a-zA-Z0-9_-]+", "_", reason)[:50]
-    try:
-        page.screenshot(path=str(DEBUG_DIR / f"{safe}.png"), full_page=True)
-    except Exception:
-        pass
-    try:
-        (DEBUG_DIR / f"{safe}.html").write_text(page.content(), encoding="utf-8")
-    except Exception:
-        pass
+    ratio = current_count / previous_count
+    drop = previous_count - current_count
+
+    # Explicitly catches the original "only 8 rendered rows" failure mode.
+    if previous_count >= 20 and current_count <= 10:
+        raise IncompleteScrapeError(
+            f"Suspicious partial scrape: previous baseline had {previous_count} "
+            f"listings, but this run captured only {current_count}. "
+            "Baseline preserved."
+        )
+
+    # General large-drop protection.
+    if drop >= 5 and ratio < 0.60:
+        raise IncompleteScrapeError(
+            f"Suspicious listing-count drop: {previous_count} -> {current_count} "
+            f"({ratio:.0%} of prior count). Baseline preserved."
+        )
 
 
 def click_add_unit(page) -> None:
-    # Exact visible "Add unit" button first.
     button = page.get_by_role("button", name=re.compile(r"^\s*Add unit\s*$", re.I))
     if button.count() > 0:
         button.first.scroll_into_view_if_needed()
         button.first.click(timeout=10_000)
         return
 
-    # Fallback: anchor to Project Applying For and look nearby.
     label = page.get_by_text(re.compile(re.escape(FIELD_LABEL), re.I))
     if label.count() == 0:
         raise RuntimeError(f'Could not find field label "{FIELD_LABEL}".')
@@ -387,10 +792,6 @@ def click_add_unit(page) -> None:
 
 
 def get_visible_options(page) -> set[str]:
-    """
-    The current Reside picker exposes the visible unit rows as role=option.
-    We include a few fallback roles in case Airtable changes markup.
-    """
     selectors = [
         '[role="option"]',
         '[role="listbox"] [role="option"]',
@@ -422,10 +823,6 @@ def get_visible_options(page) -> set[str]:
 
 
 def open_picker_if_needed(page) -> None:
-    """
-    After Add unit, choices may already be visible. If not, open the
-    combobox/listbox control Airtable presents.
-    """
     if get_visible_options(page):
         return
 
@@ -469,13 +866,6 @@ def open_picker_if_needed(page) -> None:
 
 
 def scroll_option_container_once(page) -> dict:
-    """
-    Find the scrollable ancestor of the currently visible option rows.
-
-    This is the important v3 change: Airtable virtualizes the picker, so only
-    ~8 rows may exist in the DOM at once. We must scroll the *row container*,
-    let Airtable render the next rows, collect them, and repeat.
-    """
     return page.evaluate(
         """() => {
             const isVisible = (el) => {
@@ -495,7 +885,6 @@ def scroll_option_container_once(page) -> dict:
 
             let candidates = [];
 
-            // Best signal: walk up from actual visible option rows.
             for (const option of optionNodes) {
                 let el = option.parentElement;
                 let depth = 0;
@@ -507,7 +896,6 @@ def scroll_option_container_once(page) -> dict:
                         el.clientHeight > 40
                     ) {
                         candidates.push(el);
-                        // The nearest scrollable ancestor is usually the virtual list.
                         break;
                     }
                     el = el.parentElement;
@@ -515,7 +903,6 @@ def scroll_option_container_once(page) -> dict:
                 }
             }
 
-            // Fallback: search visible scrollable elements inside the latest dialog.
             if (!candidates.length) {
                 const dialogs = [
                     ...document.querySelectorAll('[role="dialog"]')
@@ -536,7 +923,6 @@ def scroll_option_container_once(page) -> dict:
                 });
             }
 
-            // Deduplicate DOM nodes.
             candidates = [...new Set(candidates)];
 
             if (!candidates.length) {
@@ -550,9 +936,6 @@ def scroll_option_container_once(page) -> dict:
                 };
             }
 
-            // Prefer a candidate containing the most visible options.
-            // Tie-break toward the smaller viewport, which is usually the list itself
-            // rather than the entire modal.
             candidates.sort((a, b) => {
                 const aCount = optionNodes.filter(n => a.contains(n)).length;
                 const bCount = optionNodes.filter(n => b.contains(n)).length;
@@ -586,10 +969,6 @@ def scroll_option_container_once(page) -> dict:
 
 
 def wheel_fallback(page) -> bool:
-    """
-    If direct scrollTop manipulation doesn't move the list, hover the last
-    visible option and use a real mouse wheel event.
-    """
     options = page.locator('[role="option"]:visible')
     if options.count() == 0:
         return False
@@ -648,7 +1027,6 @@ def scrape_options() -> list[str]:
             stable_at_bottom = 0
             previous_scroll_top = -1
 
-            # 250 partial-page scrolls is intentionally generous.
             for pass_num in range(1, 251):
                 visible = get_visible_options(page)
                 before_count = len(collected)
@@ -657,8 +1035,11 @@ def scrape_options() -> list[str]:
                 info = scroll_option_container_once(page)
                 page.wait_for_timeout(350)
 
-                # If JS scrolling couldn't move it, try a genuine wheel event.
-                if info.get("found") and not info.get("moved") and not info.get("atBottom"):
+                if (
+                    info.get("found")
+                    and not info.get("moved")
+                    and not info.get("atBottom")
+                ):
                     if wheel_fallback(page):
                         page.wait_for_timeout(450)
                         collected.update(get_visible_options(page))
@@ -674,8 +1055,6 @@ def scrape_options() -> list[str]:
                     f"bottom={info.get('atBottom', False)}"
                 )
 
-                # Require multiple stable reads at the bottom. This avoids stopping
-                # while Airtable is still rendering the final virtualized batch.
                 if info.get("atBottom"):
                     if len(collected) == before_count:
                         stable_at_bottom += 1
@@ -687,12 +1066,10 @@ def scrape_options() -> list[str]:
                 else:
                     stable_at_bottom = 0
 
-                # Safety fallback if Airtable reports no scroll container at all.
                 if not info.get("found"):
                     wheel_fallback(page)
                     page.wait_for_timeout(400)
 
-                # Extra escape hatch for a truly stuck list.
                 current_top = info.get("top", 0)
                 if (
                     current_top == previous_scroll_top
@@ -726,78 +1103,226 @@ def scrape_options() -> list[str]:
             browser.close()
 
 
-def main() -> int:
-    # Manual GitHub Actions test mode. If a test row was provided, enrich it,
-    # send one Telegram message, and exit without touching the saved baseline.
-    if TEST_LISTING:
-        print(f"Sending enrichment test for: {TEST_LISTING}")
-        send_telegram(build_listing_notification(TEST_LISTING, is_test=True))
-        print("Test notification sent.")
-        return 0
+def process_listings(
+    current_options: set[str],
+    old_options: set[str],
+    history: dict,
+) -> tuple[list[dict], list[dict], list[dict]]:
+    """
+    Returns (new_events, reappeared_events, removed_entries).
+    History is updated in-memory and saved by the caller after alerts succeed.
+    """
+    ensure_history_seeded(history, old_options)
+    listings = history.setdefault("listings", {})
+    now = utc_now_iso()
 
+    current_by_key = {}
+    for row in sorted(current_options, key=str.casefold):
+        parsed = parse_listing_row(row)
+        current_by_key[listing_key(parsed)] = parsed
+
+    new_events = []
+    reappeared_events = []
+    removed_entries = []
+
+    # Mark removals first, based on the previously active history.
+    current_keys = set(current_by_key)
+    for key, entry in listings.items():
+        if entry.get("active", False) and key not in current_keys:
+            entry["active"] = False
+            entry["last_removed_at"] = now
+            entry["removal_count"] = int(entry.get("removal_count", 0)) + 1
+            removed_entries.append(entry)
+
+    # Process current rows.
+    geocode_requests = 0
+    for key, parsed in current_by_key.items():
+        entry = listings.get(key)
+
+        if entry is None:
+            location = find_cached_location(history, parsed["address"])
+            if location is None:
+                if geocode_requests:
+                    time.sleep(1.1)
+                location = geocode_nyc_address(parsed["address"])
+                geocode_requests += 1
+
+            entry = {
+                "address": parsed.get("address"),
+                "unit": parsed.get("unit"),
+                "rent": parsed.get("rent"),
+                "raw": parsed.get("raw"),
+                "first_seen": now,
+                "first_seen_source": "observed",
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": location,
+            }
+            listings[key] = entry
+            new_events.append(
+                {
+                    "parsed": parsed,
+                    "entry": entry,
+                    "event_type": "new",
+                }
+            )
+            continue
+
+        was_active = bool(entry.get("active", False))
+        last_removed_at = entry.get("last_removed_at")
+
+        entry["address"] = parsed.get("address")
+        entry["unit"] = parsed.get("unit")
+        entry["rent"] = parsed.get("rent")
+        entry["raw"] = parsed.get("raw")
+        entry["last_seen"] = now
+        entry["active"] = True
+
+        if not was_active:
+            if not entry.get("location"):
+                location = find_cached_location(history, parsed["address"])
+                if location is None:
+                    if geocode_requests:
+                        time.sleep(1.1)
+                    location = geocode_nyc_address(parsed["address"])
+                    geocode_requests += 1
+                entry["location"] = location
+
+            entry["appearance_count"] = int(entry.get("appearance_count", 1)) + 1
+            reappeared_events.append(
+                {
+                    "parsed": parsed,
+                    "entry": entry,
+                    "event_type": "reappeared",
+                    "last_removed_at": last_removed_at,
+                }
+            )
+
+    return new_events, reappeared_events, removed_entries
+
+
+def run_normal_monitor() -> None:
     state = load_state()
+    history = load_history()
+    health = load_health()
+
     old_options = {
         normalize(x) for x in state.get("options", []) if normalize(x)
     }
 
-    print(f"Opening Airtable form: {FORM_URL}")
-    print(f'Watching "{FIELD_LABEL}" -> "{ADD_UNIT_TEXT}" -> all unit rows')
+    try:
+        print(f"Opening Airtable form: {FORM_URL}")
+        print(f'Watching "{FIELD_LABEL}" -> "{ADD_UNIT_TEXT}" -> all unit rows')
 
-    current_options = set(scrape_options())
+        current_options = set(scrape_options())
+        validate_scrape(current_options, old_options)
 
-    # IMPORTANT:
-    # v1/v2 could capture only the first ~8 virtualized rows. The first v3 run
-    # therefore recalibrates the baseline instead of treating all other existing
-    # rows as newly added listings.
-    if state.get("scraper_version") != SCRAPER_VERSION:
-        save_state(list(current_options))
-        send_telegram(
-            "🔄 Reside monitor recalibrated.\n"
-            f"I found {len(current_options)} total current unit option(s) after "
-            "scrolling the full Add unit list.\n\n"
-            "This is the new baseline. I will alert you only for future additions."
-        )
         print(
-            "Scraper upgraded/recalibrated. "
-            "Saved the complete current list as the baseline."
+            f"Validated scrape: {len(current_options)} current option(s); "
+            f"{len(old_options)} previous option(s)."
         )
+
+        # Upgrade protection from pre-v3 scraper versions.
+        if state.get("scraper_version") != SCRAPER_VERSION:
+            save_state(list(current_options))
+            history = {
+                "version": 1,
+                "created_at": utc_now_iso(),
+                "listings": {},
+            }
+            ensure_history_seeded(history, current_options)
+            save_history(history)
+            send_telegram(
+                "🔄 Reside monitor recalibrated.\n"
+                f"I found {len(current_options)} total current unit option(s) after "
+                "scrolling the full Add unit list.\n\n"
+                "This is the new baseline. I will alert you only for future additions."
+            )
+            record_success(health)
+            return
+
+        if not state.get("initialized"):
+            save_state(list(current_options))
+            ensure_history_seeded(history, current_options)
+            save_history(history)
+            send_telegram(
+                "✅ Reside Airtable monitor initialized.\n"
+                f"Tracking {len(current_options)} current unit option(s).\n\n"
+                "I will alert you only when a new option appears."
+            )
+            record_success(health)
+            return
+
+        new_events, reappeared_events, removed_entries = process_listings(
+            current_options,
+            old_options,
+            history,
+        )
+
+        print(f"New listings: {len(new_events)}")
+        print(f"Reappeared listings: {len(reappeared_events)}")
+        print(f"Removed listings: {len(removed_entries)}")
+
+        # Send alerts before saving state/history. If Telegram fails, the run fails
+        # and the prior baseline stays intact so the alert can be retried later.
+        for event in new_events + reappeared_events:
+            entry = event["entry"]
+            message = build_listing_notification(
+                parsed=event["parsed"],
+                location=entry.get("location"),
+                event_type=event["event_type"],
+                first_seen=entry.get("first_seen"),
+                last_removed_at=event.get("last_removed_at"),
+            )
+            send_telegram(message, parse_mode="HTML")
+
+        for entry in removed_entries:
+            print(
+                "Removed: "
+                f"{entry.get('address')} "
+                f"{entry.get('unit') or ''} "
+                f"(removal #{entry.get('removal_count', 1)})"
+            )
+
+        save_state(list(current_options))
+        save_history(history)
+        record_success(health)
+
+    except Exception as exc:
+        print(f"Monitor failed: {type(exc).__name__}: {exc}", file=sys.stderr)
+        record_failure(health, exc)
+        raise
+
+
+def run_test_listing(row: str) -> None:
+    history = load_history()
+    parsed = parse_listing_row(row)
+
+    location = find_cached_location(history, parsed["address"])
+    if location is None:
+        location = geocode_nyc_address(parsed["address"])
+
+    now = utc_now_iso()
+    message = build_listing_notification(
+        parsed=parsed,
+        location=location,
+        event_type="new",
+        first_seen=now,
+        is_test=True,
+    )
+    send_telegram(message, parse_mode="HTML")
+    print("Test notification sent. Baseline/history/health were not changed.")
+
+
+def main() -> int:
+    if TEST_LISTING:
+        run_test_listing(TEST_LISTING)
         return 0
 
-    if not state.get("initialized"):
-        save_state(list(current_options))
-        send_telegram(
-            "✅ Reside Airtable monitor initialized.\n"
-            f"Tracking {len(current_options)} current unit option(s).\n\n"
-            "I will alert you only when a new option appears."
-        )
-        return 0
-
-    new_options = sorted(current_options - old_options, key=str.casefold)
-    removed_options = sorted(old_options - current_options, key=str.casefold)
-
-    if new_options:
-        print("New option(s):")
-        for index, item in enumerate(new_options):
-            print(f"  + {item}")
-
-            # Nominatim's public-service policy requires very light usage.
-            # There is normally only one new listing at a time, but if several
-            # arrive together we space requests out.
-            if index > 0:
-                time.sleep(1.1)
-
-            send_telegram(build_listing_notification(item))
-    else:
-        print("No new options.")
-
-    if removed_options:
-        print("Removed option(s):")
-        for item in removed_options:
-            print(f"  - {item}")
-
-    if current_options != old_options:
-        save_state(list(current_options))
-
+    run_normal_monitor()
     return 0
 
 
