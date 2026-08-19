@@ -557,23 +557,34 @@ def direct_reside_url_candidates(parsed: dict) -> list[str]:
     ]
 
     if street_suffix:
-        normalized_suffix = {
-            "street": "street",
-            "st": "st",
-            "avenue": "ave",
-            "ave": "ave",
-            "road": "road",
-            "rd": "rd",
-        }.get(street_suffix, street_suffix)
+        suffix_variants = {
+            "street": ["st", "street"],
+            "st": ["st", "street"],
+            "avenue": ["ave", "avenue"],
+            "ave": ["ave", "avenue"],
+            "road": ["rd", "road"],
+            "rd": ["rd", "road"],
+            "boulevard": ["blvd", "boulevard"],
+            "blvd": ["blvd", "boulevard"],
+            "place": ["pl", "place"],
+            "pl": ["pl", "place"],
+            "drive": ["dr", "drive"],
+            "dr": ["dr", "drive"],
+            "lane": ["ln", "lane"],
+            "ln": ["ln", "lane"],
+            "court": ["ct", "court"],
+            "ct": ["ct", "court"],
+        }.get(street_suffix, [street_suffix])
 
-        stems.extend(
-            [
-                f"{base_no_suffix}-{normalized_suffix}-apartments-unit-{unit_slug}",
-                f"{base_no_suffix}-{normalized_suffix}-apartment-unit-{unit_slug}",
-                f"{base_no_suffix}-{normalized_suffix}-apartments",
-                f"{base_no_suffix}-{normalized_suffix}-apartment",
-            ]
-        )
+        for normalized_suffix in suffix_variants:
+            stems.extend(
+                [
+                    f"{base_no_suffix}-{normalized_suffix}-apartments-unit-{unit_slug}",
+                    f"{base_no_suffix}-{normalized_suffix}-apartment-unit-{unit_slug}",
+                    f"{base_no_suffix}-{normalized_suffix}-apartments",
+                    f"{base_no_suffix}-{normalized_suffix}-apartment",
+                ]
+            )
 
     # Also support pages phrased "-apt-3a".
     stems.extend(
