@@ -4,12 +4,14 @@ import os
 import re
 import sys
 import time
+from difflib import SequenceMatcher
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import quote_plus
+from urllib.parse import quote_plus, urljoin
 from zoneinfo import ZoneInfo
 
 import requests
+from bs4 import BeautifulSoup
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
 
@@ -24,6 +26,9 @@ FORM_URL = os.getenv(
 )
 FIELD_LABEL = os.getenv("AIRTABLE_FIELD_LABEL", "Project Applying For")
 ADD_UNIT_TEXT = os.getenv("AIRTABLE_ADD_UNIT_TEXT", "Add unit")
+
+RESIDE_LISTINGS_URL = "https://residenewyork.com/property-listings/"
+RESIDE_REQUEST_TIMEOUT = (3.0, 5.0)
 
 STATE_PATH = Path(os.getenv("STATE_PATH", "state.json"))
 HISTORY_PATH = Path(os.getenv("HISTORY_PATH", "history.json"))
@@ -393,6 +398,400 @@ def listing_key(parsed: dict) -> str:
     return f"{address}||{unit}"
 
 
+
+STREET_TOKEN_ALIASES = {
+    "street": "st",
+    "st.": "st",
+    "avenue": "ave",
+    "ave.": "ave",
+    "road": "rd",
+    "rd.": "rd",
+    "boulevard": "blvd",
+    "blvd.": "blvd",
+    "place": "pl",
+    "pl.": "pl",
+    "drive": "dr",
+    "dr.": "dr",
+    "lane": "ln",
+    "ln.": "ln",
+    "court": "ct",
+    "ct.": "ct",
+    "west": "w",
+    "east": "e",
+    "north": "n",
+    "south": "s",
+    "first": "1",
+    "second": "2",
+    "third": "3",
+}
+
+
+def normalize_street_for_match(value: str) -> str:
+    value = normalize(value).casefold()
+    value = value.replace("–", " ").replace("—", " ")
+    value = re.sub(r"(\d+)(?:st|nd|rd|th)\b", r"\1", value)
+    value = re.sub(r"[^a-z0-9#]+", " ", value)
+
+    tokens = []
+    for token in value.split():
+        token = STREET_TOKEN_ALIASES.get(token, token)
+        if token in {"apartment", "apt", "unit"}:
+            continue
+        tokens.append(token)
+
+    return " ".join(tokens)
+
+
+def candidate_listing_identity(title: str) -> tuple[str, str | None]:
+    """
+    Normalize a Reside title like:
+      128 West 167 Street Apartment – Unit 3D
+    into an address-ish string and unit.
+    """
+    title = normalize(title)
+    unit = None
+
+    m = re.search(
+        r"(?:apartment|apt|unit)\s*(?:-|–|—|:)?\s*(?:unit|apt)?\s*#?\s*([A-Za-z0-9-]+)\s*$",
+        title,
+        flags=re.I,
+    )
+    if m:
+        unit = normalize(m.group(1))
+        title = title[:m.start()].strip(" -–—")
+
+    # Strip common descriptive suffixes.
+    title = re.sub(
+        r"\s+(?:apartment|apartments)\s*$",
+        "",
+        title,
+        flags=re.I,
+    )
+
+    return normalize_street_for_match(title), (unit.casefold() if unit else None)
+
+
+def find_reside_property(parsed: dict) -> dict | None:
+    """
+    Fetch Reside's listings index and find the best address+unit match.
+
+    The request happens only for a genuinely new/reappearing listing.
+    A 3s connect / 5s read timeout keeps this enrichment from delaying the
+    Telegram alert for long.
+    """
+    target_address = normalize_street_for_match(parsed.get("address", ""))
+    target_unit = normalize(parsed.get("unit", "")).casefold() or None
+
+    if not target_address:
+        return None
+
+    try:
+        response = requests.get(
+            RESIDE_LISTINGS_URL,
+            headers={
+                "User-Agent": (
+                    "reside-airtable-monitor/5.2 "
+                    "(personal NYC housing availability notifier)"
+                )
+            },
+            timeout=RESIDE_REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+    except Exception as exc:
+        print(f"Reside listing-index lookup failed: {exc}")
+        return None
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    candidates = []
+
+    # Each property card has a /property/... link. Depending on theme markup,
+    # the link itself may say "View Listing", so search nearby headings/text.
+    for anchor in soup.find_all("a", href=True):
+        href = anchor.get("href") or ""
+        if "/property/" not in href:
+            continue
+
+        url = urljoin(RESIDE_LISTINGS_URL, href)
+
+        title = ""
+        # First, use anchor text if it looks like a property title.
+        anchor_text = normalize(anchor.get_text(" ", strip=True))
+        if anchor_text and anchor_text.casefold() not in {
+            "view listing",
+            "image",
+            "learn more",
+        }:
+            title = anchor_text
+
+        # Otherwise walk upward and find the nearest heading.
+        if not title:
+            parent = anchor
+            for _ in range(7):
+                parent = getattr(parent, "parent", None)
+                if parent is None:
+                    break
+                heading = parent.find(["h1", "h2", "h3", "h4", "h5", "h6"])
+                if heading:
+                    candidate_text = normalize(heading.get_text(" ", strip=True))
+                    if candidate_text:
+                        title = candidate_text
+                        break
+
+        if not title:
+            # Last fallback: derive a matchable phrase from the URL slug.
+            slug = href.rstrip("/").split("/")[-1].replace("-", " ")
+            title = normalize(slug)
+
+        cand_address, cand_unit = candidate_listing_identity(title)
+
+        # Strong requirement: same house number.
+        target_num = re.match(r"^(\d+)\b", target_address)
+        cand_num = re.match(r"^(\d+)\b", cand_address)
+        if target_num and cand_num and target_num.group(1) != cand_num.group(1):
+            continue
+
+        # If Airtable supplies a unit, require the candidate's unit to match.
+        if target_unit:
+            if not cand_unit or cand_unit != target_unit:
+                continue
+
+        similarity = SequenceMatcher(
+            None,
+            target_address,
+            cand_address,
+        ).ratio()
+
+        # Address token overlap helps with St/Street and directional variations.
+        target_tokens = set(target_address.split())
+        cand_tokens = set(cand_address.split())
+        overlap = (
+            len(target_tokens & cand_tokens) / max(1, len(target_tokens))
+        )
+
+        score = (similarity * 0.65) + (overlap * 0.35)
+        candidates.append(
+            {
+                "title": title,
+                "url": url,
+                "score": score,
+            }
+        )
+
+    if not candidates:
+        print(
+            f'No Reside property-page match found for '
+            f'"{parsed.get("address")}" unit "{parsed.get("unit")}".'
+        )
+        return None
+
+    best = max(candidates, key=lambda x: x["score"])
+    if best["score"] < 0.62:
+        print(
+            "Best Reside match was too weak: "
+            f'{best["title"]} ({best["score"]:.2f})'
+        )
+        return None
+
+    print(
+        f'Reside match: "{best["title"]}" '
+        f'({best["score"]:.2f}) -> {best["url"]}'
+    )
+    return best
+
+
+def extract_reside_details(property_match: dict) -> dict | None:
+    """
+    Open one matched property page and parse useful fields.
+
+    Current Reside property pages visibly expose:
+      - AMI in the "Rent & Income Eligibility Guidelines" section
+      - unit size / bedroom type
+      - household size
+      - required income
+      - property address
+    The parser uses both table markup and tolerant text regexes.
+    """
+    if not property_match or not property_match.get("url"):
+        return None
+
+    url = property_match["url"]
+
+    try:
+        response = requests.get(
+            url,
+            headers={
+                "User-Agent": (
+                    "reside-airtable-monitor/5.2 "
+                    "(personal NYC housing availability notifier)"
+                )
+            },
+            timeout=RESIDE_REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+    except Exception as exc:
+        print(f"Reside property detail lookup failed: {exc}")
+        return None
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    page_text = normalize(soup.get_text(" ", strip=True))
+
+    details = {
+        "url": url,
+        "title": property_match.get("title"),
+        "ami": None,
+        "unit_size": None,
+        "one_person_income": None,
+        "one_person_eligible": None,
+        "property_address": None,
+    }
+
+    # Table-aware extraction first.
+    for table in soup.find_all("table"):
+        rows = table.find_all("tr")
+        if not rows:
+            continue
+
+        header_cells = rows[0].find_all(["th", "td"])
+        headers = [
+            normalize(c.get_text(" ", strip=True)).casefold()
+            for c in header_cells
+        ]
+
+        if "ami" not in headers:
+            continue
+
+        for row in rows[1:]:
+            cells = [
+                normalize(c.get_text(" ", strip=True))
+                for c in row.find_all(["th", "td"])
+            ]
+            if not cells:
+                continue
+
+            mapping = {}
+            for i, header in enumerate(headers):
+                if i < len(cells):
+                    mapping[header] = cells[i]
+
+            for key, value in mapping.items():
+                if key == "ami" and not details["ami"]:
+                    m = re.search(r"\b(\d{2,3}\s*%)\b", value)
+                    if m:
+                        details["ami"] = m.group(1).replace(" ", "")
+                if "unit size" in key and not details["unit_size"]:
+                    details["unit_size"] = value or None
+
+            # Reside often formats the first household row with all columns,
+            # then subsequent household sizes as shorter continuation rows.
+            row_text = normalize(row.get_text(" ", strip=True))
+            if re.search(r"\b1\s*(?:person|people)\b", row_text, flags=re.I):
+                income_match = re.search(
+                    r"(\$[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*\$[\d,]+(?:\.\d{1,2})?)",
+                    row_text,
+                )
+                if income_match:
+                    details["one_person_income"] = normalize(income_match.group(1))
+                    details["one_person_eligible"] = True
+
+    # Tolerant page-text fallbacks for pages whose eligibility content is not
+    # rendered as a literal <table>.
+    if not details["ami"]:
+        ami_patterns = [
+            r"\bAMI\b.{0,120}?\b(\d{2,3}\s*%)\b",
+            r"\b(\d{2,3}\s*%)\b.{0,120}?\bAMI\b",
+            r"\b(40|50|60|70|80|90|100|110|120|130|140|165)\s*%\b",
+        ]
+        for pattern in ami_patterns:
+            m = re.search(pattern, page_text, flags=re.I)
+            if m:
+                details["ami"] = m.group(1).replace(" ", "") + (
+                    "" if "%" in m.group(1) else "%"
+                )
+                break
+
+    if not details["unit_size"]:
+        m = re.search(
+            r"\b(Studio|\d+\s*(?:Bedroom|BR))\b",
+            page_text,
+            flags=re.I,
+        )
+        if m:
+            details["unit_size"] = normalize(m.group(1))
+
+    if not details["one_person_income"]:
+        # Prefer the explicit 1-person line in the eligibility section.
+        one_person_patterns = [
+            r"\b1\s*(?:person|people)\b\s*[:|]?\s*(\$[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*\$[\d,]+(?:\.\d{1,2})?)",
+            r"\b1\s*(?:person|people)\b.{0,80}?(\$[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*\$[\d,]+(?:\.\d{1,2})?)",
+        ]
+        for pattern in one_person_patterns:
+            m = re.search(pattern, page_text, flags=re.I)
+            if m:
+                details["one_person_income"] = normalize(m.group(1))
+                details["one_person_eligible"] = True
+                break
+
+    if details["one_person_eligible"] is None:
+        # If the page explicitly says the household range begins at 2+,
+        # then a one-person household is not eligible for this unit.
+        household_range = re.search(
+            r"Household Size\s*:?\s*(\d+)\s*[-–—]\s*(\d+)",
+            page_text,
+            flags=re.I,
+        )
+        if household_range:
+            minimum_household = int(household_range.group(1))
+            details["one_person_eligible"] = minimum_household <= 1
+        else:
+            # Also catch eligibility rows whose smallest listed household is 2+.
+            listed_sizes = [
+                int(x)
+                for x in re.findall(
+                    r"\b(\d+)\s*(?:person|people)\b",
+                    page_text,
+                    flags=re.I,
+                )
+            ]
+            if listed_sizes:
+                details["one_person_eligible"] = min(listed_sizes) <= 1
+
+    # Property Address heading + nearby text.
+    address_heading = soup.find(
+        lambda tag: (
+            tag.name in {"h2", "h3", "h4", "h5", "h6"}
+            and "property address" in normalize(tag.get_text(" ", strip=True)).casefold()
+        )
+    )
+    if address_heading:
+        node = address_heading.find_next()
+        for _ in range(8):
+            if not node:
+                break
+            candidate = normalize(node.get_text(" ", strip=True))
+            if (
+                candidate
+                and candidate.casefold() != "property address"
+                and re.search(r"\bNY\s+\d{5}\b", candidate, flags=re.I)
+            ):
+                details["property_address"] = candidate
+                break
+            node = node.find_next()
+
+    return details
+
+
+def enrich_from_reside(parsed: dict) -> dict | None:
+    match = find_reside_property(parsed)
+    if not match:
+        return None
+
+    details = extract_reside_details(match) or {
+        "url": match.get("url"),
+        "title": match.get("title"),
+    }
+    return details
+
+
 def normalize_borough(value: str | None) -> str | None:
     if not value:
         return None
@@ -624,6 +1023,7 @@ def build_listing_notification(
     first_seen: str,
     last_removed_at: str | None = None,
     is_test: bool = False,
+    reside: dict | None = None,
 ) -> str:
     priority = priority_for_location(location)
 
@@ -648,6 +1048,21 @@ def build_listing_notification(
 
     if parsed.get("rent"):
         lines.append(f"💰 <b>{html.escape(parsed['rent'])}/mo</b>")
+
+    if reside:
+        if reside.get("unit_size"):
+            lines.append(f"🛏️ <b>{html.escape(reside['unit_size'])}</b>")
+        if reside.get("ami"):
+            lines.append(f"📊 AMI: <b>{html.escape(reside['ami'])}</b>")
+        if reside.get("one_person_income"):
+            income = normalize(reside["one_person_income"])
+            lines.append(
+                f"👤 1-person income: <b>{html.escape(income)}</b>"
+            )
+        elif reside.get("one_person_eligible") is False:
+            lines.append("👤 1-person household: <b>Not eligible</b>")
+        elif reside.get("one_person_eligible") is True:
+            lines.append("👤 1-person household: <b>Eligible</b>")
 
     if location:
         neighborhood = normalize(location.get("neighborhood"))
@@ -682,15 +1097,21 @@ def build_listing_notification(
     maps = html.escape(google_maps_url(parsed.get("address", "")), quote=True)
     form = html.escape(FORM_URL, quote=True)
 
-    lines.extend(
+    links = [""]
+
+    if reside and reside.get("url"):
+        reside_url = html.escape(reside["url"], quote=True)
+        links.append(f'🏢 <a href="{reside_url}">View full Reside listing</a>')
+
+    links.extend(
         [
-            "",
             f'🗺️ <a href="{maps}">Open in Google Maps</a>',
             f'📝 <a href="{form}">Open Reside application</a>',
             "",
             "<i>Location data: © OpenStreetMap contributors</i>",
         ]
     )
+    lines.extend(links)
 
     return "\n".join(lines)
 
@@ -1140,6 +1561,10 @@ def process_listings(
         entry = listings.get(key)
 
         if entry is None:
+            # Try Reside first. This is optional enrichment and is attempted only
+            # for genuinely new/reappearing listings.
+            reside = enrich_from_reside(parsed)
+
             location = find_cached_location(history, parsed["address"])
             if location is None:
                 if geocode_requests:
@@ -1160,6 +1585,7 @@ def process_listings(
                 "removal_count": 0,
                 "last_removed_at": None,
                 "location": location,
+                "reside": reside,
             }
             listings[key] = entry
             new_events.append(
@@ -1182,6 +1608,9 @@ def process_listings(
         entry["active"] = True
 
         if not was_active:
+            if not entry.get("reside"):
+                entry["reside"] = enrich_from_reside(parsed)
+
             if not entry.get("location"):
                 location = find_cached_location(history, parsed["address"])
                 if location is None:
@@ -1276,6 +1705,7 @@ def run_normal_monitor() -> None:
                 event_type=event["event_type"],
                 first_seen=entry.get("first_seen"),
                 last_removed_at=event.get("last_removed_at"),
+                reside=entry.get("reside"),
             )
             send_telegram(message, parse_mode="HTML")
 
@@ -1301,6 +1731,8 @@ def run_test_listing(row: str) -> None:
     history = load_history()
     parsed = parse_listing_row(row)
 
+    reside = enrich_from_reside(parsed)
+
     location = find_cached_location(history, parsed["address"])
     if location is None:
         location = geocode_nyc_address(parsed["address"])
@@ -1312,6 +1744,7 @@ def run_test_listing(row: str) -> None:
         event_type="new",
         first_seen=now,
         is_test=True,
+        reside=reside,
     )
     send_telegram(message, parse_mode="HTML")
     print("Test notification sent. Baseline/history/health were not changed.")
