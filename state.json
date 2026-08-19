@@ -1,6 +1,7 @@
 {
   "initialized": true,
   "scraper_version": 3,
+  "feature_version": 5,
   "options": [
     "1000 Woodycrest Ave - Apt 3C - $3442.8 -",
     "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 - Senior Preferece 60+",
@@ -52,5 +53,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -",
     "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -"
   ],
-  "updated_at": "2026-08-19T03:59:41.366305+00:00"
+  "updated_at": "2026-08-19T05:00:35.545784+00:00"
 }
