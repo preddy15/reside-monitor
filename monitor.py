@@ -546,8 +546,14 @@ def direct_reside_url_candidates(parsed: dict) -> list[str]:
 
     # Generate only a handful of highly plausible variants to keep latency low.
     stems = [
+        # Unit-specific pages.
         f"{base_no_suffix}-apartments-unit-{unit_slug}",
         f"{base_no_suffix}-apartment-unit-{unit_slug}",
+
+        # Building-level pages. Some Reside properties contain many apartment
+        # tiers on one page and omit the apartment number from the URL entirely.
+        f"{base_no_suffix}-apartments",
+        f"{base_no_suffix}-apartment",
     ]
 
     if street_suffix:
@@ -564,6 +570,8 @@ def direct_reside_url_candidates(parsed: dict) -> list[str]:
             [
                 f"{base_no_suffix}-{normalized_suffix}-apartments-unit-{unit_slug}",
                 f"{base_no_suffix}-{normalized_suffix}-apartment-unit-{unit_slug}",
+                f"{base_no_suffix}-{normalized_suffix}-apartments",
+                f"{base_no_suffix}-{normalized_suffix}-apartment",
             ]
         )
 
@@ -585,6 +593,36 @@ def direct_reside_url_candidates(parsed: dict) -> list[str]:
             urls.append(url)
 
     return urls
+
+
+
+def rent_to_float(value: str | None) -> float | None:
+    if not value:
+        return None
+    m = re.search(r"\$?\s*([\d,]+(?:\.\d{1,2})?)", value)
+    if not m:
+        return None
+    try:
+        return float(m.group(1).replace(",", ""))
+    except ValueError:
+        return None
+
+
+def page_contains_matching_rent(page_text: str, rent_value: str | None) -> bool:
+    target = rent_to_float(rent_value)
+    if target is None:
+        return False
+
+    amounts = []
+    for raw in re.findall(r"\$\s*([\d,]+(?:\.\d{1,2})?)", page_text):
+        try:
+            amounts.append(float(raw.replace(",", "")))
+        except ValueError:
+            pass
+
+    # Reside commonly displays whole-dollar rent while Airtable may include
+    # cents, so allow a sub-$1 difference.
+    return any(abs(amount - target) < 1.0 for amount in amounts)
 
 
 def validate_direct_reside_page(parsed: dict, url: str) -> dict | None:
@@ -620,11 +658,23 @@ def validate_direct_reside_page(parsed: dict, url: str) -> dict | None:
         return None
 
     expected_unit = normalize(parsed.get("unit", "")).casefold()
-    if expected_unit:
-        # Require a unit marker so e.g. 3A cannot accidentally match 3B.
-        unit_pattern = rf"\b(?:unit|apt|apartment)\s*#?\s*{re.escape(expected_unit)}\b"
-        if not re.search(unit_pattern, page_text, flags=re.I):
-            return None
+
+    # A direct Reside page may represent either one specific unit or an entire
+    # building. For unit-specific pages, require the exact apartment. For
+    # building-level pages, allow the unit to be absent only when the page
+    # contains the Airtable rent tier; address validation below still applies.
+    unit_pattern = (
+        rf"\b(?:unit|apt|apartment)\s*#?\s*{re.escape(expected_unit)}\b"
+        if expected_unit
+        else None
+    )
+    unit_present = bool(
+        unit_pattern and re.search(unit_pattern, page_text, flags=re.I)
+    )
+    rent_present = page_contains_matching_rent(page_text, parsed.get("rent"))
+
+    if expected_unit and not unit_present and not rent_present:
+        return None
 
     target_address = normalize_street_for_match(parsed.get("address", ""))
     cand_address, cand_unit = candidate_listing_identity(title)
@@ -649,15 +699,16 @@ def validate_direct_reside_page(parsed: dict, url: str) -> dict | None:
         "title": title,
         "url": response.url,
         "score": max(similarity, overlap),
+        "match_type": "unit" if unit_present else "building_rent",
     }
 
 
 def try_direct_reside_match(parsed: dict) -> dict | None:
     candidates = direct_reside_url_candidates(parsed)
 
-    # Try the most likely 4 variants first. This bounds worst-case direct URL
-    # lookup latency while covering Reside's common slug patterns.
-    for url in candidates[:4]:
+    # Try the generated variants in priority order. Building-level candidates
+    # are included because Reside sometimes groups many units on one property page.
+    for url in candidates:
         match = validate_direct_reside_page(parsed, url)
         if match:
             return match
@@ -793,7 +844,97 @@ def find_reside_property(parsed: dict) -> dict | None:
     return best
 
 
-def extract_reside_details(property_match: dict) -> dict | None:
+
+def extract_rent_tier_details(soup, parsed: dict) -> dict:
+    """
+    For building-level Reside pages, locate the Available Units tier whose rent
+    matches the Airtable row. This lets us derive bedroom type and 1-person
+    eligibility even when Apt 406 is not named on the page.
+    """
+    target_rent = rent_to_float(parsed.get("rent"))
+    if target_rent is None:
+        return {}
+
+    # Build a compact ordered text stream from headings/paragraph-like elements.
+    nodes = soup.find_all(["h2", "h3", "h4", "h5", "p", "div", "li"])
+    chunks = []
+    for node in nodes:
+        txt = normalize(node.get_text(" ", strip=True))
+        if txt and txt not in chunks[-3:]:
+            chunks.append(txt)
+
+    # The raw page text is more reliable than DOM structure across theme changes.
+    page_text = normalize(soup.get_text(" ", strip=True))
+
+    # Find occurrences of the target rent, allowing whole-dollar display.
+    whole = int(round(target_rent))
+    rent_patterns = [
+        rf"\\$\\s*{whole:,}(?:\\.00)?\\b",
+        rf"\\$\\s*{whole}(?:\\.00)?\\b",
+    ]
+
+    match = None
+    for pat in rent_patterns:
+        match = re.search(pat, page_text)
+        if match:
+            break
+    if not match:
+        return {}
+
+    # Inspect a window around the matching rent. Reside pages list:
+    # [Bedroom Type] Available Units ... Rent $X ... Required Income ...
+    start = max(0, match.start() - 350)
+    end = min(len(page_text), match.end() + 650)
+    window = page_text[start:end]
+
+    unit_size = None
+    size_matches = list(
+        re.finditer(
+            r"\\b(Studio|[1-5]\\s*Bedroom|[1-5]\\s*BR)\\b",
+            window,
+            flags=re.I,
+        )
+    )
+    # Prefer the last size before the rent occurrence within this window.
+    rent_pos = match.start() - start
+    before = [m for m in size_matches if m.start() <= rent_pos]
+    if before:
+        unit_size = normalize(before[-1].group(1))
+    elif size_matches:
+        unit_size = normalize(size_matches[0].group(1))
+
+    one_person_income = None
+    m = re.search(
+        r"\\b1\\s*(?:person|people)\\s+"
+        r"(\\$[\\d,]+(?:\\.\\d{1,2})?\\s*[-–—]\\s*\\$[\\d,]+(?:\\.\\d{1,2})?)",
+        window,
+        flags=re.I,
+    )
+    if m:
+        one_person_income = normalize(m.group(1))
+
+    # Determine minimum household size in this matched rent block.
+    household_sizes = [
+        int(x)
+        for x in re.findall(
+            r"\\b([1-9])\\s*(?:person|people)\\b",
+            window,
+            flags=re.I,
+        )
+    ]
+
+    return {
+        "unit_size": unit_size,
+        "one_person_income": one_person_income,
+        "one_person_eligible": (
+            True
+            if one_person_income
+            else (min(household_sizes) <= 1 if household_sizes else None)
+        ),
+    }
+
+
+def extract_reside_details(property_match: dict, parsed: dict | None = None) -> dict | None:
     """
     Open one matched property page and parse useful fields.
 
@@ -971,6 +1112,17 @@ def extract_reside_details(property_match: dict) -> dict | None:
                 break
             node = node.find_next()
 
+    # On building-level pages, use Airtable rent to select the correct unit tier.
+    if parsed:
+        tier = extract_rent_tier_details(soup, parsed)
+        if tier.get("unit_size"):
+            details["unit_size"] = tier["unit_size"]
+        if tier.get("one_person_income"):
+            details["one_person_income"] = tier["one_person_income"]
+            details["one_person_eligible"] = True
+        elif tier.get("one_person_eligible") is False:
+            details["one_person_eligible"] = False
+
     return details
 
 
@@ -986,7 +1138,7 @@ def enrich_from_reside(parsed: dict) -> dict | None:
     if not match:
         return None
 
-    details = extract_reside_details(match) or {
+    details = extract_reside_details(match, parsed=parsed) or {
         "url": match.get("url"),
         "title": match.get("title"),
     }
