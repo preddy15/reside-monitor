@@ -36,9 +36,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Install Chromium
-        run: python -m playwright install --with-deps chromium
-
       - name: Check Airtable and notify Telegram
         id: monitor
         continue-on-error: true
