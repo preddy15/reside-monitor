@@ -1,4 +1,14 @@
 {
-  "initialized": false,
-  "options": []
+  "initialized": true,
+  "options": [
+    "1315 Findlay Ave - Apt 2D - $2834.8 -",
+    "1315 Findlay Avenue - Apt 4C - $2851 -",
+    "1440 Amsterdam Avenue - Apt 702 - $3195 -",
+    "25-01 Queens Plaza North - Apt 903 - $4366 -",
+    "2758 Creston Avenue - Apt 2D - $2969.47 -",
+    "689 East 223rd - Apt 5D - $4341 -",
+    "81-07 Kew garden Road - Apt 6E - $3753 -",
+    "885 Rogers Avenue - Apt 407 - $2590.63 -"
+  ],
+  "updated_at": "2026-08-19T03:53:50.883845+00:00"
 }
