@@ -2,6 +2,12 @@ name: Monitor Airtable dropdown
 
 on:
   workflow_dispatch:
+    inputs:
+      test_listing:
+        description: "Optional listing row to test Telegram enrichment"
+        required: false
+        default: ""
+        type: string
   schedule:
     - cron: "2/5 * * * *"
 
@@ -40,6 +46,7 @@ jobs:
           AIRTABLE_FORM_URL: "https://airtable.com/appsseXTOVx59HC0W/pagcVengefPFQvMZC/form"
           AIRTABLE_FIELD_LABEL: "Project Applying For"
           AIRTABLE_ADD_UNIT_TEXT: "Add unit"
+          TEST_LISTING: ${{ inputs.test_listing || '' }}
         run: python monitor.py
 
       - name: Save latest snapshot
