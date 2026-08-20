@@ -1,0 +1,18 @@
+{
+  "initialized": true,
+  "listings": {
+    "555 w 38 street manhattan ny 10018||1908": {
+      "address": "555 W 38 Street, Manhattan, NY 10018",
+      "rent": "$3,656.36",
+      "unit": "1908",
+      "url": "https://rockrose.com/affordable-availabilities/lyra-308-income-restricted-unit-130-ami-rent-stabilized/"
+    },
+    "555 w 38 street manhattan ny 10018||911": {
+      "address": "555 W 38 Street, Manhattan, NY 10018",
+      "rent": "$1,480.59",
+      "unit": "911",
+      "url": "https://rockrose.com/affordable-availabilities/lyra-911-income-restricted-unit-70-ami-rent-stabilized/"
+    }
+  },
+  "updated_at": "2026-08-20T01:58:18.576158+00:00"
+}
