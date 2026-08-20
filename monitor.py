@@ -31,6 +31,11 @@ ADD_UNIT_TEXT = os.getenv("AIRTABLE_ADD_UNIT_TEXT", "Add unit")
 RESIDE_LISTINGS_URL = "https://residenewyork.com/property-listings/"
 RESIDE_REQUEST_TIMEOUT = (2.5, 4.0)
 
+FAC_URL = "https://fifthave.org/re-rental-availabilities/"
+FAC_REQUEST_TIMEOUT = (2.5, 5.0)
+FAC_STATE_PATH = Path(os.getenv("FAC_STATE_PATH", "fac_state.json"))
+FAC_HISTORY_PATH = Path(os.getenv("FAC_HISTORY_PATH", "fac_history.json"))
+
 STATE_PATH = Path(os.getenv("STATE_PATH", "state.json"))
 HISTORY_PATH = Path(os.getenv("HISTORY_PATH", "history.json"))
 HEALTH_PATH = Path(os.getenv("HEALTH_PATH", "health.json"))
@@ -2029,6 +2034,606 @@ def process_listings(
     return new_events, reappeared_events, removed_entries
 
 
+
+# ---------------------------------------------------------------------------
+# Fifth Avenue Committee (FAC) monitor
+# ---------------------------------------------------------------------------
+
+def clean_fac_ami(value: str | None) -> str | None:
+    if not value:
+        return None
+    compact = re.sub(r"\s+", "", value)
+    m = re.search(r"(\d{1,3})%", compact)
+    return f"{m.group(1)}%" if m else normalize(value)
+
+
+def parse_fac_money(value: str | None) -> str | None:
+    if not value:
+        return None
+    m = re.search(r"\$\s*([\d,]+(?:\.\d{1,2})?)", value)
+    if not m:
+        return normalize(value)
+    try:
+        amount = float(m.group(1).replace(",", ""))
+        return f"${amount:,.2f}"
+    except ValueError:
+        return "$" + m.group(1)
+
+
+def fac_household_info(value: str | None) -> dict:
+    """
+    FAC publishes one household-size range plus one min/max income range per
+    unit. Only call the income range "1-person income" when the FAC row is
+    explicitly limited to one person; otherwise label it as FAC's published
+    range rather than pretending it is household-specific.
+    """
+    value = normalize(value)
+    nums = [int(x) for x in re.findall(r"\d+", value)]
+    if not nums:
+        return {
+            "one_person_eligible": None,
+            "one_person_only": False,
+        }
+
+    minimum = nums[0]
+    maximum = nums[-1]
+    return {
+        "one_person_eligible": minimum <= 1,
+        "one_person_only": minimum == 1 and maximum == 1,
+    }
+
+
+def fac_extract_address(building: str) -> str | None:
+    """
+    Pull a street address from headings such as:
+      "The Axel -539 Vanderbilt Avenue, Brooklyn NY"
+      "551 Warren Street, Brooklyn NY"
+
+    When FAC only publishes a building name, keep the name for display/search
+    rather than inventing an address.
+    """
+    building = normalize(building)
+
+    after_dash = re.search(
+        r"(?:^|[-–—])\s*(\d+\s+.+?)(?:,\s*(?:Brooklyn|New York|Bronx|Queens|Staten Island)\b|$)",
+        building,
+        flags=re.I,
+    )
+    if after_dash:
+        return normalize(after_dash.group(1))
+
+    direct = re.search(
+        r"^(\d+\s+.+?)(?:,\s*(?:Brooklyn|New York|Bronx|Queens|Staten Island)\b|$)",
+        building,
+        flags=re.I,
+    )
+    if direct:
+        return normalize(direct.group(1))
+
+    return None
+
+
+def fac_listing_key(listing: dict) -> str:
+    building_or_address = (
+        listing.get("address")
+        or listing.get("building")
+        or ""
+    )
+    base = re.sub(
+        r"[^a-z0-9]+",
+        " ",
+        normalize(building_or_address).casefold(),
+    ).strip()
+    unit = re.sub(
+        r"[^a-z0-9]+",
+        " ",
+        normalize(listing.get("unit", "")).casefold(),
+    ).strip()
+    return f"{base}||{unit}"
+
+
+def scrape_fac_listings() -> list[dict]:
+    """
+    FAC listings are server-rendered HTML, so this is one lightweight HTTP
+    request with no Playwright/Chrome.
+
+    We walk the page's H2/H3/H4/list markup in document order:
+      H2 -> current/upcoming section
+      H3 -> building/address
+      H4 -> unit
+      LI -> unit fields
+    """
+    response = requests.get(
+        FAC_URL,
+        headers={
+            "User-Agent": (
+                "nyc-rerental-monitor/5.8 "
+                "(personal affordable-housing availability notifier)"
+            )
+        },
+        timeout=FAC_REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+
+    soup = BeautifulSoup(response.text, "html.parser")
+
+    section = None
+    building = None
+    current = None
+    listings = []
+
+    def finish_current():
+        nonlocal current
+        if current and current.get("unit"):
+            current["address"] = fac_extract_address(current.get("building", ""))
+            current["ami"] = clean_fac_ami(current.get("ami"))
+            current["rent"] = parse_fac_money(current.get("rent"))
+            current["min_income"] = parse_fac_money(current.get("min_income"))
+            current["max_income"] = parse_fac_money(current.get("max_income"))
+            current.update(fac_household_info(current.get("household_size")))
+            listings.append(current)
+        current = None
+
+    for node in soup.find_all(["h2", "h3", "h4", "li"]):
+        text_value = normalize(node.get_text(" ", strip=True))
+        if not text_value:
+            continue
+
+        if node.name == "h2":
+            lowered = text_value.casefold()
+            if "current units available for re-rental" in lowered:
+                finish_current()
+                section = "current"
+                building = None
+            elif "upcoming units for re-rental" in lowered:
+                finish_current()
+                section = "upcoming"
+                building = None
+            continue
+
+        if section not in {"current", "upcoming"}:
+            continue
+
+        if node.name == "h3":
+            # Ignore repeated "Apply for a Re-Rental Unit!" headings.
+            if "apply for a re-rental" in text_value.casefold():
+                continue
+            finish_current()
+            building = text_value
+            continue
+
+        if node.name == "h4":
+            if re.match(r"^Unit\b", text_value, flags=re.I):
+                finish_current()
+                unit = re.sub(r"^Unit\s*", "", text_value, flags=re.I).strip()
+                current = {
+                    "source": "FAC",
+                    "status": section,
+                    "building": building or "Fifth Avenue Committee listing",
+                    "unit": unit,
+                    "unit_size": None,
+                    "household_size": None,
+                    "ami": None,
+                    "rent": None,
+                    "min_income": None,
+                    "max_income": None,
+                }
+            continue
+
+        if node.name == "li" and current is not None:
+            if ":" not in text_value:
+                continue
+            label, value = text_value.split(":", 1)
+            label = normalize(label).casefold()
+            value = normalize(value)
+
+            if label == "unit size":
+                current["unit_size"] = value
+            elif label == "household size":
+                current["household_size"] = value
+            elif label == "ami":
+                current["ami"] = value
+            elif label == "rent":
+                current["rent"] = value
+            elif label == "min income":
+                current["min_income"] = value
+            elif label == "max income":
+                current["max_income"] = value
+
+    finish_current()
+
+    if not listings:
+        raise RuntimeError(
+            "FAC page loaded but no re-rental units were parsed. "
+            "Refusing to update the FAC baseline."
+        )
+
+    print(
+        "FAC scrape: "
+        f"{len(listings)} total listing(s) "
+        f"({sum(x['status'] == 'current' for x in listings)} current, "
+        f"{sum(x['status'] == 'upcoming' for x in listings)} upcoming)."
+    )
+    return listings
+
+
+def load_fac_state() -> dict:
+    if not FAC_STATE_PATH.exists():
+        return {
+            "initialized": False,
+            "listings": {},
+        }
+    try:
+        data = json.loads(FAC_STATE_PATH.read_text())
+        if not isinstance(data.get("listings"), dict):
+            data["listings"] = {}
+        return data
+    except Exception as exc:
+        raise RuntimeError(f"Could not read {FAC_STATE_PATH}: {exc}") from exc
+
+
+def save_fac_state(listings: list[dict]) -> None:
+    payload = {
+        fac_listing_key(item): {
+            "status": item.get("status"),
+            "building": item.get("building"),
+            "address": item.get("address"),
+            "unit": item.get("unit"),
+            "rent": item.get("rent"),
+        }
+        for item in listings
+    }
+    FAC_STATE_PATH.write_text(
+        json.dumps(
+            {
+                "initialized": True,
+                "updated_at": utc_now_iso(),
+                "listings": payload,
+            },
+            indent=2,
+            ensure_ascii=False,
+            sort_keys=True,
+        )
+        + "\n"
+    )
+
+
+def load_fac_history() -> dict:
+    if not FAC_HISTORY_PATH.exists():
+        return {
+            "version": 1,
+            "created_at": utc_now_iso(),
+            "listings": {},
+        }
+    try:
+        data = json.loads(FAC_HISTORY_PATH.read_text())
+        if not isinstance(data.get("listings"), dict):
+            data["listings"] = {}
+        return data
+    except Exception as exc:
+        raise RuntimeError(f"Could not read {FAC_HISTORY_PATH}: {exc}") from exc
+
+
+def save_fac_history(history: dict) -> None:
+    history["version"] = 1
+    history["updated_at"] = utc_now_iso()
+    FAC_HISTORY_PATH.write_text(
+        json.dumps(history, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
+    )
+
+
+def validate_fac_scrape(current: list[dict], previous_state: dict) -> None:
+    current_count = len(current)
+    previous_count = len(previous_state.get("listings", {}))
+
+    if current_count == 0:
+        raise IncompleteScrapeError(
+            "FAC captured 0 listings. Previous FAC baseline preserved."
+        )
+
+    if previous_count == 0:
+        return
+
+    ratio = current_count / previous_count
+    drop = previous_count - current_count
+
+    # FAC currently has a relatively small list, so use a more conservative
+    # protection than the Reside threshold.
+    if drop >= 3 and ratio < 0.55:
+        raise IncompleteScrapeError(
+            f"Suspicious FAC listing-count drop: {previous_count} -> "
+            f"{current_count}. FAC baseline preserved."
+        )
+
+
+def fac_location_query(listing: dict) -> str:
+    if listing.get("address"):
+        # The FAC page currently serves Brooklyn listings, but keep NYC generic
+        # enough for future Manhattan/Queens/etc entries.
+        return listing["address"]
+
+    # Building-name fallback (e.g. "Paseo on Fifth"). Nominatim can often
+    # resolve a named NYC building even when FAC omits the street address.
+    return listing.get("building") or ""
+
+
+def build_fac_notification(
+    listing: dict,
+    location: dict | None,
+    event_type: str,
+    first_seen: str,
+    last_removed_at: str | None = None,
+    status_changed_from: str | None = None,
+) -> str:
+    priority = priority_for_location(location)
+
+    if status_changed_from and listing.get("status") == "current":
+        heading = "🟢 <b>FAC LISTING NOW CURRENT</b>"
+    elif event_type == "reappeared":
+        heading = "🔄 <b>FAC RE-RENTAL REAPPEARED</b>"
+    else:
+        heading = "🏢 <b>NEW FAC RE-RENTAL</b>"
+
+    status = listing.get("status")
+    status_line = (
+        "🟢 <b>CURRENTLY AVAILABLE</b>"
+        if status == "current"
+        else "🟡 <b>UPCOMING</b>"
+    )
+
+    building = html.escape(normalize(listing.get("building")) or "FAC listing")
+    unit = html.escape(normalize(listing.get("unit")))
+
+    lines = [
+        heading,
+        status_line,
+        f"{priority['emoji']} <b>{priority['label']} · {priority['score']}/3</b>",
+        f"<i>{html.escape(priority['reason'])}</i>",
+        "",
+        f"🏠 <b>{building} — Unit {unit}</b>",
+    ]
+
+    if listing.get("address"):
+        lines.append(f"📫 {html.escape(listing['address'])}")
+
+    if listing.get("rent"):
+        lines.append(f"💰 <b>{html.escape(listing['rent'])}/mo</b>")
+
+    if listing.get("unit_size"):
+        lines.append(f"🛏️ <b>{html.escape(listing['unit_size'])}</b>")
+
+    if listing.get("ami"):
+        lines.append(f"📊 AMI: <b>{html.escape(listing['ami'])}</b>")
+
+    one_person_eligible = listing.get("one_person_eligible")
+    one_person_only = listing.get("one_person_only")
+
+    if one_person_eligible is False:
+        lines.append("👤 1-person household: <b>Not eligible</b>")
+    elif one_person_eligible is True:
+        lines.append("👤 1-person household: <b>Eligible</b>")
+
+        if listing.get("min_income") and listing.get("max_income"):
+            range_text = (
+                f"{listing['min_income']} – {listing['max_income']}"
+            )
+            if one_person_only:
+                lines.append(
+                    f"💵 1-person income: <b>{html.escape(range_text)}</b>"
+                )
+            else:
+                lines.append(
+                    "💵 FAC published income range: "
+                    f"<b>{html.escape(range_text)}</b>"
+                )
+
+    if location:
+        neighborhood = normalize(location.get("neighborhood"))
+        borough = normalize(location.get("borough"))
+        postcode = normalize(location.get("postcode"))
+
+        if neighborhood and borough:
+            lines.append(
+                f"📍 <b>{html.escape(neighborhood)}, {html.escape(borough)}</b>"
+            )
+        elif borough:
+            lines.append(f"📍 <b>{html.escape(borough)}</b>")
+        elif neighborhood:
+            lines.append(f"📍 <b>{html.escape(neighborhood)}</b>")
+
+        if postcode:
+            lines.append(f"📮 {html.escape(postcode)}")
+
+    lines.append(f"🕐 First detected: <b>{html.escape(format_et(first_seen))}</b>")
+
+    if event_type == "reappeared" and last_removed_at:
+        duration = human_duration(last_removed_at, utc_now_iso())
+        if duration:
+            lines.append(f"↩️ Reappeared after <b>{html.escape(duration)}</b>")
+
+    if status_changed_from and status_changed_from != status:
+        lines.append(
+            "🔁 Status: "
+            f"<b>{html.escape(status_changed_from.title())} → "
+            f"{html.escape(status.title())}</b>"
+        )
+
+    map_query = fac_location_query(listing)
+    maps = html.escape(google_maps_url(map_query), quote=True)
+    fac_url = html.escape(FAC_URL, quote=True)
+
+    lines.extend(
+        [
+            "",
+            f'🗺️ <a href="{maps}">Open in Google Maps</a>',
+            f'📝 <a href="{fac_url}">Open FAC re-rental page</a>',
+            "",
+            "<i>Location data: © OpenStreetMap contributors</i>",
+        ]
+    )
+
+    return "\n".join(lines)
+
+
+def seed_fac_history(history: dict, listings: list[dict]) -> None:
+    if history.get("listings"):
+        return
+
+    now = utc_now_iso()
+    for listing in listings:
+        key = fac_listing_key(listing)
+        history["listings"][key] = {
+            **listing,
+            "first_seen": now,
+            "first_seen_source": "fac_history_migration",
+            "last_seen": now,
+            "active": True,
+            "appearance_count": 1,
+            "removal_count": 0,
+            "last_removed_at": None,
+            "location": None,
+        }
+
+
+def run_fac_monitor() -> None:
+    """
+    Runs independently of Reside. FAC alerts are sent from this worker as soon
+    as they are detected; it does not wait for the Airtable worker to finish.
+    """
+    state = load_fac_state()
+    history = load_fac_history()
+
+    listings = scrape_fac_listings()
+    validate_fac_scrape(listings, state)
+
+    if not state.get("initialized"):
+        save_fac_state(listings)
+        seed_fac_history(history, listings)
+        save_fac_history(history)
+        print(
+            f"FAC initialized with {len(listings)} existing listing(s); "
+            "no existing listings alerted."
+        )
+        return
+
+    old_state = state.get("listings", {})
+    history_entries = history.setdefault("listings", {})
+    now = utc_now_iso()
+
+    current_by_key = {
+        fac_listing_key(item): item
+        for item in listings
+    }
+    current_keys = set(current_by_key)
+
+    removed = []
+    for key, entry in history_entries.items():
+        if entry.get("active", False) and key not in current_keys:
+            entry["active"] = False
+            entry["last_removed_at"] = now
+            entry["removal_count"] = int(entry.get("removal_count", 0)) + 1
+            removed.append(entry)
+
+    alert_events = []
+
+    for key, listing in current_by_key.items():
+        entry = history_entries.get(key)
+        old_snapshot = old_state.get(key) or {}
+
+        if entry is None:
+            query = fac_location_query(listing)
+            location = geocode_nyc_address(query) if query else None
+
+            entry = {
+                **listing,
+                "first_seen": now,
+                "first_seen_source": "observed",
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": location,
+            }
+            history_entries[key] = entry
+            alert_events.append(
+                {
+                    "listing": listing,
+                    "entry": entry,
+                    "event_type": "new",
+                    "last_removed_at": None,
+                    "status_changed_from": None,
+                }
+            )
+            continue
+
+        was_active = bool(entry.get("active", False))
+        last_removed_at = entry.get("last_removed_at")
+        prior_status = entry.get("status") or old_snapshot.get("status")
+
+        for field, value in listing.items():
+            entry[field] = value
+        entry["last_seen"] = now
+        entry["active"] = True
+
+        if not entry.get("location"):
+            query = fac_location_query(listing)
+            if query:
+                entry["location"] = geocode_nyc_address(query)
+
+        if not was_active:
+            entry["appearance_count"] = int(entry.get("appearance_count", 1)) + 1
+            alert_events.append(
+                {
+                    "listing": listing,
+                    "entry": entry,
+                    "event_type": "reappeared",
+                    "last_removed_at": last_removed_at,
+                    "status_changed_from": None,
+                }
+            )
+        elif prior_status and prior_status != listing.get("status"):
+            # Particularly useful when an "Upcoming" unit becomes "Current".
+            alert_events.append(
+                {
+                    "listing": listing,
+                    "entry": entry,
+                    "event_type": "status_changed",
+                    "last_removed_at": None,
+                    "status_changed_from": prior_status,
+                }
+            )
+
+    # Alert before committing the new baseline. If Telegram errors, the FAC
+    # state stays on the prior snapshot and the event can be retried next run.
+    for event in alert_events:
+        message = build_fac_notification(
+            listing=event["listing"],
+            location=event["entry"].get("location"),
+            event_type=event["event_type"],
+            first_seen=event["entry"].get("first_seen"),
+            last_removed_at=event.get("last_removed_at"),
+            status_changed_from=event.get("status_changed_from"),
+        )
+        send_telegram(message, parse_mode="HTML")
+
+    for entry in removed:
+        print(
+            "FAC removed: "
+            f"{entry.get('building')} Unit {entry.get('unit')} "
+            f"(removal #{entry.get('removal_count', 1)})"
+        )
+
+    save_fac_state(listings)
+    save_fac_history(history)
+
+    print(
+        f"FAC complete: {len(alert_events)} alert event(s), "
+        f"{len(removed)} removal(s)."
+    )
+
+
+
 def run_normal_monitor() -> None:
     state = load_state()
     history = load_history()
@@ -2148,10 +2753,36 @@ def run_test_listing(row: str) -> None:
 
 def main() -> int:
     if TEST_LISTING:
+        # Existing manual test remains Reside-specific.
         run_test_listing(TEST_LISTING)
         return 0
 
-    run_normal_monitor()
+    # FAC is a fast HTML request; Reside is a browser scrape. Run them in
+    # parallel so FAC never adds its request time onto the Reside critical path.
+    errors = []
+
+    with ThreadPoolExecutor(max_workers=2) as executor:
+        futures = {
+            executor.submit(run_normal_monitor): "Reside",
+            executor.submit(run_fac_monitor): "FAC",
+        }
+
+        for future in as_completed(futures):
+            name = futures[future]
+            try:
+                future.result()
+                print(f"{name} monitor finished successfully.")
+            except Exception as exc:
+                print(
+                    f"{name} monitor failed: {type(exc).__name__}: {exc}",
+                    file=sys.stderr,
+                )
+                errors.append((name, exc))
+
+    if errors:
+        names = ", ".join(name for name, _ in errors)
+        raise RuntimeError(f"One or more monitor sources failed: {names}")
+
     return 0
 
 
