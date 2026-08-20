@@ -3723,7 +3723,7 @@ MGNY_MAX_ATTEMPTS = 3
 MGNY_RETRY_DELAYS = (0, 2, 5)
 MGNY_STATE_PATH = Path(os.getenv("MGNY_STATE_PATH", "mgny_state.json"))
 MGNY_HISTORY_PATH = Path(os.getenv("MGNY_HISTORY_PATH", "mgny_history.json"))
-MGNY_USER_AGENT = "nyc-rerental-monitor/5.12 (personal affordable-housing availability notifier)"
+MGNY_USER_AGENT = "nyc-rerental-monitor/5.13 (personal affordable-housing availability notifier)"
 
 
 def mgny_norm(value):
@@ -3843,43 +3843,222 @@ def mgny_parse_index_page(response):
 
 
 def mgny_scrape_index():
+    """
+    MGNY uses client-side/AJAX pagination: clicking page 2/3 does not change
+    the URL. Therefore we do not probe /page/N/ or query-string variants.
+
+    Strategy:
+      1. Fetch page 1 with requests to get the reported total and a cheap first
+         snapshot.
+      2. Infer the expected page count from total results / page-1 card count.
+      3. Open MGNY in Chrome/Playwright.
+      4. Capture page 1 from the rendered DOM.
+      5. Click page 2..N in-place and wait for the listing-card set to change.
+      6. Merge/de-duplicate all pages and validate against the reported total.
+    """
+    import math
+
     headers = {"User-Agent": MGNY_USER_AGENT}
-    first = requests.get(MGNY_URL, headers=headers, timeout=MGNY_REQUEST_TIMEOUT)
+    first = requests.get(
+        MGNY_URL,
+        headers=headers,
+        timeout=MGNY_REQUEST_TIMEOUT,
+    )
     first.raise_for_status()
-    buildings, pages, total = mgny_parse_index_page(first)
-    max_page = max(pages) if pages else 1
-    print(f"MGNY discovered {max_page} page(s)" + (f"; {total} reported results." if total is not None else "."))
 
-    def fetch_page(n):
-        url = urljoin(MGNY_URL, f"page/{n}/")
-        r = requests.get(url, headers=headers, timeout=MGNY_REQUEST_TIMEOUT)
-        r.raise_for_status()
-        parsed, _, _ = mgny_parse_index_page(r)
-        return n, parsed
+    page1_buildings, _linked_pages, total = mgny_parse_index_page(first)
 
-    if max_page > 1:
-        with ThreadPoolExecutor(max_workers=min(4, max_page - 1)) as ex:
-            futures = [ex.submit(fetch_page, n) for n in range(2, max_page + 1)]
-            for fut in as_completed(futures):
-                n, parsed = fut.result()
-                print(f"MGNY page {n}: {len(parsed)} building(s).")
-                buildings.extend(parsed)
-
-    buildings = list({mgny_building_key(b): b for b in buildings}.values())
-    if not buildings:
+    if not page1_buildings:
         soup = BeautifulSoup(first.text, "html.parser")
-        title = mgny_norm(soup.title.get_text(" ", strip=True)) if soup.title else "(no title)"
-        raise RuntimeError(
-            "MGNY page loaded but no listings were parsed. "
-            f"status={first.status_code}; bytes={len(first.content)}; title={title!r}"
+        title = (
+            mgny_norm(soup.title.get_text(" ", strip=True))
+            if soup.title
+            else "(no title)"
         )
+        raise RuntimeError(
+            "MGNY page 1 loaded but no listings were parsed. "
+            f"status={first.status_code}; bytes={len(first.content)}; "
+            f"title={title!r}"
+        )
+
+    expected_pages = (
+        math.ceil(total / len(page1_buildings))
+        if total and page1_buildings
+        else 1
+    )
+
+    print(
+        f"MGNY page 1: {len(page1_buildings)} listing(s); "
+        f"{total if total is not None else 'unknown'} reported total; "
+        f"expecting {expected_pages} page(s)."
+    )
+
+    if expected_pages == 1:
+        buildings = page1_buildings
+    else:
+        print(
+            "MGNY uses client-side pagination; opening Chrome and clicking "
+            "page controls directly."
+        )
+
+        buildings = []
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(
+                channel="chrome",
+                headless=True,
+            )
+            page = browser.new_page(
+                user_agent=MGNY_USER_AGENT,
+                viewport={"width": 1280, "height": 1000},
+            )
+
+            try:
+                page.goto(
+                    MGNY_URL,
+                    wait_until="domcontentloaded",
+                    timeout=20000,
+                )
+                page.wait_for_timeout(700)
+
+                def parse_current_page():
+                    html_text = page.content()
+
+                    class BrowserResponse:
+                        text = html_text
+                        url = page.url
+
+                    parsed, _, _ = mgny_parse_index_page(BrowserResponse())
+                    return parsed
+
+                current = parse_current_page()
+                if not current:
+                    raise RuntimeError(
+                        "MGNY Chrome page loaded but no listing cards were parsed."
+                    )
+
+                buildings.extend(current)
+                previous_keys = {
+                    mgny_building_key(b) for b in current
+                }
+                print(f"MGNY browser page 1: {len(current)} listing(s).")
+
+                for target_page in range(2, expected_pages + 1):
+                    clicked = page.evaluate(
+                        """pageNum => {
+                            const wanted = String(pageNum);
+
+                            function score(el) {
+                                let s = 0;
+                                let node = el;
+                                for (
+                                    let depth = 0;
+                                    node && depth < 6;
+                                    depth++, node = node.parentElement
+                                ) {
+                                    const meta = (
+                                        String(node.className || '') + ' ' +
+                                        String(node.id || '') + ' ' +
+                                        String(node.getAttribute?.('aria-label') || '')
+                                    ).toLowerCase();
+
+                                    if (meta.includes('pagination')) s += 50;
+                                    if (meta.includes('paginate')) s += 40;
+                                    if (meta.includes('pager')) s += 35;
+                                    if (meta.includes('page-number')) s += 30;
+                                    if (meta.includes('page')) s += 5;
+                                }
+
+                                if (el.tagName === 'BUTTON') s += 10;
+                                if (el.tagName === 'A') s += 8;
+                                if (el.getAttribute?.('role') === 'button') s += 8;
+
+                                return s;
+                            }
+
+                            const candidates = Array.from(
+                                document.querySelectorAll(
+                                    'button, a, [role="button"], li, span'
+                                )
+                            ).filter(el => {
+                                if ((el.textContent || '').trim() !== wanted) {
+                                    return false;
+                                }
+
+                                const rect = el.getBoundingClientRect();
+                                return rect.width > 0 && rect.height > 0;
+                            });
+
+                            if (!candidates.length) return false;
+
+                            candidates.sort((a, b) => score(b) - score(a));
+
+                            const best = candidates[0];
+                            const clickable =
+                                best.closest('button, a, [role="button"]') || best;
+
+                            clickable.scrollIntoView({
+                                block: 'center',
+                                inline: 'center'
+                            });
+                            clickable.click();
+
+                            return true;
+                        }""",
+                        target_page,
+                    )
+
+                    if not clicked:
+                        raise RuntimeError(
+                            f"Could not find/click MGNY pagination control "
+                            f"for page {target_page}."
+                        )
+
+                    changed = False
+                    parsed = []
+                    deadline = time.time() + 10
+
+                    while time.time() < deadline:
+                        page.wait_for_timeout(300)
+                        parsed = parse_current_page()
+                        current_keys = {
+                            mgny_building_key(b) for b in parsed
+                        }
+
+                        if parsed and current_keys != previous_keys:
+                            changed = True
+                            previous_keys = current_keys
+                            break
+
+                    if not changed:
+                        raise RuntimeError(
+                            f"MGNY clicked page {target_page}, but the "
+                            "listing-card set never changed."
+                        )
+
+                    print(
+                        f"MGNY browser page {target_page}: "
+                        f"{len(parsed)} listing(s)."
+                    )
+                    buildings.extend(parsed)
+
+            finally:
+                browser.close()
+
+    buildings = list(
+        {mgny_building_key(b): b for b in buildings}.values()
+    )
 
     if total is not None and len(buildings) + 1 < total:
         raise RuntimeError(
-            f"MGNY reported {total} results but only {len(buildings)} unique listings were captured."
+            f"MGNY reported {total} results but only "
+            f"{len(buildings)} unique listings were captured."
         )
 
-    print(f"MGNY scrape: {len(buildings)} unique building listing(s).")
+    print(
+        f"MGNY scrape: {len(buildings)} unique building listing(s) "
+        f"across {expected_pages} page(s)."
+    )
     return buildings
 
 
