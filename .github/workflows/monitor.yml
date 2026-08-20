@@ -34,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Check Reside + FAC and notify Telegram
+      - name: Check Reside + FAC + Rockrose and notify Telegram
         id: monitor
         continue-on-error: true
         env:
@@ -46,13 +46,113 @@ jobs:
           TEST_LISTING: ${{ inputs.test_listing || '' }}
         run: python monitor.py
 
+      - name: Track consecutive monitor failures
+        if: ${{ always() && inputs.test_listing == '' }}
+        env:
+          MONITOR_OUTCOME: ${{ steps.monitor.outcome }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          path = Path("action_health.json")
+          now = datetime.now(timezone.utc).isoformat()
+          outcome = os.getenv("MONITOR_OUTCOME", "").strip().lower()
+
+          try:
+              data = json.loads(path.read_text()) if path.exists() else {}
+          except Exception:
+              data = {}
+
+          previous_failures = int(data.get("consecutive_failures", 0) or 0)
+          alert_sent = bool(data.get("three_failure_alert_sent", False))
+
+          def telegram(message):
+              token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
+              chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
+              if not token or not chat_id:
+                  print("Telegram credentials missing; action-health alert skipped.")
+                  return
+
+              payload = urllib.parse.urlencode(
+                  {
+                      "chat_id": chat_id,
+                      "text": message,
+                      "disable_web_page_preview": "true",
+                  }
+              ).encode()
+
+              request = urllib.request.Request(
+                  f"https://api.telegram.org/bot{token}/sendMessage",
+                  data=payload,
+                  method="POST",
+              )
+              try:
+                  with urllib.request.urlopen(request, timeout=10) as response:
+                      print(f"Action-health Telegram status: {response.status}")
+              except Exception as exc:
+                  # Never turn health-notification trouble into another failed run.
+                  print(f"Could not send action-health Telegram message: {exc}")
+
+          if outcome == "failure":
+              failures = previous_failures + 1
+              data["consecutive_failures"] = failures
+              data["last_failure_at"] = now
+              data["last_outcome"] = "failure"
+
+              if failures >= 3 and not alert_sent:
+                  run_url = (
+                      f"{os.getenv('GITHUB_SERVER_URL', 'https://github.com')}/"
+                      f"{os.getenv('GITHUB_REPOSITORY', '')}/actions/runs/"
+                      f"{os.getenv('GITHUB_RUN_ID', '')}"
+                  )
+                  telegram(
+                      "🚨 NYC re-rental monitor has failed 3 runs in a row.\n\n"
+                      f"Consecutive failures: {failures}\n"
+                      f"Latest run: {run_url}\n\n"
+                      "The monitor will keep running on the normal schedule."
+                  )
+                  data["three_failure_alert_sent"] = True
+                  data["three_failure_alert_at"] = now
+
+              print(f"Consecutive monitor failures: {failures}")
+
+          else:
+              if previous_failures >= 3 and alert_sent:
+                  run_url = (
+                      f"{os.getenv('GITHUB_SERVER_URL', 'https://github.com')}/"
+                      f"{os.getenv('GITHUB_REPOSITORY', '')}/actions/runs/"
+                      f"{os.getenv('GITHUB_RUN_ID', '')}"
+                  )
+                  telegram(
+                      "✅ NYC re-rental monitor recovered.\n\n"
+                      f"Previous consecutive failures: {previous_failures}\n"
+                      f"Successful run: {run_url}"
+                  )
+
+              data["consecutive_failures"] = 0
+              data["three_failure_alert_sent"] = False
+              data["last_success_at"] = now
+              data["last_outcome"] = outcome or "success"
+              print("Consecutive monitor failures reset to 0.")
+
+          data["updated_at"] = now
+          path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
+          PY
+
       - name: Save monitor state, history, and health
         if: always()
         run: |
           git config user.name "airtable-monitor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add state.json history.json health.json fac_state.json fac_history.json 2>/dev/null || true
+          git add state.json history.json health.json fac_state.json fac_history.json rockrose_state.json rockrose_history.json action_health.json 2>/dev/null || true
 
           if git diff --cached --quiet; then
             echo "No persistent monitor changes."
