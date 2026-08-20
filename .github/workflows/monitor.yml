@@ -1,4 +1,4 @@
-name: Monitor Airtable dropdown
+name: Monitor NYC re-rentals
 
 on:
   workflow_dispatch:
@@ -8,8 +8,6 @@ on:
         required: false
         default: ""
         type: string
-  schedule:
-    - cron: "2/5 * * * *"
 
 permissions:
   contents: write
@@ -36,7 +34,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Check Airtable and notify Telegram
+      - name: Check Reside + FAC and notify Telegram
         id: monitor
         continue-on-error: true
         env:
@@ -54,21 +52,21 @@ jobs:
           git config user.name "airtable-monitor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add state.json history.json health.json 2>/dev/null || true
+          git add state.json history.json health.json fac_state.json fac_history.json 2>/dev/null || true
 
           if git diff --cached --quiet; then
             echo "No persistent monitor changes."
             exit 0
           fi
 
-          git commit -m "Update Airtable monitor data [skip ci]"
+          git commit -m "Update rerental monitor data [skip ci]"
           git push
 
       - name: Upload debug files if monitor failed
         if: steps.monitor.outcome == 'failure'
         uses: actions/upload-artifact@v4
         with:
-          name: airtable-debug
+          name: rerental-debug
           path: debug/
           if-no-files-found: ignore
           retention-days: 7
