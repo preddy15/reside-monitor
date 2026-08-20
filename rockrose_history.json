@@ -9,7 +9,7 @@
       "first_seen": "2026-08-20T01:58:18.576330+00:00",
       "first_seen_source": "rockrose_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-20T08:54:12.869777+00:00",
+      "last_seen": "2026-08-20T08:56:13.717313+00:00",
       "location": null,
       "published_income_range": "$126,578 - $238,160",
       "removal_count": 0,
@@ -27,7 +27,7 @@
       "first_seen": "2026-08-20T01:58:18.576330+00:00",
       "first_seen_source": "rockrose_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-20T08:54:12.869777+00:00",
+      "last_seen": "2026-08-20T08:56:13.717313+00:00",
       "location": null,
       "published_income_range": "$52,576 - $94,990.00",
       "removal_count": 0,
@@ -38,6 +38,6 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-911-income-restricted-unit-70-ami-rent-stabilized/"
     }
   },
-  "updated_at": "2026-08-20T08:54:12.870439+00:00",
+  "updated_at": "2026-08-20T08:56:13.717749+00:00",
   "version": 1
 }
