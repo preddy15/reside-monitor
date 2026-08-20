@@ -1,0 +1,69 @@
+{
+  "initialized": true,
+  "listings": {
+    "539 vanderbilt avenue||6f": {
+      "address": "539 Vanderbilt Avenue",
+      "building": "The Axel -539 Vanderbilt Avenue, Brooklyn NY",
+      "rent": "$2,732.32",
+      "status": "current",
+      "unit": "6F"
+    },
+    "551 warren street||2h": {
+      "address": "551 Warren Street",
+      "building": "551 Warren Street, Brooklyn NY",
+      "rent": "$1,374.00",
+      "status": "upcoming",
+      "unit": "2H"
+    },
+    "551 warren street||2j": {
+      "address": "551 Warren Street",
+      "building": "551 Warren Street, Brooklyn NY",
+      "rent": "$1,374.00",
+      "status": "upcoming",
+      "unit": "2J"
+    },
+    "551 warren street||3g": {
+      "address": "551 Warren Street",
+      "building": "551 Warren Street, Brooklyn NY",
+      "rent": "$1,374.00",
+      "status": "upcoming",
+      "unit": "3G"
+    },
+    "551 warren street||5a": {
+      "address": "551 Warren Street",
+      "building": "551 Warren Street, Brooklyn NY",
+      "rent": "$1,374.00",
+      "status": "upcoming",
+      "unit": "5A"
+    },
+    "551 warren street||5c": {
+      "address": "551 Warren Street",
+      "building": "551 Warren Street, Brooklyn NY",
+      "rent": "$1,374.00",
+      "status": "upcoming",
+      "unit": "5C"
+    },
+    "551 warren street||6e": {
+      "address": "551 Warren Street",
+      "building": "551 Warren Street, Brooklyn NY",
+      "rent": "$1,374.00",
+      "status": "upcoming",
+      "unit": "6E"
+    },
+    "551 warren street||6g": {
+      "address": "551 Warren Street",
+      "building": "551 Warren Street, Brooklyn NY",
+      "rent": "$1,374.00",
+      "status": "upcoming",
+      "unit": "6G"
+    },
+    "paseo on fifth||n 308": {
+      "address": null,
+      "building": "Paseo on Fifth",
+      "rent": "$980.00",
+      "status": "current",
+      "unit": "N-308"
+    }
+  },
+  "updated_at": "2026-08-20T00:58:27.527245+00:00"
+}
