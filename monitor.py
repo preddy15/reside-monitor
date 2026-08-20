@@ -15,7 +15,6 @@ import requests
 from bs4 import BeautifulSoup
 from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
 from playwright.sync_api import sync_playwright
-
 # Scraper version stays at 3 because v3 fixed the Airtable virtualized scrolling.
 # Keeping this value means upgrading from v4 -> v5 does NOT reset your baseline.
 SCRAPER_VERSION = 3
@@ -3713,6 +3712,539 @@ def run_mns_monitor() -> None:
 
 
 
+
+# ---------------------------------------------------------------------------
+# MGNY Consulting monitor (embedded; no separate module required)
+# ---------------------------------------------------------------------------
+
+MGNY_URL = "https://mgnyconsulting.com/listings/"
+MGNY_REQUEST_TIMEOUT = (2.5, 6.0)
+MGNY_MAX_ATTEMPTS = 3
+MGNY_RETRY_DELAYS = (0, 2, 5)
+MGNY_STATE_PATH = Path(os.getenv("MGNY_STATE_PATH", "mgny_state.json"))
+MGNY_HISTORY_PATH = Path(os.getenv("MGNY_HISTORY_PATH", "mgny_history.json"))
+MGNY_USER_AGENT = "nyc-rerental-monitor/5.12 (personal affordable-housing availability notifier)"
+
+
+def mgny_norm(value):
+    return re.sub(r"\s+", " ", str(value or "")).strip()
+
+
+def mgny_now_iso():
+    return datetime.now(timezone.utc).isoformat()
+
+
+def mgny_building_key(building):
+    return mgny_norm(building.get("url")).rstrip("/").casefold() or re.sub(
+        r"[^a-z0-9]+", " ", mgny_norm(building.get("address")).casefold()
+    ).strip()
+
+
+def mgny_tier_key(tier):
+    return "||".join(
+        re.sub(r"\s+", " ", mgny_norm(tier.get(k)).casefold()).strip()
+        for k in ("ami", "unit_size", "rent", "household_size")
+    )
+
+
+def mgny_money(value):
+    m = re.search(r"\$\s*([\d,]+(?:\.\d{1,2})?)", mgny_norm(value))
+    if not m:
+        return mgny_norm(value) or None
+    try:
+        return f"${float(m.group(1).replace(',', '')):,.2f}"
+    except ValueError:
+        return "$" + m.group(1)
+
+
+def mgny_index_fingerprint(building):
+    return json.dumps(
+        {
+            "income_range": building.get("income_range"),
+            "units_count": building.get("units_count"),
+            "url": building.get("url"),
+        },
+        sort_keys=True,
+    )
+
+
+def mgny_parse_index_page(response):
+    soup = BeautifulSoup(response.text, "html.parser")
+    pages = {1}
+    buildings = []
+    total_results = None
+
+    text = mgny_norm(soup.get_text(" ", strip=True))
+    m = re.search(r"\b(\d+)\s+results\b", text, re.I)
+    if m:
+        total_results = int(m.group(1))
+
+    for a in soup.find_all("a", href=True):
+        href = urljoin(response.url, a.get("href"))
+        m = re.search(r"/listings/page/(\d+)/?", href, re.I)
+        if m:
+            pages.add(int(m.group(1)))
+
+    for a in soup.find_all("a", href=True):
+        href = urljoin(response.url, a.get("href"))
+        if not re.search(r"/listing/[^/?#]+/?$", href, re.I):
+            continue
+        card = mgny_norm(a.get_text(" ", strip=True))
+        if not card:
+            continue
+
+        income = None
+        m = re.search(
+            r"(\$\s*[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*\$\s*[\d,]+(?:\.\d{1,2})?)",
+            card,
+        )
+        if m:
+            income = mgny_norm(m.group(1))
+
+        units_count = None
+        m = re.search(r"\b(\d+)\s+Units?\b", card, re.I)
+        if m:
+            units_count = int(m.group(1))
+
+        title = None
+        heading = a.find(["h2", "h3", "h4"])
+        if heading:
+            title = mgny_norm(heading.get_text(" ", strip=True))
+
+        address = None
+        # ZIP-bearing address before the income range.
+        m = re.search(
+            r"(\d[^$]+?,\s*(?:New York|Brooklyn|Bronx|Queens|Staten Island|Briarwood)[^$]*?NY\s+\d{5})",
+            card,
+            re.I,
+        )
+        if m:
+            address = mgny_norm(m.group(1))
+            if not title:
+                pos = card.find(address)
+                if pos > 0:
+                    title = mgny_norm(card[:pos])
+
+        if not title:
+            title = address or href.rstrip("/").split("/")[-1].replace("-", " ").title()
+
+        buildings.append(
+            {
+                "title": title,
+                "address": address,
+                "income_range": income,
+                "units_count": units_count,
+                "url": href,
+            }
+        )
+
+    deduped = {mgny_building_key(b): b for b in buildings}
+    return list(deduped.values()), pages, total_results
+
+
+def mgny_scrape_index():
+    headers = {"User-Agent": MGNY_USER_AGENT}
+    first = requests.get(MGNY_URL, headers=headers, timeout=MGNY_REQUEST_TIMEOUT)
+    first.raise_for_status()
+    buildings, pages, total = mgny_parse_index_page(first)
+    max_page = max(pages) if pages else 1
+    print(f"MGNY discovered {max_page} page(s)" + (f"; {total} reported results." if total is not None else "."))
+
+    def fetch_page(n):
+        url = urljoin(MGNY_URL, f"page/{n}/")
+        r = requests.get(url, headers=headers, timeout=MGNY_REQUEST_TIMEOUT)
+        r.raise_for_status()
+        parsed, _, _ = mgny_parse_index_page(r)
+        return n, parsed
+
+    if max_page > 1:
+        with ThreadPoolExecutor(max_workers=min(4, max_page - 1)) as ex:
+            futures = [ex.submit(fetch_page, n) for n in range(2, max_page + 1)]
+            for fut in as_completed(futures):
+                n, parsed = fut.result()
+                print(f"MGNY page {n}: {len(parsed)} building(s).")
+                buildings.extend(parsed)
+
+    buildings = list({mgny_building_key(b): b for b in buildings}.values())
+    if not buildings:
+        soup = BeautifulSoup(first.text, "html.parser")
+        title = mgny_norm(soup.title.get_text(" ", strip=True)) if soup.title else "(no title)"
+        raise RuntimeError(
+            "MGNY page loaded but no listings were parsed. "
+            f"status={first.status_code}; bytes={len(first.content)}; title={title!r}"
+        )
+
+    if total is not None and len(buildings) + 1 < total:
+        raise RuntimeError(
+            f"MGNY reported {total} results but only {len(buildings)} unique listings were captured."
+        )
+
+    print(f"MGNY scrape: {len(buildings)} unique building listing(s).")
+    return buildings
+
+
+def mgny_enrich_building(building):
+    result = {"address": building.get("address"), "neighborhood": None, "tiers": []}
+    r = requests.get(building["url"], headers={"User-Agent": MGNY_USER_AGENT}, timeout=MGNY_REQUEST_TIMEOUT)
+    r.raise_for_status()
+    soup = BeautifulSoup(r.text, "html.parser")
+    text = mgny_norm(soup.get_text(" ", strip=True))
+
+    m = re.search(r"\bAddress\s+(.+?)\s+Income Range\b", text, re.I)
+    if m:
+        result["address"] = mgny_norm(m.group(1))
+    m = re.search(r"\bNeighborhood\s+(.+?)\s+Units\b", text, re.I)
+    if m:
+        result["neighborhood"] = mgny_norm(m.group(1))
+
+    current_ami = None
+    # Table-based parse is much more reliable than flattened text.
+    for node in soup.find_all(["h2", "h3", "h4", "h5", "p", "div", "tr"]):
+        node_text = mgny_norm(node.get_text(" ", strip=True))
+        ami = re.search(r"\b(\d{1,3})\s*%\s*AMI\s+Units\b", node_text, re.I)
+        if ami and node.name != "tr":
+            current_ami = f"{ami.group(1)}%"
+            continue
+        if node.name != "tr":
+            continue
+        cells = [mgny_norm(c.get_text(" ", strip=True)) for c in node.find_all(["td", "th"])]
+        if len(cells) < 5:
+            continue
+        if cells[0].casefold() == "unit size":
+            continue
+        if not re.search(r"studio|br|bedroom", cells[0], re.I):
+            continue
+
+        # Find closest preceding AMI marker when DOM nesting resets current_ami.
+        ami_value = current_ami
+        prev = node.find_previous(string=re.compile(r"\b\d{1,3}\s*%\s*AMI\s+Units\b", re.I))
+        if prev:
+            mm = re.search(r"(\d{1,3})\s*%", str(prev), re.I)
+            if mm:
+                ami_value = f"{mm.group(1)}%"
+        if not ami_value:
+            continue
+
+        count_match = re.search(r"\d+", cells[2])
+        available = int(count_match.group()) if count_match else 0
+        if available <= 0:
+            continue
+        result["tiers"].append(
+            {
+                "ami": ami_value,
+                "unit_size": cells[0],
+                "rent": mgny_money(cells[1]),
+                "units_available": available,
+                "household_size": cells[3],
+                "annual_income": cells[4],
+            }
+        )
+
+    # Text fallback for pages where the rows aren't semantic TR elements.
+    if not result["tiers"]:
+        for ami_match in re.finditer(r"\b(\d{1,3})\s*%\s*AMI\s+Units\b", text, re.I):
+            section = text[ami_match.end():]
+            next_ami = re.search(r"\b\d{1,3}\s*%\s*AMI\s+Units\b", section, re.I)
+            if next_ami:
+                section = section[:next_ami.start()]
+            pattern = re.compile(
+                r"\b(Studio|\d+\s*-?\s*BR|\d+\s*Bedroom(?:s)?)\s*\|?\s*"
+                r"(\$\s*[\d,]+(?:\.\d{1,2})?)\s*\|?\s*(\d+)\s*\|?\s*"
+                r"(\d+\s*-\s*\d+\s*people|\d+\s*people)\s*\|?\s*"
+                r"(\$\s*[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*\$\s*[\d,]+(?:\.\d{1,2})?)",
+                re.I,
+            )
+            for m in pattern.finditer(section):
+                if int(m.group(3)) <= 0:
+                    continue
+                result["tiers"].append(
+                    {
+                        "ami": f"{ami_match.group(1)}%",
+                        "unit_size": mgny_norm(m.group(1)),
+                        "rent": mgny_money(m.group(2)),
+                        "units_available": int(m.group(3)),
+                        "household_size": mgny_norm(m.group(4)),
+                        "annual_income": mgny_norm(m.group(5)),
+                    }
+                )
+
+    result["tiers"] = list({mgny_tier_key(t): t for t in result["tiers"]}.values())
+    return result
+
+
+def mgny_one_person(tier):
+    nums = [int(x) for x in re.findall(r"\d+", mgny_norm(tier.get("household_size")))]
+    if not nums:
+        return None, None
+    eligible = nums[0] <= 1
+    return eligible, tier.get("annual_income") if eligible else None
+
+
+def mgny_load_json(path, default):
+    if not path.exists():
+        return default
+    data = json.loads(path.read_text())
+    return data
+
+
+def mgny_save_json(path, data):
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
+
+
+def mgny_fetch_with_retries(state):
+    last = None
+    for attempt in range(1, MGNY_MAX_ATTEMPTS + 1):
+        delay = MGNY_RETRY_DELAYS[attempt - 1]
+        if delay:
+            print(f"MGNY retry {attempt}/{MGNY_MAX_ATTEMPTS}: waiting {delay}s...")
+            time.sleep(delay)
+        try:
+            current = mgny_scrape_index()
+            previous = len(state.get("buildings", {}))
+            if previous >= 8 and len(current) < previous * 0.55 and previous - len(current) >= 5:
+                raise RuntimeError(f"Suspicious MGNY count drop: {previous} -> {len(current)}")
+            return current
+        except (requests.RequestException, RuntimeError) as exc:
+            last = exc
+            print(f"MGNY attempt {attempt}/{MGNY_MAX_ATTEMPTS} failed: {type(exc).__name__}: {exc}", file=sys.stderr)
+    print(f"MGNY unavailable after {MGNY_MAX_ATTEMPTS} attempts; preserving previous state. Last error: {last}", file=sys.stderr)
+    return None
+
+
+def mgny_notification(building, tier, location, priority_fn, maps_fn, format_et_fn, event, first_seen, previous_units=None):
+    priority = priority_fn(location)
+    eligible, income = mgny_one_person(tier)
+    if event == "reappeared":
+        heading = "🔄 <b>MGNY AFFORDABLE TIER REAPPEARED</b>"
+    elif event == "availability_increased":
+        heading = "📈 <b>MGNY AVAILABILITY INCREASED</b>"
+    else:
+        heading = "🏗️ <b>NEW MGNY AFFORDABLE LISTING</b>"
+
+    lines = [
+        heading,
+        f"{priority['emoji']} <b>{priority['label']} · {priority['score']}/3</b>",
+        f"<i>{html.escape(priority['reason'])}</i>",
+        "",
+        f"🏠 <b>{html.escape(mgny_norm(building.get('title')))}</b>",
+    ]
+    if building.get("address"):
+        lines.append(f"📫 {html.escape(building['address'])}")
+    if tier.get("rent"):
+        lines.append(f"💰 <b>{html.escape(tier['rent'])}/mo</b>")
+    if tier.get("unit_size"):
+        lines.append(f"🛏️ <b>{html.escape(tier['unit_size'])}</b>")
+    if tier.get("ami"):
+        lines.append(f"📊 AMI: <b>{html.escape(tier['ami'])}</b>")
+    if tier.get("units_available") is not None:
+        lines.append(f"🏢 Units available in tier: <b>{tier['units_available']}</b>")
+    if event == "availability_increased" and previous_units is not None:
+        lines.append(f"↗️ Increased from <b>{previous_units}</b>")
+    if eligible is False:
+        lines.append("👤 1-person household: <b>Not eligible</b>")
+    elif eligible is True:
+        lines.append("👤 1-person household: <b>Eligible</b>")
+        if income:
+            lines.append(f"💵 Published applicable income range: <b>{html.escape(income)}</b>")
+
+    if location:
+        n = mgny_norm(location.get("neighborhood"))
+        b = mgny_norm(location.get("borough"))
+        z = mgny_norm(location.get("postcode"))
+        if n and b:
+            lines.append(f"📍 <b>{html.escape(n)}, {html.escape(b)}</b>")
+        elif b:
+            lines.append(f"📍 <b>{html.escape(b)}</b>")
+        elif n:
+            lines.append(f"📍 <b>{html.escape(n)}</b>")
+        if z:
+            lines.append(f"📮 {html.escape(z)}")
+
+    lines.append(f"🕐 First detected: <b>{html.escape(format_et_fn(first_seen))}</b>")
+    maps = html.escape(maps_fn(building.get("address") or building.get("title") or ""), quote=True)
+    detail = html.escape(building.get("url") or MGNY_URL, quote=True)
+    index = html.escape(MGNY_URL, quote=True)
+    lines += [
+        "",
+        f'🏗️ <a href="{detail}">View MGNY listing</a>',
+        f'🗺️ <a href="{maps}">Open in Google Maps</a>',
+        f'📋 <a href="{index}">MGNY listings</a>',
+        "",
+        "<i>Location data: © OpenStreetMap contributors</i>",
+    ]
+    return "\n".join(lines)
+
+
+def run_mgny_monitor(send_telegram, geocode_fn, priority_fn, maps_fn, utc_now_fn, format_et_fn):
+    state = mgny_load_json(MGNY_STATE_PATH, {"initialized": False, "buildings": {}})
+    history = mgny_load_json(MGNY_HISTORY_PATH, {"version": 1, "buildings": {}})
+    history.setdefault("buildings", {})
+    buildings = mgny_fetch_with_retries(state)
+    if buildings is None:
+        return
+    now = utc_now_fn()
+
+    # Silent first run, but make it tier-aware once.
+    if not state.get("initialized"):
+        print(f"MGNY first run: building silent tier baseline for {len(buildings)} building(s).")
+        def enrich_one(b):
+            try:
+                return b, mgny_enrich_building(b)
+            except Exception as exc:
+                print(f"MGNY baseline detail failed for {b.get('title')}: {exc}", file=sys.stderr)
+                return b, {"address": b.get("address"), "neighborhood": None, "tiers": []}
+        with ThreadPoolExecutor(max_workers=min(6, max(1, len(buildings)))) as ex:
+            futures = [ex.submit(enrich_one, b) for b in buildings]
+            for fut in as_completed(futures):
+                b, detail = fut.result()
+                key = mgny_building_key(b)
+                address = detail.get("address") or b.get("address") or b.get("title")
+                location = geocode_fn(address) if address else None
+                tiers = {
+                    mgny_tier_key(t): {**t, "first_seen": now, "last_seen": now, "active": True, "appearance_count": 1, "removal_count": 0, "last_removed_at": None}
+                    for t in detail.get("tiers", [])
+                }
+                history["buildings"][key] = {
+                    **b,
+                    "address": detail.get("address") or b.get("address"),
+                    "index_fingerprint": mgny_index_fingerprint(b),
+                    "first_seen": now,
+                    "last_seen": now,
+                    "active": True,
+                    "location": location,
+                    "current_tiers": tiers,
+                }
+        state = {
+            "initialized": True,
+            "updated_at": now,
+            "buildings": {
+                mgny_building_key(b): {
+                    **b,
+                    "tiers": history["buildings"].get(mgny_building_key(b), {}).get("current_tiers", {}),
+                }
+                for b in buildings
+            },
+        }
+        history["updated_at"] = now
+        mgny_save_json(MGNY_STATE_PATH, state)
+        mgny_save_json(MGNY_HISTORY_PATH, history)
+        print(f"MGNY initialized with {len(buildings)} existing building(s); no alerts sent.")
+        return
+
+    old_state = state.get("buildings", {})
+    h = history["buildings"]
+    current_keys = {mgny_building_key(b) for b in buildings}
+    alerts = []
+
+    for b in buildings:
+        key = mgny_building_key(b)
+        entry = h.get(key)
+        was_active = bool(entry.get("active")) if entry else False
+        fingerprint = mgny_index_fingerprint(b)
+        should_enrich = entry is None or not was_active or entry.get("index_fingerprint") != fingerprint
+
+        if not should_enrich:
+            entry.update(b)
+            entry["active"] = True
+            entry["last_seen"] = now
+            continue
+
+        try:
+            detail = mgny_enrich_building(b)
+        except Exception as exc:
+            print(f"MGNY detail failed for {b.get('title')}: {exc}; preserving prior tiers.", file=sys.stderr)
+            if entry:
+                entry.update(b)
+                entry["active"] = True
+                entry["last_seen"] = now
+            continue
+
+        if entry is None:
+            address = detail.get("address") or b.get("address") or b.get("title")
+            entry = {
+                **b,
+                "address": detail.get("address") or b.get("address"),
+                "index_fingerprint": fingerprint,
+                "first_seen": now,
+                "last_seen": now,
+                "active": True,
+                "location": geocode_fn(address) if address else None,
+                "current_tiers": {},
+            }
+            h[key] = entry
+        else:
+            entry.update(b)
+            if detail.get("address"):
+                entry["address"] = detail["address"]
+            entry["index_fingerprint"] = fingerprint
+            entry["active"] = True
+            entry["last_seen"] = now
+            if not entry.get("location"):
+                q = entry.get("address") or entry.get("title")
+                entry["location"] = geocode_fn(q) if q else None
+
+        old_tiers = entry.setdefault("current_tiers", {})
+        new_tiers = {mgny_tier_key(t): t for t in detail.get("tiers", [])}
+        if not new_tiers and old_tiers:
+            print(f"MGNY parsed 0 tiers for {b.get('title')}; preserving previous tier state.")
+            continue
+
+        for tk, ot in old_tiers.items():
+            if ot.get("active") and tk not in new_tiers:
+                ot["active"] = False
+                ot["last_removed_at"] = now
+                ot["removal_count"] = int(ot.get("removal_count", 0)) + 1
+
+        for tk, tier in new_tiers.items():
+            old = old_tiers.get(tk)
+            if old is None:
+                old = {**tier, "first_seen": now, "last_seen": now, "active": True, "appearance_count": 1, "removal_count": 0, "last_removed_at": None}
+                old_tiers[tk] = old
+                alerts.append((b, old, entry.get("location"), "new", None))
+            else:
+                prev_active = bool(old.get("active"))
+                prev_units = old.get("units_available")
+                old.update(tier)
+                old["active"] = True
+                old["last_seen"] = now
+                if not prev_active:
+                    old["appearance_count"] = int(old.get("appearance_count", 1)) + 1
+                    alerts.append((b, old, entry.get("location"), "reappeared", prev_units))
+                elif isinstance(prev_units, int) and isinstance(tier.get("units_available"), int) and tier["units_available"] > prev_units:
+                    alerts.append((b, old, entry.get("location"), "availability_increased", prev_units))
+
+    for key, entry in h.items():
+        if entry.get("active") and key not in current_keys:
+            entry["active"] = False
+            entry["last_removed_at"] = now
+            for tier in entry.get("current_tiers", {}).values():
+                if tier.get("active"):
+                    tier["active"] = False
+                    tier["last_removed_at"] = now
+                    tier["removal_count"] = int(tier.get("removal_count", 0)) + 1
+
+    for b, tier, location, event, previous_units in alerts:
+        send_telegram(
+            mgny_notification(b, tier, location, priority_fn, maps_fn, format_et_fn, event, tier.get("first_seen"), previous_units),
+            parse_mode="HTML",
+        )
+
+    state = {
+        "initialized": True,
+        "updated_at": now,
+        "buildings": {
+            mgny_building_key(b): {
+                **b,
+                "tiers": h.get(mgny_building_key(b), {}).get("current_tiers", {}),
+            }
+            for b in buildings
+        },
+    }
+    history["updated_at"] = now
+    mgny_save_json(MGNY_STATE_PATH, state)
+    mgny_save_json(MGNY_HISTORY_PATH, history)
+    print(f"MGNY complete: {len(alerts)} alert event(s).")
+
 def run_normal_monitor() -> None:
     state = load_state()
     history = load_history()
@@ -3836,16 +4368,25 @@ def main() -> int:
         run_test_listing(TEST_LISTING)
         return 0
 
-    # FAC, Rockrose, and MNS are lightweight HTML monitors; Reside is a
-    # browser scrape. Run all four in parallel so no source blocks another.
+    # FAC, Rockrose, MNS, and MGNY are HTTP monitors; Reside is a browser
+    # scrape. Run all five in parallel so no source blocks another.
     errors = []
 
-    with ThreadPoolExecutor(max_workers=4) as executor:
+    with ThreadPoolExecutor(max_workers=5) as executor:
         futures = {
             executor.submit(run_normal_monitor): "Reside",
             executor.submit(run_fac_monitor): "FAC",
             executor.submit(run_rockrose_monitor): "Rockrose",
             executor.submit(run_mns_monitor): "MNS",
+            executor.submit(
+                run_mgny_monitor,
+                send_telegram,
+                geocode_nyc_address,
+                priority_for_location,
+                google_maps_url,
+                utc_now_iso,
+                format_et,
+            ): "MGNY",
         }
 
         for future in as_completed(futures):
