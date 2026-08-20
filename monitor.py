@@ -43,6 +43,13 @@ ROCKROSE_REQUEST_TIMEOUT = (2.5, 5.0)
 ROCKROSE_STATE_PATH = Path(os.getenv("ROCKROSE_STATE_PATH", "rockrose_state.json"))
 ROCKROSE_HISTORY_PATH = Path(os.getenv("ROCKROSE_HISTORY_PATH", "rockrose_history.json"))
 
+MNS_URL = "https://www.mns.com/affordable_units"
+MNS_REQUEST_TIMEOUT = (2.5, 5.0)
+MNS_MAX_ATTEMPTS = 3
+MNS_RETRY_DELAYS = (0, 2, 5)
+MNS_STATE_PATH = Path(os.getenv("MNS_STATE_PATH", "mns_state.json"))
+MNS_HISTORY_PATH = Path(os.getenv("MNS_HISTORY_PATH", "mns_history.json"))
+
 STATE_PATH = Path(os.getenv("STATE_PATH", "state.json"))
 HISTORY_PATH = Path(os.getenv("HISTORY_PATH", "history.json"))
 HEALTH_PATH = Path(os.getenv("HEALTH_PATH", "health.json"))
@@ -3190,6 +3197,522 @@ def run_rockrose_monitor() -> None:
 
 
 
+
+# ---------------------------------------------------------------------------
+# MNS affordable units monitor
+# ---------------------------------------------------------------------------
+
+def mns_listing_key(listing: dict) -> str:
+    address = re.sub(
+        r"[^a-z0-9]+", " ",
+        normalize(listing.get("address", "")).casefold(),
+    ).strip()
+    unit = re.sub(
+        r"[^a-z0-9]+", " ",
+        normalize(listing.get("unit", "")).casefold(),
+    ).strip()
+    return f"{address}||{unit}"
+
+
+def scrape_mns_index() -> list[dict]:
+    response = requests.get(
+        MNS_URL,
+        headers={
+            "User-Agent": (
+                "nyc-rerental-monitor/5.11 "
+                "(personal affordable-housing availability notifier)"
+            )
+        },
+        timeout=MNS_REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    listings = []
+
+    for row in soup.find_all("tr"):
+        link = row.find("a", href=re.compile(r"/details/", re.I))
+        if not link:
+            continue
+
+        raw_cells = [normalize(td.get_text(" ", strip=True)) for td in row.find_all("td")]
+        if len(raw_cells) < 2:
+            continue
+
+        address = raw_cells[0]
+        unit = raw_cells[1]
+        if not address or not unit:
+            continue
+
+        rent = None
+        if len(raw_cells) > 6:
+            price_match = re.search(r"\$\s*([\d,]+(?:\.\d{1,2})?)", raw_cells[6])
+            if price_match:
+                try:
+                    rent = f"${float(price_match.group(1).replace(',', '')):,.2f}"
+                except ValueError:
+                    rent = "$" + price_match.group(1)
+
+        sqft = raw_cells[2] if len(raw_cells) > 2 and re.fullmatch(r"[\d,]+", raw_cells[2] or "") else None
+        beds = raw_cells[4] if len(raw_cells) > 4 and re.fullmatch(r"\d+(?:\.\d+)?", raw_cells[4] or "") else None
+        baths = raw_cells[5] if len(raw_cells) > 5 and re.fullmatch(r"\d+(?:\.\d+)?", raw_cells[5] or "") else None
+
+        if beds == "0":
+            unit_size = "Studio"
+        elif beds:
+            unit_size = f"{beds} Bedroom" + ("" if beds == "1" else "s")
+        else:
+            unit_size = None
+
+        listings.append(
+            {
+                "source": "MNS",
+                "address": address,
+                "unit": unit,
+                "rent": rent,
+                "unit_size": unit_size,
+                "bedrooms": beds,
+                "bathrooms": baths,
+                "sqft": sqft,
+                "url": urljoin(MNS_URL, link.get("href")),
+            }
+        )
+
+    listings = list({mns_listing_key(item): item for item in listings}.values())
+
+    if not listings:
+        title = normalize(soup.title.get_text(" ", strip=True)) if soup.title else "(no title)"
+        content_type = response.headers.get("content-type", "(unknown)")
+        raise RuntimeError(
+            "MNS page loaded but no affordable-unit rows were parsed. "
+            "Refusing to update the MNS baseline. "
+            f"status={response.status_code}; final_url={response.url}; "
+            f"bytes={len(response.content)}; content_type={content_type}; "
+            f"title={title!r}"
+        )
+
+    print(f"MNS scrape: {len(listings)} live affordable listing(s).")
+    return listings
+
+
+def enrich_mns_listing(listing: dict) -> dict:
+    details = {
+        "minimum_income": None,
+        "one_person_max_income": None,
+        "one_person_income_range": None,
+        "one_person_eligible": None,
+        "neighborhood": None,
+        "contact_phone": None,
+        "available_now": None,
+    }
+
+    url = listing.get("url")
+    if not url:
+        return details
+
+    try:
+        response = requests.get(
+            url,
+            headers={
+                "User-Agent": (
+                    "nyc-rerental-monitor/5.11 "
+                    "(personal affordable-housing availability notifier)"
+                )
+            },
+            timeout=MNS_REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+    except Exception as exc:
+        print(f"MNS detail enrichment failed: {exc}")
+        return details
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    page_text = normalize(soup.get_text(" ", strip=True))
+
+    min_match = re.search(
+        r"MINIMUM\s+INCOME\s*:\s*\$\s*([\d,]+(?:\.\d{1,2})?)",
+        page_text,
+        flags=re.I,
+    )
+    if min_match:
+        try:
+            details["minimum_income"] = f"${float(min_match.group(1).replace(',', '')):,.2f}"
+        except ValueError:
+            details["minimum_income"] = "$" + min_match.group(1)
+
+    one_match = re.search(
+        r"(?:MAXIMUM\s+INCOME\s*:?\s*)?1\s*PERSON\s*:\s*\$\s*([\d,]+(?:\.\d{1,2})?)",
+        page_text,
+        flags=re.I,
+    )
+    if one_match:
+        try:
+            one_max = f"${float(one_match.group(1).replace(',', '')):,.2f}"
+        except ValueError:
+            one_max = "$" + one_match.group(1)
+        details["one_person_max_income"] = one_max
+        details["one_person_eligible"] = True
+        if details["minimum_income"]:
+            details["one_person_income_range"] = f"{details['minimum_income']} – {one_max}"
+    elif re.search(r"\b2\s*PERSON\s*:", page_text, flags=re.I):
+        details["one_person_eligible"] = False
+
+    neighborhood_match = re.search(
+        r"rental\s+unit\s+in\s+([A-Za-z0-9 '&.\-]+)",
+        page_text,
+        flags=re.I,
+    )
+    if neighborhood_match:
+        details["neighborhood"] = normalize(neighborhood_match.group(1))
+
+    phone_match = re.search(
+        r"\b(?:\+1[-.\s]?)?\(?(\d{3})\)?[-.\s](\d{3})[-.\s](\d{4})\b",
+        page_text,
+    )
+    if phone_match:
+        details["contact_phone"] = (
+            f"{phone_match.group(1)}-{phone_match.group(2)}-{phone_match.group(3)}"
+        )
+
+    if re.search(r"\bAvailable Now\b", page_text, flags=re.I):
+        details["available_now"] = True
+
+    return details
+
+
+def load_mns_state() -> dict:
+    if not MNS_STATE_PATH.exists():
+        return {"initialized": False, "listings": {}}
+    try:
+        data = json.loads(MNS_STATE_PATH.read_text())
+        if not isinstance(data.get("listings"), dict):
+            data["listings"] = {}
+        return data
+    except Exception as exc:
+        raise RuntimeError(f"Could not read {MNS_STATE_PATH}: {exc}") from exc
+
+
+def save_mns_state(listings: list[dict]) -> None:
+    payload = {
+        mns_listing_key(item): {
+            "address": item.get("address"),
+            "unit": item.get("unit"),
+            "rent": item.get("rent"),
+            "url": item.get("url"),
+        }
+        for item in listings
+    }
+    MNS_STATE_PATH.write_text(
+        json.dumps(
+            {
+                "initialized": True,
+                "updated_at": utc_now_iso(),
+                "listings": payload,
+            },
+            indent=2,
+            ensure_ascii=False,
+            sort_keys=True,
+        ) + "\n"
+    )
+
+
+def load_mns_history() -> dict:
+    if not MNS_HISTORY_PATH.exists():
+        return {"version": 1, "created_at": utc_now_iso(), "listings": {}}
+    try:
+        data = json.loads(MNS_HISTORY_PATH.read_text())
+        if not isinstance(data.get("listings"), dict):
+            data["listings"] = {}
+        return data
+    except Exception as exc:
+        raise RuntimeError(f"Could not read {MNS_HISTORY_PATH}: {exc}") from exc
+
+
+def save_mns_history(history: dict) -> None:
+    history["version"] = 1
+    history["updated_at"] = utc_now_iso()
+    MNS_HISTORY_PATH.write_text(
+        json.dumps(history, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
+    )
+
+
+def validate_mns_scrape(current: list[dict], previous_state: dict) -> None:
+    current_count = len(current)
+    previous_count = len(previous_state.get("listings", {}))
+    if current_count == 0:
+        raise IncompleteScrapeError(
+            "MNS captured 0 listings. Previous MNS baseline preserved."
+        )
+    if previous_count == 0:
+        return
+    ratio = current_count / previous_count
+    drop = previous_count - current_count
+    if previous_count >= 5 and drop >= 3 and ratio < 0.40:
+        raise IncompleteScrapeError(
+            f"Suspicious MNS listing-count drop: {previous_count} -> "
+            f"{current_count}. Baseline preserved."
+        )
+
+
+def fetch_mns_with_retries(state: dict) -> list[dict] | None:
+    last_error = None
+    for attempt in range(1, MNS_MAX_ATTEMPTS + 1):
+        delay = MNS_RETRY_DELAYS[min(attempt - 1, len(MNS_RETRY_DELAYS) - 1)]
+        if delay:
+            print(f"MNS retry {attempt}/{MNS_MAX_ATTEMPTS}: waiting {delay}s...")
+            time.sleep(delay)
+        try:
+            listings = scrape_mns_index()
+            validate_mns_scrape(listings, state)
+            if attempt > 1:
+                print(f"MNS recovered on attempt {attempt}/{MNS_MAX_ATTEMPTS}.")
+            return listings
+        except (requests.RequestException, IncompleteScrapeError, RuntimeError) as exc:
+            last_error = exc
+            print(
+                f"MNS attempt {attempt}/{MNS_MAX_ATTEMPTS} failed: "
+                f"{type(exc).__name__}: {exc}",
+                file=sys.stderr,
+            )
+
+    print(
+        f"MNS unavailable after {MNS_MAX_ATTEMPTS} attempts. "
+        "Preserving MNS state/history and skipping MNS for this run. "
+        f"Last error: {type(last_error).__name__}: {last_error}",
+        file=sys.stderr,
+    )
+    return None
+
+
+def seed_mns_history(history: dict, listings: list[dict]) -> None:
+    if history.get("listings"):
+        return
+    now = utc_now_iso()
+    for listing in listings:
+        key = mns_listing_key(listing)
+        history["listings"][key] = {
+            **listing,
+            "first_seen": now,
+            "first_seen_source": "mns_history_migration",
+            "last_seen": now,
+            "active": True,
+            "appearance_count": 1,
+            "removal_count": 0,
+            "last_removed_at": None,
+            "location": None,
+            "details": None,
+        }
+
+
+def build_mns_notification(
+    listing: dict,
+    details: dict,
+    location: dict | None,
+    event_type: str,
+    first_seen: str,
+    last_removed_at: str | None = None,
+) -> str:
+    priority = priority_for_location(location)
+    heading = (
+        "🔄 <b>MNS AFFORDABLE LISTING REAPPEARED</b>"
+        if event_type == "reappeared"
+        else "🏙️ <b>NEW MNS AFFORDABLE LISTING</b>"
+    )
+
+    lines = [
+        heading,
+        f"{priority['emoji']} <b>{priority['label']} · {priority['score']}/3</b>",
+        f"<i>{html.escape(priority['reason'])}</i>",
+        "",
+        f"🏠 <b>{html.escape(normalize(listing.get('address')))} — "
+        f"Apt {html.escape(normalize(listing.get('unit')))}</b>",
+    ]
+
+    if listing.get("rent"):
+        lines.append(f"💰 <b>{html.escape(listing['rent'])}/mo</b>")
+
+    size_parts = []
+    if listing.get("unit_size"):
+        size_parts.append(listing["unit_size"])
+    if listing.get("bathrooms"):
+        size_parts.append(f"{listing['bathrooms']} bath")
+    if listing.get("sqft"):
+        size_parts.append(f"{listing['sqft']} sq ft")
+    if size_parts:
+        lines.append(f"🛏️ <b>{html.escape(' · '.join(size_parts))}</b>")
+
+    if details.get("one_person_income_range"):
+        lines.append(
+            "👤 1-person income: "
+            f"<b>{html.escape(details['one_person_income_range'])}</b>"
+        )
+    elif details.get("one_person_eligible") is False:
+        lines.append("👤 1-person household: <b>Not eligible</b>")
+    elif details.get("one_person_max_income"):
+        lines.append(
+            "👤 1-person max income: "
+            f"<b>{html.escape(details['one_person_max_income'])}</b>"
+        )
+
+    neighborhood = normalize(location.get("neighborhood")) if location else ""
+    borough = normalize(location.get("borough")) if location else ""
+    postcode = normalize(location.get("postcode")) if location else ""
+    if not neighborhood:
+        neighborhood = normalize(details.get("neighborhood"))
+
+    if neighborhood and borough:
+        lines.append(f"📍 <b>{html.escape(neighborhood)}, {html.escape(borough)}</b>")
+    elif borough:
+        lines.append(f"📍 <b>{html.escape(borough)}</b>")
+    elif neighborhood:
+        lines.append(f"📍 <b>{html.escape(neighborhood)}</b>")
+    if postcode:
+        lines.append(f"📮 {html.escape(postcode)}")
+
+    if details.get("available_now"):
+        lines.append("🟢 <b>AVAILABLE NOW</b>")
+    if details.get("contact_phone"):
+        lines.append(f"☎️ {html.escape(details['contact_phone'])}")
+
+    lines.append(f"🕐 First detected: <b>{html.escape(format_et(first_seen))}</b>")
+
+    if event_type == "reappeared" and last_removed_at:
+        duration = human_duration(last_removed_at, utc_now_iso())
+        if duration:
+            lines.append(f"↩️ Reappeared after <b>{html.escape(duration)}</b>")
+
+    maps = html.escape(google_maps_url(listing.get("address", "")), quote=True)
+    detail_url = html.escape(listing.get("url") or MNS_URL, quote=True)
+    archive_url = html.escape(MNS_URL, quote=True)
+
+    lines.extend(
+        [
+            "",
+            f'🏙️ <a href="{detail_url}">View MNS listing</a>',
+            f'🗺️ <a href="{maps}">Open in Google Maps</a>',
+            f'📋 <a href="{archive_url}">MNS affordable units</a>',
+            "",
+            "<i>Location data: © OpenStreetMap contributors</i>",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def run_mns_monitor() -> None:
+    state = load_mns_state()
+    history = load_mns_history()
+
+    listings = fetch_mns_with_retries(state)
+    if listings is None:
+        return
+
+    if not state.get("initialized"):
+        save_mns_state(listings)
+        seed_mns_history(history, listings)
+        save_mns_history(history)
+        print(
+            f"MNS initialized with {len(listings)} existing listing(s); "
+            "no existing listings alerted."
+        )
+        return
+
+    history_entries = history.setdefault("listings", {})
+    current_by_key = {mns_listing_key(item): item for item in listings}
+    current_keys = set(current_by_key)
+    now = utc_now_iso()
+
+    removed = []
+    for key, entry in history_entries.items():
+        if entry.get("active", False) and key not in current_keys:
+            entry["active"] = False
+            entry["last_removed_at"] = now
+            entry["removal_count"] = int(entry.get("removal_count", 0)) + 1
+            removed.append(entry)
+
+    alerts = []
+    for key, listing in current_by_key.items():
+        entry = history_entries.get(key)
+
+        if entry is None:
+            details = enrich_mns_listing(listing)
+            location = geocode_nyc_address(listing.get("address", ""))
+            entry = {
+                **listing,
+                "first_seen": now,
+                "first_seen_source": "observed",
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": location,
+                "details": details,
+            }
+            history_entries[key] = entry
+            alerts.append(
+                {
+                    "listing": listing,
+                    "entry": entry,
+                    "event_type": "new",
+                    "last_removed_at": None,
+                }
+            )
+            continue
+
+        was_active = bool(entry.get("active", False))
+        last_removed_at = entry.get("last_removed_at")
+        for field, value in listing.items():
+            entry[field] = value
+        entry["last_seen"] = now
+        entry["active"] = True
+
+        if not was_active:
+            details = entry.get("details") or enrich_mns_listing(listing)
+            location = entry.get("location") or geocode_nyc_address(
+                listing.get("address", "")
+            )
+            entry["details"] = details
+            entry["location"] = location
+            entry["appearance_count"] = int(entry.get("appearance_count", 1)) + 1
+            alerts.append(
+                {
+                    "listing": listing,
+                    "entry": entry,
+                    "event_type": "reappeared",
+                    "last_removed_at": last_removed_at,
+                }
+            )
+
+    for event in alerts:
+        entry = event["entry"]
+        send_telegram(
+            build_mns_notification(
+                listing=event["listing"],
+                details=entry.get("details") or {},
+                location=entry.get("location"),
+                event_type=event["event_type"],
+                first_seen=entry.get("first_seen"),
+                last_removed_at=event.get("last_removed_at"),
+            ),
+            parse_mode="HTML",
+        )
+
+    for entry in removed:
+        print(
+            "MNS removed: "
+            f"{entry.get('address')} Apt {entry.get('unit')} "
+            f"(removal #{entry.get('removal_count', 1)})"
+        )
+
+    save_mns_state(listings)
+    save_mns_history(history)
+    print(
+        f"MNS complete: {len(alerts)} alert event(s), "
+        f"{len(removed)} removal(s)."
+    )
+
+
+
 def run_normal_monitor() -> None:
     state = load_state()
     history = load_history()
@@ -3313,15 +3836,16 @@ def main() -> int:
         run_test_listing(TEST_LISTING)
         return 0
 
-    # FAC and Rockrose are lightweight HTML monitors; Reside is a browser
-    # scrape. Run all three in parallel so no source blocks another's alert.
+    # FAC, Rockrose, and MNS are lightweight HTML monitors; Reside is a
+    # browser scrape. Run all four in parallel so no source blocks another.
     errors = []
 
-    with ThreadPoolExecutor(max_workers=3) as executor:
+    with ThreadPoolExecutor(max_workers=4) as executor:
         futures = {
             executor.submit(run_normal_monitor): "Reside",
             executor.submit(run_fac_monitor): "FAC",
             executor.submit(run_rockrose_monitor): "Rockrose",
+            executor.submit(run_mns_monitor): "MNS",
         }
 
         for future in as_completed(futures):
