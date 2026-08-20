@@ -1,0 +1,36 @@
+{
+  "initialized": true,
+  "listings": {
+    "1730 harrison ave||4n": {
+      "address": "1730 Harrison AVE",
+      "rent": "$2,653.00",
+      "unit": "4N",
+      "url": "https://www.mns.com/details/240428/rental/morris+heights/bronx"
+    },
+    "260 gold st||104": {
+      "address": "260 Gold ST",
+      "rent": "$2,443.00",
+      "unit": "104",
+      "url": "https://www.mns.com/details/240774/rental/downtown+brooklyn/brooklyn"
+    },
+    "260 gold st||204": {
+      "address": "260 Gold ST",
+      "rent": "$3,213.00",
+      "unit": "204",
+      "url": "https://www.mns.com/details/240645/rental/downtown+brooklyn/brooklyn"
+    },
+    "65 dupont st||202": {
+      "address": "65 Dupont ST",
+      "rent": "$3,160.00",
+      "unit": "202",
+      "url": "https://www.mns.com/details/240777/rental/greenpoint/brooklyn"
+    },
+    "65 dupont st||320": {
+      "address": "65 Dupont ST",
+      "rent": "$3,661.00",
+      "unit": "320",
+      "url": "https://www.mns.com/details/240828/rental/greenpoint/brooklyn"
+    }
+  },
+  "updated_at": "2026-08-20T03:36:15.929168+00:00"
+}
