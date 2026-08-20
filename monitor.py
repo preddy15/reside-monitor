@@ -33,8 +33,15 @@ RESIDE_REQUEST_TIMEOUT = (2.5, 4.0)
 
 FAC_URL = "https://fifthave.org/re-rental-availabilities/"
 FAC_REQUEST_TIMEOUT = (2.5, 5.0)
+FAC_MAX_ATTEMPTS = 3
+FAC_RETRY_DELAYS = (0, 2, 5)
 FAC_STATE_PATH = Path(os.getenv("FAC_STATE_PATH", "fac_state.json"))
 FAC_HISTORY_PATH = Path(os.getenv("FAC_HISTORY_PATH", "fac_history.json"))
+
+ROCKROSE_URL = "https://rockrose.com/affordable-availabilities/"
+ROCKROSE_REQUEST_TIMEOUT = (2.5, 5.0)
+ROCKROSE_STATE_PATH = Path(os.getenv("ROCKROSE_STATE_PATH", "rockrose_state.json"))
+ROCKROSE_HISTORY_PATH = Path(os.getenv("ROCKROSE_HISTORY_PATH", "rockrose_history.json"))
 
 STATE_PATH = Path(os.getenv("STATE_PATH", "state.json"))
 HISTORY_PATH = Path(os.getenv("HISTORY_PATH", "history.json"))
@@ -2243,9 +2250,16 @@ def scrape_fac_listings() -> list[dict]:
     finish_current()
 
     if not listings:
+        title = normalize(soup.title.get_text(" ", strip=True)) if soup.title else "(no title)"
+        content_type = response.headers.get("content-type", "(unknown)")
         raise RuntimeError(
             "FAC page loaded but no re-rental units were parsed. "
-            "Refusing to update the FAC baseline."
+            "Refusing to update the FAC baseline. "
+            f"status={response.status_code}; "
+            f"final_url={response.url}; "
+            f"bytes={len(response.content)}; "
+            f"content_type={content_type}; "
+            f"title={title!r}"
         )
 
     print(
@@ -2495,6 +2509,50 @@ def seed_fac_history(history: dict, listings: list[dict]) -> None:
         }
 
 
+
+def fetch_fac_with_retries(state: dict) -> list[dict] | None:
+    """
+    Retry transient FAC fetch/parse failures without touching the last good
+    baseline. A failed attempt can be an HTTP/CDN hiccup, a partial page, or a
+    temporary HTML variant that parses to zero rows.
+
+    Returns None after all attempts fail. That is a soft FAC-source failure:
+    Reside/Rockrose continue, FAC state/history remain untouched, and the next
+    scheduled run tries again.
+    """
+    last_error = None
+
+    for attempt in range(1, FAC_MAX_ATTEMPTS + 1):
+        delay = FAC_RETRY_DELAYS[min(attempt - 1, len(FAC_RETRY_DELAYS) - 1)]
+        if delay:
+            print(f"FAC retry {attempt}/{FAC_MAX_ATTEMPTS}: waiting {delay}s...")
+            time.sleep(delay)
+
+        try:
+            listings = scrape_fac_listings()
+            validate_fac_scrape(listings, state)
+            if attempt > 1:
+                print(f"FAC recovered on attempt {attempt}/{FAC_MAX_ATTEMPTS}.")
+            return listings
+        except (requests.RequestException, IncompleteScrapeError, RuntimeError) as exc:
+            last_error = exc
+            print(
+                f"FAC attempt {attempt}/{FAC_MAX_ATTEMPTS} failed: "
+                f"{type(exc).__name__}: {exc}",
+                file=sys.stderr,
+            )
+
+    print(
+        "FAC unavailable after "
+        f"{FAC_MAX_ATTEMPTS} attempts. Preserving fac_state.json and "
+        "fac_history.json and skipping FAC for this run. "
+        f"Last error: {type(last_error).__name__}: {last_error}",
+        file=sys.stderr,
+    )
+    return None
+
+
+
 def run_fac_monitor() -> None:
     """
     Runs independently of Reside. FAC alerts are sent from this worker as soon
@@ -2503,8 +2561,9 @@ def run_fac_monitor() -> None:
     state = load_fac_state()
     history = load_fac_history()
 
-    listings = scrape_fac_listings()
-    validate_fac_scrape(listings, state)
+    listings = fetch_fac_with_retries(state)
+    if listings is None:
+        return
 
     if not state.get("initialized"):
         save_fac_state(listings)
@@ -2634,6 +2693,503 @@ def run_fac_monitor() -> None:
 
 
 
+
+# ---------------------------------------------------------------------------
+# Rockrose affordable availabilities monitor
+# ---------------------------------------------------------------------------
+
+def rockrose_listing_key(listing: dict) -> str:
+    address = re.sub(
+        r"[^a-z0-9]+", " ", normalize(listing.get("address", "")).casefold()
+    ).strip()
+    unit = re.sub(
+        r"[^a-z0-9]+", " ", normalize(listing.get("unit", "")).casefold()
+    ).strip()
+    return f"{address}||{unit}"
+
+
+def scrape_rockrose_index() -> list[dict]:
+    response = requests.get(
+        ROCKROSE_URL,
+        headers={
+            "User-Agent": (
+                "nyc-rerental-monitor/5.9 "
+                "(personal affordable-housing availability notifier)"
+            )
+        },
+        timeout=ROCKROSE_REQUEST_TIMEOUT,
+    )
+    response.raise_for_status()
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    listings = []
+
+    for anchor in soup.find_all("a", href=True):
+        href = anchor.get("href") or ""
+        url = urljoin(ROCKROSE_URL, href)
+
+        if "/affordable-availabilities/" not in url:
+            continue
+        if url.rstrip("/") == ROCKROSE_URL.rstrip("/"):
+            continue
+
+        text_value = normalize(anchor.get_text(" ", strip=True))
+        if not text_value:
+            continue
+        if "waitlist application" in text_value.casefold():
+            continue
+
+        unit_match = re.search(r"#\s*([A-Za-z0-9-]+)\b", text_value)
+        if not unit_match:
+            continue
+
+        address = normalize(text_value[:unit_match.start()])
+        if not address:
+            continue
+
+        rent_match = re.search(
+            r"1\s*Year\s*Rent\s*:\s*\$\s*([\d,\s]+(?:\.\d{1,2})?)",
+            text_value,
+            flags=re.I,
+        )
+        type_match = re.search(
+            r"(?:Apartment|Unit)\s*Type\s*:\s*"
+            r"(.+?)(?=\s+Income\s+Range\s*:|\s+View\b|$)",
+            text_value,
+            flags=re.I,
+        )
+        income_match = re.search(
+            r"Income\s*Range\s*:\s*"
+            r"(\$\s*[\d,\s]+(?:\.\d{1,2})?\s*[-–—]\s*"
+            r"\$\s*[\d,\s]+(?:\.\d{1,2})?)",
+            text_value,
+            flags=re.I,
+        )
+
+        def clean_money(raw):
+            if not raw:
+                return None
+            raw = re.sub(r"\s+", "", raw)
+            m = re.search(r"\$?([\d,]+(?:\.\d{1,2})?)", raw)
+            if not m:
+                return normalize(raw)
+            try:
+                return f"${float(m.group(1).replace(',', '')):,.2f}"
+            except ValueError:
+                return "$" + m.group(1)
+
+        listings.append(
+            {
+                "source": "Rockrose",
+                "address": address,
+                "unit": normalize(unit_match.group(1)),
+                "rent": clean_money(rent_match.group(1)) if rent_match else None,
+                "unit_size": normalize(type_match.group(1)) if type_match else None,
+                "published_income_range": normalize(income_match.group(1)) if income_match else None,
+                "url": url,
+            }
+        )
+
+    deduped = {rockrose_listing_key(item): item for item in listings}
+    listings = list(deduped.values())
+
+    if not listings:
+        raise RuntimeError(
+            "Rockrose page loaded but no live affordable availability cards "
+            "were parsed. Previous Rockrose baseline preserved."
+        )
+
+    print(f"Rockrose scrape: {len(listings)} live listing(s).")
+    return listings
+
+
+def enrich_rockrose_listing(listing: dict) -> dict:
+    details = {
+        "ami": None,
+        "one_person_income": None,
+        "one_person_eligible": None,
+        "application_deadline": None,
+        "application_email": None,
+    }
+
+    url = listing.get("url")
+    if not url:
+        return details
+
+    try:
+        response = requests.get(
+            url,
+            headers={
+                "User-Agent": (
+                    "nyc-rerental-monitor/5.9 "
+                    "(personal affordable-housing availability notifier)"
+                )
+            },
+            timeout=ROCKROSE_REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+    except Exception as exc:
+        print(f"Rockrose detail enrichment failed: {exc}")
+        return details
+
+    soup = BeautifulSoup(response.text, "html.parser")
+    page_text = normalize(soup.get_text(" ", strip=True))
+
+    ami_match = re.search(
+        r"\b(\d{1,3})\s*%\s*AMI\b|\bAMI\b.{0,40}?\b(\d{1,3})\s*%",
+        page_text,
+        flags=re.I,
+    )
+    if ami_match:
+        pct = ami_match.group(1) or ami_match.group(2)
+        details["ami"] = f"{pct}%"
+
+    one_match = re.search(
+        r"(\$\s*[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*"
+        r"\$\s*[\d,]+(?:\.\d{1,2})?)\s*"
+        r"for\s+a\s+one-person\s+household",
+        page_text,
+        flags=re.I,
+    )
+    if not one_match:
+        one_match = re.search(
+            r"one-person\s+household.{0,80}?"
+            r"(\$\s*[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*"
+            r"\$\s*[\d,]+(?:\.\d{1,2})?)",
+            page_text,
+            flags=re.I,
+        )
+
+    if one_match:
+        details["one_person_income"] = normalize(one_match.group(1))
+        details["one_person_eligible"] = True
+    elif (
+        re.search(r"two-person household", page_text, flags=re.I)
+        and not re.search(r"one-person household", page_text, flags=re.I)
+    ):
+        details["one_person_eligible"] = False
+
+    deadline_match = re.search(
+        r"(?:Must\s+apply\s+by|Apply\s+by)\s+"
+        r"([A-Za-z]+\s+\d{1,2}(?:st|nd|rd|th)?,?\s+\d{4})",
+        page_text,
+        flags=re.I,
+    )
+    if deadline_match:
+        details["application_deadline"] = normalize(deadline_match.group(1))
+
+    emails = re.findall(
+        r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b",
+        page_text,
+        flags=re.I,
+    )
+    if emails:
+        preferred = [
+            e for e in emails
+            if "housingpartnership" in e.casefold()
+            or "affordable" in e.casefold()
+        ]
+        details["application_email"] = preferred[0] if preferred else emails[0]
+
+    type_match = re.search(
+        r"(?:Apartment|Unit)\s*Type\s*:\s*(Studio|\d+\s*Bedroom)",
+        page_text,
+        flags=re.I,
+    )
+    if type_match:
+        listing["unit_size"] = normalize(type_match.group(1))
+
+    return details
+
+
+def load_rockrose_state() -> dict:
+    if not ROCKROSE_STATE_PATH.exists():
+        return {"initialized": False, "listings": {}}
+    data = json.loads(ROCKROSE_STATE_PATH.read_text())
+    if not isinstance(data.get("listings"), dict):
+        data["listings"] = {}
+    return data
+
+
+def save_rockrose_state(listings: list[dict]) -> None:
+    payload = {
+        rockrose_listing_key(item): {
+            "address": item.get("address"),
+            "unit": item.get("unit"),
+            "rent": item.get("rent"),
+            "url": item.get("url"),
+        }
+        for item in listings
+    }
+    ROCKROSE_STATE_PATH.write_text(
+        json.dumps(
+            {
+                "initialized": True,
+                "updated_at": utc_now_iso(),
+                "listings": payload,
+            },
+            indent=2,
+            ensure_ascii=False,
+            sort_keys=True,
+        ) + "\n"
+    )
+
+
+def load_rockrose_history() -> dict:
+    if not ROCKROSE_HISTORY_PATH.exists():
+        return {"version": 1, "created_at": utc_now_iso(), "listings": {}}
+    data = json.loads(ROCKROSE_HISTORY_PATH.read_text())
+    if not isinstance(data.get("listings"), dict):
+        data["listings"] = {}
+    return data
+
+
+def save_rockrose_history(history: dict) -> None:
+    history["version"] = 1
+    history["updated_at"] = utc_now_iso()
+    ROCKROSE_HISTORY_PATH.write_text(
+        json.dumps(history, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
+    )
+
+
+def validate_rockrose_scrape(current: list[dict], previous_state: dict) -> None:
+    current_count = len(current)
+    previous_count = len(previous_state.get("listings", {}))
+
+    if current_count == 0:
+        raise IncompleteScrapeError(
+            "Rockrose captured 0 listings. Previous baseline preserved."
+        )
+
+    if previous_count == 0:
+        return
+
+    ratio = current_count / previous_count
+    drop = previous_count - current_count
+    if previous_count >= 4 and drop >= 3 and ratio < 0.40:
+        raise IncompleteScrapeError(
+            f"Suspicious Rockrose listing-count drop: "
+            f"{previous_count} -> {current_count}. Baseline preserved."
+        )
+
+
+def seed_rockrose_history(history: dict, listings: list[dict]) -> None:
+    if history.get("listings"):
+        return
+    now = utc_now_iso()
+    for listing in listings:
+        key = rockrose_listing_key(listing)
+        history["listings"][key] = {
+            **listing,
+            "first_seen": now,
+            "first_seen_source": "rockrose_history_migration",
+            "last_seen": now,
+            "active": True,
+            "appearance_count": 1,
+            "removal_count": 0,
+            "last_removed_at": None,
+            "location": None,
+            "details": None,
+        }
+
+
+def build_rockrose_notification(
+    listing: dict,
+    details: dict,
+    location: dict | None,
+    event_type: str,
+    first_seen: str,
+    last_removed_at: str | None = None,
+) -> str:
+    priority = priority_for_location(location)
+    heading = (
+        "🔄 <b>ROCKROSE LISTING REAPPEARED</b>"
+        if event_type == "reappeared"
+        else "🌹 <b>NEW ROCKROSE AFFORDABLE LISTING</b>"
+    )
+
+    address = html.escape(normalize(listing.get("address")))
+    unit = html.escape(normalize(listing.get("unit")))
+
+    lines = [
+        heading,
+        f"{priority['emoji']} <b>{priority['label']} · {priority['score']}/3</b>",
+        f"<i>{html.escape(priority['reason'])}</i>",
+        "",
+        f"🏠 <b>{address} — Apt {unit}</b>",
+    ]
+
+    if listing.get("rent"):
+        lines.append(f"💰 <b>{html.escape(listing['rent'])}/mo</b>")
+    if listing.get("unit_size"):
+        lines.append(f"🛏️ <b>{html.escape(listing['unit_size'])}</b>")
+    if details.get("ami"):
+        lines.append(f"📊 AMI: <b>{html.escape(details['ami'])}</b>")
+
+    if details.get("one_person_income"):
+        lines.append(
+            "👤 1-person income: "
+            f"<b>{html.escape(details['one_person_income'])}</b>"
+        )
+    elif details.get("one_person_eligible") is False:
+        lines.append("👤 1-person household: <b>Not eligible</b>")
+
+    if location:
+        neighborhood = normalize(location.get("neighborhood"))
+        borough = normalize(location.get("borough"))
+        postcode = normalize(location.get("postcode"))
+        if neighborhood and borough:
+            lines.append(f"📍 <b>{html.escape(neighborhood)}, {html.escape(borough)}</b>")
+        elif borough:
+            lines.append(f"📍 <b>{html.escape(borough)}</b>")
+        elif neighborhood:
+            lines.append(f"📍 <b>{html.escape(neighborhood)}</b>")
+        if postcode:
+            lines.append(f"📮 {html.escape(postcode)}")
+
+    if details.get("application_deadline"):
+        lines.append(f"⏳ Apply by: <b>{html.escape(details['application_deadline'])}</b>")
+    if details.get("application_email"):
+        lines.append(f"✉️ Application email: <b>{html.escape(details['application_email'])}</b>")
+
+    lines.append(f"🕐 First detected: <b>{html.escape(format_et(first_seen))}</b>")
+
+    if event_type == "reappeared" and last_removed_at:
+        duration = human_duration(last_removed_at, utc_now_iso())
+        if duration:
+            lines.append(f"↩️ Reappeared after <b>{html.escape(duration)}</b>")
+
+    maps = html.escape(google_maps_url(listing.get("address", "")), quote=True)
+    detail_url = html.escape(listing.get("url") or ROCKROSE_URL, quote=True)
+    archive_url = html.escape(ROCKROSE_URL, quote=True)
+
+    lines.extend(
+        [
+            "",
+            f'🌹 <a href="{detail_url}">View Rockrose listing</a>',
+            f'🗺️ <a href="{maps}">Open in Google Maps</a>',
+            f'📋 <a href="{archive_url}">Rockrose affordable availabilities</a>',
+            "",
+            "<i>Location data: © OpenStreetMap contributors</i>",
+        ]
+    )
+    return "\n".join(lines)
+
+
+def run_rockrose_monitor() -> None:
+    state = load_rockrose_state()
+    history = load_rockrose_history()
+
+    listings = scrape_rockrose_index()
+    validate_rockrose_scrape(listings, state)
+
+    if not state.get("initialized"):
+        save_rockrose_state(listings)
+        seed_rockrose_history(history, listings)
+        save_rockrose_history(history)
+        print(
+            f"Rockrose initialized with {len(listings)} existing listing(s); "
+            "no existing listings alerted."
+        )
+        return
+
+    history_entries = history.setdefault("listings", {})
+    current_by_key = {rockrose_listing_key(item): item for item in listings}
+    current_keys = set(current_by_key)
+    now = utc_now_iso()
+
+    removed = []
+    for key, entry in history_entries.items():
+        if entry.get("active", False) and key not in current_keys:
+            entry["active"] = False
+            entry["last_removed_at"] = now
+            entry["removal_count"] = int(entry.get("removal_count", 0)) + 1
+            removed.append(entry)
+
+    alerts = []
+
+    for key, listing in current_by_key.items():
+        entry = history_entries.get(key)
+
+        if entry is None:
+            details = enrich_rockrose_listing(listing)
+            location = geocode_nyc_address(listing.get("address", ""))
+
+            entry = {
+                **listing,
+                "first_seen": now,
+                "first_seen_source": "observed",
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": location,
+                "details": details,
+            }
+            history_entries[key] = entry
+            alerts.append(
+                {
+                    "listing": listing,
+                    "entry": entry,
+                    "event_type": "new",
+                    "last_removed_at": None,
+                }
+            )
+            continue
+
+        was_active = bool(entry.get("active", False))
+        last_removed_at = entry.get("last_removed_at")
+        for field, value in listing.items():
+            entry[field] = value
+        entry["last_seen"] = now
+        entry["active"] = True
+
+        if not was_active:
+            details = entry.get("details") or enrich_rockrose_listing(listing)
+            location = entry.get("location") or geocode_nyc_address(listing.get("address", ""))
+            entry["details"] = details
+            entry["location"] = location
+            entry["appearance_count"] = int(entry.get("appearance_count", 1)) + 1
+            alerts.append(
+                {
+                    "listing": listing,
+                    "entry": entry,
+                    "event_type": "reappeared",
+                    "last_removed_at": last_removed_at,
+                }
+            )
+
+    for event in alerts:
+        entry = event["entry"]
+        send_telegram(
+            build_rockrose_notification(
+                listing=event["listing"],
+                details=entry.get("details") or {},
+                location=entry.get("location"),
+                event_type=event["event_type"],
+                first_seen=entry.get("first_seen"),
+                last_removed_at=event.get("last_removed_at"),
+            ),
+            parse_mode="HTML",
+        )
+
+    for entry in removed:
+        print(
+            "Rockrose removed: "
+            f"{entry.get('address')} Apt {entry.get('unit')} "
+            f"(removal #{entry.get('removal_count', 1)})"
+        )
+
+    save_rockrose_state(listings)
+    save_rockrose_history(history)
+    print(
+        f"Rockrose complete: {len(alerts)} alert event(s), "
+        f"{len(removed)} removal(s)."
+    )
+
+
+
 def run_normal_monitor() -> None:
     state = load_state()
     history = load_history()
@@ -2757,14 +3313,15 @@ def main() -> int:
         run_test_listing(TEST_LISTING)
         return 0
 
-    # FAC is a fast HTML request; Reside is a browser scrape. Run them in
-    # parallel so FAC never adds its request time onto the Reside critical path.
+    # FAC and Rockrose are lightweight HTML monitors; Reside is a browser
+    # scrape. Run all three in parallel so no source blocks another's alert.
     errors = []
 
-    with ThreadPoolExecutor(max_workers=2) as executor:
+    with ThreadPoolExecutor(max_workers=3) as executor:
         futures = {
             executor.submit(run_normal_monitor): "Reside",
             executor.submit(run_fac_monitor): "FAC",
+            executor.submit(run_rockrose_monitor): "Rockrose",
         }
 
         for future in as_completed(futures):
