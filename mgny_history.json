@@ -1,0 +1,731 @@
+{
+  "buildings": {
+    "https://mgnyconsulting.com/listing/1215fulton12halsey": {
+      "active": true,
+      "address": "12 Halsey Street, Brooklyn, New York",
+      "current_tiers": {},
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$126,583 - $238,160",
+      "index_fingerprint": "{\"income_range\": \"$126,583 - $238,160\", \"units_count\": 12, \"url\": \"https://mgnyconsulting.com/listing/1215fulton12halsey/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Brooklyn",
+        "display_name": "12, Halsey Street, Brooklyn, Kings County, New York, 11216, United States",
+        "lat": "40.6813600",
+        "lon": "-73.9529923",
+        "neighborhood": null,
+        "postcode": "11216"
+      },
+      "title": "1215 Fulton Street aka 12 Halsey Street",
+      "units_count": 12,
+      "url": "https://mgnyconsulting.com/listing/1215fulton12halsey/"
+    },
+    "https://mgnyconsulting.com/listing/132-134-waverly-avenue-apartments": {
+      "active": true,
+      "address": "132–134 Waverly Avenue, Brooklyn, NY 11205",
+      "current_tiers": {
+        "130%||2-bedroom||$3,811.00||2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$130,663 – $238,160",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$3,811.00",
+          "unit_size": "2-bedroom",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$130,663 - $238,160",
+      "index_fingerprint": "{\"income_range\": \"$130,663 - $238,160\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/132-134-waverly-avenue-apartments/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Brooklyn",
+        "display_name": "Waverly Avenue, Clinton Hill, Brooklyn, Kings County, New York, 11205, United States",
+        "lat": "40.6882487",
+        "lon": "-73.9668533",
+        "neighborhood": "Clinton Hill",
+        "postcode": "11205"
+      },
+      "title": "132-134 Waverly Avenue Apartments",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/132-134-waverly-avenue-apartments/"
+    },
+    "https://mgnyconsulting.com/listing/143-26-84-road-apartments": {
+      "active": true,
+      "address": "143-26 84th Road, Briarwood, NY 11435",
+      "current_tiers": {},
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$107,623 - $238,160",
+      "index_fingerprint": "{\"income_range\": \"$107,623 - $238,160\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/143-26-84-road-apartments/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": null,
+      "title": "143-26 84 Road Apartments",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/143-26-84-road-apartments/"
+    },
+    "https://mgnyconsulting.com/listing/1431-vyse-avenue": {
+      "active": true,
+      "address": "1431 Vyse Avenue, Bronx, NY, 10459",
+      "current_tiers": {
+        "130%||2 bedroom||$1,644.39||2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$65,088 – $238,160",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$1,644.39",
+          "unit_size": "2 Bedroom",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$65,088 - $238,160",
+      "index_fingerprint": "{\"income_range\": \"$65,088 - $238,160\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/1431-vyse-avenue/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Bronx",
+        "display_name": "1431, Vyse Avenue, Charlotte Gardens, The Bronx, Bronx County, New York, 10459, United States",
+        "lat": "40.8310799",
+        "lon": "-73.8896371",
+        "neighborhood": "Charlotte Gardens",
+        "postcode": "10459"
+      },
+      "title": "1431 Vyse Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/1431-vyse-avenue/"
+    },
+    "https://mgnyconsulting.com/listing/1700-jerome-avenue": {
+      "active": true,
+      "address": "1700 Jerome Ave, Bronx, NY 10453",
+      "current_tiers": {
+        "130%||studio||$2,300.00||1-2 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$85,955 – $168,480",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-2 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,300.00",
+          "unit_size": "Studio",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$85,955 - $168,480",
+      "index_fingerprint": "{\"income_range\": \"$85,955 - $168,480\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/1700-jerome-avenue/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Bronx",
+        "display_name": "1700, Jerome Avenue, The Bronx, Bronx County, New York, 10453, United States",
+        "lat": "40.8468053",
+        "lon": "-73.9128648",
+        "neighborhood": null,
+        "postcode": "10453"
+      },
+      "title": "1700 Jerome Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/1700-jerome-avenue/"
+    },
+    "https://mgnyconsulting.com/listing/1728-townsend-avenue": {
+      "active": true,
+      "address": "1728 Townsend Avenue, Bronx, NY 10453",
+      "current_tiers": {
+        "130%||studio||$1,481.66||1-2 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$$57,897 – $168,480",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-2 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$1,481.66",
+          "unit_size": "Studio",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$57,897 - $168,480",
+      "index_fingerprint": "{\"income_range\": \"$57,897 - $168,480\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/1728-townsend-avenue/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Bronx",
+        "display_name": "1728, Townsend Avenue, Tremont, The Bronx, Bronx County, New York, 10453, United States",
+        "lat": "40.8469505",
+        "lon": "-73.9114800",
+        "neighborhood": "Tremont",
+        "postcode": "10453"
+      },
+      "title": "1728 Townsend Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/1728-townsend-avenue/"
+    },
+    "https://mgnyconsulting.com/listing/188-11-hillside-avenue": {
+      "active": true,
+      "address": "188-11 Hillside Avenue, Queens, NY 11423",
+      "current_tiers": {
+        "130%||studio||$2,693.00||1-2 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$98,366 – $176,410",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-2 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,693.00",
+          "unit_size": "Studio",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$98,366 - $176,410",
+      "index_fingerprint": "{\"income_range\": \"$98,366 - $176,410\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/188-11-hillside-avenue/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Queens",
+        "display_name": "Hillside Avenue, Hollis, Queens, Queens County, New York, 11423, United States",
+        "lat": "40.7171823",
+        "lon": "-73.7676351",
+        "neighborhood": "Hollis",
+        "postcode": "11423"
+      },
+      "title": "188-11 Hillside Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/188-11-hillside-avenue/"
+    },
+    "https://mgnyconsulting.com/listing/2008-crotona-avenue": {
+      "active": true,
+      "address": "2008 Crotona Avenue, Bronx, NY 10457",
+      "current_tiers": {
+        "130%||2 bedroom||$2,250.00||2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$85,852 – $238,160",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,250.00",
+          "unit_size": "2 Bedroom",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$85,852 - $238,160",
+      "index_fingerprint": "{\"income_range\": \"$85,852 - $238,160\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/2008-crotona-avenue/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Bronx",
+        "display_name": "2008, Crotona Avenue, East Tremont, The Bronx, Bronx County, New York, 10457, United States",
+        "lat": "40.8470721",
+        "lon": "-73.8894105",
+        "neighborhood": "East Tremont",
+        "postcode": "10457"
+      },
+      "title": "2008 Crotona Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/2008-crotona-avenue/"
+    },
+    "https://mgnyconsulting.com/listing/2245-creston-avenue": {
+      "active": true,
+      "address": "2245 Creston Avenue, Bronx, NY 10453",
+      "current_tiers": {
+        "130%||studio||$1,481.95||1-2 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$57,907 – $176,410",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-2 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$1,481.95",
+          "unit_size": "Studio",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$57,907 - $176,410",
+      "index_fingerprint": "{\"income_range\": \"$57,907 - $176,410\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/2245-creston-avenue/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Bronx",
+        "display_name": "2245, Creston Avenue, Fordham, The Bronx, Bronx County, New York, 10453, United States",
+        "lat": "40.8569088",
+        "lon": "-73.9016483",
+        "neighborhood": "Fordham",
+        "postcode": "10453"
+      },
+      "title": "2245 Creston Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/2245-creston-avenue/"
+    },
+    "https://mgnyconsulting.com/listing/27-15-astoria-boulevard": {
+      "active": true,
+      "address": "27-15 Astoria Boulevard, Queens, NY 11102",
+      "current_tiers": {
+        "130%||1 bedroom||$2,233.30||1-3 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$82,115 – $189,540",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-3 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,233.30",
+          "unit_size": "1 Bedroom",
+          "units_available": 2
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$82,115 - $189,540",
+      "index_fingerprint": "{\"income_range\": \"$82,115 - $189,540\", \"units_count\": 2, \"url\": \"https://mgnyconsulting.com/listing/27-15-astoria-boulevard/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Queens",
+        "display_name": "27-15, Astoria Boulevard, Queens, Queens County, New York, 11102, United States",
+        "lat": "40.7709884",
+        "lon": "-73.9206920",
+        "neighborhood": null,
+        "postcode": "11102"
+      },
+      "title": "27-15 Astoria Boulevard",
+      "units_count": 2,
+      "url": "https://mgnyconsulting.com/listing/27-15-astoria-boulevard/"
+    },
+    "https://mgnyconsulting.com/listing/27-east-198-street": {
+      "active": true,
+      "address": "27 East 198 Street, Bronx, NY, 10468",
+      "current_tiers": {
+        "130%||1-bedroom||$1,573.94||1-3 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$60,821 – $176,410",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-3 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$1,573.94",
+          "unit_size": "1-bedroom",
+          "units_available": 1
+        },
+        "130%||studio||$1,428.00||1-2 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$55,818 – $176,410",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-2 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$1,428.00",
+          "unit_size": "Studio",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$60,821 - $176,410",
+      "index_fingerprint": "{\"income_range\": \"$60,821 - $176,410\", \"units_count\": 2, \"url\": \"https://mgnyconsulting.com/listing/27-east-198-street/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": null,
+      "title": "27 East 198 Street",
+      "units_count": 2,
+      "url": "https://mgnyconsulting.com/listing/27-east-198-street/"
+    },
+    "https://mgnyconsulting.com/listing/3531-bruckner-boulevard": {
+      "active": true,
+      "address": "3531 Bruckner Boulevard, Bronx, NY 10461",
+      "current_tiers": {},
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$62,582 - $176,410",
+      "index_fingerprint": "{\"income_range\": \"$62,582 - $176,410\", \"units_count\": 2, \"url\": \"https://mgnyconsulting.com/listing/3531-bruckner-boulevard/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Bronx",
+        "display_name": "3531, Bruckner Boulevard, Spencer Estates, The Bronx, Bronx County, New York, 10461, United States",
+        "lat": "40.8476697",
+        "lon": "-73.8276361",
+        "neighborhood": "Spencer Estates",
+        "postcode": "10461"
+      },
+      "title": "3531 Bruckner Boulevard",
+      "units_count": 2,
+      "url": "https://mgnyconsulting.com/listing/3531-bruckner-boulevard/"
+    },
+    "https://mgnyconsulting.com/listing/45-07-48-avenue": {
+      "active": true,
+      "address": "45-07 48th Avenue, Queens, NY 11377",
+      "current_tiers": {
+        "130%||2 bedroom||$2,810.00||2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$106,800 – $227,500",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,810.00",
+          "unit_size": "2 Bedroom",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$104,023 - $227,500",
+      "index_fingerprint": "{\"income_range\": \"$104,023 - $227,500\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/45-07-48-avenue/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Queens",
+        "display_name": "Americans Best Deal, 45-07, 48th Avenue, Queens, Queens County, New York, 11377, United States",
+        "lat": "40.7395062",
+        "lon": "-73.9198726",
+        "neighborhood": null,
+        "postcode": "11377"
+      },
+      "title": "45-07 48 Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/45-07-48-avenue/"
+    },
+    "https://mgnyconsulting.com/listing/50-varet-street-2": {
+      "active": true,
+      "address": "50 Varet Street, Brooklyn, NY 11206",
+      "current_tiers": {
+        "130%||studio||$2,049.86||1-2 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$77,139 – $176,410",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-2 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,049.86",
+          "unit_size": "Studio",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$77,139 - $176,410",
+      "index_fingerprint": "{\"income_range\": \"$77,139 - $176,410\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/50-varet-street-2/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Brooklyn",
+        "display_name": "50, Varet Street, Brooklyn, Kings County, New York, 11206, United States",
+        "lat": "40.7032125",
+        "lon": "-73.9417275",
+        "neighborhood": null,
+        "postcode": "11206"
+      },
+      "title": "50 Varet Street",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/50-varet-street-2/"
+    },
+    "https://mgnyconsulting.com/listing/560-19th-street": {
+      "active": true,
+      "address": "560 19th Street, Brooklyn, NY 11218",
+      "current_tiers": {
+        "130%||2-br||$2,643.10||2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$100,838 – $238,160",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,643.10",
+          "unit_size": "2-BR",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$101,918 - $238,160",
+      "index_fingerprint": "{\"income_range\": \"$101,918 - $238,160\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/560-19th-street/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Brooklyn",
+        "display_name": "560, 19th Street, Windsor Terrace, Brooklyn, Kings County, New York, 11218, United States",
+        "lat": "40.6552143",
+        "lon": "-73.9806498",
+        "neighborhood": "Windsor Terrace",
+        "postcode": "11218"
+      },
+      "title": "560 19th Street",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/560-19th-street/"
+    },
+    "https://mgnyconsulting.com/listing/862-hunts-point-avenue": {
+      "active": true,
+      "address": "862 Hunts Point Ave, Bronx, NY 10474",
+      "current_tiers": {
+        "130%||studio 1-br||$2,835.00||1-2 people 1-3 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$104,298 – $176,410 $131,760 – $198,510",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-2 people 1-3 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,835.00",
+          "unit_size": "Studio 1-BR",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$104,298 - $198,510",
+      "index_fingerprint": "{\"income_range\": \"$104,298 - $198,510\", \"units_count\": 2, \"url\": \"https://mgnyconsulting.com/listing/862-hunts-point-avenue/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Bronx",
+        "display_name": "862, Hunts Point Avenue, The Bronx, Bronx County, New York, 10474, United States",
+        "lat": "40.8183075",
+        "lon": "-73.8885860",
+        "neighborhood": null,
+        "postcode": "10474"
+      },
+      "title": "862 Hunts Point Avenue",
+      "units_count": 2,
+      "url": "https://mgnyconsulting.com/listing/862-hunts-point-avenue/"
+    },
+    "https://mgnyconsulting.com/listing/865-rogers-avenue": {
+      "active": true,
+      "address": "865 Rogers Avenue, Brooklyn, New York 11226",
+      "current_tiers": {
+        "130%||studio||$2,157.75||1-2 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$80,289 – $176,410",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-2 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,157.75",
+          "unit_size": "Studio",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$80,289 - $176,410",
+      "index_fingerprint": "{\"income_range\": \"$80,289 - $176,410\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/865-rogers-avenue/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Brooklyn",
+        "display_name": "865, Rogers Avenue, Brooklyn Community District 17, Brooklyn, Kings County, New York, 11226, United States",
+        "lat": "40.6494552",
+        "lon": "-73.9521752",
+        "neighborhood": "Brooklyn Community District 17",
+        "postcode": "11226"
+      },
+      "title": "865 Rogers Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/865-rogers-avenue/"
+    },
+    "https://mgnyconsulting.com/listing/astoria-west": {
+      "active": true,
+      "address": "11-12 30th Dr, Astoria, NY 11102",
+      "current_tiers": {
+        "130%||1 bedroom||$2,773.22||1-3 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$101,597-$198,510",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-3 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,773.22",
+          "unit_size": "1 Bedroom",
+          "units_available": 2
+        },
+        "130%||1 bedroom||$2,856.42||1-3 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$104,449-$198,510",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-3 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,856.42",
+          "unit_size": "1 Bedroom",
+          "units_available": 2
+        },
+        "130%||studio||$2,414.62||1-2 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$88,445 – $176,410",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-2 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$2,414.62",
+          "unit_size": "Studio",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$88,445 - $198,510",
+      "index_fingerprint": "{\"income_range\": \"$88,445 - $198,510\", \"units_count\": 5, \"url\": \"https://mgnyconsulting.com/listing/astoria-west/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": null,
+      "title": "Astoria West",
+      "units_count": 5,
+      "url": "https://mgnyconsulting.com/listing/astoria-west/"
+    },
+    "https://mgnyconsulting.com/listing/forten": {
+      "active": true,
+      "address": "410 W 126th St, New York, NY 10027",
+      "current_tiers": {
+        "130%||2-bedroom||$3,995.00||2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$143,658 – $238,160",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$3,995.00",
+          "unit_size": "2-bedroom",
+          "units_available": 4
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$143,658 - $238,160",
+      "index_fingerprint": "{\"income_range\": \"$143,658 - $238,160\", \"units_count\": 4, \"url\": \"https://mgnyconsulting.com/listing/forten/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Manhattan",
+        "display_name": "410, West 126th Street, Manhattanville, Manhattan Community Board 9, Manhattan, New York County, New York, 10027, United States",
+        "lat": "40.8122871",
+        "lon": "-73.9542391",
+        "neighborhood": "Manhattanville",
+        "postcode": "10027"
+      },
+      "title": "Forten at Columbia",
+      "units_count": 4,
+      "url": "https://mgnyconsulting.com/listing/forten/"
+    },
+    "https://mgnyconsulting.com/listing/lighthouse-point": {
+      "active": true,
+      "address": "35R Bay Street, Staten Island, NY 10301",
+      "current_tiers": {
+        "130%||2-bedroom||$3,750.00||2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$134,298 – $238,160",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$3,750.00",
+          "unit_size": "2-bedroom",
+          "units_available": 4
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$134,298 - $238,160",
+      "index_fingerprint": "{\"income_range\": \"$134,298 - $238,160\", \"units_count\": 4, \"url\": \"https://mgnyconsulting.com/listing/lighthouse-point/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Staten Island",
+        "display_name": "Bay Street, Staten Island, Richmond County, New York, 10301, United States",
+        "lat": "40.6372565",
+        "lon": "-74.0761501",
+        "neighborhood": null,
+        "postcode": "10301"
+      },
+      "title": "Lighthouse Point",
+      "units_count": 4,
+      "url": "https://mgnyconsulting.com/listing/lighthouse-point/"
+    },
+    "https://mgnyconsulting.com/listing/lincoln-at-bankside": {
+      "active": true,
+      "address": "101 Lincoln Ave, Bronx, NY, 10454",
+      "current_tiers": {
+        "130%||2-bedroom||$3,400.00||3-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$121,509-$238,160",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "3-5 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$3,400.00",
+          "unit_size": "2-Bedroom",
+          "units_available": 4
+        },
+        "130%||3-bedroom||$4,373.00||3-7 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$156,035 – $273,520",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "3-7 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 0,
+          "rent": "$4,373.00",
+          "unit_size": "3-Bedroom",
+          "units_available": 1
+        }
+      },
+      "first_seen": "2026-08-20T04:04:39.814757+00:00",
+      "income_range": "$121,509 - $273,520",
+      "index_fingerprint": "{\"income_range\": \"$121,509 - $273,520\", \"units_count\": 5, \"url\": \"https://mgnyconsulting.com/listing/lincoln-at-bankside/\"}",
+      "last_seen": "2026-08-20T04:04:39.814757+00:00",
+      "location": {
+        "borough": "Bronx",
+        "display_name": "101, Lincoln Avenue, The Bronx, Bronx County, New York, 10454, United States",
+        "lat": "40.8076974",
+        "lon": "-73.9301581",
+        "neighborhood": null,
+        "postcode": "10454"
+      },
+      "title": "Lincoln at Bankside",
+      "units_count": 5,
+      "url": "https://mgnyconsulting.com/listing/lincoln-at-bankside/"
+    }
+  },
+  "updated_at": "2026-08-20T04:04:39.814757+00:00",
+  "version": 1
+}
