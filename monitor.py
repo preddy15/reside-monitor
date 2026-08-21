@@ -5319,6 +5319,8 @@ def run_taxace_monitor():
 
         was_active = bool(entry.get("active"))
         last_removed_at = entry.get("last_removed_at")
+        # Refresh display metadata every run. This also repairs older
+        # v5.19 state/history entries whose title was "Read More -->".
         entry.update(listing)
         entry["last_seen"] = now
         entry["active"] = True
@@ -5431,24 +5433,100 @@ def sjp_parse_index(response):
     soup = BeautifulSoup(response.text, "html.parser")
     listings = []
 
-    # SJP's current cards link to /apartment-listings/<slug>.
+    # SJP's card CTA text is typically "Read More -->", so the anchor text is
+    # not the listing title. Use each stable /apartment-listings/<slug> URL as
+    # the card identity, then derive the human-readable title from nearby card
+    # heading/text instead.
     for a in soup.find_all("a", href=True):
         href = urljoin(SJP_URL, a.get("href"))
         if not re.search(r"/apartment-listings/[^/?#]+/?$", href, re.I):
             continue
 
-        text_value = sjp_norm(a.get_text(" ", strip=True))
-        if not text_value:
+        anchor_text = sjp_norm(a.get_text(" ", strip=True))
+        if anchor_text.casefold().startswith(("previous ", "next ")):
             continue
 
-        # Avoid "previous/next" links and de-dupe later.
-        if text_value.casefold().startswith(("previous ", "next ")):
-            continue
+        title = None
+
+        # Prefer a nearby heading within the same card/container.
+        node = a
+        for _ in range(7):
+            node = node.parent
+            if node is None:
+                break
+
+            headings = node.find_all(["h1", "h2", "h3", "h4", "h5", "h6"])
+            candidates = []
+            for h in headings:
+                t = sjp_norm(h.get_text(" ", strip=True))
+                if not t:
+                    continue
+                low = t.casefold()
+                if low.startswith(("read more", "apply now", "previous ", "next ")):
+                    continue
+                candidates.append(t)
+
+            if candidates:
+                # Prefer wording that looks like the actual listing title.
+                preferred = next(
+                    (
+                        t for t in candidates
+                        if any(
+                            k in t.casefold()
+                            for k in (
+                                "available",
+                                "re-rental",
+                                "rerental",
+                                "apartment",
+                                "studio",
+                                "bedroom",
+                            )
+                        )
+                    ),
+                    None,
+                )
+                title = preferred or candidates[0]
+                break
+
+        # Fallback: inspect nearby text siblings before the CTA.
+        if not title:
+            nearby = []
+            parent = a.parent
+            if parent is not None:
+                for sibling in list(parent.previous_siblings)[:8]:
+                    try:
+                        t = sjp_norm(
+                            sibling.get_text(" ", strip=True)
+                            if hasattr(sibling, "get_text")
+                            else str(sibling)
+                        )
+                    except Exception:
+                        t = ""
+                    if t:
+                        nearby.append(t)
+
+            for t in nearby:
+                low = t.casefold()
+                if low.startswith(("read more", "apply now")):
+                    continue
+                if len(t) >= 8:
+                    title = t
+                    break
+
+        # Last resort: build a readable title from the slug instead of storing
+        # the useless CTA text.
+        if not title:
+            slug = href.rstrip("/").rsplit("/", 1)[-1]
+            slug = re.sub(r"-\d+$", "", slug)
+            title = " ".join(
+                word.capitalize()
+                for word in slug.replace("-", " ").split()
+            )
 
         listings.append(
             {
                 "source": "SJP Tax Consultants",
-                "title": text_value,
+                "title": title,
                 "url": href,
             }
         )
@@ -5462,7 +5540,10 @@ def sjp_parse_index(response):
             f"status={response.status_code}; bytes={len(response.content)}; title={title!r}"
         )
 
-    print(f"SJP index scrape: {len(listings)} listing card(s).")
+    print(
+        f"SJP index scrape: {len(listings)} listing card(s); "
+        f"titles={[x.get('title') for x in listings[:3]]}"
+    )
     return listings
 
 
