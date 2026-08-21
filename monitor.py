@@ -4933,6 +4933,446 @@ def run_mgny_monitor(send_telegram, geocode_fn, priority_fn, maps_fn, utc_now_fn
     mgny_save_json(MGNY_HISTORY_PATH, history)
     print(f"MGNY complete: {len(alerts)} alert event(s).")
 
+
+# ---------------------------------------------------------------------------
+# Taxace NY Available Units monitor
+# ---------------------------------------------------------------------------
+
+TAXACE_URL = "https://www.taxaceny.com/projects-8"
+TAXACE_REQUEST_TIMEOUT = (2.5, 6.0)
+TAXACE_MAX_ATTEMPTS = 3
+TAXACE_RETRY_DELAYS = (0, 2, 5)
+TAXACE_STATE_PATH = Path(os.getenv("TAXACE_STATE_PATH", "taxace_state.json"))
+TAXACE_HISTORY_PATH = Path(os.getenv("TAXACE_HISTORY_PATH", "taxace_history.json"))
+TAXACE_USER_AGENT = "nyc-rerental-monitor/5.18 (personal affordable-housing availability notifier)"
+
+
+def taxace_norm(v):
+    return re.sub(r"\s+", " ", str(v or "").replace("\u00a0", " ")).strip()
+
+
+def taxace_key(item):
+    address = re.sub(r"[^a-z0-9]+", " ", taxace_norm(item.get("address")).casefold()).strip()
+    unit = re.sub(r"[^a-z0-9]+", " ", taxace_norm(item.get("unit")).casefold()).strip()
+    return f"{address}||{unit}"
+
+
+def taxace_money(v):
+    m = re.search(r"\$\s*([\d,]+(?:\.\d{1,2})?)", taxace_norm(v))
+    if not m:
+        return taxace_norm(v) or None
+    try:
+        return f"${float(m.group(1).replace(',', '')):,.2f}"
+    except ValueError:
+        return "$" + m.group(1)
+
+
+def taxace_income(v):
+    amounts = re.findall(r"\$\s*[\d,]+(?:\.\d{1,2})?", taxace_norm(v))
+    if len(amounts) >= 2:
+        return f"{taxace_money(amounts[0])} – {taxace_money(amounts[1])}"
+    return taxace_norm(v) or None
+
+
+def taxace_parse_page(response):
+    soup = BeautifulSoup(response.text, "html.parser")
+    listings = []
+
+    # Center each card on its unique ClickUp Apply link.
+    for apply_link in soup.find_all("a", href=True):
+        href = apply_link.get("href") or ""
+        if "forms.clickup.com" not in href:
+            continue
+        if "apply" not in taxace_norm(apply_link.get_text(" ", strip=True)).casefold():
+            continue
+
+        chosen = None
+        node = apply_link
+        for _ in range(10):
+            node = node.parent
+            if node is None:
+                break
+            block_text = taxace_norm(node.get_text(" | ", strip=True))
+            low = block_text.casefold()
+            if "unit size:" in low and "rent:" in low and "min income:" in low:
+                chosen = node
+                clickup_links = [
+                    a for a in node.find_all("a", href=True)
+                    if "forms.clickup.com" in (a.get("href") or "")
+                ]
+                if len(clickup_links) == 1:
+                    break
+
+        if chosen is None:
+            continue
+
+        block = taxace_norm(chosen.get_text(" | ", strip=True))
+
+        addr_match = re.search(
+            r"(\d{1,5}(?:-\d{1,4})?\s+.+?)\.\s*Unit\s+([A-Za-z0-9-]+)\b",
+            block,
+            re.I,
+        )
+        if not addr_match:
+            continue
+
+        street_address = taxace_norm(addr_match.group(1))
+        unit = taxace_norm(addr_match.group(2))
+
+        borough_match = re.search(
+            r"\b(Bronx|Brooklyn|Queens|New York|Manhattan|Staten Island),?\s*NY\b",
+            block,
+            re.I,
+        )
+        borough = borough_match.group(1).title() if borough_match else None
+        full_address = (
+            f"{street_address}, {borough}, NY"
+            if borough else street_address
+        )
+
+        size_match = re.search(r"Unit\s*Size\s*:\s*([^|]+)", block, re.I)
+        rent_match = re.search(
+            r"\bRent\s*:\s*(\$\s*[\d,]+(?:\.\d{1,2})?)",
+            block,
+            re.I,
+        )
+        utilities_match = re.search(r"Utilities\s*:\s*([^|]+)", block, re.I)
+        elevator_match = re.search(r"Elevator\s*Building\s*:\s*([^|]+)", block, re.I)
+        income_match = re.search(
+            r"Min\s*Income\s*:\s*(\$\s*[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*\$\s*[\d,]+(?:\.\d{1,2})?)",
+            block,
+            re.I,
+        )
+
+        listings.append(
+            {
+                "source": "Taxace NY",
+                "address": full_address,
+                "street_address": street_address,
+                "unit": unit,
+                "borough": borough,
+                "unit_size": taxace_norm(size_match.group(1)) if size_match else None,
+                "rent": taxace_money(rent_match.group(1)) if rent_match else None,
+                "utilities": taxace_norm(utilities_match.group(1)) if utilities_match else None,
+                "elevator": taxace_norm(elevator_match.group(1)) if elevator_match else None,
+                "income_range": taxace_income(income_match.group(1)) if income_match else None,
+                "apply_url": href,
+                "source_url": TAXACE_URL,
+            }
+        )
+
+    listings = list({taxace_key(x): x for x in listings}.values())
+
+    if not listings:
+        title = taxace_norm(soup.title.get_text(" ", strip=True)) if soup.title else "(no title)"
+        raise RuntimeError(
+            "Taxace page loaded but no live units were parsed. "
+            f"status={getattr(response, 'status_code', 200)}; "
+            f"bytes={len(getattr(response, 'content', b''))}; title={title!r}"
+        )
+
+    print(f"Taxace scrape: {len(listings)} live unit(s).")
+    return listings
+
+
+def taxace_scrape():
+    r = requests.get(
+        TAXACE_URL,
+        headers={"User-Agent": TAXACE_USER_AGENT},
+        timeout=TAXACE_REQUEST_TIMEOUT,
+    )
+    r.raise_for_status()
+
+    try:
+        return taxace_parse_page(r)
+    except RuntimeError:
+        print("Taxace raw HTML parser found no units; falling back to rendered Chrome DOM.")
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch(channel="chrome", headless=True)
+            page = browser.new_page(
+                user_agent=TAXACE_USER_AGENT,
+                viewport={"width": 1280, "height": 1100},
+            )
+            try:
+                page.goto(TAXACE_URL, wait_until="domcontentloaded", timeout=25000)
+                page.wait_for_timeout(1000)
+                html_text = page.content()
+
+                class RenderedResponse:
+                    text = html_text
+                    status_code = 200
+                    content = html_text.encode("utf-8")
+
+                return taxace_parse_page(RenderedResponse())
+            finally:
+                browser.close()
+
+
+def taxace_load(path, default):
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text())
+    except Exception as exc:
+        raise RuntimeError(f"Could not read {path}: {exc}") from exc
+
+
+def taxace_save(path, data):
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
+
+
+def taxace_validate(listings, state):
+    current = len(listings)
+    previous = len(state.get("listings", {}))
+
+    if current == 0:
+        raise IncompleteScrapeError("Taxace captured 0 units. Previous baseline preserved.")
+
+    if previous:
+        ratio = current / previous
+        drop = previous - current
+        if previous >= 8 and drop >= 5 and ratio < 0.45:
+            raise IncompleteScrapeError(
+                f"Suspicious Taxace listing-count drop: {previous} -> {current}. "
+                "Previous baseline preserved."
+            )
+
+
+def taxace_fetch(state):
+    last_error = None
+
+    for attempt in range(1, TAXACE_MAX_ATTEMPTS + 1):
+        delay = TAXACE_RETRY_DELAYS[min(attempt - 1, len(TAXACE_RETRY_DELAYS) - 1)]
+        if delay:
+            print(f"Taxace retry {attempt}/{TAXACE_MAX_ATTEMPTS}: waiting {delay}s...")
+            time.sleep(delay)
+
+        try:
+            listings = taxace_scrape()
+            taxace_validate(listings, state)
+            if attempt > 1:
+                print(f"Taxace recovered on attempt {attempt}/{TAXACE_MAX_ATTEMPTS}.")
+            return listings
+        except (requests.RequestException, IncompleteScrapeError, RuntimeError) as exc:
+            last_error = exc
+            print(
+                f"Taxace attempt {attempt}/{TAXACE_MAX_ATTEMPTS} failed: "
+                f"{type(exc).__name__}: {exc}",
+                file=sys.stderr,
+            )
+
+    print(
+        f"Taxace unavailable after {TAXACE_MAX_ATTEMPTS} attempts; "
+        "preserving prior state/history. "
+        f"Last error: {last_error}",
+        file=sys.stderr,
+    )
+    return None
+
+
+def taxace_message(listing, location, event, first_seen, last_removed_at=None):
+    priority = priority_for_location(location)
+    heading = (
+        "🔄 <b>TAXACE LISTING REAPPEARED</b>"
+        if event == "reappeared"
+        else "🏢 <b>NEW TAXACE AFFORDABLE LISTING</b>"
+    )
+
+    lines = [
+        heading,
+        f"{priority['emoji']} <b>{priority['label']} · {priority['score']}/3</b>",
+        f"<i>{html.escape(priority['reason'])}</i>",
+        "",
+        f"🏠 <b>{html.escape(listing.get('street_address') or '')} "
+        f"— Unit {html.escape(listing.get('unit') or '')}</b>",
+    ]
+
+    if listing.get("rent"):
+        lines.append(f"💰 <b>{html.escape(listing['rent'])}/mo</b>")
+    if listing.get("unit_size"):
+        lines.append(f"🛏️ <b>{html.escape(listing['unit_size'])}</b>")
+    if listing.get("income_range"):
+        lines.append(
+            "💵 Published income range: "
+            f"<b>{html.escape(listing['income_range'])}</b>"
+        )
+    if listing.get("utilities"):
+        lines.append(f"⚡ Utilities: <b>{html.escape(listing['utilities'])}</b>")
+    if listing.get("elevator"):
+        lines.append(f"🛗 Elevator: <b>{html.escape(listing['elevator'])}</b>")
+
+    if location:
+        n = normalize(location.get("neighborhood"))
+        b = normalize(location.get("borough"))
+        z = normalize(location.get("postcode"))
+        if n and b:
+            lines.append(f"📍 <b>{html.escape(n)}, {html.escape(b)}</b>")
+        elif b:
+            lines.append(f"📍 <b>{html.escape(b)}</b>")
+        elif n:
+            lines.append(f"📍 <b>{html.escape(n)}</b>")
+        if z:
+            lines.append(f"📮 {html.escape(z)}")
+
+    lines.append(f"🕐 First detected: <b>{html.escape(format_et(first_seen))}</b>")
+
+    if event == "reappeared" and last_removed_at:
+        duration = human_duration(last_removed_at, utc_now_iso())
+        if duration:
+            lines.append(f"↩️ Reappeared after <b>{html.escape(duration)}</b>")
+
+    maps = html.escape(google_maps_url(listing.get("address") or ""), quote=True)
+    apply_url = html.escape(listing.get("apply_url") or TAXACE_URL, quote=True)
+    source_url = html.escape(TAXACE_URL, quote=True)
+
+    lines += [
+        "",
+        f'📝 <a href="{apply_url}"><b>Apply now</b></a>',
+        f'🗺️ <a href="{maps}">Open in Google Maps</a>',
+        f'📋 <a href="{source_url}">Taxace available units page</a>',
+        "",
+        "<i>Location data: © OpenStreetMap contributors</i>",
+    ]
+    return "\n".join(lines)
+
+
+def run_taxace_monitor():
+    state = taxace_load(TAXACE_STATE_PATH, {"initialized": False, "listings": {}})
+    history = taxace_load(
+        TAXACE_HISTORY_PATH,
+        {"version": 1, "created_at": utc_now_iso(), "listings": {}},
+    )
+
+    listings = taxace_fetch(state)
+    if listings is None:
+        return
+
+    now = utc_now_iso()
+    entries = history.setdefault("listings", {})
+    current = {taxace_key(x): x for x in listings}
+    current_keys = set(current)
+
+    if not state.get("initialized"):
+        for key, listing in current.items():
+            entries[key] = {
+                **listing,
+                "first_seen": now,
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": None,
+            }
+
+        history["updated_at"] = now
+        state = {
+            "initialized": True,
+            "updated_at": now,
+            "listings": {
+                key: {
+                    "address": listing.get("address"),
+                    "unit": listing.get("unit"),
+                    "rent": listing.get("rent"),
+                    "apply_url": listing.get("apply_url"),
+                }
+                for key, listing in current.items()
+            },
+        }
+        taxace_save(TAXACE_HISTORY_PATH, history)
+        taxace_save(TAXACE_STATE_PATH, state)
+        print(
+            f"Taxace initialized with {len(listings)} existing unit(s); "
+            "no existing units alerted."
+        )
+        return
+
+    alerts = []
+    removed = []
+
+    for key, entry in entries.items():
+        if entry.get("active") and key not in current_keys:
+            entry["active"] = False
+            entry["last_removed_at"] = now
+            entry["removal_count"] = int(entry.get("removal_count", 0)) + 1
+            removed.append(entry)
+
+    for key, listing in current.items():
+        entry = entries.get(key)
+
+        if entry is None:
+            location = geocode_nyc_address(listing.get("address") or "")
+            entry = {
+                **listing,
+                "first_seen": now,
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": location,
+            }
+            entries[key] = entry
+            alerts.append((listing, entry, "new", None))
+            continue
+
+        was_active = bool(entry.get("active"))
+        last_removed_at = entry.get("last_removed_at")
+        entry.update(listing)
+        entry["last_seen"] = now
+        entry["active"] = True
+
+        if not was_active:
+            if not entry.get("location"):
+                entry["location"] = geocode_nyc_address(listing.get("address") or "")
+            entry["appearance_count"] = int(entry.get("appearance_count", 1)) + 1
+            alerts.append((listing, entry, "reappeared", last_removed_at))
+
+    for listing, entry, event, last_removed_at in alerts:
+        send_telegram(
+            taxace_message(
+                listing,
+                entry.get("location"),
+                event,
+                entry.get("first_seen"),
+                last_removed_at,
+            ),
+            parse_mode="HTML",
+        )
+
+    for entry in removed:
+        print(
+            f"Taxace removed: {entry.get('street_address')} "
+            f"Unit {entry.get('unit')} "
+            f"(removal #{entry.get('removal_count', 1)})"
+        )
+
+    history["updated_at"] = now
+    state = {
+        "initialized": True,
+        "updated_at": now,
+        "listings": {
+            key: {
+                "address": listing.get("address"),
+                "unit": listing.get("unit"),
+                "rent": listing.get("rent"),
+                "apply_url": listing.get("apply_url"),
+            }
+            for key, listing in current.items()
+        },
+    }
+
+    taxace_save(TAXACE_HISTORY_PATH, history)
+    taxace_save(TAXACE_STATE_PATH, state)
+
+    print(
+        f"Taxace complete: {len(alerts)} alert event(s), "
+        f"{len(removed)} removal(s)."
+    )
+
+
+
 def run_normal_monitor() -> None:
     state = load_state()
     history = load_history()
@@ -5056,10 +5496,10 @@ def main() -> int:
         run_test_listing(TEST_LISTING)
         return 0
 
-    # Run all six sources concurrently so one source does not block another.
+    # Run all seven sources concurrently so one source does not block another.
     errors = []
 
-    with ThreadPoolExecutor(max_workers=6) as executor:
+    with ThreadPoolExecutor(max_workers=7) as executor:
         futures = {
             executor.submit(run_normal_monitor): "Reside",
             executor.submit(run_fac_monitor): "FAC",
@@ -5075,6 +5515,7 @@ def main() -> int:
                 format_et,
             ): "MGNY",
             executor.submit(run_hpd_google_monitor): "HPD / Tax Solute",
+            executor.submit(run_taxace_monitor): "Taxace",
         }
 
         for future in as_completed(futures):
