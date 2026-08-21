@@ -3728,12 +3728,12 @@ HPD_GOOGLE_USER_AGENT = "nyc-rerental-monitor/5.15 (personal affordable-housing 
 
 
 def hpdg_norm(v):
-    return re.sub(r"\\s+", " ", str(v or "").replace("\\u00a0", " ")).strip()
+    return re.sub(r"\s+", " ", str(v or "").replace("\u00a0", " ")).strip()
 
 
 def hpdg_status(v):
     s = hpdg_norm(v).casefold()
-    if "initial lease" in s: return "initial lease-up"
+    if "initial lease" in s or "initial occupancy" in s: return "initial lease-up"
     if "on hold" in s: return "on hold"
     if "available" in s: return "available"
     return s or "unknown"
@@ -3745,7 +3745,7 @@ def hpdg_active(v):
 
 def hpdg_address_like(s):
     return bool(re.search(
-        r"^\\d{1,5}(?:-\\d{1,4})?\\s+.+?\\b(?:Street|St\\.?|Avenue|Ave\\.?|Road|Rd\\.?|Place|Pl\\.?|Boulevard|Blvd\\.?|Drive|Dr\\.?|Lane|Ln\\.?|Court|Ct\\.?)\\b",
+        r"^\d{1,5}(?:-\d{1,4})?\s+.+?\b(?:Street|St\.?|Avenue|Ave\.?|Road|Rd\.?|Place|Pl\.?|Boulevard|Blvd\.?|Drive|Dr\.?|Lane|Ln\.?|Court|Ct\.?)\b",
         hpdg_norm(s), re.I
     ))
 
@@ -3759,7 +3759,7 @@ def hpdg_tier_key(t):
 
 
 def hpdg_money(v):
-    m=re.search(r"\\$\\s*([\\d,]+(?:\\.\\d{1,2})?)", hpdg_norm(v))
+    m=re.search(r"\$\s*([\d,]+(?:\.\d{1,2})?)", hpdg_norm(v))
     if not m: return hpdg_norm(v) or None
     try: return f"${float(m.group(1).replace(',','')):,.2f}"
     except ValueError: return "$"+m.group(1)
@@ -3768,8 +3768,8 @@ def hpdg_money(v):
 def hpdg_income(row):
     s=hpdg_norm(row)
     # Repair source typos such as $154.440.00 -> $154,440.00.
-    s=re.sub(r"\\$(\\d{2,3})\\.(\\d{3})\\.(\\d{2})\\b", r"$\\1,\\2.\\3", s)
-    amounts=re.findall(r"\\$\\s*[\\d,]+(?:\\.\\d{1,2})?", s)
+    s=re.sub(r"\$(\d{2,3})\.(\d{3})\.(\d{2})\b", r"$\1,\2.\3", s)
+    amounts=re.findall(r"\$\s*[\d,]+(?:\.\d{1,2})?", s)
     if len(amounts)<2: return None
     out=[]
     for a in amounts[:2]:
@@ -3781,83 +3781,313 @@ def hpdg_income(row):
 def hpdg_unit_label(heading, fallback=None):
     s=hpdg_norm(heading).casefold()
     if "studio" in s: return "Studio"
-    if re.search(r"\\b(?:one|1)\\s*(?:bed|bedroom)\\b", s): return "1 Bedroom"
-    if re.search(r"\\b(?:two|2)\\s*(?:bed|bedroom)\\b", s): return "2 Bedrooms"
-    if re.search(r"\\b(?:three|3)\\s*(?:bed|bedroom)\\b", s): return "3 Bedrooms"
+    if re.search(r"\b(?:one|1)\s*(?:bed|bedroom)\b", s): return "1 Bedroom"
+    if re.search(r"\b(?:two|2)\s*(?:bed|bedroom)\b", s): return "2 Bedrooms"
+    if re.search(r"\b(?:three|3)\s*(?:bed|bedroom)\b", s): return "3 Bedrooms"
     raw=hpdg_norm(fallback)
     return {"0":"Studio","1":"1 Bedroom","2":"2 Bedrooms","3":"3 Bedrooms"}.get(raw, raw or "Affordable Unit")
 
 
-def hpdg_parse_page(response):
-    soup=BeautifulSoup(response.text,"html.parser")
-    lines=[hpdg_norm(x) for x in soup.stripped_strings if hpdg_norm(x)]
-    idxs=[i for i,x in enumerate(lines) if hpdg_address_like(x)]
+def hpdg_parse_lines(lines):
+    lines=[hpdg_norm(x) for x in lines if hpdg_norm(x)]
+
+    # Address headings can be plain street addresses or a building name that
+    # embeds the address, e.g. "The Arcadian Apartment Aka 975 Nostrand Ave."
+    idxs=[]
+    for i,x in enumerate(lines):
+        if hpdg_address_like(x):
+            idxs.append(i)
+            continue
+        if re.search(
+            r"\b(?:aka\s+)?\d{1,5}(?:-\d{1,4})?\s+.+?\b"
+            r"(?:Street|St\.?|Avenue|Ave\.?|Road|Rd\.?|Place|Pl\.?|"
+            r"Boulevard|Blvd\.?|Drive|Dr\.?|Lane|Ln\.?|Court|Ct\.?)\b",
+            x,
+            re.I,
+        ):
+            nearby=" ".join(lines[i+1:i+7]).casefold()
+            if "unit size" in nearby or "household size" in nearby:
+                idxs.append(i)
+
     props=[]
     for n,idx in enumerate(idxs):
         end=idxs[n+1] if n+1<len(idxs) else len(lines)
         block=lines[idx:end]
-        address=lines[idx]
+        heading=lines[idx]
+
+        # Extract just the street address from a named-building heading.
+        address=heading
+        embedded=re.search(
+            r"(\d{1,5}(?:-\d{1,4})?\s+.+?\b"
+            r"(?:Street|St\.?|Avenue|Ave\.?|Road|Rd\.?|Place|Pl\.?|"
+            r"Boulevard|Blvd\.?|Drive|Dr\.?|Lane|Ln\.?|Court|Ct\.?))\b",
+            heading,
+            re.I,
+        )
+        if embedded:
+            address=hpdg_norm(embedded.group(1))
+
         # append city/borough line when separate
-        for x in block[1:5]:
-            if re.search(r"\\b(?:Brooklyn|Bronx|Queens|New York|Jamaica|Staten Island)(?:,?\\s*NY)?\\b",x,re.I):
-                if x.casefold() not in address.casefold(): address=f"{address}, {x}"
+        for x in block[1:6]:
+            if re.search(
+                r"\b(?:Brooklyn|Bronx|Queens|New York|Jamaica|Staten Island)"
+                r"(?:,?\s*NY)?\b",
+                x,
+                re.I,
+            ):
+                if x.casefold() not in address.casefold():
+                    address=f"{address}, {x}"
                 break
+
         status="unknown"
-        for x in reversed(lines[max(0,idx-4):idx+3]):
-            if any(k in x.casefold() for k in ("unit available","units available","unit on hold","units on hold","initial lease-up")):
-                status=hpdg_status(x); break
+        for x in reversed(lines[max(0,idx-6):idx+4]):
+            low=x.casefold()
+            if any(
+                k in low
+                for k in (
+                    "unit available",
+                    "units available",
+                    "unit on hold",
+                    "units on hold",
+                    "initial lease-up",
+                    "initial occupancy",
+                )
+            ):
+                status=hpdg_status(x)
+                break
+
         joined=" | ".join(block)
-        hm=re.search(r"Household\\s*size\\s*:\\s*([0-9]+(?:\\s*[-–—]\\s*[0-9]+)?)",joined,re.I)
+        hm=re.search(
+            r"Household\s*size\s*:\s*([0-9]+(?:\s*[-–—]\s*[0-9]+)?)",
+            joined,
+            re.I,
+        )
         household=hm.group(1) if hm else None
-        um=re.search(r"Unit\\s*Size\\s*:\\s*([^|]+)",joined,re.I)
+
+        um=re.search(r"Unit\s*Size\s*:\s*([^|]+)",joined,re.I)
         fallback_size=hpdg_norm(um.group(1)) if um else None
-        rm=re.search(r"\\bRent\\s*:\\s*(.+?)(?=\\s*\\|\\s*INCOME|$)",joined,re.I)
+
+        rm=re.search(
+            r"\bRent\s*:\s*(.+?)(?=\s*\|\s*INCOME|$)",
+            joined,
+            re.I,
+        )
         rent_summary=hpdg_norm(rm.group(1)) if rm else None
-        hi=[i for i,x in enumerate(block) if "income guidelines" in x.casefold()]
+
+        hi=[
+            i for i,x in enumerate(block)
+            if "income guidelines" in x.casefold()
+        ]
         tiers=[]
+
         for j,hidx in enumerate(hi):
-            sec=block[hidx+1:(hi[j+1] if j+1<len(hi) else len(block))]
-            heading=block[hidx]
-            size=hpdg_unit_label(heading, fallback_size if len(hi)==1 else None)
+            sec=block[
+                hidx+1:(hi[j+1] if j+1<len(hi) else len(block))
+            ]
+            heading_text=block[hidx]
+            size=hpdg_unit_label(
+                heading_text,
+                fallback_size if len(hi)==1 else None,
+            )
+
             rent=None
-            r=re.search(r"\\$\\s*[\\d,]+(?:\\.\\d{1,2})?",heading)
-            if r: rent=hpdg_money(r.group(0))
-            elif rent_summary and len(hi)==1: rent=hpdg_money(rent_summary)
+            r=re.search(
+                r"\$\s*[\d,]+(?:\.\d{1,2})?",
+                heading_text,
+            )
+            if r:
+                rent=hpdg_money(r.group(0))
+            elif rent_summary and len(hi)==1:
+                rent=hpdg_money(rent_summary)
             elif rent_summary and size.startswith("1 Bedroom"):
-                r=re.search(r"\\$\\s*[\\d,]+(?:\\.\\d{1,2})?\\s*[-–—]\\s*(?:one|1)\\s*bedroom",rent_summary,re.I)
-                if r: rent=hpdg_money(r.group(0))
+                r=re.search(
+                    r"\$\s*[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*"
+                    r"(?:one|1)\s*bedroom",
+                    rent_summary,
+                    re.I,
+                )
+                if r:
+                    rent=hpdg_money(r.group(0))
             elif rent_summary and size.startswith("2 Bedroom"):
-                r=re.search(r"\\$\\s*[\\d,]+(?:\\.\\d{1,2})?\\s*[-–—]\\s*(?:two|2)\\s*bedroom",rent_summary,re.I)
-                if r: rent=hpdg_money(r.group(0))
-            one=None; two=False
+                r=re.search(
+                    r"\$\s*[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*"
+                    r"(?:two|2)\s*bedroom",
+                    rent_summary,
+                    re.I,
+                )
+                if r:
+                    rent=hpdg_money(r.group(0))
+
+            one=None
+            two=False
             for row in sec:
-                if re.search(r"\\b1\\s+PERSON\\b",row,re.I): one=hpdg_income(row)
-                if re.search(r"\\b2\\s+(?:PERSON|PEOPLE)\\b",row,re.I): two=True
-            tiers.append({"unit_size":size,"rent":rent,"household_size":household,
-                          "one_person_eligible": True if one else False if two else None,
-                          "one_person_income":one})
+                if re.search(r"\b1\s+PERSON\b",row,re.I):
+                    one=hpdg_income(row)
+                if re.search(
+                    r"\b2\s+(?:PERSON|PEOPLE)\b",
+                    row,
+                    re.I,
+                ):
+                    two=True
+
+            tiers.append(
+                {
+                    "unit_size":size,
+                    "rent":rent,
+                    "household_size":household,
+                    "one_person_eligible": (
+                        True if one else False if two else None
+                    ),
+                    "one_person_income":one,
+                }
+            )
+
         if not tiers:
-            one=None; two=False
+            one=None
+            two=False
             for row in block:
-                if re.search(r"\\b1\\s+PERSON\\b",row,re.I): one=hpdg_income(row)
-                if re.search(r"\\b2\\s+(?:PERSON|PEOPLE)\\b",row,re.I): two=True
-            tiers=[{"unit_size":hpdg_unit_label('',fallback_size),"rent":hpdg_money(rent_summary),"household_size":household,
-                    "one_person_eligible":True if one else False if two else None,"one_person_income":one}]
+                if re.search(r"\b1\s+PERSON\b",row,re.I):
+                    one=hpdg_income(row)
+                if re.search(
+                    r"\b2\s+(?:PERSON|PEOPLE)\b",
+                    row,
+                    re.I,
+                ):
+                    two=True
+
+            tiers=[
+                {
+                    "unit_size":hpdg_unit_label("",fallback_size),
+                    "rent":hpdg_money(rent_summary),
+                    "household_size":household,
+                    "one_person_eligible": (
+                        True if one else False if two else None
+                    ),
+                    "one_person_income":one,
+                }
+            ]
+
         tiers=list({hpdg_tier_key(t):t for t in tiers}.values())
-        props.append({"source":"AffordableLivingNYC / Tax Solute","address":address,"status":status,
-                      "rent_summary":rent_summary,"tiers":tiers})
-    return list({hpdg_property_key(p):p for p in props}.values())
+        props.append(
+            {
+                "source":"AffordableLivingNYC / Tax Solute",
+                "address":address,
+                "status":status,
+                "rent_summary":rent_summary,
+                "tiers":tiers,
+            }
+        )
+
+    return list(
+        {
+            hpdg_property_key(p):p
+            for p in props
+            if hpdg_property_key(p)
+        }.values()
+    )
+
+
+def hpdg_parse_page(response):
+    soup=BeautifulSoup(response.text,"html.parser")
+    return hpdg_parse_lines(list(soup.stripped_strings))
 
 
 def hpdg_scrape():
-    r=requests.get(HPD_GOOGLE_URL,headers={"User-Agent":HPD_GOOGLE_USER_AGENT},timeout=HPD_GOOGLE_REQUEST_TIMEOUT)
+    r=requests.get(
+        HPD_GOOGLE_URL,
+        headers={"User-Agent":HPD_GOOGLE_USER_AGENT},
+        timeout=HPD_GOOGLE_REQUEST_TIMEOUT,
+    )
     r.raise_for_status()
+
     props=hpdg_parse_page(r)
+    parser_mode="raw HTML"
+
+    if not props:
+        print(
+            "AffordableLivingNYC raw HTML produced 0 listings; "
+            "falling back to rendered Chrome text."
+        )
+
+        with sync_playwright() as p:
+            browser=p.chromium.launch(
+                channel="chrome",
+                headless=True,
+            )
+            page=browser.new_page(
+                user_agent=HPD_GOOGLE_USER_AGENT,
+                viewport={"width":1280,"height":1100},
+            )
+
+            try:
+                page.goto(
+                    HPD_GOOGLE_URL,
+                    wait_until="domcontentloaded",
+                    timeout=25000,
+                )
+
+                body_text=""
+                deadline=time.time()+10
+                while time.time()<deadline:
+                    try:
+                        body_text=page.locator("body").inner_text(
+                            timeout=2000
+                        )
+                    except Exception:
+                        body_text=""
+
+                    low=body_text.casefold()
+                    if (
+                        "available affordable housing units" in low
+                        and "unit size" in low
+                        and "income guidelines" in low
+                    ):
+                        break
+
+                    page.wait_for_timeout(350)
+
+                props=hpdg_parse_lines(body_text.splitlines())
+                parser_mode="rendered Chrome text"
+
+                if not props:
+                    try:
+                        DEBUG_DIR.mkdir(parents=True,exist_ok=True)
+                        (
+                            DEBUG_DIR/"hpd_google_rendered_text.txt"
+                        ).write_text(body_text[:100000])
+                        page.screenshot(
+                            path=str(
+                                DEBUG_DIR/"hpd_google_rendered.png"
+                            ),
+                            full_page=True,
+                        )
+                    except Exception as exc:
+                        print(
+                            "Could not save AffordableLivingNYC "
+                            f"debug files: {exc}"
+                        )
+            finally:
+                browser.close()
+
     if not props:
         soup=BeautifulSoup(r.text,"html.parser")
-        title=hpdg_norm(soup.title.get_text(" ",strip=True)) if soup.title else "(no title)"
-        raise RuntimeError(f"AffordableLivingNYC page loaded but no listings were parsed. status={r.status_code}; bytes={len(r.content)}; title={title!r}")
-    print(f"AffordableLivingNYC scrape: {len(props)} property listing(s); {sum(hpdg_active(p.get('status')) for p in props)} active.")
+        title=(
+            hpdg_norm(soup.title.get_text(" ",strip=True))
+            if soup.title
+            else "(no title)"
+        )
+        raise RuntimeError(
+            "AffordableLivingNYC page loaded but no listings were parsed "
+            "from raw HTML or rendered Chrome text. "
+            f"status={r.status_code}; bytes={len(r.content)}; "
+            f"title={title!r}"
+        )
+
+    print(
+        f"AffordableLivingNYC scrape: {len(props)} property listing(s); "
+        f"{sum(hpdg_active(p.get('status')) for p in props)} active; "
+        f"parser={parser_mode}."
+    )
     return props
 
 
@@ -3868,7 +4098,7 @@ def hpdg_load(path, default):
 
 
 def hpdg_save(path,data):
-    path.write_text(json.dumps(data,indent=2,ensure_ascii=False,sort_keys=True)+"\\n")
+    path.write_text(json.dumps(data,indent=2,ensure_ascii=False,sort_keys=True)+"\n")
 
 
 def hpdg_fetch(state):
@@ -3920,7 +4150,7 @@ def hpdg_message(prop,tier,location,event,first_seen,previous_status=None,last_r
     maps=html.escape(google_maps_url(prop.get("address") or ""),quote=True)
     src=html.escape(HPD_GOOGLE_URL,quote=True)
     lines += ["",f'📝 <a href="{src}">Open HPD / Tax Solute listings</a>',f'🗺️ <a href="{maps}">Open in Google Maps</a>',"","<i>Location data: © OpenStreetMap contributors</i>"]
-    return "\\n".join(lines)
+    return "\n".join(lines)
 
 
 def run_hpd_google_monitor():
