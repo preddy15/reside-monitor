@@ -524,8 +524,16 @@
       "title": "Lincoln at Bankside",
       "units_count": 5,
       "url": "https://mgnyconsulting.com/listing/lincoln-at-bankside/"
+    },
+    "https://mgnyconsulting.com/listing/lumen-lic-apartments": {
+      "address": "23-15 44th Rd, Queens, NY 11101",
+      "income_range": "$109,372 - $238,160",
+      "tiers": {},
+      "title": "Lumen LIC Apartments",
+      "units_count": 92,
+      "url": "https://mgnyconsulting.com/listing/lumen-lic-apartments/"
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-21T19:58:19.447786+00:00"
+  "updated_at": "2026-08-21T20:00:47.512674+00:00"
 }
