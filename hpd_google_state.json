@@ -1,0 +1,286 @@
+{
+  "initialized": true,
+  "properties": {
+    "1441 teller ave bronx": {
+      "address": "1441 Teller Ave, Bronx",
+      "status": "on hold",
+      "tiers": {
+        "studio||$3,237.41||": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": null,
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$3,237.41",
+          "unit_size": "Studio"
+        }
+      }
+    },
+    "1544 nostrand ave brooklyn": {
+      "address": "1544 Nostrand Ave, Brooklyn",
+      "status": "unknown",
+      "tiers": {
+        "1 bedroom||$1,922.10||1-3": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": "1-3",
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$1,922.10",
+          "unit_size": "1 Bedroom"
+        }
+      }
+    },
+    "210 clarkson ave brooklyn ny": {
+      "address": "210 Clarkson Ave, Brooklyn, NY",
+      "status": "unknown",
+      "tiers": {
+        "affordable unit||$3,053.27||1": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": "1",
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$3,053.27",
+          "unit_size": "Affordable Unit"
+        }
+      }
+    },
+    "228 east 135th st bronx": {
+      "address": "228 East 135th St, Bronx",
+      "status": "on hold",
+      "tiers": {
+        "affordable unit||$2,961.55||": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": null,
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$2,961.55",
+          "unit_size": "Affordable Unit"
+        }
+      }
+    },
+    "268 barbey st brooklyn": {
+      "address": "268 Barbey St, Brooklyn",
+      "status": "unknown",
+      "tiers": {
+        "1 bedroom||$874.00||1-3": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": "1-3",
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$874.00",
+          "unit_size": "1 Bedroom"
+        }
+      }
+    },
+    "3128 bailey ave bronx": {
+      "address": "3128 Bailey Ave, Bronx",
+      "status": "on hold",
+      "tiers": {
+        "affordable unit||$3,229.00||1": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": "1",
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$3,229.00",
+          "unit_size": "Affordable Unit"
+        }
+      }
+    },
+    "540 fulton st brooklyn ny": {
+      "address": "540 Fulton st, Brooklyn, NY",
+      "status": "unknown",
+      "tiers": {
+        "affordable unit||||1-3": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": "1-3",
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": null,
+          "unit_size": "Affordable Unit"
+        }
+      }
+    },
+    "600 crown st": {
+      "address": "600 Crown St",
+      "status": "available",
+      "tiers": {
+        "1 bedroom||$3,000.00||1-5": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": "1-5",
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": true,
+          "one_person_income": "$111,498.00 – $154,440.00",
+          "removal_count": 0,
+          "rent": "$3,000.00",
+          "unit_size": "1 Bedroom"
+        },
+        "2 bedrooms||$3,500.00||1-5": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": "1-5",
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$3,500.00",
+          "unit_size": "2 Bedrooms"
+        }
+      }
+    },
+    "670 flushing avenue brooklyn ny 11206": {
+      "address": "670 Flushing Avenue, Brooklyn, NY 11206",
+      "status": "unknown",
+      "tiers": {
+        "affordable unit||||": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": null,
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": null,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": null,
+          "unit_size": "Affordable Unit"
+        }
+      }
+    },
+    "88 11 179th pl jamaica ny": {
+      "address": "88-11 179th Pl, Jamaica, NY",
+      "status": "on hold",
+      "tiers": {
+        "1 bedroom||$1,863.00||1-3": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": "1-3",
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": true,
+          "one_person_income": "$70,457.14 – $154,440.00",
+          "removal_count": 0,
+          "rent": "$1,863.00",
+          "unit_size": "1 Bedroom"
+        }
+      }
+    },
+    "94 east 111th st new york": {
+      "address": "94 East 111th St, New York",
+      "status": "available",
+      "tiers": {
+        "1 bedroom||||": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": null,
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": null,
+          "unit_size": "1 Bedroom"
+        },
+        "affordable unit||||": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": null,
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": null,
+          "unit_size": "Affordable Unit"
+        }
+      }
+    },
+    "975 nostrand ave brooklyn": {
+      "address": "975 Nostrand Ave, Brooklyn",
+      "status": "initial lease-up",
+      "tiers": {
+        "1 bedroom||$3.00||1": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": "1",
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$3.00",
+          "unit_size": "1 Bedroom"
+        },
+        "affordable unit||||1": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": "1",
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": null,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": null,
+          "unit_size": "Affordable Unit"
+        },
+        "studio||$2,900.00||1": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": "1",
+          "last_removed_at": null,
+          "last_seen": "2026-08-21T04:26:17.273123+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$2,900.00",
+          "unit_size": "Studio"
+        }
+      }
+    }
+  },
+  "updated_at": "2026-08-21T04:26:17.273123+00:00"
+}
