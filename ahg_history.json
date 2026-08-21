@@ -1,0 +1,59 @@
+{
+  "created_at": "2026-08-21T04:56:14.904943+00:00",
+  "listings": {
+    "https://ahgleasing.com/accessibility-units": {
+      "active": true,
+      "appearance_count": 1,
+      "details": {
+        "accessibility_note": "Only accepting applications for households requiring a mobility and/or visual/hearing accessible unit.",
+        "accessibility_only": true,
+        "address": null,
+        "application_email": null,
+        "application_phone": null,
+        "apply_url": null,
+        "deadline": null,
+        "lottery_date": null,
+        "status": "active",
+        "tiers": [],
+        "utilities": null
+      },
+      "first_seen": "2026-08-21T04:56:15.360629+00:00",
+      "last_removed_at": null,
+      "last_seen": "2026-08-21T04:56:15.360629+00:00",
+      "location": null,
+      "opportunity_type": "Accessibility Units / Waiting List",
+      "removal_count": 0,
+      "source": "Affordable Housing Group",
+      "title": "553W30 at 553 W. 30th Street, New York, NY 10001",
+      "url": "https://ahgleasing.com/accessibility-units/"
+    },
+    "https://www.ahgleasing.com/tribecaparkmod.pdf": {
+      "active": true,
+      "appearance_count": 1,
+      "details": {
+        "accessibility_note": null,
+        "accessibility_only": false,
+        "address": null,
+        "application_email": null,
+        "application_phone": null,
+        "apply_url": null,
+        "deadline": null,
+        "lottery_date": null,
+        "status": "active",
+        "tiers": [],
+        "utilities": null
+      },
+      "first_seen": "2026-08-21T04:56:15.360629+00:00",
+      "last_removed_at": null,
+      "last_seen": "2026-08-21T04:56:15.360629+00:00",
+      "location": null,
+      "opportunity_type": "Accessibility Units / Waiting List",
+      "removal_count": 0,
+      "source": "Affordable Housing Group",
+      "title": "Tribeca Park at 400 Chambers Street, New York, NY 10282",
+      "url": "https://www.ahgleasing.com/tribecaparkmod.pdf"
+    }
+  },
+  "updated_at": "2026-08-21T04:56:15.360629+00:00",
+  "version": 1
+}
