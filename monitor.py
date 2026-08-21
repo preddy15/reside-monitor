@@ -5373,6 +5373,540 @@ def run_taxace_monitor():
 
 
 
+
+# ---------------------------------------------------------------------------
+# SJP Tax Consultants affordable re-rentals monitor
+# ---------------------------------------------------------------------------
+
+SJP_URL = "https://www.sjpny.com/affordable-rerentals"
+SJP_REQUEST_TIMEOUT = (2.5, 6.0)
+SJP_MAX_ATTEMPTS = 3
+SJP_RETRY_DELAYS = (0, 2, 5)
+SJP_STATE_PATH = Path(os.getenv("SJP_STATE_PATH", "sjp_state.json"))
+SJP_HISTORY_PATH = Path(os.getenv("SJP_HISTORY_PATH", "sjp_history.json"))
+SJP_USER_AGENT = "nyc-rerental-monitor/5.19 (personal affordable-housing availability notifier)"
+
+
+def sjp_norm(v):
+    return re.sub(r"\s+", " ", str(v or "").replace("\u00a0", " ")).strip()
+
+
+def sjp_key(item):
+    # SJP detail URLs are the most stable identity available because some
+    # listings use cross streets instead of a full street address.
+    url = sjp_norm(item.get("url")).rstrip("/").casefold()
+    if url:
+        return url
+    title = re.sub(r"[^a-z0-9]+", " ", sjp_norm(item.get("title")).casefold()).strip()
+    return title
+
+
+def sjp_money(v):
+    m = re.search(r"\$\s*([\d,]+(?:\.\d{1,2})?)", sjp_norm(v))
+    if not m:
+        return sjp_norm(v) or None
+    try:
+        return f"${float(m.group(1).replace(',', '')):,.2f}"
+    except ValueError:
+        return "$" + m.group(1)
+
+
+def sjp_income(v):
+    amounts = re.findall(r"\$\s*[\d,]+(?:\.\d{1,2})?", sjp_norm(v))
+    if len(amounts) >= 2:
+        return f"{sjp_money(amounts[0])} – {sjp_money(amounts[1])}"
+    return sjp_norm(v) or None
+
+
+def sjp_status(v):
+    s = sjp_norm(v).casefold()
+    if "rented" in s or "waitlist met" in s:
+        return "rented / waitlist met"
+    if "available" in s:
+        return "available"
+    return s or "unknown"
+
+
+def sjp_parse_index(response):
+    soup = BeautifulSoup(response.text, "html.parser")
+    listings = []
+
+    # SJP's current cards link to /apartment-listings/<slug>.
+    for a in soup.find_all("a", href=True):
+        href = urljoin(SJP_URL, a.get("href"))
+        if not re.search(r"/apartment-listings/[^/?#]+/?$", href, re.I):
+            continue
+
+        text_value = sjp_norm(a.get_text(" ", strip=True))
+        if not text_value:
+            continue
+
+        # Avoid "previous/next" links and de-dupe later.
+        if text_value.casefold().startswith(("previous ", "next ")):
+            continue
+
+        listings.append(
+            {
+                "source": "SJP Tax Consultants",
+                "title": text_value,
+                "url": href,
+            }
+        )
+
+    listings = list({sjp_key(x): x for x in listings}.values())
+
+    if not listings:
+        title = sjp_norm(soup.title.get_text(" ", strip=True)) if soup.title else "(no title)"
+        raise RuntimeError(
+            "SJP affordable re-rentals page loaded but no listing cards were parsed. "
+            f"status={response.status_code}; bytes={len(response.content)}; title={title!r}"
+        )
+
+    print(f"SJP index scrape: {len(listings)} listing card(s).")
+    return listings
+
+
+def sjp_scrape_index():
+    r = requests.get(
+        SJP_URL,
+        headers={"User-Agent": SJP_USER_AGENT},
+        timeout=SJP_REQUEST_TIMEOUT,
+    )
+    r.raise_for_status()
+    return sjp_parse_index(r)
+
+
+def sjp_enrich_listing(listing):
+    details = {
+        "status": "unknown",
+        "location_label": None,
+        "unit_size": None,
+        "household_size": None,
+        "rent": None,
+        "ami": None,
+        "one_person_eligible": None,
+        "one_person_income": None,
+        "utilities": None,
+        "apply_url": None,
+    }
+
+    url = listing.get("url")
+    if not url:
+        return details
+
+    r = requests.get(
+        url,
+        headers={"User-Agent": SJP_USER_AGENT},
+        timeout=SJP_REQUEST_TIMEOUT,
+    )
+    r.raise_for_status()
+
+    soup = BeautifulSoup(r.text, "html.parser")
+    page_text = sjp_norm(soup.get_text(" ", strip=True))
+
+    # Status is exposed as a tag/text near the Apply button.
+    if re.search(r"Rented\s*/\s*Waitlist\s*Met", page_text, re.I):
+        details["status"] = "rented / waitlist met"
+    elif re.search(r"\bavailable\b", page_text, re.I):
+        details["status"] = "available"
+
+    # Subtitle, e.g. "(Studio - Newtown and 32 Street - 3rd Fl)".
+    heading = soup.find(["h2", "h3"], string=re.compile(r"\(.+\)"))
+    if heading:
+        details["location_label"] = sjp_norm(heading.get_text(" ", strip=True)).strip("()")
+
+    size_match = re.search(
+        r"Bedroom\s*Size\s*-\s*(.+?)(?=\s+Household\s*Size|\s+\*?Current\s+Legal\s+Rent|\s+Approximate\s+Income|$)",
+        page_text,
+        re.I,
+    )
+    if size_match:
+        details["unit_size"] = sjp_norm(size_match.group(1))
+
+    household_match = re.search(
+        r"Household\s*Size\s*-\s*([0-9]+\s*[-–—]\s*[0-9]+\s*People|[0-9]+\s*People)",
+        page_text,
+        re.I,
+    )
+    if household_match:
+        details["household_size"] = sjp_norm(household_match.group(1))
+
+    rent_match = re.search(
+        r"Current\s+Legal\s+Rent\s+Amount\s*-\s*\*?\s*(\$\s*[\d,]+(?:\.\d{1,2})?)",
+        page_text,
+        re.I,
+    )
+    if rent_match:
+        details["rent"] = sjp_money(rent_match.group(1))
+
+    ami_match = re.search(
+        r"Approximate\s+Income\s+Limits\s*\(\s*(\d{1,3})\s*%\s*AMI\s*\)",
+        page_text,
+        re.I,
+    )
+    if ami_match:
+        details["ami"] = f"{ami_match.group(1)}%"
+
+    one_match = re.search(
+        r"\b1\s+Person\s*-\s*"
+        r"(\$\s*[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*"
+        r"\$\s*[\d,]+(?:\.\d{1,2})?)",
+        page_text,
+        re.I,
+    )
+    if one_match:
+        details["one_person_eligible"] = True
+        details["one_person_income"] = sjp_income(one_match.group(1))
+    else:
+        # If the published household range explicitly begins at 2+ and there
+        # is no 1-person row, mark one-person ineligible.
+        nums = [int(x) for x in re.findall(r"\d+", details.get("household_size") or "")]
+        if nums and nums[0] >= 2:
+            details["one_person_eligible"] = False
+
+    utilities_match = re.search(
+        r"Utilities\s*:\s*(.+?)(?=\s+\*?Rent amount subject|\s+Rent amount subject|$)",
+        page_text,
+        re.I,
+    )
+    if utilities_match:
+        details["utilities"] = sjp_norm(utilities_match.group(1))
+    else:
+        # Some pages omit "Utilities:" but still state tenant/landlord utility responsibility.
+        utility_sentence = re.search(
+            r"((?:Tenant|Landlord)\s+pays?.+?(?=\s+\*?Rent amount subject|\s+Rent amount subject|$))",
+            page_text,
+            re.I,
+        )
+        if utility_sentence:
+            details["utilities"] = sjp_norm(utility_sentence.group(1))
+
+    apply = soup.find(
+        "a",
+        href=True,
+        string=re.compile(r"Apply\s*now", re.I),
+    )
+    if apply:
+        details["apply_url"] = urljoin(url, apply.get("href"))
+
+    return details
+
+
+def sjp_load(path, default):
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text())
+    except Exception as exc:
+        raise RuntimeError(f"Could not read {path}: {exc}") from exc
+
+
+def sjp_save(path, data):
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
+
+
+def sjp_validate(listings, state):
+    current = len(listings)
+    previous = len(state.get("listings", {}))
+
+    if current == 0:
+        raise IncompleteScrapeError("SJP captured 0 listing cards. Previous baseline preserved.")
+
+    if previous:
+        ratio = current / previous
+        drop = previous - current
+        if previous >= 6 and drop >= 4 and ratio < 0.45:
+            raise IncompleteScrapeError(
+                f"Suspicious SJP listing-count drop: {previous} -> {current}. "
+                "Previous baseline preserved."
+            )
+
+
+def sjp_fetch(state):
+    last_error = None
+
+    for attempt in range(1, SJP_MAX_ATTEMPTS + 1):
+        delay = SJP_RETRY_DELAYS[min(attempt - 1, len(SJP_RETRY_DELAYS) - 1)]
+        if delay:
+            print(f"SJP retry {attempt}/{SJP_MAX_ATTEMPTS}: waiting {delay}s...")
+            time.sleep(delay)
+
+        try:
+            listings = sjp_scrape_index()
+            sjp_validate(listings, state)
+            if attempt > 1:
+                print(f"SJP recovered on attempt {attempt}/{SJP_MAX_ATTEMPTS}.")
+            return listings
+        except (requests.RequestException, IncompleteScrapeError, RuntimeError) as exc:
+            last_error = exc
+            print(
+                f"SJP attempt {attempt}/{SJP_MAX_ATTEMPTS} failed: "
+                f"{type(exc).__name__}: {exc}",
+                file=sys.stderr,
+            )
+
+    print(
+        f"SJP unavailable after {SJP_MAX_ATTEMPTS} attempts; "
+        "preserving prior state/history. "
+        f"Last error: {last_error}",
+        file=sys.stderr,
+    )
+    return None
+
+
+def sjp_message(listing, details, location, event, first_seen, last_removed_at=None):
+    priority = priority_for_location(location)
+    heading = (
+        "🔄 <b>SJP AFFORDABLE LISTING REAPPEARED</b>"
+        if event == "reappeared"
+        else "🏙️ <b>NEW SJP AFFORDABLE RE-RENTAL</b>"
+    )
+
+    status = sjp_status(details.get("status"))
+    status_display = {
+        "available": "🟢 AVAILABLE",
+        "rented / waitlist met": "⚫ RENTED / WAITLIST MET",
+        "unknown": "⚪ STATUS UNKNOWN",
+    }.get(status, f"⚪ {status.upper()}")
+
+    lines = [
+        heading,
+        f"<b>{status_display}</b>",
+        f"{priority['emoji']} <b>{priority['label']} · {priority['score']}/3</b>",
+        f"<i>{html.escape(priority['reason'])}</i>",
+        "",
+        f"🏠 <b>{html.escape(listing.get('title') or 'SJP re-rental')}</b>",
+    ]
+
+    if details.get("location_label"):
+        lines.append(f"📫 {html.escape(details['location_label'])}")
+    if details.get("rent"):
+        lines.append(f"💰 <b>{html.escape(details['rent'])}/mo</b>")
+    if details.get("unit_size"):
+        lines.append(f"🛏️ <b>{html.escape(details['unit_size'])}</b>")
+    if details.get("ami"):
+        lines.append(f"📊 AMI: <b>{html.escape(details['ami'])}</b>")
+
+    if details.get("one_person_eligible") is False:
+        lines.append("👤 1-person household: <b>Not eligible</b>")
+    elif details.get("one_person_eligible") is True:
+        lines.append("👤 1-person household: <b>Eligible</b>")
+        if details.get("one_person_income"):
+            lines.append(
+                f"💵 1-person income: <b>{html.escape(details['one_person_income'])}</b>"
+            )
+
+    if details.get("utilities"):
+        lines.append(f"⚡ Utilities: {html.escape(details['utilities'])}")
+
+    if location:
+        n = normalize(location.get("neighborhood"))
+        b = normalize(location.get("borough"))
+        z = normalize(location.get("postcode"))
+        if n and b:
+            lines.append(f"📍 <b>{html.escape(n)}, {html.escape(b)}</b>")
+        elif b:
+            lines.append(f"📍 <b>{html.escape(b)}</b>")
+        elif n:
+            lines.append(f"📍 <b>{html.escape(n)}</b>")
+        if z:
+            lines.append(f"📮 {html.escape(z)}")
+
+    lines.append(f"🕐 First detected: <b>{html.escape(format_et(first_seen))}</b>")
+
+    if event == "reappeared" and last_removed_at:
+        d = human_duration(last_removed_at, utc_now_iso())
+        if d:
+            lines.append(f"↩️ Reappeared after <b>{html.escape(d)}</b>")
+
+    detail_url = html.escape(listing.get("url") or SJP_URL, quote=True)
+    apply_url = html.escape(details.get("apply_url") or listing.get("url") or SJP_URL, quote=True)
+
+    # SJP often publishes cross streets rather than a full postal address.
+    maps_query = details.get("location_label") or listing.get("title") or ""
+    maps = html.escape(google_maps_url(maps_query), quote=True)
+
+    lines += [
+        "",
+        f'📝 <a href="{apply_url}"><b>Apply now</b></a>',
+        f'🔎 <a href="{detail_url}">View SJP listing details</a>',
+        f'🗺️ <a href="{maps}">Open in Google Maps</a>',
+        "",
+        "<i>Source: SJP Tax Consultants · Location data: © OpenStreetMap contributors</i>",
+    ]
+
+    return "\n".join(lines)
+
+
+def run_sjp_monitor():
+    state = sjp_load(SJP_STATE_PATH, {"initialized": False, "listings": {}})
+    history = sjp_load(
+        SJP_HISTORY_PATH,
+        {"version": 1, "created_at": utc_now_iso(), "listings": {}},
+    )
+
+    listings = sjp_fetch(state)
+    if listings is None:
+        return
+
+    now = utc_now_iso()
+    entries = history.setdefault("listings", {})
+    current = {sjp_key(x): x for x in listings}
+    current_keys = set(current)
+
+    if not state.get("initialized"):
+        # First run enriches current cards once so status and one-person data
+        # are already known in history, but sends no Telegram alerts.
+        for key, listing in current.items():
+            try:
+                details = sjp_enrich_listing(listing)
+            except Exception as exc:
+                print(f"SJP baseline enrichment failed for {listing.get('url')}: {exc}")
+                details = {"status": "unknown"}
+
+            entries[key] = {
+                **listing,
+                "details": details,
+                "first_seen": now,
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": None,
+            }
+
+        history["updated_at"] = now
+        state = {
+            "initialized": True,
+            "updated_at": now,
+            "listings": {
+                key: {
+                    "title": item.get("title"),
+                    "url": item.get("url"),
+                }
+                for key, item in current.items()
+            },
+        }
+        sjp_save(SJP_HISTORY_PATH, history)
+        sjp_save(SJP_STATE_PATH, state)
+        print(
+            f"SJP initialized with {len(listings)} existing card(s); "
+            "no existing listings alerted."
+        )
+        return
+
+    alerts = []
+    removed = []
+
+    for key, entry in entries.items():
+        if entry.get("active") and key not in current_keys:
+            entry["active"] = False
+            entry["last_removed_at"] = now
+            entry["removal_count"] = int(entry.get("removal_count", 0)) + 1
+            removed.append(entry)
+
+    for key, listing in current.items():
+        entry = entries.get(key)
+
+        if entry is None:
+            try:
+                details = sjp_enrich_listing(listing)
+            except Exception as exc:
+                print(f"SJP enrichment failed for new listing {listing.get('url')}: {exc}")
+                details = {"status": "unknown"}
+
+            # The index is intended to be current inventory, but do not alert a
+            # detail page that explicitly says Rented / Waitlist Met.
+            status = sjp_status(details.get("status"))
+
+            location_query = details.get("location_label") or listing.get("title") or ""
+            location = geocode_nyc_address(location_query)
+
+            entry = {
+                **listing,
+                "details": details,
+                "first_seen": now,
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": location,
+            }
+            entries[key] = entry
+
+            if status != "rented / waitlist met":
+                alerts.append((listing, entry, "new", None))
+            continue
+
+        was_active = bool(entry.get("active"))
+        last_removed_at = entry.get("last_removed_at")
+
+        entry.update(listing)
+        entry["last_seen"] = now
+        entry["active"] = True
+
+        if not was_active:
+            try:
+                details = sjp_enrich_listing(listing)
+            except Exception as exc:
+                print(f"SJP enrichment failed for reappeared listing {listing.get('url')}: {exc}")
+                details = entry.get("details") or {"status": "unknown"}
+
+            entry["details"] = details
+
+            if not entry.get("location"):
+                query = details.get("location_label") or listing.get("title") or ""
+                entry["location"] = geocode_nyc_address(query)
+
+            entry["appearance_count"] = int(entry.get("appearance_count", 1)) + 1
+
+            if sjp_status(details.get("status")) != "rented / waitlist met":
+                alerts.append((listing, entry, "reappeared", last_removed_at))
+
+    for listing, entry, event, last_removed_at in alerts:
+        send_telegram(
+            sjp_message(
+                listing,
+                entry.get("details") or {},
+                entry.get("location"),
+                event,
+                entry.get("first_seen"),
+                last_removed_at,
+            ),
+            parse_mode="HTML",
+        )
+
+    for entry in removed:
+        print(
+            f"SJP removed: {entry.get('title')} "
+            f"(removal #{entry.get('removal_count', 1)})"
+        )
+
+    history["updated_at"] = now
+    state = {
+        "initialized": True,
+        "updated_at": now,
+        "listings": {
+            key: {
+                "title": item.get("title"),
+                "url": item.get("url"),
+            }
+            for key, item in current.items()
+        },
+    }
+
+    sjp_save(SJP_HISTORY_PATH, history)
+    sjp_save(SJP_STATE_PATH, state)
+
+    print(
+        f"SJP complete: {len(alerts)} alert event(s), "
+        f"{len(removed)} removal(s)."
+    )
+
+
+
 def run_normal_monitor() -> None:
     state = load_state()
     history = load_history()
@@ -5496,10 +6030,10 @@ def main() -> int:
         run_test_listing(TEST_LISTING)
         return 0
 
-    # Run all seven sources concurrently so one source does not block another.
+    # Run all eight sources concurrently so one source does not block another.
     errors = []
 
-    with ThreadPoolExecutor(max_workers=7) as executor:
+    with ThreadPoolExecutor(max_workers=8) as executor:
         futures = {
             executor.submit(run_normal_monitor): "Reside",
             executor.submit(run_fac_monitor): "FAC",
@@ -5516,6 +6050,7 @@ def main() -> int:
             ): "MGNY",
             executor.submit(run_hpd_google_monitor): "HPD / Tax Solute",
             executor.submit(run_taxace_monitor): "Taxace",
+            executor.submit(run_sjp_monitor): "SJP",
         }
 
         for future in as_completed(futures):
