@@ -3713,6 +3713,269 @@ def run_mns_monitor() -> None:
 
 
 
+
+# ---------------------------------------------------------------------------
+# AffordableLivingNYC / Tax Solute HPD Google Sites monitor
+# ---------------------------------------------------------------------------
+
+HPD_GOOGLE_URL = "https://sites.google.com/affordablelivingnyc.com/hpd/home"
+HPD_GOOGLE_REQUEST_TIMEOUT = (2.5, 6.0)
+HPD_GOOGLE_MAX_ATTEMPTS = 3
+HPD_GOOGLE_RETRY_DELAYS = (0, 2, 5)
+HPD_GOOGLE_STATE_PATH = Path(os.getenv("HPD_GOOGLE_STATE_PATH", "hpd_google_state.json"))
+HPD_GOOGLE_HISTORY_PATH = Path(os.getenv("HPD_GOOGLE_HISTORY_PATH", "hpd_google_history.json"))
+HPD_GOOGLE_USER_AGENT = "nyc-rerental-monitor/5.15 (personal affordable-housing availability notifier)"
+
+
+def hpdg_norm(v):
+    return re.sub(r"\\s+", " ", str(v or "").replace("\\u00a0", " ")).strip()
+
+
+def hpdg_status(v):
+    s = hpdg_norm(v).casefold()
+    if "initial lease" in s: return "initial lease-up"
+    if "on hold" in s: return "on hold"
+    if "available" in s: return "available"
+    return s or "unknown"
+
+
+def hpdg_active(v):
+    return hpdg_status(v) in {"available", "initial lease-up"}
+
+
+def hpdg_address_like(s):
+    return bool(re.search(
+        r"^\\d{1,5}(?:-\\d{1,4})?\\s+.+?\\b(?:Street|St\\.?|Avenue|Ave\\.?|Road|Rd\\.?|Place|Pl\\.?|Boulevard|Blvd\\.?|Drive|Dr\\.?|Lane|Ln\\.?|Court|Ct\\.?)\\b",
+        hpdg_norm(s), re.I
+    ))
+
+
+def hpdg_property_key(p):
+    return re.sub(r"[^a-z0-9]+", " ", hpdg_norm(p.get("address")).casefold()).strip()
+
+
+def hpdg_tier_key(t):
+    return "||".join(hpdg_norm(t.get(k)).casefold() for k in ("unit_size","rent","household_size"))
+
+
+def hpdg_money(v):
+    m=re.search(r"\\$\\s*([\\d,]+(?:\\.\\d{1,2})?)", hpdg_norm(v))
+    if not m: return hpdg_norm(v) or None
+    try: return f"${float(m.group(1).replace(',','')):,.2f}"
+    except ValueError: return "$"+m.group(1)
+
+
+def hpdg_income(row):
+    s=hpdg_norm(row)
+    # Repair source typos such as $154.440.00 -> $154,440.00.
+    s=re.sub(r"\\$(\\d{2,3})\\.(\\d{3})\\.(\\d{2})\\b", r"$\\1,\\2.\\3", s)
+    amounts=re.findall(r"\\$\\s*[\\d,]+(?:\\.\\d{1,2})?", s)
+    if len(amounts)<2: return None
+    out=[]
+    for a in amounts[:2]:
+        try: out.append(f"${float(a.replace('$','').replace(',','').strip()):,.2f}")
+        except ValueError: out.append(a.strip())
+    return f"{out[0]} – {out[1]}"
+
+
+def hpdg_unit_label(heading, fallback=None):
+    s=hpdg_norm(heading).casefold()
+    if "studio" in s: return "Studio"
+    if re.search(r"\\b(?:one|1)\\s*(?:bed|bedroom)\\b", s): return "1 Bedroom"
+    if re.search(r"\\b(?:two|2)\\s*(?:bed|bedroom)\\b", s): return "2 Bedrooms"
+    if re.search(r"\\b(?:three|3)\\s*(?:bed|bedroom)\\b", s): return "3 Bedrooms"
+    raw=hpdg_norm(fallback)
+    return {"0":"Studio","1":"1 Bedroom","2":"2 Bedrooms","3":"3 Bedrooms"}.get(raw, raw or "Affordable Unit")
+
+
+def hpdg_parse_page(response):
+    soup=BeautifulSoup(response.text,"html.parser")
+    lines=[hpdg_norm(x) for x in soup.stripped_strings if hpdg_norm(x)]
+    idxs=[i for i,x in enumerate(lines) if hpdg_address_like(x)]
+    props=[]
+    for n,idx in enumerate(idxs):
+        end=idxs[n+1] if n+1<len(idxs) else len(lines)
+        block=lines[idx:end]
+        address=lines[idx]
+        # append city/borough line when separate
+        for x in block[1:5]:
+            if re.search(r"\\b(?:Brooklyn|Bronx|Queens|New York|Jamaica|Staten Island)(?:,?\\s*NY)?\\b",x,re.I):
+                if x.casefold() not in address.casefold(): address=f"{address}, {x}"
+                break
+        status="unknown"
+        for x in reversed(lines[max(0,idx-4):idx+3]):
+            if any(k in x.casefold() for k in ("unit available","units available","unit on hold","units on hold","initial lease-up")):
+                status=hpdg_status(x); break
+        joined=" | ".join(block)
+        hm=re.search(r"Household\\s*size\\s*:\\s*([0-9]+(?:\\s*[-–—]\\s*[0-9]+)?)",joined,re.I)
+        household=hm.group(1) if hm else None
+        um=re.search(r"Unit\\s*Size\\s*:\\s*([^|]+)",joined,re.I)
+        fallback_size=hpdg_norm(um.group(1)) if um else None
+        rm=re.search(r"\\bRent\\s*:\\s*(.+?)(?=\\s*\\|\\s*INCOME|$)",joined,re.I)
+        rent_summary=hpdg_norm(rm.group(1)) if rm else None
+        hi=[i for i,x in enumerate(block) if "income guidelines" in x.casefold()]
+        tiers=[]
+        for j,hidx in enumerate(hi):
+            sec=block[hidx+1:(hi[j+1] if j+1<len(hi) else len(block))]
+            heading=block[hidx]
+            size=hpdg_unit_label(heading, fallback_size if len(hi)==1 else None)
+            rent=None
+            r=re.search(r"\\$\\s*[\\d,]+(?:\\.\\d{1,2})?",heading)
+            if r: rent=hpdg_money(r.group(0))
+            elif rent_summary and len(hi)==1: rent=hpdg_money(rent_summary)
+            elif rent_summary and size.startswith("1 Bedroom"):
+                r=re.search(r"\\$\\s*[\\d,]+(?:\\.\\d{1,2})?\\s*[-–—]\\s*(?:one|1)\\s*bedroom",rent_summary,re.I)
+                if r: rent=hpdg_money(r.group(0))
+            elif rent_summary and size.startswith("2 Bedroom"):
+                r=re.search(r"\\$\\s*[\\d,]+(?:\\.\\d{1,2})?\\s*[-–—]\\s*(?:two|2)\\s*bedroom",rent_summary,re.I)
+                if r: rent=hpdg_money(r.group(0))
+            one=None; two=False
+            for row in sec:
+                if re.search(r"\\b1\\s+PERSON\\b",row,re.I): one=hpdg_income(row)
+                if re.search(r"\\b2\\s+(?:PERSON|PEOPLE)\\b",row,re.I): two=True
+            tiers.append({"unit_size":size,"rent":rent,"household_size":household,
+                          "one_person_eligible": True if one else False if two else None,
+                          "one_person_income":one})
+        if not tiers:
+            one=None; two=False
+            for row in block:
+                if re.search(r"\\b1\\s+PERSON\\b",row,re.I): one=hpdg_income(row)
+                if re.search(r"\\b2\\s+(?:PERSON|PEOPLE)\\b",row,re.I): two=True
+            tiers=[{"unit_size":hpdg_unit_label('',fallback_size),"rent":hpdg_money(rent_summary),"household_size":household,
+                    "one_person_eligible":True if one else False if two else None,"one_person_income":one}]
+        tiers=list({hpdg_tier_key(t):t for t in tiers}.values())
+        props.append({"source":"AffordableLivingNYC / Tax Solute","address":address,"status":status,
+                      "rent_summary":rent_summary,"tiers":tiers})
+    return list({hpdg_property_key(p):p for p in props}.values())
+
+
+def hpdg_scrape():
+    r=requests.get(HPD_GOOGLE_URL,headers={"User-Agent":HPD_GOOGLE_USER_AGENT},timeout=HPD_GOOGLE_REQUEST_TIMEOUT)
+    r.raise_for_status()
+    props=hpdg_parse_page(r)
+    if not props:
+        soup=BeautifulSoup(r.text,"html.parser")
+        title=hpdg_norm(soup.title.get_text(" ",strip=True)) if soup.title else "(no title)"
+        raise RuntimeError(f"AffordableLivingNYC page loaded but no listings were parsed. status={r.status_code}; bytes={len(r.content)}; title={title!r}")
+    print(f"AffordableLivingNYC scrape: {len(props)} property listing(s); {sum(hpdg_active(p.get('status')) for p in props)} active.")
+    return props
+
+
+def hpdg_load(path, default):
+    if not path.exists(): return default
+    try: return json.loads(path.read_text())
+    except Exception as e: raise RuntimeError(f"Could not read {path}: {e}") from e
+
+
+def hpdg_save(path,data):
+    path.write_text(json.dumps(data,indent=2,ensure_ascii=False,sort_keys=True)+"\\n")
+
+
+def hpdg_fetch(state):
+    last=None
+    for attempt in range(1,HPD_GOOGLE_MAX_ATTEMPTS+1):
+        delay=HPD_GOOGLE_RETRY_DELAYS[min(attempt-1,len(HPD_GOOGLE_RETRY_DELAYS)-1)]
+        if delay: time.sleep(delay)
+        try:
+            props=hpdg_scrape()
+            prev=len(state.get("properties",{})); cur=len(props)
+            if prev>=8 and prev-cur>=4 and cur/prev<0.55:
+                raise RuntimeError(f"Suspicious AffordableLivingNYC listing-count drop: {prev} -> {cur}")
+            if attempt>1: print(f"AffordableLivingNYC recovered on attempt {attempt}/{HPD_GOOGLE_MAX_ATTEMPTS}.")
+            return props
+        except (requests.RequestException,RuntimeError) as e:
+            last=e; print(f"AffordableLivingNYC attempt {attempt}/{HPD_GOOGLE_MAX_ATTEMPTS} failed: {type(e).__name__}: {e}",file=sys.stderr)
+    print(f"AffordableLivingNYC unavailable after {HPD_GOOGLE_MAX_ATTEMPTS} attempts; preserving prior state/history. Last error: {last}",file=sys.stderr)
+    return None
+
+
+def hpdg_message(prop,tier,location,event,first_seen,previous_status=None,last_removed_at=None):
+    priority=priority_for_location(location)
+    if event=="became_available": heading="🟢 <b>HPD / TAX SOLUTE LISTING NOW AVAILABLE</b>"
+    elif event=="reappeared": heading="🔄 <b>HPD / TAX SOLUTE LISTING REAPPEARED</b>"
+    else: heading="🏘️ <b>NEW HPD / TAX SOLUTE LISTING</b>"
+    status=hpdg_status(prop.get("status"))
+    sdisplay={"available":"🟢 AVAILABLE","initial lease-up":"🟢 INITIAL LEASE-UP","on hold":"🟡 ON HOLD"}.get(status,status.upper())
+    lines=[heading,f"<b>{sdisplay}</b>",f"{priority['emoji']} <b>{priority['label']} · {priority['score']}/3</b>",
+           f"<i>{html.escape(priority['reason'])}</i>","",f"🏠 <b>{html.escape(prop.get('address') or '')}</b>"]
+    if tier.get("rent"): lines.append(f"💰 <b>{html.escape(tier['rent'])}/mo</b>")
+    elif prop.get("rent_summary"): lines.append(f"💰 Rent: <b>{html.escape(prop['rent_summary'])}</b>")
+    lines.append(f"🛏️ <b>{html.escape(tier.get('unit_size') or 'Affordable Unit')}</b>")
+    if tier.get("one_person_eligible") is False: lines.append("👤 1-person household: <b>Not eligible</b>")
+    elif tier.get("one_person_eligible") is True:
+        lines.append("👤 1-person household: <b>Eligible</b>")
+        if tier.get("one_person_income"): lines.append(f"💵 1-person income: <b>{html.escape(tier['one_person_income'])}</b>")
+    if location:
+        n=normalize(location.get("neighborhood")); b=normalize(location.get("borough")); z=normalize(location.get("postcode"))
+        if n and b: lines.append(f"📍 <b>{html.escape(n)}, {html.escape(b)}</b>")
+        elif b: lines.append(f"📍 <b>{html.escape(b)}</b>")
+        elif n: lines.append(f"📍 <b>{html.escape(n)}</b>")
+        if z: lines.append(f"📮 {html.escape(z)}")
+    if event=="became_available" and previous_status:
+        lines.append(f"🔁 Status: <b>{html.escape(hpdg_status(previous_status).title())} → {html.escape(status.title())}</b>")
+    lines.append(f"🕐 First detected: <b>{html.escape(format_et(first_seen))}</b>")
+    if event=="reappeared" and last_removed_at:
+        d=human_duration(last_removed_at,utc_now_iso())
+        if d: lines.append(f"↩️ Reappeared after <b>{html.escape(d)}</b>")
+    maps=html.escape(google_maps_url(prop.get("address") or ""),quote=True)
+    src=html.escape(HPD_GOOGLE_URL,quote=True)
+    lines += ["",f'📝 <a href="{src}">Open HPD / Tax Solute listings</a>',f'🗺️ <a href="{maps}">Open in Google Maps</a>',"","<i>Location data: © OpenStreetMap contributors</i>"]
+    return "\\n".join(lines)
+
+
+def run_hpd_google_monitor():
+    state=hpdg_load(HPD_GOOGLE_STATE_PATH,{"initialized":False,"properties":{}})
+    history=hpdg_load(HPD_GOOGLE_HISTORY_PATH,{"version":1,"properties":{}})
+    props=hpdg_fetch(state)
+    if props is None: return
+    now=utc_now_iso(); hist=history.setdefault("properties",{}); current_keys={hpdg_property_key(p) for p in props}
+    if not state.get("initialized"):
+        for prop in props:
+            key=hpdg_property_key(prop); loc=geocode_nyc_address(prop.get("address") or "")
+            hist[key]={**prop,"first_seen":now,"last_seen":now,"active":True,"location":loc,"tiers":{
+                hpdg_tier_key(t):{**t,"first_seen":now,"last_seen":now,"active":True,"appearance_count":1,"removal_count":0,"last_removed_at":None}
+                for t in prop.get("tiers",[])}}
+        history["updated_at"]=now
+        state={"initialized":True,"updated_at":now,"properties":{k:{"address":v.get("address"),"status":v.get("status"),"tiers":v.get("tiers",{})} for k,v in hist.items() if v.get("active")}}
+        hpdg_save(HPD_GOOGLE_HISTORY_PATH,history); hpdg_save(HPD_GOOGLE_STATE_PATH,state)
+        print(f"AffordableLivingNYC initialized with {len(props)} existing listing(s); no existing listings alerted.")
+        return
+    alerts=[]
+    for prop in props:
+        key=hpdg_property_key(prop); entry=hist.get(key); prev_status=entry.get("status") if entry else None
+        if entry is None:
+            entry={**prop,"first_seen":now,"last_seen":now,"active":True,"location":geocode_nyc_address(prop.get("address") or ""),"tiers":{}}; hist[key]=entry
+        else:
+            entry.update({"address":prop.get("address"),"status":prop.get("status"),"rent_summary":prop.get("rent_summary"),"last_seen":now,"active":True})
+            if not entry.get("location"): entry["location"]=geocode_nyc_address(prop.get("address") or "")
+        tiers=entry.setdefault("tiers",{}); newtiers={hpdg_tier_key(t):t for t in prop.get("tiers",[])}
+        for tk,ot in tiers.items():
+            if ot.get("active") and tk not in newtiers:
+                ot["active"]=False; ot["last_removed_at"]=now; ot["removal_count"]=int(ot.get("removal_count",0))+1
+        became=prev_status is not None and not hpdg_active(prev_status) and hpdg_active(prop.get("status"))
+        for tk,t in newtiers.items():
+            ot=tiers.get(tk)
+            if ot is None:
+                ot={**t,"first_seen":now,"last_seen":now,"active":True,"appearance_count":1,"removal_count":0,"last_removed_at":None}; tiers[tk]=ot
+                if hpdg_active(prop.get("status")): alerts.append((prop,ot,"new",prev_status,None,entry.get("location")))
+            else:
+                was=bool(ot.get("active")); removed=ot.get("last_removed_at"); ot.update(t); ot["last_seen"]=now; ot["active"]=True
+                if not was and hpdg_active(prop.get("status")):
+                    ot["appearance_count"]=int(ot.get("appearance_count",1))+1; alerts.append((prop,ot,"reappeared",prev_status,removed,entry.get("location")))
+                elif became: alerts.append((prop,ot,"became_available",prev_status,None,entry.get("location")))
+    for key,entry in hist.items():
+        if entry.get("active") and key not in current_keys:
+            entry["active"]=False; entry["last_removed_at"]=now
+            for t in entry.get("tiers",{}).values():
+                if t.get("active"): t["active"]=False; t["last_removed_at"]=now; t["removal_count"]=int(t.get("removal_count",0))+1
+    for prop,t,event,prev,removed,loc in alerts:
+        send_telegram(hpdg_message(prop,t,loc,event,t.get("first_seen"),prev,removed),parse_mode="HTML")
+    history["updated_at"]=now
+    state={"initialized":True,"updated_at":now,"properties":{k:{"address":v.get("address"),"status":v.get("status"),"tiers":v.get("tiers",{})} for k,v in hist.items() if v.get("active")}}
+    hpdg_save(HPD_GOOGLE_HISTORY_PATH,history); hpdg_save(HPD_GOOGLE_STATE_PATH,state)
+    print(f"AffordableLivingNYC complete: {len(alerts)} alert event(s).")
+
+
 # ---------------------------------------------------------------------------
 # MGNY Consulting monitor (embedded; no separate module required)
 # ---------------------------------------------------------------------------
@@ -4547,11 +4810,10 @@ def main() -> int:
         run_test_listing(TEST_LISTING)
         return 0
 
-    # FAC, Rockrose, MNS, and MGNY are HTTP monitors; Reside is a browser
-    # scrape. Run all five in parallel so no source blocks another.
+    # Run all six sources concurrently so one source does not block another.
     errors = []
 
-    with ThreadPoolExecutor(max_workers=5) as executor:
+    with ThreadPoolExecutor(max_workers=6) as executor:
         futures = {
             executor.submit(run_normal_monitor): "Reside",
             executor.submit(run_fac_monitor): "FAC",
@@ -4566,6 +4828,7 @@ def main() -> int:
                 utc_now_iso,
                 format_et,
             ): "MGNY",
+            executor.submit(run_hpd_google_monitor): "HPD / Tax Solute",
         }
 
         for future in as_completed(futures):
