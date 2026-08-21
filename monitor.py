@@ -5988,6 +5988,681 @@ def run_sjp_monitor():
 
 
 
+
+# ---------------------------------------------------------------------------
+# Affordable Housing Group (AHG) monitor
+# ---------------------------------------------------------------------------
+
+AHG_URL = "https://ahgleasing.com/"
+AHG_REQUEST_TIMEOUT = (2.5, 8.0)
+AHG_MAX_ATTEMPTS = 3
+AHG_RETRY_DELAYS = (0, 2, 5)
+AHG_STATE_PATH = Path(os.getenv("AHG_STATE_PATH", "ahg_state.json"))
+AHG_HISTORY_PATH = Path(os.getenv("AHG_HISTORY_PATH", "ahg_history.json"))
+AHG_USER_AGENT = "nyc-rerental-monitor/5.21 (personal affordable-housing availability notifier)"
+
+
+def ahg_norm(v):
+    return re.sub(r"\s+", " ", str(v or "").replace("\u00a0", " ")).strip()
+
+
+def ahg_key(item):
+    url = ahg_norm(item.get("url")).rstrip("/").casefold()
+    if url:
+        return url
+    title = re.sub(
+        r"[^a-z0-9]+",
+        " ",
+        ahg_norm(item.get("title")).casefold(),
+    ).strip()
+    return title
+
+
+def ahg_money(v):
+    m = re.search(r"\$\s*([\d,]+(?:\.\d{1,2})?)", ahg_norm(v))
+    if not m:
+        return ahg_norm(v) or None
+    try:
+        return f"${float(m.group(1).replace(',', '')):,.2f}"
+    except ValueError:
+        return "$" + m.group(1)
+
+
+def ahg_income(v):
+    amounts = re.findall(r"\$\s*[\d,]+(?:\.\d{1,2})?", ahg_norm(v))
+    if len(amounts) >= 2:
+        return f"{ahg_money(amounts[0])} – {ahg_money(amounts[1])}"
+    return ahg_norm(v) or None
+
+
+def ahg_parse_index(response):
+    soup = BeautifulSoup(response.text, "html.parser")
+    listings = []
+
+    # The homepage currently presents active opportunities as building links.
+    for a in soup.find_all("a", href=True):
+        href = urljoin(AHG_URL, a.get("href"))
+        title = ahg_norm(a.get_text(" ", strip=True))
+        if not title:
+            continue
+
+        low = title.casefold()
+        if not any(
+            token in low
+            for token in (
+                "tribeca park",
+                "553w30",
+                "street",
+                "avenue",
+                "ave.",
+                "road",
+                "boulevard",
+            )
+        ):
+            continue
+
+        # Only AHG-owned opportunity/detail/PDF links.
+        if "ahgleasing.com" not in href:
+            continue
+
+        context = ""
+        parent = a.parent
+        if parent is not None:
+            context = ahg_norm(parent.get_text(" ", strip=True))
+
+        opportunity_type = None
+        preceding = []
+        node = a
+        for _ in range(5):
+            try:
+                sib = node.find_previous(["h1","h2","h3","h4","p","div"])
+            except Exception:
+                sib = None
+            if sib is None:
+                break
+            txt = ahg_norm(sib.get_text(" ", strip=True))
+            if txt and txt not in preceding:
+                preceding.append(txt)
+            node = sib
+
+        nearby = " | ".join(preceding[:6] + [context])
+        if "accessibility" in nearby.casefold():
+            opportunity_type = "Accessibility Units / Waiting List"
+        elif "moderate income" in nearby.casefold():
+            opportunity_type = "Moderate Income Housing Lottery"
+        elif "low income" in nearby.casefold():
+            opportunity_type = "Low Income Housing Opportunity"
+
+        listings.append(
+            {
+                "source": "Affordable Housing Group",
+                "title": title,
+                "url": href,
+                "opportunity_type": opportunity_type,
+            }
+        )
+
+    listings = list({ahg_key(x): x for x in listings}.values())
+
+    if not listings:
+        title = ahg_norm(soup.title.get_text(" ", strip=True)) if soup.title else "(no title)"
+        raise RuntimeError(
+            "AHG homepage loaded but no active opportunities were parsed. "
+            f"status={response.status_code}; bytes={len(response.content)}; title={title!r}"
+        )
+
+    print(f"AHG index scrape: {len(listings)} active opportunity link(s).")
+    return listings
+
+
+def ahg_scrape_index():
+    r = requests.get(
+        AHG_URL,
+        headers={"User-Agent": AHG_USER_AGENT},
+        timeout=AHG_REQUEST_TIMEOUT,
+    )
+    r.raise_for_status()
+    return ahg_parse_index(r)
+
+
+def ahg_extract_pdf_text(url):
+    # Prefer requests; AHG PDFs are text PDFs. pypdf is optional, so fall back
+    # to the linked HTML page if PDF parsing is unavailable.
+    r = requests.get(
+        url,
+        headers={"User-Agent": AHG_USER_AGENT},
+        timeout=AHG_REQUEST_TIMEOUT,
+    )
+    r.raise_for_status()
+
+    if "pdf" not in (r.headers.get("content-type") or "").casefold() and not url.casefold().endswith(".pdf"):
+        return None, r.text
+
+    try:
+        from io import BytesIO
+        from pypdf import PdfReader
+        reader = PdfReader(BytesIO(r.content))
+        text_value = "\n".join(page.extract_text() or "" for page in reader.pages)
+        return ahg_norm(text_value), None
+    except Exception:
+        return None, None
+
+
+def ahg_enrich_listing(listing):
+    details = {
+        "address": None,
+        "deadline": None,
+        "lottery_date": None,
+        "status": "active",
+        "accessibility_only": False,
+        "accessibility_note": None,
+        "tiers": [],
+        "apply_url": None,
+        "application_email": None,
+        "application_phone": None,
+        "utilities": None,
+    }
+
+    url = listing.get("url")
+    if not url:
+        return details
+
+    text_value = None
+    html_value = None
+
+    try:
+        text_value, html_value = ahg_extract_pdf_text(url)
+    except requests.RequestException:
+        raise
+
+    # If the destination is HTML (e.g. /accessibility-units/), parse it and
+    # follow the AHG-owned PDF flyer link when present.
+    if html_value is not None:
+        soup = BeautifulSoup(html_value, "html.parser")
+        page_text = ahg_norm(soup.get_text(" ", strip=True))
+
+        if "mobility impairments" in page_text.casefold() or "visual or hearing impairments" in page_text.casefold():
+            details["accessibility_only"] = True
+            details["accessibility_note"] = (
+                "Only accepting applications for households requiring a mobility "
+                "and/or visual/hearing accessible unit."
+            )
+
+        flyer = None
+        for a in soup.find_all("a", href=True):
+            href = urljoin(url, a.get("href"))
+            if href.casefold().endswith(".pdf") and "ahgleasing.com" in href:
+                flyer = href
+                break
+
+        if flyer:
+            try:
+                pdf_text, _ = ahg_extract_pdf_text(flyer)
+                if pdf_text:
+                    text_value = pdf_text
+                    details["flyer_url"] = flyer
+            except requests.RequestException:
+                text_value = page_text
+        else:
+            text_value = page_text
+
+    text_value = ahg_norm(text_value)
+
+    # Address.
+    address_match = re.search(
+        r"(\d{1,5}(?:-\d{1,4})?\s+[^|]{2,80}?"
+        r"(?:Street|St\.?|Avenue|Ave\.?|Road|Rd\.?|Place|Pl\.?|Boulevard|Blvd\.?|Drive|Dr\.?))"
+        r"(?:,\s*New York,\s*NY\s*\d{5})?",
+        text_value,
+        re.I,
+    )
+    if address_match:
+        address = ahg_norm(address_match.group(0))
+        if "NY" not in address.upper():
+            address += ", New York, NY"
+        details["address"] = address
+
+    deadline_match = re.search(
+        r"Application\s+Due(?:\s+Date)?\s*:\s*([A-Za-z]+\s+\d{1,2},\s+\d{4})",
+        text_value,
+        re.I,
+    )
+    if deadline_match:
+        details["deadline"] = ahg_norm(deadline_match.group(1))
+
+    lottery_match = re.search(
+        r"Lottery\s+Date\s*:\s*([A-Za-z]+\s+\d{1,2},\s+\d{4})",
+        text_value,
+        re.I,
+    )
+    if lottery_match:
+        details["lottery_date"] = ahg_norm(lottery_match.group(1))
+
+    email_match = re.search(r"\b[\w.+-]+@[\w.-]+\.[A-Za-z]{2,}\b", text_value)
+    if email_match:
+        details["application_email"] = email_match.group(0)
+
+    phone_match = re.search(r"\(\d{3}\)\s*\d{3}-\d{4}", text_value)
+    if phone_match:
+        details["application_phone"] = phone_match.group(0)
+
+    # Online apply link appears in Tribeca flyer.
+    online_match = re.search(r"https?://housingsearch\.hcr\.ny\.gov", text_value, re.I)
+    if online_match:
+        details["apply_url"] = online_match.group(0)
+
+    if "accessible units" in text_value.casefold() or "mobility impairment" in text_value.casefold():
+        details["accessibility_only"] = True
+        if not details["accessibility_note"]:
+            details["accessibility_note"] = (
+                "Accessibility-unit waiting list; qualifying mobility and/or "
+                "visual/hearing impairment required."
+            )
+
+    # Utilities notes.
+    util = re.search(
+        r"(Rent includes[^.]+(?:\.[^.]+)?|Tenant responsible for electricity)",
+        text_value,
+        re.I,
+    )
+    if util:
+        details["utilities"] = ahg_norm(util.group(0))
+
+    # Tier extraction for known AHG flyer layouts.
+    tiers = []
+
+    # Tribeca-style: 130% Studio $3,765 ... followed by household income rows.
+    tier_heads = list(re.finditer(
+        r"(\d{2,3})%\s+(Studio|1\s*BR|2\s*BR|One\s+Bedroom|Two\s+Bedroom)\s+"
+        r"(\$\s*[\d,]+(?:\.\d{1,2})?)",
+        text_value,
+        re.I,
+    ))
+
+    for idx, m in enumerate(tier_heads):
+        section_end = tier_heads[idx + 1].start() if idx + 1 < len(tier_heads) else len(text_value)
+        section = text_value[m.end():section_end]
+        ami = f"{m.group(1)}%"
+        raw_size = m.group(2)
+        size_low = raw_size.casefold()
+        if "studio" in size_low:
+            unit_size = "Studio"
+        elif size_low.startswith("1") or "one" in size_low:
+            unit_size = "1 Bedroom"
+        else:
+            unit_size = "2 Bedrooms"
+
+        income_rows = re.findall(
+            r"\$\s*[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*\$\s*[\d,]+(?:\.\d{1,2})?",
+            section,
+        )
+
+        one_income = ahg_income(income_rows[0]) if income_rows else None
+
+        # Studio and 1BR allow a 1-person household on current AHG Tribeca flyer.
+        one_eligible = unit_size in {"Studio", "1 Bedroom"} if income_rows else None
+
+        tiers.append({
+            "ami": ami,
+            "unit_size": unit_size,
+            "rent": ahg_money(m.group(3)),
+            "one_person_eligible": one_eligible,
+            "one_person_income": one_income if one_eligible else None,
+            "published_income_rows": [ahg_income(x) for x in income_rows],
+        })
+
+    # 553W30-style table text after PDF extraction.
+    if not tiers:
+        access_heads = list(re.finditer(
+            r"(50|60)%\s+AREA\s+MEDIAN\s+INCOME\s+\(AMI\).*?"
+            r"(Studio|One\s+Bedroom|Two\s+Bedroom)\s+"
+            r"(\$\s*[\d,]+(?:\.\d{1,2})?)",
+            text_value,
+            re.I,
+        ))
+
+        for idx, m in enumerate(access_heads):
+            section_end = access_heads[idx + 1].start() if idx + 1 < len(access_heads) else len(text_value)
+            section = text_value[m.end():section_end]
+            raw_size = m.group(2).casefold()
+            if "studio" in raw_size:
+                unit_size = "Studio"
+            elif "one" in raw_size:
+                unit_size = "1 Bedroom"
+            else:
+                unit_size = "2 Bedrooms"
+
+            income_rows = re.findall(
+                r"\$\s*[\d,]+(?:\.\d{1,2})?\s*[-–—]\s*\$\s*[\d,]+(?:\.\d{1,2})?",
+                section,
+            )
+            one_eligible = unit_size in {"Studio", "1 Bedroom"}
+            tiers.append({
+                "ami": f"{m.group(1)}%",
+                "unit_size": unit_size,
+                "rent": ahg_money(m.group(3)),
+                "one_person_eligible": one_eligible,
+                "one_person_income": ahg_income(income_rows[0]) if (one_eligible and income_rows) else None,
+                "published_income_rows": [ahg_income(x) for x in income_rows],
+            })
+
+    # If PDF extraction isn't available, keep the opportunity alert useful.
+    details["tiers"] = tiers
+    return details
+
+
+def ahg_load(path, default):
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text())
+    except Exception as exc:
+        raise RuntimeError(f"Could not read {path}: {exc}") from exc
+
+
+def ahg_save(path, data):
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
+
+
+def ahg_validate(listings, state):
+    current = len(listings)
+    previous = len(state.get("listings", {}))
+    if current == 0:
+        raise IncompleteScrapeError("AHG captured 0 opportunities. Previous baseline preserved.")
+    if previous >= 4 and current < max(1, previous // 2):
+        raise IncompleteScrapeError(
+            f"Suspicious AHG opportunity-count drop: {previous} -> {current}. "
+            "Previous baseline preserved."
+        )
+
+
+def ahg_fetch(state):
+    last_error = None
+    for attempt in range(1, AHG_MAX_ATTEMPTS + 1):
+        delay = AHG_RETRY_DELAYS[min(attempt - 1, len(AHG_RETRY_DELAYS) - 1)]
+        if delay:
+            print(f"AHG retry {attempt}/{AHG_MAX_ATTEMPTS}: waiting {delay}s...")
+            time.sleep(delay)
+        try:
+            listings = ahg_scrape_index()
+            ahg_validate(listings, state)
+            if attempt > 1:
+                print(f"AHG recovered on attempt {attempt}/{AHG_MAX_ATTEMPTS}.")
+            return listings
+        except (requests.RequestException, IncompleteScrapeError, RuntimeError) as exc:
+            last_error = exc
+            print(
+                f"AHG attempt {attempt}/{AHG_MAX_ATTEMPTS} failed: "
+                f"{type(exc).__name__}: {exc}",
+                file=sys.stderr,
+            )
+
+    print(
+        f"AHG unavailable after {AHG_MAX_ATTEMPTS} attempts; "
+        "preserving prior state/history. "
+        f"Last error: {last_error}",
+        file=sys.stderr,
+    )
+    return None
+
+
+def ahg_message(listing, details, location, event, first_seen, last_removed_at=None):
+    priority = priority_for_location(location)
+    heading = (
+        "🔄 <b>AHG OPPORTUNITY REAPPEARED</b>"
+        if event == "reappeared"
+        else "🏙️ <b>NEW AHG AFFORDABLE HOUSING OPPORTUNITY</b>"
+    )
+
+    lines = [
+        heading,
+        f"{priority['emoji']} <b>{priority['label']} · {priority['score']}/3</b>",
+        f"<i>{html.escape(priority['reason'])}</i>",
+        "",
+        f"🏠 <b>{html.escape(listing.get('title') or 'AHG opportunity')}</b>",
+    ]
+
+    if listing.get("opportunity_type"):
+        lines.append(f"📋 {html.escape(listing['opportunity_type'])}")
+
+    if details.get("accessibility_only"):
+        lines.append("♿ <b>Accessibility-restricted opportunity</b>")
+        if details.get("accessibility_note"):
+            lines.append(f"<i>{html.escape(details['accessibility_note'])}</i>")
+
+    if details.get("deadline"):
+        lines.append(f"⏰ Application deadline: <b>{html.escape(details['deadline'])}</b>")
+    if details.get("lottery_date"):
+        lines.append(f"🎟️ Lottery date: <b>{html.escape(details['lottery_date'])}</b>")
+
+    tiers = details.get("tiers") or []
+    if tiers:
+        lines.append("")
+        for tier in tiers:
+            parts = []
+            if tier.get("ami"):
+                parts.append(tier["ami"] + " AMI")
+            if tier.get("unit_size"):
+                parts.append(tier["unit_size"])
+            if tier.get("rent"):
+                parts.append(tier["rent"] + "/mo")
+            lines.append("• <b>" + html.escape(" · ".join(parts)) + "</b>")
+            if tier.get("one_person_eligible") is False:
+                lines.append("  👤 1-person household: Not eligible")
+            elif tier.get("one_person_eligible") is True:
+                lines.append("  👤 1-person household: Eligible")
+                if tier.get("one_person_income"):
+                    lines.append(
+                        "  💵 1-person income: "
+                        f"<b>{html.escape(tier['one_person_income'])}</b>"
+                    )
+
+    if details.get("utilities"):
+        lines.append(f"⚡ {html.escape(details['utilities'])}")
+
+    if location:
+        n = normalize(location.get("neighborhood"))
+        b = normalize(location.get("borough"))
+        z = normalize(location.get("postcode"))
+        if n and b:
+            lines.append(f"📍 <b>{html.escape(n)}, {html.escape(b)}</b>")
+        elif b:
+            lines.append(f"📍 <b>{html.escape(b)}</b>")
+        elif n:
+            lines.append(f"📍 <b>{html.escape(n)}</b>")
+        if z:
+            lines.append(f"📮 {html.escape(z)}")
+
+    if details.get("application_email"):
+        lines.append(f"✉️ {html.escape(details['application_email'])}")
+    if details.get("application_phone"):
+        lines.append(f"☎️ {html.escape(details['application_phone'])}")
+
+    lines.append(f"🕐 First detected: <b>{html.escape(format_et(first_seen))}</b>")
+
+    if event == "reappeared" and last_removed_at:
+        d = human_duration(last_removed_at, utc_now_iso())
+        if d:
+            lines.append(f"↩️ Reappeared after <b>{html.escape(d)}</b>")
+
+    detail_url = html.escape(
+        details.get("flyer_url") or listing.get("url") or AHG_URL,
+        quote=True,
+    )
+    apply_url = html.escape(
+        details.get("apply_url") or listing.get("url") or AHG_URL,
+        quote=True,
+    )
+    map_query = details.get("address") or listing.get("title") or ""
+    maps = html.escape(google_maps_url(map_query), quote=True)
+
+    lines += [
+        "",
+        f'📝 <a href="{apply_url}"><b>Apply / application information</b></a>',
+        f'📄 <a href="{detail_url}">View AHG flyer/details</a>',
+        f'🗺️ <a href="{maps}">Open in Google Maps</a>',
+        f'📋 <a href="{html.escape(AHG_URL, quote=True)}">AHG opportunities page</a>',
+        "",
+        "<i>Source: Affordable Housing Group · Location data: © OpenStreetMap contributors</i>",
+    ]
+
+    return "\n".join(lines)
+
+
+def run_ahg_monitor():
+    state = ahg_load(AHG_STATE_PATH, {"initialized": False, "listings": {}})
+    history = ahg_load(
+        AHG_HISTORY_PATH,
+        {"version": 1, "created_at": utc_now_iso(), "listings": {}},
+    )
+
+    listings = ahg_fetch(state)
+    if listings is None:
+        return
+
+    now = utc_now_iso()
+    entries = history.setdefault("listings", {})
+    current = {ahg_key(x): x for x in listings}
+    current_keys = set(current)
+
+    if not state.get("initialized"):
+        # Silent baseline but enrich once so all current opportunity details are
+        # already present in history for later status/reappearance use.
+        for key, listing in current.items():
+            try:
+                details = ahg_enrich_listing(listing)
+            except Exception as exc:
+                print(f"AHG baseline enrichment failed for {listing.get('url')}: {exc}")
+                details = {"status": "active", "tiers": []}
+
+            entries[key] = {
+                **listing,
+                "details": details,
+                "first_seen": now,
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": None,
+            }
+
+        history["updated_at"] = now
+        state = {
+            "initialized": True,
+            "updated_at": now,
+            "listings": {
+                key: {"title": item.get("title"), "url": item.get("url")}
+                for key, item in current.items()
+            },
+        }
+        ahg_save(AHG_HISTORY_PATH, history)
+        ahg_save(AHG_STATE_PATH, state)
+        print(
+            f"AHG initialized with {len(listings)} current opportunity(ies); "
+            "no existing opportunities alerted."
+        )
+        return
+
+    alerts = []
+    removed = []
+
+    for key, entry in entries.items():
+        if entry.get("active") and key not in current_keys:
+            entry["active"] = False
+            entry["last_removed_at"] = now
+            entry["removal_count"] = int(entry.get("removal_count", 0)) + 1
+            removed.append(entry)
+
+    for key, listing in current.items():
+        entry = entries.get(key)
+
+        if entry is None:
+            try:
+                details = ahg_enrich_listing(listing)
+            except Exception as exc:
+                print(f"AHG enrichment failed for new opportunity {listing.get('url')}: {exc}")
+                details = {"status": "active", "tiers": []}
+
+            location = geocode_nyc_address(
+                details.get("address") or listing.get("title") or ""
+            )
+            entry = {
+                **listing,
+                "details": details,
+                "first_seen": now,
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": location,
+            }
+            entries[key] = entry
+            alerts.append((listing, entry, "new", None))
+            continue
+
+        was_active = bool(entry.get("active"))
+        last_removed_at = entry.get("last_removed_at")
+        entry.update(listing)
+        entry["last_seen"] = now
+        entry["active"] = True
+
+        if not was_active:
+            try:
+                details = ahg_enrich_listing(listing)
+            except Exception as exc:
+                print(f"AHG enrichment failed for reappeared opportunity {listing.get('url')}: {exc}")
+                details = entry.get("details") or {"status": "active", "tiers": []}
+
+            entry["details"] = details
+            if not entry.get("location"):
+                entry["location"] = geocode_nyc_address(
+                    details.get("address") or listing.get("title") or ""
+                )
+
+            entry["appearance_count"] = int(entry.get("appearance_count", 1)) + 1
+            alerts.append((listing, entry, "reappeared", last_removed_at))
+
+    for listing, entry, event, last_removed_at in alerts:
+        send_telegram(
+            ahg_message(
+                listing,
+                entry.get("details") or {},
+                entry.get("location"),
+                event,
+                entry.get("first_seen"),
+                last_removed_at,
+            ),
+            parse_mode="HTML",
+        )
+
+    for entry in removed:
+        print(
+            f"AHG removed: {entry.get('title')} "
+            f"(removal #{entry.get('removal_count', 1)})"
+        )
+
+    history["updated_at"] = now
+    state = {
+        "initialized": True,
+        "updated_at": now,
+        "listings": {
+            key: {"title": item.get("title"), "url": item.get("url")}
+            for key, item in current.items()
+        },
+    }
+
+    ahg_save(AHG_HISTORY_PATH, history)
+    ahg_save(AHG_STATE_PATH, state)
+
+    print(
+        f"AHG complete: {len(alerts)} alert event(s), "
+        f"{len(removed)} removal(s)."
+    )
+
+
+
 def run_normal_monitor() -> None:
     state = load_state()
     history = load_history()
@@ -6111,10 +6786,10 @@ def main() -> int:
         run_test_listing(TEST_LISTING)
         return 0
 
-    # Run all eight sources concurrently so one source does not block another.
+    # Run all nine sources concurrently so one source does not block another.
     errors = []
 
-    with ThreadPoolExecutor(max_workers=8) as executor:
+    with ThreadPoolExecutor(max_workers=9) as executor:
         futures = {
             executor.submit(run_normal_monitor): "Reside",
             executor.submit(run_fac_monitor): "FAC",
@@ -6132,6 +6807,7 @@ def main() -> int:
             executor.submit(run_hpd_google_monitor): "HPD / Tax Solute",
             executor.submit(run_taxace_monitor): "Taxace",
             executor.submit(run_sjp_monitor): "SJP",
+            executor.submit(run_ahg_monitor): "AHG",
         }
 
         for future in as_completed(futures):
