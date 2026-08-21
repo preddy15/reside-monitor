@@ -3740,7 +3740,11 @@ def hpdg_status(v):
 
 
 def hpdg_active(v):
-    return hpdg_status(v) in {"available", "initial lease-up"}
+    """
+    Alert all statuses except explicit On Hold.
+    Unknown/unrecognized statuses are intentionally surfaced.
+    """
+    return hpdg_status(v) != "on hold"
 
 
 def hpdg_address_like(s):
@@ -4125,7 +4129,12 @@ def hpdg_message(prop,tier,location,event,first_seen,previous_status=None,last_r
     elif event=="reappeared": heading="🔄 <b>HPD / TAX SOLUTE LISTING REAPPEARED</b>"
     else: heading="🏘️ <b>NEW HPD / TAX SOLUTE LISTING</b>"
     status=hpdg_status(prop.get("status"))
-    sdisplay={"available":"🟢 AVAILABLE","initial lease-up":"🟢 INITIAL LEASE-UP","on hold":"🟡 ON HOLD"}.get(status,status.upper())
+    sdisplay={
+        "available":"🟢 AVAILABLE",
+        "initial lease-up":"🟢 INITIAL LEASE-UP",
+        "on hold":"🟡 ON HOLD",
+        "unknown":"⚪ STATUS UNKNOWN",
+    }.get(status, f"⚪ {status.upper()}" if status else "⚪ STATUS UNKNOWN")
     lines=[heading,f"<b>{sdisplay}</b>",f"{priority['emoji']} <b>{priority['label']} · {priority['score']}/3</b>",
            f"<i>{html.escape(priority['reason'])}</i>","",f"🏠 <b>{html.escape(prop.get('address') or '')}</b>"]
     if tier.get("rent"): lines.append(f"💰 <b>{html.escape(tier['rent'])}/mo</b>")
@@ -4149,7 +4158,14 @@ def hpdg_message(prop,tier,location,event,first_seen,previous_status=None,last_r
         if d: lines.append(f"↩️ Reappeared after <b>{html.escape(d)}</b>")
     maps=html.escape(google_maps_url(prop.get("address") or ""),quote=True)
     src=html.escape(HPD_GOOGLE_URL,quote=True)
-    lines += ["",f'📝 <a href="{src}">Open HPD / Tax Solute listings</a>',f'🗺️ <a href="{maps}">Open in Google Maps</a>',"","<i>Location data: © OpenStreetMap contributors</i>"]
+    lines += [
+        "",
+        f'📝 <a href="{src}">Open application / listing page</a>',
+        f'🗺️ <a href="{maps}">Open in Google Maps</a>',
+        "",
+        "<i>Source: AffordableLivingNYC / Tax Solute · "
+        "Location data: © OpenStreetMap contributors</i>",
+    ]
     return "\n".join(lines)
 
 
