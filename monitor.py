@@ -214,18 +214,38 @@ def send_telegram(message: str, parse_mode: str | None = None) -> None:
 
 def load_state() -> dict:
     if not STATE_PATH.exists():
-        return {"initialized": False, "options": [], "scraper_version": None}
+        return {
+            "initialized": False,
+            "options": [],
+            "project_record_ids": {},
+            "scraper_version": None,
+        }
 
     data = json.loads(STATE_PATH.read_text())
+
+    ids = {}
+    for name, rec_id in dict(data.get("project_record_ids", {})).items():
+        clean_name = normalize(name)
+        if clean_name and re.fullmatch(r"rec[A-Za-z0-9]{10,}", rec_id or ""):
+            ids[clean_name] = rec_id
+
     return {
         "initialized": bool(data.get("initialized", False)),
         "options": list(data.get("options", [])),
+        "project_record_ids": ids,
         "updated_at": data.get("updated_at"),
         "scraper_version": data.get("scraper_version"),
     }
+def save_state(
+    options: list[str],
+    project_record_ids: dict[str, str] | None = None,
+) -> None:
+    safe_ids = {}
+    for name, rec_id in (project_record_ids or {}).items():
+        clean_name = normalize(name)
+        if clean_name and re.fullmatch(r"rec[A-Za-z0-9]{10,}", rec_id or ""):
+            safe_ids[clean_name] = rec_id
 
-
-def save_state(options: list[str]) -> None:
     STATE_PATH.write_text(
         json.dumps(
             {
@@ -233,6 +253,9 @@ def save_state(options: list[str]) -> None:
                 "scraper_version": SCRAPER_VERSION,
                 "feature_version": FEATURE_VERSION,
                 "options": sorted(options, key=str.casefold),
+                "project_record_ids": dict(
+                    sorted(safe_ids.items(), key=lambda item: item[0].casefold())
+                ),
                 "updated_at": utc_now_iso(),
             },
             indent=2,
@@ -240,8 +263,6 @@ def save_state(options: list[str]) -> None:
         )
         + "\n"
     )
-
-
 def load_history() -> dict:
     if not HISTORY_PATH.exists():
         return {
@@ -1432,15 +1453,19 @@ def priority_for_location(location: dict | None) -> dict:
 
 
 
-def build_reside_application_url(base_url: str, project_name: str) -> str:
+def build_reside_application_url(
+    base_url: str,
+    project_record_id: str | None,
+) -> str:
     """
-    Add/replace Airtable's Project Applying For prefill parameter while
-    preserving every existing autofill parameter in the private base URL.
+    Add/replace Airtable's linked-record prefill for "Project Applying For".
 
-    The field remains visible; no hide_ parameter is added.
+    Airtable linked-record fields require the record ID (rec...), not the
+    visible project name. Every other private autofill parameter is preserved.
+    The field remains visible.
     """
     base_url = normalize(base_url)
-    project_name = normalize(project_name)
+    project_record_id = normalize(project_record_id)
 
     if not base_url:
         return ""
@@ -1455,8 +1480,8 @@ def build_reside_application_url(base_url: str, project_name: str) -> str:
         if key.casefold() != target_key.casefold()
     ]
 
-    if project_name:
-        filtered.append((target_key, project_name))
+    if re.fullmatch(r"rec[A-Za-z0-9]{10,}", project_record_id):
+        filtered.append((target_key, project_record_id))
 
     new_query = urlencode(filtered, doseq=True)
 
@@ -1469,8 +1494,6 @@ def build_reside_application_url(base_url: str, project_name: str) -> str:
             parts.fragment,
         )
     )
-
-
 def build_listing_notification(
     parsed: dict,
     location: dict | None,
@@ -1554,17 +1577,17 @@ def build_listing_notification(
     # Sensitive autofill URL is supplied only at runtime via GitHub Actions
     # secret RESIDE_AUTOFILL_URL. Never persist or log it.
     #
-    # The exact Reside project/listing name is added dynamically to Airtable's
-    # "Project Applying For" prefill field while preserving all other private
-    # autofill parameters already present in the secret URL.
+    # "Project Applying For" is an Airtable linked-record field, so it must
+    # receive the Airtable rec... ID captured from the picker—not the visible
+    # project name.
     base_application_url = RESIDE_AUTOFILL_URL or FORM_URL
-    project_name = parsed.get("raw") or (
-        (parsed.get("address") or "")
-        + (f" - Apt {parsed.get('unit')}" if parsed.get("unit") else "")
+    project_record_id = (
+        parsed.get("airtable_record_id")
+        or ((reside or {}).get("airtable_record_id"))
     )
     application_url = build_reside_application_url(
         base_application_url,
-        project_name,
+        project_record_id,
     )
     form = html.escape(application_url, quote=True)
 
@@ -1683,7 +1706,15 @@ def click_add_unit(page) -> None:
     )
 
 
-def get_visible_options(page) -> set[str]:
+def get_visible_option_records(page) -> dict[str, str | None]:
+    """
+    Return currently visible Airtable picker rows as:
+        {visible project name: linked-record id or None}
+
+    Airtable linked-record IDs look like recXXXXXXXXXXXXXX. Depending on the
+    current Airtable renderer, the ID can live on the option itself, a child,
+    or a nearby ancestor/data attribute, so inspect a small DOM neighborhood.
+    """
     selectors = [
         '[role="option"]',
         '[role="listbox"] [role="option"]',
@@ -1691,7 +1722,8 @@ def get_visible_options(page) -> set[str]:
         '[role="dialog"] [role="listitem"]',
     ]
 
-    result = set()
+    result = {}
+
     for selector in selectors:
         loc = page.locator(selector)
         try:
@@ -1701,19 +1733,72 @@ def get_visible_options(page) -> set[str]:
 
         for i in range(count):
             item = loc.nth(i)
+
             try:
                 if not item.is_visible():
                     continue
-                text = normalize(item.inner_text())
+                row_text = normalize(item.inner_text())
             except Exception:
                 continue
 
-            if text and text.casefold() not in IGNORE_TEXT:
-                result.add(text)
+            if not row_text or row_text.casefold() in IGNORE_TEXT:
+                continue
+
+            record_id = None
+
+            try:
+                record_id = item.evaluate(
+                    """el => {
+                        const recPattern = /rec[A-Za-z0-9]{10,}/;
+
+                        const inspect = (node) => {
+                            if (!node) return null;
+
+                            // Attributes are the cheapest/cleanest location.
+                            if (node.attributes) {
+                                for (const attr of node.attributes) {
+                                    const m = String(attr.value || '').match(recPattern);
+                                    if (m) return m[0];
+                                }
+                            }
+
+                            // Some Airtable versions serialize metadata into
+                            // descendant markup/data attributes.
+                            const html = String(node.outerHTML || '');
+                            const m = html.match(recPattern);
+                            return m ? m[0] : null;
+                        };
+
+                        let found = inspect(el);
+                        if (found) return found;
+
+                        // Walk only a few levels to avoid accidentally pairing
+                        // this row with a sibling row's record ID.
+                        let node = el.parentElement;
+                        for (let depth = 0; node && depth < 4; depth++, node = node.parentElement) {
+                            found = inspect(node);
+                            if (found) return found;
+                        }
+
+                        return null;
+                    }"""
+                )
+            except Exception:
+                record_id = None
+
+            if record_id and not re.fullmatch(r"rec[A-Za-z0-9]{10,}", record_id):
+                record_id = None
+
+            # Prefer an actual ID over an earlier None from another selector.
+            if row_text not in result or (record_id and not result[row_text]):
+                result[row_text] = record_id
 
     return result
 
 
+def get_visible_options(page) -> set[str]:
+    """Backward-compatible visible-name helper."""
+    return set(get_visible_option_records(page))
 def open_picker_if_needed(page) -> None:
     if get_visible_options(page):
         return
@@ -1880,7 +1965,7 @@ def wheel_fallback(page) -> bool:
         return False
 
 
-def scrape_options() -> list[str]:
+def scrape_options() -> tuple[list[str], dict[str, str]]:
     with sync_playwright() as p:
         browser = p.chromium.launch(channel="chrome", headless=True)
         page = browser.new_page(
@@ -1903,7 +1988,8 @@ def scrape_options() -> list[str]:
             open_picker_if_needed(page)
             page.wait_for_timeout(800)
 
-            initial = get_visible_options(page)
+            initial_records = get_visible_option_records(page)
+            initial = set(initial_records)
             if not initial:
                 save_debug(page, "picker_open_but_no_options")
                 raise RuntimeError(
@@ -1916,13 +2002,22 @@ def scrape_options() -> list[str]:
             )
 
             collected = set(initial)
+            record_ids = {
+                normalize(name): rec_id
+                for name, rec_id in initial_records.items()
+                if normalize(name) and rec_id
+            }
             stable_at_bottom = 0
             previous_scroll_top = -1
 
             for pass_num in range(1, 251):
-                visible = get_visible_options(page)
+                visible_records = get_visible_option_records(page)
+                visible = set(visible_records)
                 before_count = len(collected)
                 collected.update(visible)
+                for name, rec_id in visible_records.items():
+                    if rec_id:
+                        record_ids[normalize(name)] = rec_id
 
                 info = scroll_option_container_once(page)
                 page.wait_for_timeout(350)
@@ -1934,11 +2029,19 @@ def scrape_options() -> list[str]:
                 ):
                     if wheel_fallback(page):
                         page.wait_for_timeout(450)
-                        collected.update(get_visible_options(page))
+                        extra_records = get_visible_option_records(page)
+                        collected.update(extra_records)
+                        for name, rec_id in extra_records.items():
+                            if rec_id:
+                                record_ids[normalize(name)] = rec_id
                         info = scroll_option_container_once(page)
                         page.wait_for_timeout(250)
 
-                collected.update(get_visible_options(page))
+                after_records = get_visible_option_records(page)
+                collected.update(after_records)
+                for name, rec_id in after_records.items():
+                    if rec_id:
+                        record_ids[normalize(name)] = rec_id
 
                 print(
                     f"Scroll pass {pass_num}: "
@@ -1985,8 +2088,18 @@ def scrape_options() -> list[str]:
                 save_debug(page, "no_unit_options_found")
                 raise RuntimeError("No unit options were captured.")
 
-            print(f"Finished: captured {len(options)} total unique option(s).")
-            return options
+            clean_record_ids = {
+                normalize(name): rec_id
+                for name, rec_id in record_ids.items()
+                if normalize(name) in set(options)
+                and re.fullmatch(r"rec[A-Za-z0-9]{10,}", rec_id or "")
+            }
+
+            print(
+                f"Finished: captured {len(options)} total unique option(s); "
+                f"{len(clean_record_ids)} linked-record ID(s)."
+            )
+            return options, clean_record_ids
 
         except Exception:
             save_debug(page, "scrape_failure")
@@ -1999,6 +2112,7 @@ def process_listings(
     current_options: set[str],
     old_options: set[str],
     history: dict,
+    project_record_ids: dict[str, str] | None = None,
 ) -> tuple[list[dict], list[dict], list[dict]]:
     """
     Returns (new_events, reappeared_events, removed_entries).
@@ -2009,8 +2123,13 @@ def process_listings(
     now = utc_now_iso()
 
     current_by_key = {}
+    project_record_ids = project_record_ids or {}
+
     for row in sorted(current_options, key=str.casefold):
         parsed = parse_listing_row(row)
+        rec_id = project_record_ids.get(normalize(row))
+        if rec_id and re.fullmatch(r"rec[A-Za-z0-9]{10,}", rec_id):
+            parsed["airtable_record_id"] = rec_id
         current_by_key[listing_key(parsed)] = parsed
 
     new_events = []
@@ -2048,6 +2167,7 @@ def process_listings(
                 "unit": parsed.get("unit"),
                 "rent": parsed.get("rent"),
                 "raw": parsed.get("raw"),
+                "airtable_record_id": parsed.get("airtable_record_id"),
                 "first_seen": now,
                 "first_seen_source": "observed",
                 "last_seen": now,
@@ -2071,10 +2191,15 @@ def process_listings(
         was_active = bool(entry.get("active", False))
         last_removed_at = entry.get("last_removed_at")
 
+        if not parsed.get("airtable_record_id") and entry.get("airtable_record_id"):
+            parsed["airtable_record_id"] = entry.get("airtable_record_id")
+
         entry["address"] = parsed.get("address")
         entry["unit"] = parsed.get("unit")
         entry["rent"] = parsed.get("rent")
         entry["raw"] = parsed.get("raw")
+        if parsed.get("airtable_record_id"):
+            entry["airtable_record_id"] = parsed.get("airtable_record_id")
         entry["last_seen"] = now
         entry["active"] = True
 
@@ -6733,7 +6858,8 @@ def run_normal_monitor() -> None:
         print(f"Opening Airtable form: {FORM_URL}")
         print(f'Watching "{FIELD_LABEL}" -> "{ADD_UNIT_TEXT}" -> all unit rows')
 
-        current_options = set(scrape_options())
+        scraped_options, current_record_ids = scrape_options()
+        current_options = set(scraped_options)
         validate_scrape(current_options, old_options)
 
         print(
@@ -6743,7 +6869,7 @@ def run_normal_monitor() -> None:
 
         # Upgrade protection from pre-v3 scraper versions.
         if state.get("scraper_version") != SCRAPER_VERSION:
-            save_state(list(current_options))
+            save_state(list(current_options), current_record_ids)
             history = {
                 "version": 1,
                 "created_at": utc_now_iso(),
@@ -6761,7 +6887,7 @@ def run_normal_monitor() -> None:
             return
 
         if not state.get("initialized"):
-            save_state(list(current_options))
+            save_state(list(current_options), current_record_ids)
             ensure_history_seeded(history, current_options)
             save_history(history)
             send_telegram(
@@ -6776,6 +6902,7 @@ def run_normal_monitor() -> None:
             current_options,
             old_options,
             history,
+            current_record_ids,
         )
 
         print(f"New listings: {len(new_events)}")
@@ -6804,7 +6931,7 @@ def run_normal_monitor() -> None:
                 f"(removal #{entry.get('removal_count', 1)})"
             )
 
-        save_state(list(current_options))
+        save_state(list(current_options), current_record_ids)
         save_history(history)
         record_success(health)
 
@@ -6817,6 +6944,39 @@ def run_normal_monitor() -> None:
 def run_test_listing(row: str) -> None:
     history = load_history()
     parsed = parse_listing_row(row)
+
+    # Test mode is Reside-specific. Scrape the picker only to resolve the
+    # Airtable linked-record ID for the exact project; do not change baseline,
+    # history, or health.
+    try:
+        test_options, test_record_ids = scrape_options()
+        normalized_row = normalize(row)
+
+        rec_id = test_record_ids.get(normalized_row)
+
+        # If the manual test text differs only in harmless whitespace/case,
+        # match against the actual picker value.
+        if not rec_id:
+            wanted = normalized_row.casefold()
+            for option in test_options:
+                if normalize(option).casefold() == wanted:
+                    rec_id = test_record_ids.get(normalize(option))
+                    if rec_id:
+                        break
+
+        if rec_id:
+            parsed["airtable_record_id"] = rec_id
+            print("Resolved Airtable linked-record ID for Reside test listing.")
+        else:
+            print(
+                "Warning: Airtable linked-record ID was not resolved for the "
+                "test listing; application link will open without project preselection."
+            )
+    except Exception as exc:
+        print(
+            "Warning: could not resolve Airtable linked-record ID during test: "
+            f"{type(exc).__name__}: {exc}"
+        )
 
     reside = enrich_from_reside(parsed)
 
@@ -6835,8 +6995,6 @@ def run_test_listing(row: str) -> None:
     )
     send_telegram(message, parse_mode="HTML")
     print("Test notification sent. Baseline/history/health were not changed.")
-
-
 def main() -> int:
     if TEST_LISTING:
         # Existing manual test remains Reside-specific.
