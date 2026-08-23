@@ -8,7 +8,7 @@ from difflib import SequenceMatcher
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import quote_plus, urljoin
+from urllib.parse import quote_plus, urljoin, urlsplit, urlunsplit, parse_qsl, urlencode
 from zoneinfo import ZoneInfo
 
 import requests
@@ -57,6 +57,7 @@ DEBUG_DIR = Path("debug")
 BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID", "").strip()
 TEST_LISTING = os.getenv("TEST_LISTING", "").strip()
+RESIDE_AUTOFILL_URL = os.getenv("RESIDE_AUTOFILL_URL", "").strip()
 
 NY_TZ = ZoneInfo("America/New_York")
 
@@ -1430,6 +1431,46 @@ def priority_for_location(location: dict | None) -> dict:
     }
 
 
+
+def build_reside_application_url(base_url: str, project_name: str) -> str:
+    """
+    Add/replace Airtable's Project Applying For prefill parameter while
+    preserving every existing autofill parameter in the private base URL.
+
+    The field remains visible; no hide_ parameter is added.
+    """
+    base_url = normalize(base_url)
+    project_name = normalize(project_name)
+
+    if not base_url:
+        return ""
+
+    parts = urlsplit(base_url)
+    query_pairs = parse_qsl(parts.query, keep_blank_values=True)
+
+    target_key = "prefill_Project Applying For"
+    filtered = [
+        (key, value)
+        for key, value in query_pairs
+        if key.casefold() != target_key.casefold()
+    ]
+
+    if project_name:
+        filtered.append((target_key, project_name))
+
+    new_query = urlencode(filtered, doseq=True)
+
+    return urlunsplit(
+        (
+            parts.scheme,
+            parts.netloc,
+            parts.path,
+            new_query,
+            parts.fragment,
+        )
+    )
+
+
 def build_listing_notification(
     parsed: dict,
     location: dict | None,
@@ -1509,7 +1550,23 @@ def build_listing_notification(
             )
 
     maps = html.escape(google_maps_url(parsed.get("address", "")), quote=True)
-    form = html.escape(FORM_URL, quote=True)
+
+    # Sensitive autofill URL is supplied only at runtime via GitHub Actions
+    # secret RESIDE_AUTOFILL_URL. Never persist or log it.
+    #
+    # The exact Reside project/listing name is added dynamically to Airtable's
+    # "Project Applying For" prefill field while preserving all other private
+    # autofill parameters already present in the secret URL.
+    base_application_url = RESIDE_AUTOFILL_URL or FORM_URL
+    project_name = parsed.get("raw") or (
+        (parsed.get("address") or "")
+        + (f" - Apt {parsed.get('unit')}" if parsed.get("unit") else "")
+    )
+    application_url = build_reside_application_url(
+        base_application_url,
+        project_name,
+    )
+    form = html.escape(application_url, quote=True)
 
     links = [""]
 
