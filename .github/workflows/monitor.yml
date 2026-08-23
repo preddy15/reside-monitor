@@ -40,6 +40,7 @@ jobs:
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          RESIDE_AUTOFILL_URL: ${{ secrets.RESIDE_AUTOFILL_URL }}
           AIRTABLE_FORM_URL: "https://airtable.com/appsseXTOVx59HC0W/pagcVengefPFQvMZC/form"
           AIRTABLE_FIELD_LABEL: "Project Applying For"
           AIRTABLE_ADD_UNIT_TEXT: "Add unit"
