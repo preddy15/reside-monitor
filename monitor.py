@@ -1353,104 +1353,54 @@ def google_maps_url(address: str) -> str:
     )
 
 
+TARGET_HIGH_PRIORITY_ZIPS = {
+    "10001","10002","10003","10004","10005","10006","10007","10009",
+    "10010","10011","10012","10013","10014","10016","10017","10018",
+    "10019","10020","10021","10022","10023","10024","10028","10036",
+    "10038","10044","10065","10069","10075","10128","10280","10282",
+    "11211","11249",
+}
+
+
 def priority_for_location(location: dict | None) -> dict:
     """
-    Score:
-      3/3 HIGH PRIORITY: Williamsburg or Manhattan inside the user's target
-                           UWS/UES-and-south geography.
-      2/3 REVIEW:         Manhattan/Brooklyn but location detail is insufficient
-                           to confidently apply the target-area rule.
-      1/3 LOWER PRIORITY: known outside the target geography.
-
-    Manhattan boundary approximation:
-      west side -> at/below ~W 110th
-      east side -> at/below ~E 96th
-    The neighborhood-name fallback is used when coordinates are unavailable.
+    High Priority is determined only by the geocoded ZIP allowlist.
+    Existing enrichment/geocoding behavior is unchanged.
     """
     if not location:
         return {
             "score": 2,
             "label": "REVIEW",
             "emoji": "🟢",
-            "reason": "location could not be verified",
+            "reason": "Location could not be verified.",
         }
 
-    neighborhood = normalize(location.get("neighborhood")).casefold()
-    borough = normalize(location.get("borough"))
+    postcode = normalize(location.get("postcode"))
+    match = re.search(r"\b(\d{5})\b", postcode or "")
+    zip_code = match.group(1) if match else ""
 
-    if "williamsburg" in neighborhood:
+    if zip_code in TARGET_HIGH_PRIORITY_ZIPS:
         return {
             "score": 3,
             "label": "HIGH PRIORITY",
             "emoji": "🔥",
-            "reason": "Williamsburg target",
+            "reason": f"Target ZIP {zip_code}.",
         }
 
-    if borough == "Manhattan":
-        lat = None
-        lon = None
-        try:
-            lat = float(location.get("lat"))
-            lon = float(location.get("lon"))
-        except (TypeError, ValueError):
-            pass
-
-        if lat is not None and lon is not None:
-            # Approximate east/west split through Central Park.
-            # West side uses the W110 target; east side uses the E96 target.
-            max_lat = 40.8015 if lon <= -73.965 else 40.7925
-            if lat <= max_lat:
-                return {
-                    "score": 3,
-                    "label": "HIGH PRIORITY",
-                    "emoji": "🔥",
-                    "reason": "Manhattan target area",
-                }
-            return {
-                "score": 1,
-                "label": "LOWER PRIORITY",
-                "emoji": "⚪",
-                "reason": "north of preferred Manhattan boundary",
-            }
-
-        if neighborhood in TARGET_NEIGHBORHOODS:
-            return {
-                "score": 3,
-                "label": "HIGH PRIORITY",
-                "emoji": "🔥",
-                "reason": "preferred Manhattan neighborhood",
-            }
-
+    if not zip_code:
         return {
             "score": 2,
             "label": "REVIEW",
             "emoji": "🟢",
-            "reason": "Manhattan location needs review",
-        }
-
-    if borough == "Brooklyn":
-        return {
-            "score": 1,
-            "label": "LOWER PRIORITY",
-            "emoji": "⚪",
-            "reason": "Brooklyn outside confirmed Williamsburg match",
-        }
-
-    if borough:
-        return {
-            "score": 1,
-            "label": "LOWER PRIORITY",
-            "emoji": "⚪",
-            "reason": f"outside target area ({borough})",
+            "reason": "ZIP code could not be verified.",
         }
 
     return {
-        "score": 2,
-        "label": "REVIEW",
-        "emoji": "🟢",
-        "reason": "borough could not be verified",
+        "score": 1,
+        "label": "LOWER PRIORITY",
+        "emoji": "⚪",
+        "reason": f"ZIP {zip_code} is outside the target area.",
     }
-
 
 
 def build_reside_application_url(
