@@ -11,13 +11,15 @@ on:
 
 permissions:
   contents: write
+  actions: write
 
 concurrency:
   group: airtable-dropdown-monitor
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   monitor:
+    if: ${{ inputs.test_listing != '' || vars.MONITOR_ENABLED == 'true' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -171,6 +173,24 @@ jobs:
           path: debug/
           if-no-files-found: ignore
           retention-days: 7
+
+      - name: Start next monitor run
+        if: ${{ always() && inputs.test_listing == '' && vars.MONITOR_ENABLED == 'true' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "Dispatching next monitor run..."
+
+          WORKFLOW_ID=$(gh api \
+            "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+            --jq '.workflow_id')
+
+          gh api \
+            --method POST \
+            "repos/$GITHUB_REPOSITORY/actions/workflows/$WORKFLOW_ID/dispatches" \
+            -f ref="$GITHUB_REF_NAME"
+
+          echo "Next monitor run dispatched."
 
       - name: Mark workflow failed when monitor failed
         if: steps.monitor.outcome == 'failure'
