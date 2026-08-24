@@ -1,6 +1,12 @@
 {
   "initialized": true,
   "listings": {
+    "43 14 queens street long island city ny 11101||5j": {
+      "address": "43-14 Queens Street, Long Island City, NY 11101",
+      "rent": "$2,832.50",
+      "unit": "5J",
+      "url": "https://rockrose.com/affordable-availabilities/eagle-lofts-collection-phase-2-apt-3x-income-restricted-unit-130-ami-rent-stabilized/"
+    },
     "555 w 38 street manhattan ny 10018||1908": {
       "address": "555 W 38 Street, Manhattan, NY 10018",
       "rent": "$3,656.36",
@@ -8,5 +14,5 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-308-income-restricted-unit-130-ami-rent-stabilized/"
     }
   },
-  "updated_at": "2026-08-24T18:43:10.850195+00:00"
+  "updated_at": "2026-08-24T18:44:04.506833+00:00"
 }
