@@ -16,6 +16,7 @@
     "1440 Amsterdam Avenue - Apt 702 - $3195 -",
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
+    "148-09 90 ave Jamaica- Apt. 3A - Apt 3A - $3206.96 -",
     "1484 Watson avenue - Apt E33 - $3608.89 -",
     "1718 President Street - Apt 10B - $3412.21 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
@@ -70,6 +71,7 @@
     "1440 Amsterdam Avenue - Apt 702 - $3195 -": "recS5S5PuXzT0NriJ",
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
+    "148-09 90 ave Jamaica- Apt. 3A - Apt 3A - $3206.96 -": "rec91Qh0MtQqfbME9",
     "1484 Watson avenue - Apt E33 - $3608.89 -": "recgmsge7E5Igxujb",
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
@@ -110,5 +112,5 @@
     "95-08 147th Place - Apt 404 - $1913.45 -": "rec9n9c3ts64Aww6V",
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
-  "updated_at": "2026-08-24T19:28:12.534526+00:00"
+  "updated_at": "2026-08-24T19:28:56.857062+00:00"
 }
