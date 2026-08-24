@@ -3,7 +3,6 @@
   "scraper_version": 3,
   "feature_version": 5,
   "options": [
-    "1000 Woodycrest Ave - Apt 3C - $3442.8 -",
     "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 - Senior Preferece 60+",
     "1010 Washington Avenue - Apt 521 - $5002 -",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
@@ -50,7 +49,6 @@
     "Douglass Street Apartments - Apt 8L - $3689 -"
   ],
   "project_record_ids": {
-    "1000 Woodycrest Ave - Apt 3C - $3442.8 -": "recEQ6rrvWLkp4Abj",
     "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 - Senior Preferece 60+": "rec2MWfqNMK1MMCGZ",
     "1010 Washington Avenue - Apt 521 - $5002 -": "recN0kOIIkTLYlMu5",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
@@ -96,5 +94,5 @@
     "95-08 147th Place - Apt 404 - $1913.45 -": "rec9n9c3ts64Aww6V",
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
-  "updated_at": "2026-08-24T15:34:47.648221+00:00"
+  "updated_at": "2026-08-24T15:35:54.263044+00:00"
 }
