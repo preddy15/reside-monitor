@@ -15,7 +15,7 @@
       "first_seen": "2026-08-24T18:44:02.612965+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-08-24T20:55:43.037640+00:00",
+      "last_seen": "2026-08-24T20:56:22.739303+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "Queens Street, Court Square, Long Island City, Queens, Queens County, New York, 11101, United States",
@@ -32,6 +32,37 @@
       "unit_size": "Studio",
       "url": "https://rockrose.com/affordable-availabilities/eagle-lofts-collection-phase-2-apt-3x-income-restricted-unit-130-ami-rent-stabilized/"
     },
+    "43 14 queens street long island city ny 11101||7r": {
+      "active": true,
+      "address": "43-14 Queens Street, Long Island City, NY 11101",
+      "appearance_count": 1,
+      "details": {
+        "ami": "130%",
+        "application_deadline": null,
+        "application_email": "eaglelofts@housingpartnership.com",
+        "one_person_eligible": true,
+        "one_person_income": "$94,286 – $154,440"
+      },
+      "first_seen": "2026-08-24T20:56:22.739303+00:00",
+      "first_seen_source": "observed",
+      "last_removed_at": null,
+      "last_seen": "2026-08-24T20:56:22.739303+00:00",
+      "location": {
+        "borough": "Queens",
+        "display_name": "Queens Street, Court Square, Long Island City, Queens, Queens County, New York, 11101, United States",
+        "lat": "40.7474635",
+        "lon": "-73.9394021",
+        "neighborhood": "Court Square",
+        "postcode": "11101"
+      },
+      "published_income_range": "$94,286 - $176,410",
+      "removal_count": 0,
+      "rent": "$2,832.50",
+      "source": "Rockrose",
+      "unit": "7R",
+      "unit_size": "Studio",
+      "url": "https://rockrose.com/affordable-availabilities/eagle-lofts-collection-phase-2-apt-2p-income-restricted-unit-130-ami-rent-stabilized/"
+    },
     "555 w 38 street manhattan ny 10018||1908": {
       "active": true,
       "address": "555 W 38 Street, Manhattan, NY 10018",
@@ -40,7 +71,7 @@
       "first_seen": "2026-08-20T01:58:18.576330+00:00",
       "first_seen_source": "rockrose_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-24T20:55:43.037640+00:00",
+      "last_seen": "2026-08-24T20:56:22.739303+00:00",
       "location": null,
       "published_income_range": "$126,578 - $238,160",
       "removal_count": 0,
@@ -69,6 +100,6 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-911-income-restricted-unit-70-ami-rent-stabilized/"
     }
   },
-  "updated_at": "2026-08-24T20:55:43.054359+00:00",
+  "updated_at": "2026-08-24T20:56:24.528934+00:00",
   "version": 1
 }
