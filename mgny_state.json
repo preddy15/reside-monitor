@@ -10,10 +10,10 @@
     },
     "https://mgnyconsulting.com/listing/1215fulton12halsey": {
       "address": null,
-      "income_range": "$126,583 - $238,160",
+      "income_range": "$126,583 - $198,510",
       "tiers": {},
       "title": "1215 Fulton Street aka 12 Halsey Street",
-      "units_count": 12,
+      "units_count": 6,
       "url": "https://mgnyconsulting.com/listing/1215fulton12halsey/"
     },
     "https://mgnyconsulting.com/listing/132-134-waverly-avenue-apartments": {
@@ -535,5 +535,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-24T13:42:39.126514+00:00"
+  "updated_at": "2026-08-24T13:43:36.608215+00:00"
 }
