@@ -11,6 +11,7 @@
     "1315 Findlay Avenue - Apt 4C - $2851 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -",
+    "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -",
     "1433 Teller Avenue - Apt 3D - $3322.82 -",
     "1440 Amsterdam Avenue - Apt 2 bedroom - $4568 -",
     "1440 Amsterdam Avenue - Apt 702 - $3195 -",
@@ -66,6 +67,7 @@
     "1315 Findlay Avenue - Apt 4C - $2851 -": "recUGRZH6cZimb82N",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -": "rec4pnZAXyQ1YMLXF",
+    "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -": "recnW6xUrLgnwUkS8",
     "1433 Teller Avenue - Apt 3D - $3322.82 -": "recdt7Rkzq2giJTPr",
     "1440 Amsterdam Avenue - Apt 2 bedroom - $4568 -": "recN9sJ60POwokBlF",
     "1440 Amsterdam Avenue - Apt 702 - $3195 -": "recS5S5PuXzT0NriJ",
@@ -112,5 +114,5 @@
     "95-08 147th Place - Apt 404 - $1913.45 -": "rec9n9c3ts64Aww6V",
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
-  "updated_at": "2026-08-25T17:08:23.790402+00:00"
+  "updated_at": "2026-08-25T17:09:13.918680+00:00"
 }
