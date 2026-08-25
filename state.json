@@ -29,6 +29,7 @@
     "2061 Crotona Ave - Apt 2C - $3237.42 -",
     "2067 Anthony Ave - Apt 406 - $3088 -",
     "2072 Anthony Ave - Apt 4J - $3037.47 -",
+    "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -",
     "2140 Matthews Ave - Apt 4A - $2941.02 -",
     "2180 Walton Avenue - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -",
@@ -86,6 +87,7 @@
     "2061 Crotona Ave - Apt 2C - $3237.42 -": "recl8wA3YDcWn44ag",
     "2067 Anthony Ave - Apt 406 - $3088 -": "recMrloqPshrYkeXk",
     "2072 Anthony Ave - Apt 4J - $3037.47 -": "rec3mMbZKu8pdpNCL",
+    "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -": "rec4fzUTSapqZ9Aed",
     "2140 Matthews Ave - Apt 4A - $2941.02 -": "recoCiA3nWif6uMSG",
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -": "reclm0Vov81VspkPi",
@@ -116,5 +118,5 @@
     "95-08 147th Place - Apt 404 - $1913.45 -": "rec9n9c3ts64Aww6V",
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
-  "updated_at": "2026-08-25T19:48:20.559815+00:00"
+  "updated_at": "2026-08-25T19:49:13.573440+00:00"
 }
