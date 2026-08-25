@@ -11,7 +11,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-25T15:17:23.214424+00:00",
+      "last_seen": "2026-08-25T15:17:58.711717+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$2,653.00",
@@ -31,7 +31,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-25T15:17:23.214424+00:00",
+      "last_seen": "2026-08-25T15:17:58.711717+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$2,443.00",
@@ -51,7 +51,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-25T15:17:23.214424+00:00",
+      "last_seen": "2026-08-25T15:17:58.711717+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$3,213.00",
@@ -71,7 +71,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-25T15:17:23.214424+00:00",
+      "last_seen": "2026-08-25T15:17:58.711717+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$3,160.00",
@@ -91,7 +91,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-25T15:17:23.214424+00:00",
+      "last_seen": "2026-08-25T15:17:58.711717+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$3,661.00",
@@ -102,6 +102,6 @@
       "url": "https://www.mns.com/details/240828/rental/greenpoint/brooklyn"
     }
   },
-  "updated_at": "2026-08-25T15:17:23.235385+00:00",
+  "updated_at": "2026-08-25T15:17:58.712083+00:00",
   "version": 1
 }
