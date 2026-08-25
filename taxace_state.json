@@ -16,13 +16,13 @@
     "1323 findlay ave bronx ny||5": {
       "address": "1323 Findlay Ave, Bronx, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-23853/VK8DFKEXDZOTTQ09YQ",
-      "rent": "$3,243.00",
+      "rent": "$2,835.00",
       "unit": "5"
     },
     "1323 findlay ave bronx ny||7": {
       "address": "1323 Findlay Ave, Bronx, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-23893/HQ066DC566UK3KXER7",
-      "rent": "$2,663.00",
+      "rent": "$2,835.00",
       "unit": "7"
     },
     "1429 longfellow ave bronx ny||2d": {
@@ -188,5 +188,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-08-25T20:11:02.776628+00:00"
+  "updated_at": "2026-08-25T20:11:37.220218+00:00"
 }
