@@ -15,7 +15,7 @@
       "first_seen": "2026-08-24T18:44:02.612965+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-08-25T14:21:46.495162+00:00",
+      "last_seen": "2026-08-25T14:22:30.387322+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "Queens Street, Court Square, Long Island City, Queens, Queens County, New York, 11101, United States",
@@ -46,7 +46,7 @@
       "first_seen": "2026-08-24T20:56:22.739303+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-08-25T14:21:46.495162+00:00",
+      "last_seen": "2026-08-25T14:22:30.387322+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "Queens Street, Court Square, Long Island City, Queens, Queens County, New York, 11101, United States",
@@ -71,7 +71,7 @@
       "first_seen": "2026-08-20T01:58:18.576330+00:00",
       "first_seen_source": "rockrose_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-25T14:21:46.495162+00:00",
+      "last_seen": "2026-08-25T14:22:30.387322+00:00",
       "location": null,
       "published_income_range": "$126,578 - $238,160",
       "removal_count": 0,
@@ -100,6 +100,6 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-911-income-restricted-unit-70-ami-rent-stabilized/"
     }
   },
-  "updated_at": "2026-08-25T14:21:46.503116+00:00",
+  "updated_at": "2026-08-25T14:22:30.398611+00:00",
   "version": 1
 }
