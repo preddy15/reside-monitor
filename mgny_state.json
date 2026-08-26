@@ -8,6 +8,29 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/1111-foster-avenue-apartments/"
     },
+    "https://mgnyconsulting.com/listing/113-east-184-street": {
+      "address": "113 East 184 Street 113 East 184 Street, Bronx, NY 10468",
+      "income_range": "$102,350 - $198,510",
+      "tiers": {
+        "130%||1 bedroom||$2,787.18||1-3 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$102,350 – $198,510",
+          "appearance_count": 1,
+          "first_seen": "2026-08-26T20:45:20.810754+00:00",
+          "household_size": "1-3 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-26T20:45:20.810754+00:00",
+          "removal_count": 0,
+          "rent": "$2,787.18",
+          "unit_size": "1 Bedroom",
+          "units_available": 1
+        }
+      },
+      "title": "113 East 184 Street",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/113-east-184-street/"
+    },
     "https://mgnyconsulting.com/listing/1215fulton12halsey": {
       "address": null,
       "income_range": "$126,583 - $198,510",
@@ -572,5 +595,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-26T20:44:43.390672+00:00"
+  "updated_at": "2026-08-26T20:45:20.810754+00:00"
 }
