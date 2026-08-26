@@ -33,7 +33,6 @@
     "2067 Anthony Ave - Apt 406 - $3088 -",
     "2072 Anthony Ave - Apt 4J - $3037.47 -",
     "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -",
-    "2109 Tiebout Ave - Apt 2B - $2046.84 -",
     "2140 Matthews Ave - Apt 4A - $2941.02 -",
     "2180 Walton Avenue - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -",
@@ -100,7 +99,6 @@
     "2067 Anthony Ave - Apt 406 - $3088 -": "recMrloqPshrYkeXk",
     "2072 Anthony Ave - Apt 4J - $3037.47 -": "rec3mMbZKu8pdpNCL",
     "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -": "rec4fzUTSapqZ9Aed",
-    "2109 Tiebout Ave - Apt 2B - $2046.84 -": "recgj1xtqp5igIE3K",
     "2140 Matthews Ave - Apt 4A - $2941.02 -": "recoCiA3nWif6uMSG",
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -": "reclm0Vov81VspkPi",
@@ -136,5 +134,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC",
     "The Vitagraph - 1277 East 14th Street - 303A - Apt 303A - $2151.28 -": "recb8JLuSHAWLiNPW"
   },
-  "updated_at": "2026-08-26T19:03:59.196327+00:00"
+  "updated_at": "2026-08-26T19:04:41.619491+00:00"
 }
