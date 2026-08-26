@@ -162,6 +162,29 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/1728-townsend-avenue/"
     },
+    "https://mgnyconsulting.com/listing/1777-weeks-avenue-2": {
+      "address": "1777 Weeks Avenue 1777 Weeks Ave, Bronx, NY 10457",
+      "income_range": "$90,446 - $198,510",
+      "tiers": {
+        "130%||1 bedroom||$2,440.00||1-3 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$90,446 – $198,510",
+          "appearance_count": 1,
+          "first_seen": "2026-08-26T21:34:36.141973+00:00",
+          "household_size": "1-3 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-26T21:34:36.141973+00:00",
+          "removal_count": 0,
+          "rent": "$2,440.00",
+          "unit_size": "1 Bedroom",
+          "units_available": 1
+        }
+      },
+      "title": "1777 Weeks Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/1777-weeks-avenue-2/"
+    },
     "https://mgnyconsulting.com/listing/188-11-hillside-avenue": {
       "address": "188-11 Hillside Avenue 188-11 Hillside Avenue, Queens, NY 11423",
       "income_range": "$98,366 - $176,410",
@@ -595,5 +618,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-26T21:33:49.339450+00:00"
+  "updated_at": "2026-08-26T21:34:36.141973+00:00"
 }
