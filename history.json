@@ -9,7 +9,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "1000, Woodycrest Avenue, High Bridge, The Bronx, Bronx County, New York, 10452, United States",
@@ -69,7 +69,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "1010, Washington Avenue, Brooklyn, Kings County, New York, 11225, United States",
@@ -92,7 +92,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "106, Mount Hope Place, Tremont, The Bronx, Bronx County, New York, 10453, United States",
@@ -115,7 +115,7 @@
       "first_seen": "2026-08-19T15:17:26.341791+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "106, Mount Hope Place, Tremont, The Bronx, Bronx County, New York, 10453, United States",
@@ -138,7 +138,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "128, West 167th Street, High Bridge, The Bronx, Bronx County, New York, 10452, United States",
@@ -191,7 +191,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "1315, Findlay Avenue, South Bronx, The Bronx, Bronx County, New York, 10456, United States",
@@ -258,7 +258,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "1361, Teller Avenue, Morrisania, South Bronx, The Bronx, Bronx County, New York, 10456, United States",
@@ -281,7 +281,7 @@
       "first_seen": "2026-08-25T17:09:11.778643+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -",
       "removal_count": 1,
@@ -297,7 +297,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -",
       "removal_count": 1,
@@ -313,7 +313,7 @@
       "first_seen": "2026-08-20T18:16:40.123490+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "1433, Teller Avenue, South Bronx, The Bronx, Bronx County, New York, 10456, United States",
@@ -336,7 +336,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "1440, Amsterdam Avenue, Manhattanville, Manhattan Community Board 9, Manhattan, New York County, New York, 10027, United States",
@@ -359,7 +359,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "1440, Amsterdam Avenue, Manhattanville, Manhattan Community Board 9, Manhattan, New York County, New York, 10027, United States",
@@ -382,7 +382,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "1440, Amsterdam Avenue, Manhattanville, Manhattan Community Board 9, Manhattan, New York County, New York, 10027, United States",
@@ -405,7 +405,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "1440, Amsterdam Avenue, Manhattanville, Manhattan Community Board 9, Manhattan, New York County, New York, 10027, United States",
@@ -420,6 +420,52 @@
       "reside": null,
       "unit": "Studio"
     },
+    "147 35 95th avenue||1012": {
+      "active": true,
+      "address": "147-35 95th Avenue",
+      "airtable_record_id": "recdqef3T8F6X7MrE",
+      "appearance_count": 1,
+      "first_seen": "2026-08-26T17:22:51.868154+00:00",
+      "first_seen_source": "observed",
+      "last_removed_at": null,
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
+      "location": {
+        "borough": "Queens",
+        "display_name": "95th Avenue, Queens, Queens County, New York, 11435, United States",
+        "lat": "40.6990224",
+        "lon": "-73.8047923",
+        "neighborhood": null,
+        "postcode": "11435"
+      },
+      "raw": "147-35 95th Avenue - Apt 1012 - $2047.81 -",
+      "removal_count": 0,
+      "rent": "$2,047.81",
+      "reside": null,
+      "unit": "1012"
+    },
+    "147 35 95th avenue||1312": {
+      "active": true,
+      "address": "147-35 95th Avenue",
+      "airtable_record_id": "recfV2NYbLa2rstVt",
+      "appearance_count": 1,
+      "first_seen": "2026-08-26T17:22:51.868154+00:00",
+      "first_seen_source": "observed",
+      "last_removed_at": null,
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
+      "location": {
+        "borough": "Queens",
+        "display_name": "95th Avenue, Queens, Queens County, New York, 11435, United States",
+        "lat": "40.6990224",
+        "lon": "-73.8047923",
+        "neighborhood": null,
+        "postcode": "11435"
+      },
+      "raw": "147-35 95th Avenue - Apt 1312 - $2052.79 -",
+      "removal_count": 0,
+      "rent": "$2,052.79",
+      "reside": null,
+      "unit": "1312"
+    },
     "148 09 90 ave jamaica apt 3a||3a": {
       "active": true,
       "address": "148-09 90 ave Jamaica- Apt. 3A",
@@ -428,7 +474,7 @@
       "first_seen": "2026-08-24T19:28:53.948273+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "148-09 90 ave Jamaica- Apt. 3A - Apt 3A - $3206.96 -",
       "removal_count": 1,
@@ -444,7 +490,7 @@
       "first_seen": "2026-08-20T20:58:31.598649+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "1484, Watson Avenue, The Bronx, Bronx County, New York, 10472, United States",
@@ -467,6 +513,29 @@
       },
       "unit": "E33"
     },
+    "1663 east new york ave||203": {
+      "active": true,
+      "address": "1663 East New York Ave",
+      "airtable_record_id": "recyFtw9ELeLN9Ur9",
+      "appearance_count": 1,
+      "first_seen": "2026-08-26T17:22:51.868154+00:00",
+      "first_seen_source": "observed",
+      "last_removed_at": null,
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
+      "location": {
+        "borough": "Brooklyn",
+        "display_name": "1663, East New York Avenue, Brownsville, Brooklyn, Kings County, New York, 11212, United States",
+        "lat": "40.6741770",
+        "lon": "-73.9067266",
+        "neighborhood": "Brownsville",
+        "postcode": "11212"
+      },
+      "raw": "1663 East New York Ave - Apt 203 - $863 -",
+      "removal_count": 0,
+      "rent": "$863.00",
+      "reside": null,
+      "unit": "203"
+    },
     "1718 president street apt 10b||10b": {
       "active": true,
       "address": "1718 President Street- Apt. 10B",
@@ -475,7 +544,7 @@
       "first_seen": "2026-08-24T19:23:20.742138+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -",
       "removal_count": 1,
@@ -491,7 +560,7 @@
       "first_seen": "2026-08-24T19:24:16.433458+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "1718 President Street- Apt. 6D - Apt 6D - $3861.62 - Senior Preferece 60+",
       "removal_count": 1,
@@ -507,7 +576,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "1718, President Street, Brooklyn, Kings County, New York, 11213, United States",
@@ -530,7 +599,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "1718, President Street, Brooklyn, Kings County, New York, 11213, United States",
@@ -553,7 +622,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "1988 Anthony Avenue- Apt. 4I - Apt 4I - $2860.91 -",
       "removal_count": 1,
@@ -569,7 +638,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
       "removal_count": 1,
@@ -593,7 +662,7 @@
       "first_seen": "2026-08-19T15:17:26.341791+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "2061, Crotona Avenue, East Tremont, The Bronx, Bronx County, New York, 10457, United States",
@@ -616,7 +685,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "2067, Anthony Avenue, Tremont, The Bronx, Bronx County, New York, 10457, United States",
@@ -639,7 +708,7 @@
       "first_seen": "2026-08-25T19:49:10.899263+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -",
       "removal_count": 0,
@@ -655,7 +724,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "2072, Anthony Avenue, Tremont, The Bronx, Bronx County, New York, 10457, United States",
@@ -678,7 +747,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "2140, Matthews Avenue, Van Nest, The Bronx, Bronx County, New York, 10462, United States",
@@ -701,7 +770,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "2180, Walton Avenue, Fordham, The Bronx, Bronx County, New York, 10453, United States",
@@ -724,7 +793,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "2180, Walton Avenue, Fordham, The Bronx, Bronx County, New York, 10453, United States",
@@ -747,7 +816,7 @@
       "first_seen": "2026-08-25T17:13:46.803770+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "Citi Bike - W 230 St & Marble Hill Ave, West 230th Street, Kingsbridge, The Bronx, Bronx County, New York, 10463, United States",
@@ -770,7 +839,7 @@
       "first_seen": "2026-08-19T15:17:26.341791+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "237 West 167th Stret - Apt 4E - $3071.87 -",
       "removal_count": 1,
@@ -801,7 +870,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "25-01, Queens Plaza North, Court Square, Long Island City, Queens, Queens County, New York, 11101, United States",
@@ -824,7 +893,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "25-01, Queens Plaza North, Court Square, Long Island City, Queens, Queens County, New York, 11101, United States",
@@ -847,7 +916,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "25-01, Queens Plaza North, Court Square, Long Island City, Queens, Queens County, New York, 11101, United States",
@@ -870,7 +939,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "25-01, Queens Plaza North, Court Square, Long Island City, Queens, Queens County, New York, 11101, United States",
@@ -993,7 +1062,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "250, West 49th Street, Times Square, Manhattan Community Board 5, Manhattan, New York County, New York, 10019, United States",
@@ -1016,7 +1085,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "256, Mount Hope Place, Tremont, The Bronx, Bronx County, New York, 10457, United States",
@@ -1039,7 +1108,7 @@
       "first_seen": "2026-08-24T19:27:03.850049+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "27-51 Jackson Avenue Apartments - Apt 1 Bedroom - $3661 -",
       "removal_count": 1,
@@ -1055,7 +1124,7 @@
       "first_seen": "2026-08-24T19:27:03.850049+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -",
       "removal_count": 1,
@@ -1071,7 +1140,7 @@
       "first_seen": "2026-08-24T19:27:03.850049+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -",
       "removal_count": 1,
@@ -1080,13 +1149,13 @@
       "unit": "Studio"
     },
     "2758 creston avenue||2d": {
-      "active": true,
+      "active": false,
       "address": "2758 Creston Avenue",
       "airtable_record_id": "recUFexX445RWna0m",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-26T17:22:51.868154+00:00",
       "last_seen": "2026-08-26T06:08:10.123436+00:00",
       "location": {
         "borough": "Bronx",
@@ -1097,7 +1166,7 @@
         "postcode": "10468"
       },
       "raw": "2758 Creston Avenue - Apt 2D - $2969.47 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$2,969.47",
       "reside": null,
       "unit": "2D"
@@ -1182,7 +1251,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "34-21 109th Street Apartments - Apt 4F - $3000 -",
       "removal_count": 1,
@@ -1221,7 +1290,7 @@
       "first_seen": "2026-08-19T19:55:22.437397+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "360 East 184 Street - Apt 3A - $2195 -",
       "removal_count": 1,
@@ -1245,7 +1314,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "360 Shephard - Apt 3F - $4347 -",
       "removal_count": 1,
@@ -1289,7 +1358,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "3923, Carpenter Avenue, The Bronx, Bronx County, New York, 10466, United States",
@@ -1334,7 +1403,7 @@
       "first_seen": "2026-08-24T17:06:47.281333+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "56 West 125 Street - Apt 702 - $3002.94 -",
       "removal_count": 1,
@@ -1350,7 +1419,7 @@
       "first_seen": "2026-08-24T16:20:52.219615+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "61, Schaefer Street, Ridgewood, Bushwick, Brooklyn, Kings County, New York, 11207, United States",
@@ -1372,6 +1441,22 @@
         "url": "https://residenewyork.com/property/61-schaefer-street-apartment-unit-2f/"
       },
       "unit": "2F"
+    },
+    "661 manida street apt 6b||6b": {
+      "active": true,
+      "address": "661 Manida Street- Apt. 6B",
+      "airtable_record_id": "recTvpNYEFCmRZqiB",
+      "appearance_count": 1,
+      "first_seen": "2026-08-26T17:22:51.868154+00:00",
+      "first_seen_source": "observed",
+      "last_removed_at": null,
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
+      "location": null,
+      "raw": "661 Manida Street- Apt. 6B - Senior preference - Apt 6B - $1675.33 - Senior Preferece 60+",
+      "removal_count": 0,
+      "rent": "$1,675.33",
+      "reside": null,
+      "unit": "6B"
     },
     "661 manida street||6b": {
       "active": false,
@@ -1425,7 +1510,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "69, Hope Street, Williamsburg, Brooklyn, Kings County, New York, 11211, United States",
@@ -1448,7 +1533,7 @@
       "first_seen": "2026-08-24T18:07:16.776854+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "701, Elton Avenue, Melrose, The Bronx, Bronx County, New York, 10455, United States",
@@ -1463,6 +1548,29 @@
       "reside": null,
       "unit": "4A"
     },
+    "762 east 32 street||3b": {
+      "active": true,
+      "address": "762 East 32 Street",
+      "airtable_record_id": "rec3IvM6CWkEo8J4v",
+      "appearance_count": 1,
+      "first_seen": "2026-08-26T17:22:51.868154+00:00",
+      "first_seen_source": "observed",
+      "last_removed_at": null,
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
+      "location": {
+        "borough": "Manhattan",
+        "display_name": "East 32nd Street, Murray Hill, Manhattan Community Board 6, Manhattan, New York County, New York, 10016, United States",
+        "lat": "40.7439822",
+        "lon": "-73.9779432",
+        "neighborhood": "Murray Hill",
+        "postcode": "10016"
+      },
+      "raw": "762 East 32 Street - Apt 3B - $2544.93 -",
+      "removal_count": 0,
+      "rent": "$2,544.93",
+      "reside": null,
+      "unit": "3B"
+    },
     "765 east 214 street apt 703||703": {
       "active": true,
       "address": "765 East 214 Street Apt. 703",
@@ -1471,7 +1579,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -",
       "removal_count": 1,
@@ -1487,7 +1595,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": null,
         "display_name": "765, East Ridge Road, City of Rochester, Monroe County, New York, 14621, United States",
@@ -1568,7 +1676,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "885, Rogers Avenue, Brooklyn Community District 17, Brooklyn, Kings County, New York, 11226, United States",
@@ -1591,7 +1699,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -",
       "removal_count": 1,
@@ -1607,7 +1715,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "95-08, 147th Place, Queens, Queens County, New York, 11435, United States",
@@ -1814,7 +1922,7 @@
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
       "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
-      "last_seen": "2026-08-26T06:08:10.123436+00:00",
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
       "location": null,
       "raw": "Douglass Street Apartments - Apt 8L - $3689 -",
       "removal_count": 1,
@@ -2622,6 +2730,29 @@
       "reside": null,
       "unit": null
     },
+    "the vitagraph||303a": {
+      "active": true,
+      "address": "The Vitagraph",
+      "airtable_record_id": "recb8JLuSHAWLiNPW",
+      "appearance_count": 1,
+      "first_seen": "2026-08-26T17:22:51.868154+00:00",
+      "first_seen_source": "observed",
+      "last_removed_at": null,
+      "last_seen": "2026-08-26T17:22:51.868154+00:00",
+      "location": {
+        "borough": "Brooklyn",
+        "display_name": "The Vitagraph, 1277, East 14th Street, Midwood, Brooklyn, Kings County, New York, 11230, United States",
+        "lat": "40.6187860",
+        "lon": "-73.9609057",
+        "neighborhood": "Midwood",
+        "postcode": "11230"
+      },
+      "raw": "The Vitagraph - 1277 East 14th Street - 303A - Apt 303A - $2151.28 -",
+      "removal_count": 0,
+      "rent": "$2,151.28",
+      "reside": null,
+      "unit": "303A"
+    },
     "utah||": {
       "active": false,
       "address": "Utah",
@@ -2798,6 +2929,6 @@
       "unit": null
     }
   },
-  "updated_at": "2026-08-26T06:08:10.125841+00:00",
+  "updated_at": "2026-08-26T17:23:09.405656+00:00",
   "version": 1
 }

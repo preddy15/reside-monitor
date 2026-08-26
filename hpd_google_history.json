@@ -1,9 +1,10 @@
 {
   "properties": {
     "10 montieth st brooklyn ny": {
-      "active": true,
+      "active": false,
       "address": "10 Montieth St, Brooklyn, NY",
       "first_seen": "2026-08-21T17:46:15.266882+00:00",
+      "last_removed_at": "2026-08-26T17:22:26.888354+00:00",
       "last_seen": "2026-08-26T06:07:43.247241+00:00",
       "location": {
         "borough": "Brooklyn",
@@ -18,24 +19,25 @@
       "status": "on hold",
       "tiers": {
         "affordable unit||$ | 1007.22 | (rent increase may apply)||1": {
-          "active": true,
+          "active": false,
           "appearance_count": 1,
           "first_seen": "2026-08-21T17:46:15.266882+00:00",
           "household_size": "1",
-          "last_removed_at": null,
+          "last_removed_at": "2026-08-26T17:22:26.888354+00:00",
           "last_seen": "2026-08-26T06:07:43.247241+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
-          "removal_count": 0,
+          "removal_count": 1,
           "rent": "$ | 1007.22 | (rent increase may apply)",
           "unit_size": "Affordable Unit"
         }
       }
     },
     "1441 teller ave bronx": {
-      "active": true,
+      "active": false,
       "address": "1441 Teller Ave, Bronx",
       "first_seen": "2026-08-21T04:26:17.273123+00:00",
+      "last_removed_at": "2026-08-26T17:22:26.888354+00:00",
       "last_seen": "2026-08-26T06:07:43.247241+00:00",
       "location": {
         "borough": "Bronx",
@@ -50,24 +52,25 @@
       "status": "on hold",
       "tiers": {
         "studio||$3,237.41||": {
-          "active": true,
+          "active": false,
           "appearance_count": 1,
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": null,
-          "last_removed_at": null,
+          "last_removed_at": "2026-08-26T17:22:26.888354+00:00",
           "last_seen": "2026-08-26T06:07:43.247241+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
-          "removal_count": 0,
+          "removal_count": 1,
           "rent": "$3,237.41",
           "unit_size": "Studio"
         }
       }
     },
     "1544 nostrand ave brooklyn": {
-      "active": true,
+      "active": false,
       "address": "1544 Nostrand Ave, Brooklyn",
       "first_seen": "2026-08-21T04:26:17.273123+00:00",
+      "last_removed_at": "2026-08-26T17:22:26.888354+00:00",
       "last_seen": "2026-08-26T06:07:43.247241+00:00",
       "location": {
         "borough": "Brooklyn",
@@ -82,15 +85,15 @@
       "status": "on hold",
       "tiers": {
         "1 bedroom||$1,922.10||1-3": {
-          "active": true,
+          "active": false,
           "appearance_count": 1,
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1-3",
-          "last_removed_at": null,
+          "last_removed_at": "2026-08-26T17:22:26.888354+00:00",
           "last_seen": "2026-08-26T06:07:43.247241+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
-          "removal_count": 0,
+          "removal_count": 1,
           "rent": "$1,922.10",
           "unit_size": "1 Bedroom"
         }
@@ -100,7 +103,7 @@
       "active": true,
       "address": "156 Erasmus St, Brooklyn",
       "first_seen": "2026-08-25T15:19:40.147379+00:00",
-      "last_seen": "2026-08-26T06:07:43.247241+00:00",
+      "last_seen": "2026-08-26T17:22:26.888354+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "156, Erasmus Street, Brooklyn Community District 17, Brooklyn, Kings County, New York, 11226, United States",
@@ -119,7 +122,7 @@
           "first_seen": "2026-08-25T15:19:40.147379+00:00",
           "household_size": "2-5",
           "last_removed_at": null,
-          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -132,7 +135,7 @@
       "active": true,
       "address": "210 Clarkson Ave, Brooklyn, NY",
       "first_seen": "2026-08-21T04:26:17.273123+00:00",
-      "last_seen": "2026-08-26T06:07:43.247241+00:00",
+      "last_seen": "2026-08-26T17:22:26.888354+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "210, Clarkson Avenue, Brooklyn Community District 17, Brooklyn, Kings County, New York, 11226, United States",
@@ -151,7 +154,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -164,7 +167,7 @@
       "active": true,
       "address": "215 Freeman st, Brooklyn",
       "first_seen": "2026-08-25T21:09:42.593780+00:00",
-      "last_seen": "2026-08-26T06:07:43.247241+00:00",
+      "last_seen": "2026-08-26T17:22:26.888354+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "215, Freeman Street, Greenpoint, Brooklyn, Kings County, New York, 11222, United States",
@@ -183,7 +186,7 @@
           "first_seen": "2026-08-25T21:09:42.593780+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -229,7 +232,7 @@
       "active": true,
       "address": "268 Barbey St, Brooklyn",
       "first_seen": "2026-08-21T04:26:17.273123+00:00",
-      "last_seen": "2026-08-26T06:07:43.247241+00:00",
+      "last_seen": "2026-08-26T17:22:26.888354+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "268, Barbey Street, Cypress Hills, East New York, Brooklyn, Kings County, New York, 11207, United States",
@@ -248,7 +251,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1-3",
           "last_removed_at": null,
-          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -290,11 +293,43 @@
         }
       }
     },
+    "329 gates ave brooklyn ny": {
+      "active": true,
+      "address": "329 Gates Ave, Brooklyn, NY",
+      "first_seen": "2026-08-26T17:22:26.888354+00:00",
+      "last_seen": "2026-08-26T17:22:26.888354+00:00",
+      "location": {
+        "borough": "Brooklyn",
+        "display_name": "329, Gates Avenue, Brooklyn, Kings County, New York, 11216, United States",
+        "lat": "40.6859370",
+        "lon": "-73.9539937",
+        "neighborhood": null,
+        "postcode": "11216"
+      },
+      "rent_summary": "| $2,467.38 | (rent increase may apply)",
+      "source": "AffordableLivingNYC / Tax Solute",
+      "status": "unknown",
+      "tiers": {
+        "studio||$2,467.38||1": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-26T17:22:26.888354+00:00",
+          "household_size": "1",
+          "last_removed_at": null,
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$2,467.38",
+          "unit_size": "Studio"
+        }
+      }
+    },
     "540 fulton st brooklyn ny": {
       "active": true,
       "address": "540 Fulton st, Brooklyn, NY",
       "first_seen": "2026-08-21T04:26:17.273123+00:00",
-      "last_seen": "2026-08-26T06:07:43.247241+00:00",
+      "last_seen": "2026-08-26T17:22:26.888354+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "The Paxton, 540, Fulton Mall, Downtown Brooklyn, Brooklyn, Kings County, New York, 11201, United States",
@@ -313,7 +348,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1-3",
           "last_removed_at": null,
-          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -372,7 +407,7 @@
       "active": true,
       "address": "670 Flushing Avenue, Brooklyn, NY 11206",
       "first_seen": "2026-08-21T04:26:17.273123+00:00",
-      "last_seen": "2026-08-26T06:07:43.247241+00:00",
+      "last_seen": "2026-08-26T17:22:26.888354+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "670, Flushing Avenue, Brooklyn, Kings County, New York, 11206, United States",
@@ -391,7 +426,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
           "one_person_eligible": null,
           "one_person_income": null,
           "removal_count": 0,
@@ -430,7 +465,7 @@
       "active": true,
       "address": "94 East 111th St, New York",
       "first_seen": "2026-08-21T04:26:17.273123+00:00",
-      "last_seen": "2026-08-26T06:07:43.247241+00:00",
+      "last_seen": "2026-08-26T17:22:26.888354+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "94, East 111th Street, East Harlem, Manhattan Community Board 11, Manhattan, New York County, New York, 10029, United States",
@@ -441,7 +476,7 @@
       },
       "rent_summary": "| $2,169.57 | - | $2,457.44",
       "source": "AffordableLivingNYC / Tax Solute",
-      "status": "available",
+      "status": "on hold",
       "tiers": {
         "1 bedroom||||": {
           "active": true,
@@ -449,7 +484,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -462,7 +497,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -475,7 +510,7 @@
       "active": true,
       "address": "975 Nostrand Ave, Brooklyn",
       "first_seen": "2026-08-21T04:26:17.273123+00:00",
-      "last_seen": "2026-08-26T06:07:43.247241+00:00",
+      "last_seen": "2026-08-26T17:22:26.888354+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "975, Nostrand Avenue, Brooklyn Community District 17, Brooklyn, Kings County, New York, 11235, United States",
@@ -494,7 +529,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -507,7 +542,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
           "one_person_eligible": null,
           "one_person_income": null,
           "removal_count": 0,
@@ -520,7 +555,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "last_seen": "2026-08-26T17:22:26.888354+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -530,6 +565,6 @@
       }
     }
   },
-  "updated_at": "2026-08-26T06:07:43.247241+00:00",
+  "updated_at": "2026-08-26T17:22:26.888354+00:00",
   "version": 1
 }
