@@ -47,6 +47,7 @@
     "27-51 Jackson Avenue Apartments - Apt 1 Bedroom - $3661 -",
     "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -",
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -",
+    "2817 Atlantic Ave - Apt 12D - $2818.93 -",
     "34-21 109th Street Apartments - Apt 4F - $3000 -",
     "360 East 184 Street - Apt 3A - $2195 -",
     "360 Shephard - Apt 3F - $4347 -",
@@ -110,6 +111,7 @@
     "27-51 Jackson Avenue Apartments - Apt 1 Bedroom - $3661 -": "receXMo2k5NlVofbN",
     "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -": "recBJzmON1paYdrll",
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -": "recb626NhM4wnZn5J",
+    "2817 Atlantic Ave - Apt 12D - $2818.93 -": "rec9U3ChcYnDkkba9",
     "34-21 109th Street Apartments - Apt 4F - $3000 -": "recb5sTiSmA7koT3q",
     "360 East 184 Street - Apt 3A - $2195 -": "rec30gFoQ4MpT2HbF",
     "360 Shephard - Apt 3F - $4347 -": "recsAhoKdQGO4GGF0",
@@ -128,5 +130,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC",
     "The Vitagraph - 1277 East 14th Street - 303A - Apt 303A - $2151.28 -": "recb8JLuSHAWLiNPW"
   },
-  "updated_at": "2026-08-26T17:44:10.984409+00:00"
+  "updated_at": "2026-08-26T17:44:56.004668+00:00"
 }
