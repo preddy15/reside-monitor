@@ -1,11 +1,11 @@
 {
   "initialized": true,
   "listings": {
-    "103 liberty avenue brooklyn ny||4b": {
+    "103 liberty avenue brooklyn ny||6c": {
       "address": "103 Liberty Avenue, Brooklyn, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-24693/28GYU85KP9TZCK3LP5",
-      "rent": "$3,187.00",
-      "unit": "4B"
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-25573/17LQLCYU6EUUQ8UIJQ",
+      "rent": "$3,741.18",
+      "unit": "6C"
     },
     "1058 walton ave bronx ny||1b": {
       "address": "1058 Walton Ave, Bronx, NY",
@@ -188,5 +188,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-08-26T20:51:38.828227+00:00"
+  "updated_at": "2026-08-26T20:52:20.451814+00:00"
 }
