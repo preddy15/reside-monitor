@@ -2,7 +2,7 @@
   "created_at": "2026-08-20T01:58:18.145331+00:00",
   "listings": {
     "43 14 queens street long island city ny 11101||5j": {
-      "active": true,
+      "active": false,
       "address": "43-14 Queens Street, Long Island City, NY 11101",
       "appearance_count": 1,
       "details": {
@@ -14,7 +14,7 @@
       },
       "first_seen": "2026-08-24T18:44:02.612965+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-08-27T13:22:38.939691+00:00",
       "last_seen": "2026-08-27T13:21:50.569882+00:00",
       "location": {
         "borough": "Queens",
@@ -25,7 +25,7 @@
         "postcode": "11101"
       },
       "published_income_range": "$94,286 - $176,410",
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$2,832.50",
       "source": "Rockrose",
       "unit": "5J",
@@ -46,7 +46,7 @@
       "first_seen": "2026-08-24T20:56:22.739303+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T13:21:50.569882+00:00",
+      "last_seen": "2026-08-27T13:22:38.939691+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "Queens Street, Court Square, Long Island City, Queens, Queens County, New York, 11101, United States",
@@ -71,7 +71,7 @@
       "first_seen": "2026-08-20T01:58:18.576330+00:00",
       "first_seen_source": "rockrose_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T13:21:50.569882+00:00",
+      "last_seen": "2026-08-27T13:22:38.939691+00:00",
       "location": null,
       "published_income_range": "$126,578 - $238,160",
       "removal_count": 0,
@@ -100,6 +100,6 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-911-income-restricted-unit-70-ami-rent-stabilized/"
     }
   },
-  "updated_at": "2026-08-27T13:21:50.570158+00:00",
+  "updated_at": "2026-08-27T13:22:38.939923+00:00",
   "version": 1
 }

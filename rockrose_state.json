@@ -1,12 +1,6 @@
 {
   "initialized": true,
   "listings": {
-    "43 14 queens street long island city ny 11101||5j": {
-      "address": "43-14 Queens Street, Long Island City, NY 11101",
-      "rent": "$2,832.50",
-      "unit": "5J",
-      "url": "https://rockrose.com/affordable-availabilities/eagle-lofts-collection-phase-2-apt-3x-income-restricted-unit-130-ami-rent-stabilized/"
-    },
     "43 14 queens street long island city ny 11101||7r": {
       "address": "43-14 Queens Street, Long Island City, NY 11101",
       "rent": "$2,832.50",
@@ -20,5 +14,5 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-308-income-restricted-unit-130-ami-rent-stabilized/"
     }
   },
-  "updated_at": "2026-08-27T13:21:50.569928+00:00"
+  "updated_at": "2026-08-27T13:22:38.939739+00:00"
 }
