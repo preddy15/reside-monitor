@@ -7,6 +7,12 @@
       "unit": "4N",
       "url": "https://www.mns.com/details/240428/rental/morris+heights/bronx"
     },
+    "260 gold st||102": {
+      "address": "260 Gold ST",
+      "rent": "$2,658.00",
+      "unit": "102",
+      "url": "https://www.mns.com/details/240884/rental/downtown+brooklyn/brooklyn"
+    },
     "260 gold st||104": {
       "address": "260 Gold ST",
       "rent": "$2,443.00",
@@ -32,5 +38,5 @@
       "url": "https://www.mns.com/details/240828/rental/greenpoint/brooklyn"
     }
   },
-  "updated_at": "2026-08-27T19:03:14.558909+00:00"
+  "updated_at": "2026-08-27T19:03:58.901863+00:00"
 }

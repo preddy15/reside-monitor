@@ -11,7 +11,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T19:03:14.558811+00:00",
+      "last_seen": "2026-08-27T19:03:57.714381+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$2,653.00",
@@ -20,6 +20,41 @@
       "unit": "4N",
       "unit_size": "1 Bedroom",
       "url": "https://www.mns.com/details/240428/rental/morris+heights/bronx"
+    },
+    "260 gold st||102": {
+      "active": true,
+      "address": "260 Gold ST",
+      "appearance_count": 1,
+      "bathrooms": "1",
+      "bedrooms": "1",
+      "details": {
+        "available_now": true,
+        "contact_phone": "718-222-0211",
+        "minimum_income": "$106,337.00",
+        "neighborhood": null,
+        "one_person_eligible": true,
+        "one_person_income_range": "$106,337.00 – $154,440.00",
+        "one_person_max_income": "$154,440.00"
+      },
+      "first_seen": "2026-08-27T19:03:57.714381+00:00",
+      "first_seen_source": "observed",
+      "last_removed_at": null,
+      "last_seen": "2026-08-27T19:03:57.714381+00:00",
+      "location": {
+        "borough": "Brooklyn",
+        "display_name": "260, Gold Street, Brooklyn, Kings County, New York, 11201, United States",
+        "lat": "40.6965793",
+        "lon": "-73.9834664",
+        "neighborhood": null,
+        "postcode": "11201"
+      },
+      "removal_count": 0,
+      "rent": "$2,658.00",
+      "source": "MNS",
+      "sqft": "410",
+      "unit": "102",
+      "unit_size": "1 Bedroom",
+      "url": "https://www.mns.com/details/240884/rental/downtown+brooklyn/brooklyn"
     },
     "260 gold st||104": {
       "active": true,
@@ -31,7 +66,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T19:03:14.558811+00:00",
+      "last_seen": "2026-08-27T19:03:57.714381+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$2,443.00",
@@ -51,7 +86,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T19:03:14.558811+00:00",
+      "last_seen": "2026-08-27T19:03:57.714381+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$3,213.00",
@@ -71,7 +106,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T19:03:14.558811+00:00",
+      "last_seen": "2026-08-27T19:03:57.714381+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$3,160.00",
@@ -91,7 +126,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T19:03:14.558811+00:00",
+      "last_seen": "2026-08-27T19:03:57.714381+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$3,661.00",
@@ -102,6 +137,6 @@
       "url": "https://www.mns.com/details/240828/rental/greenpoint/brooklyn"
     }
   },
-  "updated_at": "2026-08-27T19:03:14.576054+00:00",
+  "updated_at": "2026-08-27T19:03:58.902126+00:00",
   "version": 1
 }
