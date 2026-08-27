@@ -11,7 +11,6 @@
     "128 West 167th Street - Apt 3D - $3094.54 -",
     "1315 Findlay Avenue - Apt 4C - $2851 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
-    "137 Frost Street Brooklyn, NY 11211 - Apt 2C - $3940.46 -",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -",
     "1433 Teller Avenue - Apt 3D - $3322.82 -",
@@ -76,7 +75,6 @@
     "128 West 167th Street - Apt 3D - $3094.54 -": "recpO6XUf57Th8s3N",
     "1315 Findlay Avenue - Apt 4C - $2851 -": "recUGRZH6cZimb82N",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
-    "137 Frost Street Brooklyn, NY 11211 - Apt 2C - $3940.46 -": "recrwqYn2tJVG0HVe",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -": "rec4pnZAXyQ1YMLXF",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -": "recnW6xUrLgnwUkS8",
     "1433 Teller Avenue - Apt 3D - $3322.82 -": "recdt7Rkzq2giJTPr",
@@ -132,5 +130,5 @@
     "95-08 147th Place - Apt 404 - $1913.45 -": "rec9n9c3ts64Aww6V",
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
-  "updated_at": "2026-08-27T15:12:38.754608+00:00"
+  "updated_at": "2026-08-27T15:13:22.985600+00:00"
 }
