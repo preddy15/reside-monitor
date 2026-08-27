@@ -1,5 +1,13 @@
 {
   "buildings": {
+    "https://mgnyconsulting.com/listing/111-willoughby-street": {
+      "address": "111 Willoughby Street 111 Willoughby Street, Brooklyn NY 11201",
+      "income_range": "$101,143 - $238,160",
+      "tiers": {},
+      "title": "111 Willoughby Street",
+      "units_count": 21,
+      "url": "https://mgnyconsulting.com/listing/111-willoughby-street/"
+    },
     "https://mgnyconsulting.com/listing/1111-foster-avenue-apartments": {
       "address": "1111 Foster Avenue 1111 Foster Ave, Brooklyn, NY 11230",
       "income_range": "$67,474 - $176,410",
@@ -657,5 +665,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-27T20:53:28.237827+00:00"
+  "updated_at": "2026-08-27T20:54:18.183996+00:00"
 }
