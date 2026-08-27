@@ -11,7 +11,7 @@
       "first_seen_source": "fac_history_migration",
       "household_size": "1-2 people",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T21:48:51.767939+00:00",
+      "last_seen": "2026-08-27T21:49:27.648590+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "539, Vanderbilt Avenue, Fox Hills, Staten Island, Richmond County, New York, 10304, United States",
@@ -41,7 +41,7 @@
       "first_seen_source": "fac_history_migration",
       "household_size": "1 people",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T21:48:51.767939+00:00",
+      "last_seen": "2026-08-27T21:49:27.648590+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "551, Warren Street, Gowanus, Brooklyn, Kings County, New York, 11217, United States",
@@ -71,7 +71,7 @@
       "first_seen_source": "fac_history_migration",
       "household_size": "1 people",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T21:48:51.767939+00:00",
+      "last_seen": "2026-08-27T21:49:27.648590+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "551, Warren Street, Gowanus, Brooklyn, Kings County, New York, 11217, United States",
@@ -101,7 +101,7 @@
       "first_seen_source": "fac_history_migration",
       "household_size": "1 people",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T21:48:51.767939+00:00",
+      "last_seen": "2026-08-27T21:49:27.648590+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "551, Warren Street, Gowanus, Brooklyn, Kings County, New York, 11217, United States",
@@ -131,7 +131,7 @@
       "first_seen_source": "fac_history_migration",
       "household_size": "1 people",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T21:48:51.767939+00:00",
+      "last_seen": "2026-08-27T21:49:27.648590+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "551, Warren Street, Gowanus, Brooklyn, Kings County, New York, 11217, United States",
@@ -161,7 +161,7 @@
       "first_seen_source": "fac_history_migration",
       "household_size": "1 people",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T21:48:51.767939+00:00",
+      "last_seen": "2026-08-27T21:49:27.648590+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "551, Warren Street, Gowanus, Brooklyn, Kings County, New York, 11217, United States",
@@ -191,7 +191,7 @@
       "first_seen_source": "fac_history_migration",
       "household_size": "1 people",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T21:48:51.767939+00:00",
+      "last_seen": "2026-08-27T21:49:27.648590+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "551, Warren Street, Gowanus, Brooklyn, Kings County, New York, 11217, United States",
@@ -221,7 +221,7 @@
       "first_seen_source": "fac_history_migration",
       "household_size": "1 people",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T21:48:51.767939+00:00",
+      "last_seen": "2026-08-27T21:49:27.648590+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "551, Warren Street, Gowanus, Brooklyn, Kings County, New York, 11217, United States",
@@ -251,7 +251,7 @@
       "first_seen_source": "fac_history_migration",
       "household_size": "1-5 people",
       "last_removed_at": null,
-      "last_seen": "2026-08-27T21:48:51.767939+00:00",
+      "last_seen": "2026-08-27T21:49:27.648590+00:00",
       "location": null,
       "max_income": "$73,280.00",
       "min_income": "$39,325.71",
@@ -265,6 +265,6 @@
       "unit_size": "2 Bedroom"
     }
   },
-  "updated_at": "2026-08-27T21:48:51.816155+00:00",
+  "updated_at": "2026-08-27T21:49:27.682747+00:00",
   "version": 1
 }
