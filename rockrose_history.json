@@ -64,17 +64,17 @@
       "url": "https://rockrose.com/affordable-availabilities/eagle-lofts-collection-phase-2-apt-2p-income-restricted-unit-130-ami-rent-stabilized/"
     },
     "555 w 38 street manhattan ny 10018||1908": {
-      "active": true,
+      "active": false,
       "address": "555 W 38 Street, Manhattan, NY 10018",
       "appearance_count": 1,
       "details": null,
       "first_seen": "2026-08-20T01:58:18.576330+00:00",
       "first_seen_source": "rockrose_history_migration",
-      "last_removed_at": null,
+      "last_removed_at": "2026-08-27T13:58:30.456390+00:00",
       "last_seen": "2026-08-27T13:35:27.032445+00:00",
       "location": null,
       "published_income_range": "$126,578 - $238,160",
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$3,656.36",
       "source": "Rockrose",
       "unit": "1908",
@@ -100,6 +100,6 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-911-income-restricted-unit-70-ami-rent-stabilized/"
     }
   },
-  "updated_at": "2026-08-27T13:35:27.032726+00:00",
+  "updated_at": "2026-08-27T13:58:30.456769+00:00",
   "version": 1
 }
