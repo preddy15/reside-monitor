@@ -139,29 +139,6 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/1700-jerome-avenue/"
     },
-    "https://mgnyconsulting.com/listing/1728-townsend-avenue": {
-      "address": "1728 Townsend Avenue 1728 Townsend Avenue, Bronx, NY 10453",
-      "income_range": "$57,897 - $168,480",
-      "tiers": {
-        "130%||studio||$1,481.66||1-2 people": {
-          "active": true,
-          "ami": "130%",
-          "annual_income": "$$57,897 – $168,480",
-          "appearance_count": 1,
-          "first_seen": "2026-08-20T04:04:39.814757+00:00",
-          "household_size": "1-2 people",
-          "last_removed_at": null,
-          "last_seen": "2026-08-20T04:04:39.814757+00:00",
-          "removal_count": 0,
-          "rent": "$1,481.66",
-          "unit_size": "Studio",
-          "units_available": 1
-        }
-      },
-      "title": "1728 Townsend Avenue",
-      "units_count": 1,
-      "url": "https://mgnyconsulting.com/listing/1728-townsend-avenue/"
-    },
     "https://mgnyconsulting.com/listing/1777-weeks-avenue-2": {
       "address": "1777 Weeks Avenue 1777 Weeks Ave, Bronx, NY 10457",
       "income_range": "$90,446 - $198,510",
@@ -604,5 +581,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-27T16:52:22.535763+00:00"
+  "updated_at": "2026-08-27T16:53:06.567421+00:00"
 }
