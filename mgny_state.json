@@ -474,6 +474,29 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/865-rogers-avenue/"
     },
+    "https://mgnyconsulting.com/listing/881-lexington-avenue": {
+      "address": "881 Lexington Avenue 881 Lexington Avenue, Brooklyn, NY 11221",
+      "income_range": "$88,937 - $198,510",
+      "tiers": {
+        "130%||1-bedroom||$2,403.99||1-3 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$88,937 – $198,510",
+          "appearance_count": 1,
+          "first_seen": "2026-08-27T16:52:22.535763+00:00",
+          "household_size": "1-3 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-27T16:52:22.535763+00:00",
+          "removal_count": 0,
+          "rent": "$2,403.99",
+          "unit_size": "1-bedroom",
+          "units_available": 1
+        }
+      },
+      "title": "881 Lexington Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/881-lexington-avenue/"
+    },
     "https://mgnyconsulting.com/listing/astoria-west": {
       "address": null,
       "income_range": "$88,445 - $198,510",
@@ -571,43 +594,6 @@
       "units_count": 4,
       "url": "https://mgnyconsulting.com/listing/lighthouse-point/"
     },
-    "https://mgnyconsulting.com/listing/lincoln-at-bankside": {
-      "address": null,
-      "income_range": "$121,509 - $273,520",
-      "tiers": {
-        "130%||2-bedroom||$3,400.00||3-5 people": {
-          "active": true,
-          "ami": "130%",
-          "annual_income": "$121,509-$238,160",
-          "appearance_count": 1,
-          "first_seen": "2026-08-20T04:04:39.814757+00:00",
-          "household_size": "3-5 people",
-          "last_removed_at": null,
-          "last_seen": "2026-08-20T04:04:39.814757+00:00",
-          "removal_count": 0,
-          "rent": "$3,400.00",
-          "unit_size": "2-Bedroom",
-          "units_available": 4
-        },
-        "130%||3-bedroom||$4,373.00||3-7 people": {
-          "active": true,
-          "ami": "130%",
-          "annual_income": "$156,035 – $273,520",
-          "appearance_count": 1,
-          "first_seen": "2026-08-20T04:04:39.814757+00:00",
-          "household_size": "3-7 people",
-          "last_removed_at": null,
-          "last_seen": "2026-08-20T04:04:39.814757+00:00",
-          "removal_count": 0,
-          "rent": "$4,373.00",
-          "unit_size": "3-Bedroom",
-          "units_available": 1
-        }
-      },
-      "title": "Lincoln at Bankside",
-      "units_count": 5,
-      "url": "https://mgnyconsulting.com/listing/lincoln-at-bankside/"
-    },
     "https://mgnyconsulting.com/listing/lumen-lic-apartments": {
       "address": "23-15 44th Rd, Queens, NY 11101",
       "income_range": "$109,372 - $238,160",
@@ -618,5 +604,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-27T16:51:37.643661+00:00"
+  "updated_at": "2026-08-27T16:52:22.535763+00:00"
 }
