@@ -11,7 +11,7 @@
           "first_seen": "2026-08-25T15:19:40.147379+00:00",
           "household_size": "2-5",
           "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -22,7 +22,7 @@
     },
     "210 clarkson ave brooklyn ny": {
       "address": "210 Clarkson Ave, Brooklyn, NY",
-      "status": "unknown",
+      "status": "on hold",
       "tiers": {
         "affordable unit||$3,053.27||1": {
           "active": true,
@@ -30,7 +30,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -40,7 +40,7 @@
       }
     },
     "215 freeman st brooklyn": {
-      "address": "215 Freeman st, Brooklyn",
+      "address": "215 Freeman St, Brooklyn",
       "status": "unknown",
       "tiers": {
         "affordable unit||$3,073.55||": {
@@ -49,11 +49,30 @@
           "first_seen": "2026-08-25T21:09:42.593780+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
           "rent": "$3,073.55",
+          "unit_size": "Affordable Unit"
+        }
+      }
+    },
+    "260 kent ave brooklyn ny": {
+      "address": "260 Kent Ave, Brooklyn, NY",
+      "status": "unknown",
+      "tiers": {
+        "affordable unit||$1,640.40||1": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-27T17:06:46.601122+00:00",
+          "household_size": "1",
+          "last_removed_at": null,
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$1,640.40",
           "unit_size": "Affordable Unit"
         }
       }
@@ -68,7 +87,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1-3",
           "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -81,37 +100,44 @@
       "address": "329 Gates Ave, Brooklyn, NY",
       "status": "unknown",
       "tiers": {
-        "studio||$2,467.38||1": {
+        "1 bedroom||||1": {
           "active": true,
           "appearance_count": 1,
-          "first_seen": "2026-08-26T17:22:26.888354+00:00",
+          "first_seen": "2026-08-27T17:06:46.601122+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
-          "one_person_eligible": false,
-          "one_person_income": null,
-          "removal_count": 0,
-          "rent": "$2,467.38",
-          "unit_size": "Studio"
-        }
-      }
-    },
-    "540 fulton st brooklyn ny": {
-      "address": "540 Fulton st, Brooklyn, NY",
-      "status": "on hold",
-      "tiers": {
-        "affordable unit||||1-3": {
-          "active": true,
-          "appearance_count": 1,
-          "first_seen": "2026-08-21T04:26:17.273123+00:00",
-          "household_size": "1-3",
-          "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
           "rent": null,
-          "unit_size": "Affordable Unit"
+          "unit_size": "1 Bedroom"
+        },
+        "studio||$2,467.38||1": {
+          "active": false,
+          "appearance_count": 1,
+          "first_seen": "2026-08-26T17:22:26.888354+00:00",
+          "household_size": "1",
+          "last_removed_at": "2026-08-27T17:06:46.601122+00:00",
+          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 1,
+          "rent": "$2,467.38",
+          "unit_size": "Studio"
+        },
+        "studio||||1": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-08-27T17:06:46.601122+00:00",
+          "household_size": "1",
+          "last_removed_at": null,
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": null,
+          "unit_size": "Studio"
         }
       }
     },
@@ -125,7 +151,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
           "one_person_eligible": null,
           "one_person_income": null,
           "removal_count": 0,
@@ -144,7 +170,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -157,7 +183,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -176,7 +202,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -189,7 +215,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
           "one_person_eligible": null,
           "one_person_income": null,
           "removal_count": 0,
@@ -202,7 +228,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
+          "last_seen": "2026-08-27T17:06:46.601122+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -212,5 +238,5 @@
       }
     }
   },
-  "updated_at": "2026-08-27T17:05:56.990618+00:00"
+  "updated_at": "2026-08-27T17:06:46.601122+00:00"
 }
