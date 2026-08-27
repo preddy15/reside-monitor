@@ -2846,7 +2846,7 @@ def rockrose_listing_key(listing: dict) -> str:
     return f"{address}||{unit}"
 
 
-def scrape_rockrose_index() -> list[dict]:
+def scrape_rockrose_index() -> tuple[list[dict], bool]:
     response = requests.get(
         ROCKROSE_URL,
         headers={
@@ -2931,14 +2931,28 @@ def scrape_rockrose_index() -> list[dict]:
     deduped = {rockrose_listing_key(item): item for item in listings}
     listings = list(deduped.values())
 
+    page_text = normalize(soup.get_text(" ", strip=True)).casefold()
+    explicitly_empty = (
+        "there is currently no affordable housing availability at this time"
+        in page_text
+    )
+
     if not listings:
+        if explicitly_empty:
+            print(
+                "Rockrose scrape: page explicitly reports no affordable "
+                "housing availability; treating as 0 live listing(s)."
+            )
+            return [], True
+
         raise RuntimeError(
             "Rockrose page loaded but no live affordable availability cards "
-            "were parsed. Previous Rockrose baseline preserved."
+            "were parsed and no explicit zero-availability message was found. "
+            "Previous Rockrose baseline preserved."
         )
 
     print(f"Rockrose scrape: {len(listings)} live listing(s).")
-    return listings
+    return listings, False
 
 
 def enrich_rockrose_listing(listing: dict) -> dict:
@@ -3090,13 +3104,20 @@ def save_rockrose_history(history: dict) -> None:
     )
 
 
-def validate_rockrose_scrape(current: list[dict], previous_state: dict) -> None:
+def validate_rockrose_scrape(
+    current: list[dict],
+    previous_state: dict,
+    explicitly_empty: bool = False,
+) -> None:
     current_count = len(current)
     previous_count = len(previous_state.get("listings", {}))
 
     if current_count == 0:
+        if explicitly_empty:
+            return
         raise IncompleteScrapeError(
-            "Rockrose captured 0 listings. Previous baseline preserved."
+            "Rockrose captured 0 listings without an explicit "
+            "zero-availability message. Previous baseline preserved."
         )
 
     if previous_count == 0:
@@ -3218,8 +3239,8 @@ def run_rockrose_monitor() -> None:
     state = load_rockrose_state()
     history = load_rockrose_history()
 
-    listings = scrape_rockrose_index()
-    validate_rockrose_scrape(listings, state)
+    listings, explicitly_empty = scrape_rockrose_index()
+    validate_rockrose_scrape(listings, state, explicitly_empty=explicitly_empty)
 
     if not state.get("initialized"):
         save_rockrose_state(listings)
