@@ -262,6 +262,14 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/2245-creston-avenue/"
     },
+    "https://mgnyconsulting.com/listing/2423-barker-avenue-apartments": {
+      "address": null,
+      "income_range": "$127,132 - $198,510",
+      "tiers": {},
+      "title": "2423 Barker Avenue Apartments",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/2423-barker-avenue-apartments/"
+    },
     "https://mgnyconsulting.com/listing/27-15-astoria-boulevard": {
       "address": "27-15 Astoria Boulevard 27-15 Astoria Boulevard, Queens, NY 11102",
       "income_range": "$82,115 - $189,540",
@@ -649,5 +657,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-27T19:53:21.975558+00:00"
+  "updated_at": "2026-08-27T19:54:09.528361+00:00"
 }
