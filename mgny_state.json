@@ -31,6 +31,14 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/113-east-184-street/"
     },
+    "https://mgnyconsulting.com/listing/1215-fulton-street-aka-12-halsey-street": {
+      "address": null,
+      "income_range": "$126,583 - $198,510",
+      "tiers": {},
+      "title": "1215 Fulton Street aka 12 Halsey Street",
+      "units_count": 6,
+      "url": "https://mgnyconsulting.com/listing/1215-fulton-street-aka-12-halsey-street/"
+    },
     "https://mgnyconsulting.com/listing/1215fulton12halsey": {
       "address": null,
       "income_range": "$126,583 - $198,510",
@@ -138,6 +146,29 @@
       "title": "1700 Jerome Avenue",
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/1700-jerome-avenue/"
+    },
+    "https://mgnyconsulting.com/listing/1728-townsend-avenue": {
+      "address": "1728 Townsend Avenue 1728 Townsend Avenue, Bronx, NY 10453",
+      "income_range": "$57,897 - $168,480",
+      "tiers": {
+        "130%||studio||$1,481.66||1-2 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$$57,897 – $168,480",
+          "appearance_count": 2,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "1-2 people",
+          "last_removed_at": "2026-08-27T16:53:06.567421+00:00",
+          "last_seen": "2026-08-27T17:00:00.345397+00:00",
+          "removal_count": 1,
+          "rent": "$1,481.66",
+          "unit_size": "Studio",
+          "units_available": 1
+        }
+      },
+      "title": "1728 Townsend Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/1728-townsend-avenue/"
     },
     "https://mgnyconsulting.com/listing/1777-weeks-avenue-2": {
       "address": "1777 Weeks Avenue 1777 Weeks Ave, Bronx, NY 10457",
@@ -571,6 +602,43 @@
       "units_count": 4,
       "url": "https://mgnyconsulting.com/listing/lighthouse-point/"
     },
+    "https://mgnyconsulting.com/listing/lincoln-at-bankside": {
+      "address": null,
+      "income_range": "$121,509 - $273,520",
+      "tiers": {
+        "130%||2-bedroom||$3,400.00||3-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$121,509-$238,160",
+          "appearance_count": 2,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "3-5 people",
+          "last_removed_at": "2026-08-27T16:52:22.535763+00:00",
+          "last_seen": "2026-08-27T17:00:00.345397+00:00",
+          "removal_count": 1,
+          "rent": "$3,400.00",
+          "unit_size": "2-Bedroom",
+          "units_available": 4
+        },
+        "130%||3-bedroom||$4,373.00||3-7 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$156,035 – $273,520",
+          "appearance_count": 2,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "3-7 people",
+          "last_removed_at": "2026-08-27T16:52:22.535763+00:00",
+          "last_seen": "2026-08-27T17:00:00.345397+00:00",
+          "removal_count": 1,
+          "rent": "$4,373.00",
+          "unit_size": "3-Bedroom",
+          "units_available": 1
+        }
+      },
+      "title": "Lincoln at Bankside",
+      "units_count": 5,
+      "url": "https://mgnyconsulting.com/listing/lincoln-at-bankside/"
+    },
     "https://mgnyconsulting.com/listing/lumen-lic-apartments": {
       "address": "23-15 44th Rd, Queens, NY 11101",
       "income_range": "$109,372 - $238,160",
@@ -581,5 +649,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-27T16:54:18.290457+00:00"
+  "updated_at": "2026-08-27T17:00:00.345397+00:00"
 }
