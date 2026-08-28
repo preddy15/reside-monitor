@@ -375,6 +375,14 @@
       "units_count": 3,
       "url": "https://mgnyconsulting.com/listing/27-east-198-street/"
     },
+    "https://mgnyconsulting.com/listing/3531-bruckner-boulevard": {
+      "address": "3531 Bruckner Boulevard 3531 Bruckner Boulevard, Bronx, NY 10461",
+      "income_range": "$68,977 - $198,505",
+      "tiers": {},
+      "title": "3531 Bruckner Boulevard",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/3531-bruckner-boulevard/"
+    },
     "https://mgnyconsulting.com/listing/45-07-48-avenue": {
       "address": "45-07 48 Avenue 45-07 48th Avenue, Queens, NY 11377",
       "income_range": "$104,023 - $227,500",
@@ -671,5 +679,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-28T16:11:36.371491+00:00"
+  "updated_at": "2026-08-28T16:12:29.824192+00:00"
 }
