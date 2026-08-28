@@ -11,7 +11,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-28T14:01:57.481200+00:00",
+      "last_seen": "2026-08-28T14:02:38.434504+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$2,653.00",
@@ -39,7 +39,7 @@
       "first_seen": "2026-08-27T19:03:57.714381+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-08-28T14:01:57.481200+00:00",
+      "last_seen": "2026-08-28T14:02:38.434504+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "260, Gold Street, Brooklyn, Kings County, New York, 11201, United States",
@@ -66,7 +66,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-28T14:01:57.481200+00:00",
+      "last_seen": "2026-08-28T14:02:38.434504+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$2,443.00",
@@ -86,7 +86,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-28T14:01:57.481200+00:00",
+      "last_seen": "2026-08-28T14:02:38.434504+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$3,213.00",
@@ -106,7 +106,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-28T14:01:57.481200+00:00",
+      "last_seen": "2026-08-28T14:02:38.434504+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$3,160.00",
@@ -126,7 +126,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-08-28T14:01:57.481200+00:00",
+      "last_seen": "2026-08-28T14:02:38.434504+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$3,661.00",
@@ -137,6 +137,6 @@
       "url": "https://www.mns.com/details/240828/rental/greenpoint/brooklyn"
     }
   },
-  "updated_at": "2026-08-28T14:01:57.481540+00:00",
+  "updated_at": "2026-08-28T14:02:38.434792+00:00",
   "version": 1
 }
