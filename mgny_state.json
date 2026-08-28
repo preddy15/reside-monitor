@@ -634,18 +634,32 @@
     },
     "https://mgnyconsulting.com/listing/lincoln-at-bankside": {
       "address": null,
-      "income_range": "$121,509 - $273,520",
+      "income_range": "$119,795 - $273,520",
       "tiers": {
-        "130%||2-bedroom||$3,400.00||3-5 people": {
+        "130%||2-bedroom||$3,350.00||3-5 people": {
           "active": true,
+          "ami": "130%",
+          "annual_income": "$119,795-$238,160",
+          "appearance_count": 1,
+          "first_seen": "2026-08-28T17:57:50.054524+00:00",
+          "household_size": "3-5 people",
+          "last_removed_at": null,
+          "last_seen": "2026-08-28T17:57:50.054524+00:00",
+          "removal_count": 0,
+          "rent": "$3,350.00",
+          "unit_size": "2-Bedroom",
+          "units_available": 4
+        },
+        "130%||2-bedroom||$3,400.00||3-5 people": {
+          "active": false,
           "ami": "130%",
           "annual_income": "$121,509-$238,160",
           "appearance_count": 2,
           "first_seen": "2026-08-20T04:04:39.814757+00:00",
           "household_size": "3-5 people",
-          "last_removed_at": "2026-08-27T16:52:22.535763+00:00",
+          "last_removed_at": "2026-08-28T17:57:50.054524+00:00",
           "last_seen": "2026-08-27T17:00:00.345397+00:00",
-          "removal_count": 1,
+          "removal_count": 2,
           "rent": "$3,400.00",
           "unit_size": "2-Bedroom",
           "units_available": 4
@@ -658,7 +672,7 @@
           "first_seen": "2026-08-20T04:04:39.814757+00:00",
           "household_size": "3-7 people",
           "last_removed_at": "2026-08-27T16:52:22.535763+00:00",
-          "last_seen": "2026-08-27T17:00:00.345397+00:00",
+          "last_seen": "2026-08-28T17:57:50.054524+00:00",
           "removal_count": 1,
           "rent": "$4,373.00",
           "unit_size": "3-Bedroom",
@@ -679,5 +693,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-28T17:57:09.966331+00:00"
+  "updated_at": "2026-08-28T17:57:50.054524+00:00"
 }
