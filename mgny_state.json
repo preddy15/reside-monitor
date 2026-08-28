@@ -452,29 +452,6 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/560-19th-street/"
     },
-    "https://mgnyconsulting.com/listing/862-hunts-point-avenue": {
-      "address": "862 Hunts Point Avenue 862 Hunts Point Ave, Bronx, NY 10474",
-      "income_range": "$104,298 - $198,510",
-      "tiers": {
-        "130%||studio 1-br||$2,835.00||1-2 people 1-3 people": {
-          "active": true,
-          "ami": "130%",
-          "annual_income": "$104,298 – $176,410 $131,760 – $198,510",
-          "appearance_count": 1,
-          "first_seen": "2026-08-20T04:04:39.814757+00:00",
-          "household_size": "1-2 people 1-3 people",
-          "last_removed_at": null,
-          "last_seen": "2026-08-20T04:04:39.814757+00:00",
-          "removal_count": 0,
-          "rent": "$2,835.00",
-          "unit_size": "Studio 1-BR",
-          "units_available": 1
-        }
-      },
-      "title": "862 Hunts Point Avenue",
-      "units_count": 2,
-      "url": "https://mgnyconsulting.com/listing/862-hunts-point-avenue/"
-    },
     "https://mgnyconsulting.com/listing/865-rogers-avenue": {
       "address": null,
       "income_range": "$80,289 - $176,410",
@@ -665,5 +642,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-28T15:01:52.001420+00:00"
+  "updated_at": "2026-08-28T15:02:38.389031+00:00"
 }
