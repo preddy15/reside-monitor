@@ -36,7 +36,13 @@
       "rent": "$3,661.00",
       "unit": "320",
       "url": "https://www.mns.com/details/240828/rental/greenpoint/brooklyn"
+    },
+    "88 leonard st||1210": {
+      "address": "88 Leonard ST",
+      "rent": "$3,344.00",
+      "unit": "1210",
+      "url": "https://www.mns.com/details/240766/rental/tribeca/manhattan"
     }
   },
-  "updated_at": "2026-08-28T15:06:29.840589+00:00"
+  "updated_at": "2026-08-28T15:07:22.990136+00:00"
 }
