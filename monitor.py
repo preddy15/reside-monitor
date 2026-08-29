@@ -1607,8 +1607,29 @@ def validate_scrape(current_options: set[str], previous_options: set[str]) -> No
             "Captured 0 listings. Refusing to replace the previous baseline."
         )
 
+    # A wrong-dropdown capture (e.g. the form's State field) produces options
+    # with no rent. Every legitimate listing row contains a dollar amount.
+    with_rent = sum(1 for o in current_options if re.search(r"\$\s*\d", o))
+    if with_rent < current_count * 0.5:
+        raise IncompleteScrapeError(
+            f"Captured {current_count} option(s) but only {with_rent} contain a "
+            "rent amount — this looks like the wrong dropdown (e.g. the State "
+            "field), not the listings picker. Baseline preserved."
+        )
+
     if previous_count == 0:
         return
+
+    # A near-total turnover of the option set between two runs minutes apart
+    # is implausible and indicates a misread picker, whatever the counts say.
+    if previous_count >= 20:
+        overlap = len(current_options & previous_options)
+        if overlap < previous_count * 0.25:
+            raise IncompleteScrapeError(
+                f"Only {overlap} of {previous_count} baseline options are present "
+                "in this scrape — wholesale replacement looks like a misread "
+                "picker. Baseline preserved."
+            )
 
     ratio = current_count / previous_count
     drop = previous_count - current_count
@@ -7254,6 +7275,21 @@ def run_normal_monitor() -> None:
     state = load_state()
     history = load_history()
     health = load_health()
+
+    # Past runs occasionally captured the form's State dropdown (US state
+    # names) instead of the listings picker. Real entries always carry a
+    # rent; drop inactive junk entries that never had one.
+    junk = [
+        key
+        for key, entry in history.get("listings", {}).items()
+        if not entry.get("active")
+        and not entry.get("rent")
+        and "$" not in str(entry.get("raw") or "")
+    ]
+    for key in junk:
+        del history["listings"][key]
+    if junk:
+        print(f"Purged {len(junk)} junk non-listing history entries.")
 
     old_options = {
         normalize(x) for x in state.get("options", []) if normalize(x)
