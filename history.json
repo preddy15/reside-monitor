@@ -2,13 +2,13 @@
   "created_at": "2026-08-19T05:00:11.843264+00:00",
   "listings": {
     "1000 woodycrest avenue||5b": {
-      "active": true,
+      "active": false,
       "address": "1000 Woodycrest Avenue",
       "airtable_record_id": "rec2MWfqNMK1MMCGZ",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -19,7 +19,7 @@
         "postcode": "10452"
       },
       "raw": "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 - Senior Preferece 60+",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,442.80",
       "reside": null,
       "unit": "5B"
@@ -62,13 +62,13 @@
       "unit": "6A"
     },
     "1010 washington avenue||521": {
-      "active": true,
+      "active": false,
       "address": "1010 Washington Avenue",
       "airtable_record_id": "recN0kOIIkTLYlMu5",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Brooklyn",
@@ -79,19 +79,19 @@
         "postcode": "11225"
       },
       "raw": "1010 Washington Avenue - Apt 521 - $5002 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$5,002.00",
       "reside": null,
       "unit": "521"
     },
     "106 mt hope place||3d": {
-      "active": true,
+      "active": false,
       "address": "106 Mt. Hope Place",
       "airtable_record_id": "recX5UI8jXOGMGZBL",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -102,19 +102,19 @@
         "postcode": "10453"
       },
       "raw": "106 Mt. Hope Place - Apt 3D - $2747.44 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$2,747.44",
       "reside": null,
       "unit": "3D"
     },
     "106 mt hope place||6c": {
-      "active": true,
+      "active": false,
       "address": "106 Mt. Hope Place",
       "airtable_record_id": "recrpwbaoI352905D",
       "appearance_count": 2,
       "first_seen": "2026-08-19T15:17:26.341791+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -125,19 +125,19 @@
         "postcode": "10453"
       },
       "raw": "106 Mt. Hope Place - Apt 6C - $2727.02 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$2,727.02",
       "reside": null,
       "unit": "6C"
     },
     "1135 teller ave||3e": {
-      "active": true,
+      "active": false,
       "address": "1135 Teller Ave",
       "airtable_record_id": "recVseDWIs4g0C16L",
       "appearance_count": 1,
       "first_seen": "2026-08-27T14:57:00.218398+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -148,19 +148,19 @@
         "postcode": "10456"
       },
       "raw": "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$3,219.60",
       "reside": null,
       "unit": "3E"
     },
     "128 west 167th street||3d": {
-      "active": true,
+      "active": false,
       "address": "128 West 167th Street",
       "airtable_record_id": "recpO6XUf57Th8s3N",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -171,7 +171,7 @@
         "postcode": "10452"
       },
       "raw": "128 West 167th Street - Apt 3D - $3094.54 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,094.54",
       "reside": null,
       "unit": "3D"
@@ -207,13 +207,13 @@
       "unit": "3C"
     },
     "1315 findlay avenue||4c": {
-      "active": true,
+      "active": false,
       "address": "1315 Findlay Avenue",
       "airtable_record_id": "recUGRZH6cZimb82N",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -224,7 +224,7 @@
         "postcode": "10456"
       },
       "raw": "1315 Findlay Avenue - Apt 4C - $2851 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$2,851.00",
       "reside": null,
       "unit": "4C"
@@ -274,13 +274,13 @@
       "unit": "3C"
     },
     "1361 teller ave||3e": {
-      "active": true,
+      "active": false,
       "address": "1361 Teller Ave",
       "airtable_record_id": "recDHYN6KsPNGhoLR",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -291,7 +291,7 @@
         "postcode": "10456"
       },
       "raw": "1361 Teller Ave - Apt 3E - $2824.38 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$2,824.38",
       "reside": null,
       "unit": "3E"
@@ -320,45 +320,45 @@
       "unit": "2C"
     },
     "1433 teller ave apt 3d||3d": {
-      "active": true,
+      "active": false,
       "address": "1433 Teller Ave- Apt. 3D",
       "airtable_record_id": "recnW6xUrLgnwUkS8",
       "appearance_count": 2,
       "first_seen": "2026-08-25T17:09:11.778643+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,322.82",
       "reside": null,
       "unit": "3D"
     },
     "1433 teller ave apt ca||ca": {
-      "active": true,
+      "active": false,
       "address": "1433 Teller Ave -Apt. CA",
       "airtable_record_id": "rec4pnZAXyQ1YMLXF",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,041.73",
       "reside": null,
       "unit": "CA"
     },
     "1433 teller avenue||3d": {
-      "active": true,
+      "active": false,
       "address": "1433 Teller Avenue",
       "airtable_record_id": "recdt7Rkzq2giJTPr",
       "appearance_count": 2,
       "first_seen": "2026-08-20T18:16:40.123490+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -369,19 +369,19 @@
         "postcode": "10456"
       },
       "raw": "1433 Teller Avenue - Apt 3D - $3322.82 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,322.82",
       "reside": null,
       "unit": "3D"
     },
     "1440 amsterdam avenue||1 bedroom": {
-      "active": true,
+      "active": false,
       "address": "1440 Amsterdam Avenue",
       "airtable_record_id": "recfXtIqykxtNB3g9",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Manhattan",
@@ -392,19 +392,19 @@
         "postcode": "10027"
       },
       "raw": "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,595.00",
       "reside": null,
       "unit": ": 1 Bedroom"
     },
     "1440 amsterdam avenue||2 bedroom": {
-      "active": true,
+      "active": false,
       "address": "1440 Amsterdam Avenue",
       "airtable_record_id": "recN9sJ60POwokBlF",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Manhattan",
@@ -415,19 +415,19 @@
         "postcode": "10027"
       },
       "raw": "1440 Amsterdam Avenue - Apt 2 bedroom - $4568 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$4,568.00",
       "reside": null,
       "unit": "2 bedroom"
     },
     "1440 amsterdam avenue||702": {
-      "active": true,
+      "active": false,
       "address": "1440 Amsterdam Avenue",
       "airtable_record_id": "recS5S5PuXzT0NriJ",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Manhattan",
@@ -438,19 +438,19 @@
         "postcode": "10027"
       },
       "raw": "1440 Amsterdam Avenue - Apt 702 - $3195 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,195.00",
       "reside": null,
       "unit": "702"
     },
     "1440 amsterdam avenue||studio": {
-      "active": true,
+      "active": false,
       "address": "1440 Amsterdam Avenue",
       "airtable_record_id": "recI4FJHu3ObeTUOA",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Manhattan",
@@ -461,19 +461,19 @@
         "postcode": "10027"
       },
       "raw": "1440 Amsterdam Avenue - Apt Studio - $3195 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,195.00",
       "reside": null,
       "unit": "Studio"
     },
     "147 35 95th avenue||1012": {
-      "active": true,
+      "active": false,
       "address": "147-35 95th Avenue",
       "airtable_record_id": "recdqef3T8F6X7MrE",
       "appearance_count": 1,
       "first_seen": "2026-08-26T17:22:51.868154+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Queens",
@@ -484,19 +484,19 @@
         "postcode": "11435"
       },
       "raw": "147-35 95th Avenue - Apt 1012 - $2047.81 -",
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$2,047.81",
       "reside": null,
       "unit": "1012"
     },
     "147 35 95th avenue||1312": {
-      "active": true,
+      "active": false,
       "address": "147-35 95th Avenue",
       "airtable_record_id": "recfV2NYbLa2rstVt",
       "appearance_count": 1,
       "first_seen": "2026-08-26T17:22:51.868154+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Queens",
@@ -507,35 +507,35 @@
         "postcode": "11435"
       },
       "raw": "147-35 95th Avenue - Apt 1312 - $2052.79 -",
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$2,052.79",
       "reside": null,
       "unit": "1312"
     },
     "148 09 90 ave jamaica apt 3a||3a": {
-      "active": true,
+      "active": false,
       "address": "148-09 90 ave Jamaica- Apt. 3A",
       "airtable_record_id": "rec91Qh0MtQqfbME9",
       "appearance_count": 2,
       "first_seen": "2026-08-24T19:28:53.948273+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "148-09 90 ave Jamaica- Apt. 3A - Apt 3A - $3206.96 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,206.96",
       "reside": null,
       "unit": "3A"
     },
     "1484 watson avenue||e33": {
-      "active": true,
+      "active": false,
       "address": "1484 Watson avenue",
       "airtable_record_id": "recgmsge7E5Igxujb",
       "appearance_count": 2,
       "first_seen": "2026-08-20T20:58:31.598649+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -546,7 +546,7 @@
         "postcode": "10472"
       },
       "raw": "1484 Watson avenue - Apt E33 - $3608.89 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,608.89",
       "reside": {
         "ami": null,
@@ -583,45 +583,45 @@
       "unit": "203"
     },
     "1718 president street apt 10b||10b": {
-      "active": true,
+      "active": false,
       "address": "1718 President Street- Apt. 10B",
       "airtable_record_id": "rec0LZW1q8H8l1GVN",
       "appearance_count": 2,
       "first_seen": "2026-08-24T19:23:20.742138+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,412.21",
       "reside": null,
       "unit": "10B"
     },
     "1718 president street apt 6d||6d": {
-      "active": true,
+      "active": false,
       "address": "1718 President Street- Apt. 6D",
       "airtable_record_id": "reclUhaLWzgAX6Xqn",
       "appearance_count": 2,
       "first_seen": "2026-08-24T19:24:16.433458+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "1718 President Street- Apt. 6D - Apt 6D - $3861.62 - Senior Preferece 60+",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,861.62",
       "reside": null,
       "unit": "6D"
     },
     "1718 president street||10b": {
-      "active": true,
+      "active": false,
       "address": "1718 President Street",
       "airtable_record_id": "rec2jghR27k38Pqxn",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Brooklyn",
@@ -632,19 +632,19 @@
         "postcode": "11213"
       },
       "raw": "1718 President Street - Apt 10B - $3412.21 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,412.21",
       "reside": null,
       "unit": "10B"
     },
     "1718 president street||6d": {
-      "active": true,
+      "active": false,
       "address": "1718 President Street",
       "airtable_record_id": "recSUSfR9IXFm78yr",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Brooklyn",
@@ -655,39 +655,39 @@
         "postcode": "11213"
       },
       "raw": "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,861.62",
       "reside": null,
       "unit": "6D"
     },
     "1988 anthony avenue apt 4i||4i": {
-      "active": true,
+      "active": false,
       "address": "1988 Anthony Avenue- Apt. 4I",
       "airtable_record_id": "receByCOIDuPj4ANu",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "1988 Anthony Avenue- Apt. 4I - Apt 4I - $2860.91 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$2,860.91",
       "reside": null,
       "unit": "4I"
     },
     "20 30 halletts point||": {
-      "active": true,
+      "active": false,
       "address": "20 & 30 Halletts Point",
       "airtable_record_id": "rec8QdL8gJOo0huZw",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,986.00",
       "reside": {
         "ami": null,
@@ -701,13 +701,13 @@
       "unit": null
     },
     "2061 crotona ave||2c": {
-      "active": true,
+      "active": false,
       "address": "2061 Crotona Ave",
       "airtable_record_id": "recl8wA3YDcWn44ag",
       "appearance_count": 2,
       "first_seen": "2026-08-19T15:17:26.341791+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -718,19 +718,19 @@
         "postcode": "10457"
       },
       "raw": "2061 Crotona Ave - Apt 2C - $3237.42 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,237.42",
       "reside": null,
       "unit": "2C"
     },
     "2067 anthony ave||406": {
-      "active": true,
+      "active": false,
       "address": "2067 Anthony Ave",
       "airtable_record_id": "recMrloqPshrYkeXk",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -741,35 +741,35 @@
         "postcode": "10457"
       },
       "raw": "2067 Anthony Ave - Apt 406 - $3088 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,088.00",
       "reside": null,
       "unit": "406"
     },
     "2072 anthony ave apt 8i||8i": {
-      "active": true,
+      "active": false,
       "address": "2072 Anthony Ave.- Apt. 8I",
       "airtable_record_id": "rec4fzUTSapqZ9Aed",
       "appearance_count": 1,
       "first_seen": "2026-08-25T19:49:10.899263+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -",
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$2,949.00",
       "reside": null,
       "unit": "8I"
     },
     "2072 anthony ave||4j": {
-      "active": true,
+      "active": false,
       "address": "2072 Anthony Ave",
       "airtable_record_id": "rec3mMbZKu8pdpNCL",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -780,7 +780,7 @@
         "postcode": "10457"
       },
       "raw": "2072 Anthony Ave - Apt 4J - $3037.47 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,037.47",
       "reside": null,
       "unit": "4J"
@@ -809,13 +809,13 @@
       "unit": "2B"
     },
     "2140 matthews ave||4a": {
-      "active": true,
+      "active": false,
       "address": "2140 Matthews Ave",
       "airtable_record_id": "recoCiA3nWif6uMSG",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -826,19 +826,19 @@
         "postcode": "10462"
       },
       "raw": "2140 Matthews Ave - Apt 4A - $2941.02 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$2,941.02",
       "reside": null,
       "unit": "4A"
     },
     "2180 walton avenue||10d": {
-      "active": true,
+      "active": false,
       "address": "2180 Walton Avenue",
       "airtable_record_id": "reclm0Vov81VspkPi",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -849,19 +849,19 @@
         "postcode": "10453"
       },
       "raw": "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,128.00",
       "reside": null,
       "unit": "10D"
     },
     "2180 walton avenue||4c": {
-      "active": true,
+      "active": false,
       "address": "2180 Walton Avenue",
       "airtable_record_id": "reczZeXLpx20TDBSu",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -872,7 +872,7 @@
         "postcode": "10453"
       },
       "raw": "2180 Walton Avenue - Apt 4C - $3128 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,128.00",
       "reside": null,
       "unit": "4C"
@@ -901,17 +901,17 @@
       "unit": "5B"
     },
     "237 west 167th stret||4e": {
-      "active": true,
+      "active": false,
       "address": "237 West 167th Stret",
       "airtable_record_id": "recHEaZh5bE35y3F3",
       "appearance_count": 2,
       "first_seen": "2026-08-19T15:17:26.341791+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "237 West 167th Stret - Apt 4E - $3071.87 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,071.87",
       "reside": null,
       "unit": "4E"
@@ -932,13 +932,13 @@
       "unit": "302"
     },
     "2460 white plains road||2b": {
-      "active": true,
+      "active": false,
       "address": "2460 White Plains Road",
       "airtable_record_id": "recG140q49vwz78ml",
       "appearance_count": 1,
       "first_seen": "2026-08-26T18:01:31.486781+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -949,19 +949,19 @@
         "postcode": "10467"
       },
       "raw": "2460 White Plains Road - Apt 2B - $3094.54 -",
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$3,094.54",
       "reside": null,
       "unit": "2B"
     },
     "25 01 queens plaza north||1019": {
-      "active": true,
+      "active": false,
       "address": "25-01 Queens Plaza North",
       "airtable_record_id": "recghf35pdYrvl3yG",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Queens",
@@ -972,19 +972,19 @@
         "postcode": "11101"
       },
       "raw": "25-01 Queens Plaza North - Apt 1019 - $3653 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,653.00",
       "reside": null,
       "unit": "1019"
     },
     "25 01 queens plaza north||815": {
-      "active": true,
+      "active": false,
       "address": "25-01 Queens Plaza North",
       "airtable_record_id": "recaWCw4lUPbhNiHq",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Queens",
@@ -995,19 +995,19 @@
         "postcode": "11101"
       },
       "raw": "25-01 Queens Plaza North - Apt 815 - $3653 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,653.00",
       "reside": null,
       "unit": "815"
     },
     "25 01 queens plaza north||903": {
-      "active": true,
+      "active": false,
       "address": "25-01 Queens Plaza North",
       "airtable_record_id": "reckGonUx3gxKtG6Y",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Queens",
@@ -1018,19 +1018,19 @@
         "postcode": "11101"
       },
       "raw": "25-01 Queens Plaza North - Apt 903 - $4366 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$4,366.00",
       "reside": null,
       "unit": "903"
     },
     "25 01 queens plaza north||905": {
-      "active": true,
+      "active": false,
       "address": "25-01 Queens Plaza North",
       "airtable_record_id": "recj1oPgkyAqXrOkw",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Queens",
@@ -1041,7 +1041,7 @@
         "postcode": "11101"
       },
       "raw": "25-01 Queens Plaza North - Apt 905 - $3653 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,653.00",
       "reside": null,
       "unit": "905"
@@ -1147,13 +1147,13 @@
       "unit": "849"
     },
     "250 west 49th street||406": {
-      "active": true,
+      "active": false,
       "address": "250 West 49th Street",
       "airtable_record_id": "recaLi1wnzGPaSFxc",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Manhattan",
@@ -1164,19 +1164,19 @@
         "postcode": "10019"
       },
       "raw": "250 West 49th Street - Apt 406 - $4349 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$4,349.00",
       "reside": null,
       "unit": "406"
     },
     "256 mount hope place||7b": {
-      "active": true,
+      "active": false,
       "address": "256 Mount Hope Place",
       "airtable_record_id": "recqt1ifOHxps1Uzn",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -1187,7 +1187,7 @@
         "postcode": "10457"
       },
       "raw": "256 Mount Hope Place - Apt 7B - $3595 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,595.00",
       "reside": null,
       "unit": "7B"
@@ -1216,49 +1216,49 @@
       "unit": "301"
     },
     "27 51 jackson avenue apartments||1 bedroom": {
-      "active": true,
+      "active": false,
       "address": "27-51 Jackson Avenue Apartments",
       "airtable_record_id": "receXMo2k5NlVofbN",
       "appearance_count": 2,
       "first_seen": "2026-08-24T19:27:03.850049+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "27-51 Jackson Avenue Apartments - Apt 1 Bedroom - $3661 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,661.00",
       "reside": null,
       "unit": "1 Bedroom"
     },
     "27 51 jackson avenue apartments||2 bedroom": {
-      "active": true,
+      "active": false,
       "address": "27-51 Jackson Avenue Apartments",
       "airtable_record_id": "recBJzmON1paYdrll",
       "appearance_count": 2,
       "first_seen": "2026-08-24T19:27:03.850049+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$4,376.00",
       "reside": null,
       "unit": "2 Bedroom"
     },
     "27 51 jackson avenue apartments||studio": {
-      "active": true,
+      "active": false,
       "address": "27-51 Jackson Avenue Apartments",
       "airtable_record_id": "recb626NhM4wnZn5J",
       "appearance_count": 2,
       "first_seen": "2026-08-24T19:27:03.850049+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,423.00",
       "reside": null,
       "unit": "Studio"
@@ -1382,17 +1382,17 @@
       "unit": "4F"
     },
     "34 21 109th street apartments||4f": {
-      "active": true,
+      "active": false,
       "address": "34-21 109th Street Apartments",
       "airtable_record_id": "recb5sTiSmA7koT3q",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "34-21 109th Street Apartments - Apt 4F - $3000 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,000.00",
       "reside": null,
       "unit": "4F"
@@ -1489,13 +1489,13 @@
       "unit": "3H"
     },
     "3923 carpenter avenue||3a": {
-      "active": true,
+      "active": false,
       "address": "3923 Carpenter Avenue",
       "airtable_record_id": "reckk9OJYXa77FVpY",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -1506,7 +1506,7 @@
         "postcode": "10466"
       },
       "raw": "3923 Carpenter Avenue - 3A - Apt 3A - $2855.36 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$2,855.36",
       "reside": null,
       "unit": "3A"
@@ -1566,17 +1566,17 @@
       "unit": "702"
     },
     "56 west 125 street||810": {
-      "active": true,
+      "active": false,
       "address": "56 West 125 Street",
       "airtable_record_id": "recYLJ0ByR57puvBh",
       "appearance_count": 1,
       "first_seen": "2026-08-26T19:52:45.130250+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "56 West 125 Street - Apt 810 - $2360.95 -",
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$2,360.95",
       "reside": null,
       "unit": "810"
@@ -1636,45 +1636,45 @@
       "unit": "2F"
     },
     "647 sheffield ave apt 1a||1a": {
-      "active": true,
+      "active": false,
       "address": "647 Sheffield Ave- Apt. 1A",
       "airtable_record_id": "recroF9t4eeGJVbOq",
       "appearance_count": 1,
       "first_seen": "2026-08-27T14:55:06.039729+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$2,800.41",
       "reside": null,
       "unit": "1A"
     },
     "661 manida street apt 6b||6b": {
-      "active": true,
+      "active": false,
       "address": "661 Manida Street- Apt. 6B",
       "airtable_record_id": "recTvpNYEFCmRZqiB",
       "appearance_count": 1,
       "first_seen": "2026-08-26T17:22:51.868154+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "661 Manida Street- Apt. 6B - Senior preference - Apt 6B - $1675.33 - Senior Preferece 60+",
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$1,675.33",
       "reside": null,
       "unit": "6B"
     },
     "661 manida street||4a": {
-      "active": true,
+      "active": false,
       "address": "661 Manida Street",
       "airtable_record_id": "recLKAS4m2XJ6p2eN",
       "appearance_count": 1,
       "first_seen": "2026-08-27T18:10:51.294276+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Bronx",
@@ -1685,7 +1685,7 @@
         "postcode": "10474"
       },
       "raw": "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+",
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$1,801.77",
       "reside": null,
       "unit": "4A"
@@ -1735,13 +1735,13 @@
       "unit": "5D"
     },
     "69 hope street||4a": {
-      "active": true,
+      "active": false,
       "address": "69 Hope Street",
       "airtable_record_id": "recrDuFJYuMHXQZaO",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Brooklyn",
@@ -1752,7 +1752,7 @@
         "postcode": "11211"
       },
       "raw": "69 Hope Street - Apt 4A - $3100 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,100.00",
       "reside": null,
       "unit": "4A"
@@ -1804,29 +1804,29 @@
       "unit": "3B"
     },
     "765 east 214 street apt 703||703": {
-      "active": true,
+      "active": false,
       "address": "765 East 214 Street Apt. 703",
       "airtable_record_id": "recDHccgkL8ARHZIb",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,019.90",
       "reside": null,
       "unit": "703"
     },
     "765 east 214||302": {
-      "active": true,
+      "active": false,
       "address": "765 East 214",
       "airtable_record_id": "recqKUYrmQ9p5uIRm",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": null,
@@ -1837,7 +1837,7 @@
         "postcode": "14621"
       },
       "raw": "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,036.60",
       "reside": null,
       "unit": "302"
@@ -1901,13 +1901,13 @@
       "unit": "413"
     },
     "885 rogers avenue||407": {
-      "active": true,
+      "active": false,
       "address": "885 Rogers Avenue",
       "airtable_record_id": "recqYTTsnxol1A5cK",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Brooklyn",
@@ -1918,35 +1918,35 @@
         "postcode": "11226"
       },
       "raw": "885 Rogers Avenue - Apt 407 - $2590.63 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$2,590.63",
       "reside": null,
       "unit": "407"
     },
     "947 sheridan ave apt 3c||3c": {
-      "active": true,
+      "active": false,
       "address": "947 Sheridan Ave. Apt. 3C",
       "airtable_record_id": "recdgxlD1ca2pnbqF",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,221.84",
       "reside": null,
       "unit": "3C"
     },
     "95 08 147th place||404": {
-      "active": true,
+      "active": false,
       "address": "95-08 147th Place",
       "airtable_record_id": "rec9n9c3ts64Aww6V",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": {
         "borough": "Queens",
@@ -1957,20 +1957,20 @@
         "postcode": "11435"
       },
       "raw": "95-08 147th Place - Apt 404 - $1913.45 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$1,913.45",
       "reside": null,
       "unit": "404"
     },
     "alabama||": {
-      "active": false,
+      "active": true,
       "address": "Alabama",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "Alabama Avenue, Fulton Street, Broadway Junction, Brooklyn, Kings County, New York, 11207, United States",
@@ -1986,14 +1986,14 @@
       "unit": null
     },
     "alaska||": {
-      "active": false,
+      "active": true,
       "address": "Alaska",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Alaska Street, Staten Island, Richmond County, New York, 10310, United States",
@@ -2009,14 +2009,14 @@
       "unit": null
     },
     "arizona||": {
-      "active": false,
+      "active": true,
       "address": "Arizona",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "USS Arizona Lane, Staten Island, Richmond County, New York, 10305, United States",
@@ -2032,14 +2032,14 @@
       "unit": null
     },
     "arkansas||": {
-      "active": false,
+      "active": true,
       "address": "Arkansas",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "Arkansas Drive, Mill Basin, Brooklyn, Kings County, New York, 11234, United States",
@@ -2055,14 +2055,14 @@
       "unit": null
     },
     "california||": {
-      "active": false,
+      "active": true,
       "address": "California",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "California Pizza Kitchen, 71-03, 80th Street, Queens, Queens County, New York, 11385, United States",
@@ -2078,14 +2078,14 @@
       "unit": null
     },
     "colorado||": {
-      "active": false,
+      "active": true,
       "address": "Colorado",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Colorado Street, Westerleigh, Staten Island, Richmond County, New York, 10310, United States",
@@ -2101,14 +2101,14 @@
       "unit": null
     },
     "connecticut||": {
-      "active": false,
+      "active": true,
       "address": "Connecticut",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Connecticut Street, Staten Island, Richmond County, New York, 10307, United States",
@@ -2124,14 +2124,14 @@
       "unit": null
     },
     "delaware||": {
-      "active": false,
+      "active": true,
       "address": "Delaware",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Delaware Avenue, Linden-Park, Staten Island, Richmond County, New York, 10305, United States",
@@ -2147,30 +2147,30 @@
       "unit": null
     },
     "douglass street apartments||8l": {
-      "active": true,
+      "active": false,
       "address": "Douglass Street Apartments",
       "airtable_record_id": "recUrzXl68Pa7YphC",
       "appearance_count": 2,
       "first_seen": "2026-08-19T05:00:35.543499+00:00",
       "first_seen_source": "v5_history_migration",
-      "last_removed_at": "2026-08-25T18:28:55.990312+00:00",
+      "last_removed_at": "2026-08-29T18:56:23.256654+00:00",
       "last_seen": "2026-08-29T18:54:50.869053+00:00",
       "location": null,
       "raw": "Douglass Street Apartments - Apt 8L - $3689 -",
-      "removal_count": 1,
+      "removal_count": 2,
       "rent": "$3,689.00",
       "reside": null,
       "unit": "8L"
     },
     "florida||": {
-      "active": false,
+      "active": true,
       "address": "Florida",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Florida Terrace, Staten Island, Richmond County, New York, 10306, United States",
@@ -2186,14 +2186,14 @@
       "unit": null
     },
     "georgia||": {
-      "active": false,
+      "active": true,
       "address": "Georgia",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "Georgia Avenue Garden, East New York, Brooklyn, Kings County, New York, 11207, United States",
@@ -2209,14 +2209,14 @@
       "unit": null
     },
     "hawaii||": {
-      "active": false,
+      "active": true,
       "address": "Hawaii",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Hawaii Poke Bowl, 1430, Richmond Avenue, Staten Island, Richmond County, New York, 10314, United States",
@@ -2232,14 +2232,14 @@
       "unit": null
     },
     "idaho||": {
-      "active": false,
+      "active": true,
       "address": "Idaho",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "Idaho, 349, East 13th Street, East Village, Manhattan Community Board 3, Manhattan, New York County, New York, 10003, United States",
@@ -2255,14 +2255,14 @@
       "unit": null
     },
     "illinois||": {
-      "active": false,
+      "active": true,
       "address": "Illinois",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "Illinois Jacquet Performance Space, 94-15, 159th Street, Queens, Queens County, New York, 11451, United States",
@@ -2278,14 +2278,14 @@
       "unit": null
     },
     "indiana||": {
-      "active": false,
+      "active": true,
       "address": "Indiana",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "Indiana Place, Mill Basin, Brooklyn, Kings County, New York, 11234, United States",
@@ -2301,14 +2301,14 @@
       "unit": null
     },
     "iowa||": {
-      "active": false,
+      "active": true,
       "address": "Iowa",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Iowa Place, Staten Island, Richmond County, New York, 10314, United States",
@@ -2324,14 +2324,14 @@
       "unit": null
     },
     "kansas||": {
-      "active": false,
+      "active": true,
       "address": "Kansas",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "Kansas, 99-05, 58th Avenue, Queens, Queens County, New York, 11368, United States",
@@ -2347,14 +2347,14 @@
       "unit": null
     },
     "kentucky||": {
-      "active": false,
+      "active": true,
       "address": "Kentucky",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "KFC, 87-17, Jamaica Avenue, Woodhaven, Queens, Queens County, New York, 11421, United States",
@@ -2370,14 +2370,14 @@
       "unit": null
     },
     "louisiana||": {
-      "active": false,
+      "active": true,
       "address": "Louisiana",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "Louisiana Avenue, New Lots, Brooklyn, Kings County, New York, 11239, United States",
@@ -2393,14 +2393,14 @@
       "unit": null
     },
     "maine||": {
-      "active": false,
+      "active": true,
       "address": "Maine",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "Maine, 510, 9th Avenue, Manhattan Community Board 4, Manhattan, New York County, New York, 10018, United States",
@@ -2416,14 +2416,14 @@
       "unit": null
     },
     "maryland||": {
-      "active": false,
+      "active": true,
       "address": "Maryland",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Maryland Avenue, Rosebank, Staten Island, Richmond County, New York, 10305, United States",
@@ -2439,14 +2439,14 @@
       "unit": null
     },
     "massachusetts||": {
-      "active": false,
+      "active": true,
       "address": "Massachusetts",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Massachusetts Street, Tottenville, Staten Island, Richmond County, New York, 10307, United States",
@@ -2462,14 +2462,14 @@
       "unit": null
     },
     "michigan||": {
-      "active": false,
+      "active": true,
       "address": "Michigan",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": null,
         "display_name": "Michigan Avenue Park, City of Schenectady, Schenectady County, New York, United States",
@@ -2485,14 +2485,14 @@
       "unit": null
     },
     "minnesota||": {
-      "active": false,
+      "active": true,
       "address": "Minnesota",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": null,
         "display_name": "Minnesota Street, North Winton Village, City of Rochester, Monroe County, New York, 14609, United States",
@@ -2508,14 +2508,14 @@
       "unit": null
     },
     "mississippi||": {
-      "active": false,
+      "active": true,
       "address": "Mississippi",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": null,
         "display_name": "Mississippi Mudd's, 313, Niagara Street, City of Tonawanda, Erie County, New York, 14150, United States",
@@ -2531,14 +2531,14 @@
       "unit": null
     },
     "missouri||": {
-      "active": false,
+      "active": true,
       "address": "Missouri",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "USS Missouri Lane, Staten Island, Richmond County, New York, 10305, United States",
@@ -2554,14 +2554,14 @@
       "unit": null
     },
     "montana||": {
-      "active": false,
+      "active": true,
       "address": "Montana",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "Montana Place, Mill Basin, Brooklyn, Kings County, New York, 11234, United States",
@@ -2577,14 +2577,14 @@
       "unit": null
     },
     "nebraska||": {
-      "active": false,
+      "active": true,
       "address": "Nebraska",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": null,
         "display_name": "Nebraska Street, City of Long Beach, Nassau County, New York, 11561, United States",
@@ -2600,14 +2600,14 @@
       "unit": null
     },
     "nevada||": {
-      "active": false,
+      "active": true,
       "address": "Nevada",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Nevada Avenue, Staten Island, Richmond County, New York, 10306, United States",
@@ -2623,14 +2623,14 @@
       "unit": null
     },
     "new hampshire||": {
-      "active": false,
+      "active": true,
       "address": "New Hampshire",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": null,
         "display_name": "New Hampshire Avenue, Frear Park, City of Troy, Rensselaer County, New York, 12180, United States",
@@ -2646,14 +2646,14 @@
       "unit": null
     },
     "new jersey||": {
-      "active": false,
+      "active": true,
       "address": "New Jersey",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "New York New Jersey Rail, Bank Street, Saint George, Staten Island, Richmond County, New York, 10301, United States",
@@ -2669,14 +2669,14 @@
       "unit": null
     },
     "new mexico||": {
-      "active": false,
+      "active": true,
       "address": "New Mexico",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "USS New Mexico Court, Staten Island, Richmond County, New York, 10305, United States",
@@ -2692,14 +2692,14 @@
       "unit": null
     },
     "new york||": {
-      "active": false,
+      "active": true,
       "address": "New York",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "Permanent Mission of the United States to the United Nations, 799, 1st Avenue, Turtle Bay, Manhattan Community Board 6, Manhattan, New York County, New York, 10017, United States",
@@ -2711,18 +2711,21 @@
       "raw": "New York",
       "removal_count": 1,
       "rent": null,
-      "reside": null,
+      "reside": {
+        "title": "1663 East New York Ave Apartment – Unit 203",
+        "url": "https://residenewyork.com/property/1663-east-new-york-ave-apartment-unit-203/"
+      },
       "unit": null
     },
     "new ytork||": {
-      "active": false,
+      "active": true,
       "address": "new ytork",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": null,
       "raw": "new ytork",
       "removal_count": 1,
@@ -2731,14 +2734,14 @@
       "unit": null
     },
     "north carolina||": {
-      "active": false,
+      "active": true,
       "address": "North Carolina",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "USS North Carolina Road, Staten Island, Richmond County, New York, 10305, United States",
@@ -2754,14 +2757,14 @@
       "unit": null
     },
     "north dakota||": {
-      "active": false,
+      "active": true,
       "address": "North Dakota",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": null,
       "raw": "North Dakota",
       "removal_count": 1,
@@ -2770,14 +2773,14 @@
       "unit": null
     },
     "ohio||": {
-      "active": false,
+      "active": true,
       "address": "Ohio",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Ohio Place, Westerleigh, Staten Island, Richmond County, New York, 10302, United States",
@@ -2793,14 +2796,14 @@
       "unit": null
     },
     "oklahoma||": {
-      "active": false,
+      "active": true,
       "address": "Oklahoma",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "Oklahoma City Bombing, East 23rd Street, Kips Bay, Manhattan Community Board 6, Manhattan, New York County, New York, 10010, United States",
@@ -2816,14 +2819,14 @@
       "unit": null
     },
     "oregon||": {
-      "active": false,
+      "active": true,
       "address": "Oregon",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "Oregon, 508, 9th Avenue, Manhattan Community Board 4, Manhattan, New York County, New York, 10018, United States",
@@ -2839,14 +2842,14 @@
       "unit": null
     },
     "pennsylvania||": {
-      "active": false,
+      "active": true,
       "address": "Pennsylvania",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "New York Penn Station, 234, West 31st Street, Chelsea District, Manhattan Community Board 5, Manhattan, New York County, New York, 10001, United States",
@@ -2862,14 +2865,14 @@
       "unit": null
     },
     "rhode island||": {
-      "active": false,
+      "active": true,
       "address": "Rhode Island",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": null,
         "display_name": "Rhode Island Avenue, City of Niagara Falls, Town of Niagara, Niagara County, New York, 14305, United States",
@@ -2885,14 +2888,14 @@
       "unit": null
     },
     "south carolina||": {
-      "active": false,
+      "active": true,
       "address": "South Carolina",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": null,
       "raw": "South Carolina",
       "removal_count": 1,
@@ -2901,14 +2904,14 @@
       "unit": null
     },
     "south dakota||": {
-      "active": false,
+      "active": true,
       "address": "South Dakota",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": null,
       "raw": "South Dakota",
       "removal_count": 1,
@@ -2917,14 +2920,14 @@
       "unit": null
     },
     "tennessee||": {
-      "active": false,
+      "active": true,
       "address": "Tennessee",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "USS Tennessee Road, Staten Island, Richmond County, New York, 10305, United States",
@@ -2940,14 +2943,14 @@
       "unit": null
     },
     "texas||": {
-      "active": false,
+      "active": true,
       "address": "Texas",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "Texas Chicken & Burger, 1000, Coney Island Avenue, Brooklyn, Kings County, New York, 11235, United States",
@@ -2986,14 +2989,14 @@
       "unit": "303A"
     },
     "utah||": {
-      "active": false,
+      "active": true,
       "address": "Utah",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Utah Street, Staten Island, Richmond County, New York, 10307, United States",
@@ -3009,14 +3012,14 @@
       "unit": null
     },
     "vermont||": {
-      "active": false,
+      "active": true,
       "address": "Vermont",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Vermont Avenue, Rosebank, Staten Island, Richmond County, New York, 10305, United States",
@@ -3032,14 +3035,14 @@
       "unit": null
     },
     "virginia||": {
-      "active": false,
+      "active": true,
       "address": "Virginia",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "August Wilson Theatre, 245, West 52nd Street, Hell's Kitchen, Manhattan Community Board 5, Manhattan, New York County, New York, 10019, United States",
@@ -3069,14 +3072,14 @@
       "unit": "408A"
     },
     "washington||": {
-      "active": false,
+      "active": true,
       "address": "Washington",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "Washington, 39-65, 52nd Street, Sunnyside Gardens, Woodside, Queens, Queens County, New York, 11377, United States",
@@ -3092,14 +3095,14 @@
       "unit": null
     },
     "west virginia||": {
-      "active": false,
+      "active": true,
       "address": "West Virginia",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": null,
         "display_name": "West Beech Street & Virginia Avenue, West Beech Street, City of Long Beach, Nassau County, New York, 11561, United States",
@@ -3115,14 +3118,14 @@
       "unit": null
     },
     "wisconsin||": {
-      "active": false,
+      "active": true,
       "address": "Wisconsin",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": null,
         "display_name": "Wisconsin Street, North Winton Village, City of Rochester, Monroe County, New York, 14609, United States",
@@ -3138,14 +3141,14 @@
       "unit": null
     },
     "wyoming||": {
-      "active": false,
+      "active": true,
       "address": "Wyoming",
       "airtable_record_id": null,
-      "appearance_count": 1,
+      "appearance_count": 2,
       "first_seen": "2026-08-25T18:28:55.990312+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-08-25T18:42:27.028025+00:00",
-      "last_seen": "2026-08-25T18:28:55.990312+00:00",
+      "last_seen": "2026-08-29T18:56:23.256654+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "Wyoming Building, 5, East 3rd Street, East Village, Manhattan Community Board 3, Manhattan, New York County, New York, 10003, United States",
@@ -3161,6 +3164,6 @@
       "unit": null
     }
   },
-  "updated_at": "2026-08-29T18:54:50.870663+00:00",
+  "updated_at": "2026-08-29T18:58:01.022314+00:00",
   "version": 1
 }
