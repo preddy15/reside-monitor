@@ -212,6 +212,40 @@ def send_telegram(message: str, parse_mode: str | None = None) -> None:
         raise RuntimeError(f"Telegram API returned an error: {payload}")
 
 
+# Timestamps that every run refreshes even when nothing real changed.
+# Ignoring them when deciding whether to rewrite a JSON file keeps no-op
+# runs from producing a git commit every cycle; updated_at/last_seen then
+# mean "as of the last real change".
+VOLATILE_JSON_KEYS = frozenset({"updated_at", "last_seen", "last_success"})
+
+
+def strip_volatile(value):
+    if isinstance(value, dict):
+        return {
+            key: strip_volatile(item)
+            for key, item in value.items()
+            if key not in VOLATILE_JSON_KEYS
+        }
+    if isinstance(value, list):
+        return [strip_volatile(item) for item in value]
+    return value
+
+
+def write_json_if_changed(path: Path, data) -> bool:
+    if path.exists():
+        try:
+            previous = json.loads(path.read_text())
+        except Exception:
+            previous = None
+        if previous is not None and strip_volatile(previous) == strip_volatile(data):
+            return False
+
+    path.write_text(
+        json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
+    )
+    return True
+
+
 def load_state() -> dict:
     if not STATE_PATH.exists():
         return {
@@ -246,22 +280,18 @@ def save_state(
         if clean_name and re.fullmatch(r"rec[A-Za-z0-9]{10,}", rec_id or ""):
             safe_ids[clean_name] = rec_id
 
-    STATE_PATH.write_text(
-        json.dumps(
-            {
-                "initialized": True,
-                "scraper_version": SCRAPER_VERSION,
-                "feature_version": FEATURE_VERSION,
-                "options": sorted(options, key=str.casefold),
-                "project_record_ids": dict(
-                    sorted(safe_ids.items(), key=lambda item: item[0].casefold())
-                ),
-                "updated_at": utc_now_iso(),
-            },
-            indent=2,
-            ensure_ascii=False,
-        )
-        + "\n"
+    write_json_if_changed(
+        STATE_PATH,
+        {
+            "initialized": True,
+            "scraper_version": SCRAPER_VERSION,
+            "feature_version": FEATURE_VERSION,
+            "options": sorted(options, key=str.casefold),
+            "project_record_ids": dict(
+                sorted(safe_ids.items(), key=lambda item: item[0].casefold())
+            ),
+            "updated_at": utc_now_iso(),
+        },
     )
 def load_history() -> dict:
     if not HISTORY_PATH.exists():
@@ -283,9 +313,7 @@ def load_history() -> dict:
 def save_history(history: dict) -> None:
     history["version"] = 1
     history["updated_at"] = utc_now_iso()
-    HISTORY_PATH.write_text(
-        json.dumps(history, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
-    )
+    write_json_if_changed(HISTORY_PATH, history)
 
 
 def load_health() -> dict:
@@ -313,9 +341,7 @@ def load_health() -> dict:
 
 
 def save_health(health: dict) -> None:
-    HEALTH_PATH.write_text(
-        json.dumps(health, indent=2, ensure_ascii=False) + "\n"
-    )
+    write_json_if_changed(HEALTH_PATH, health)
 
 
 def record_success(health: dict) -> None:
@@ -2456,18 +2482,13 @@ def save_fac_state(listings: list[dict]) -> None:
         }
         for item in listings
     }
-    FAC_STATE_PATH.write_text(
-        json.dumps(
-            {
-                "initialized": True,
-                "updated_at": utc_now_iso(),
-                "listings": payload,
-            },
-            indent=2,
-            ensure_ascii=False,
-            sort_keys=True,
-        )
-        + "\n"
+    write_json_if_changed(
+        FAC_STATE_PATH,
+        {
+            "initialized": True,
+            "updated_at": utc_now_iso(),
+            "listings": payload,
+        },
     )
 
 
@@ -2490,9 +2511,7 @@ def load_fac_history() -> dict:
 def save_fac_history(history: dict) -> None:
     history["version"] = 1
     history["updated_at"] = utc_now_iso()
-    FAC_HISTORY_PATH.write_text(
-        json.dumps(history, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
-    )
+    write_json_if_changed(FAC_HISTORY_PATH, history)
 
 
 def validate_fac_scrape(current: list[dict], previous_state: dict) -> None:
@@ -3094,17 +3113,13 @@ def save_rockrose_state(listings: list[dict]) -> None:
         }
         for item in listings
     }
-    ROCKROSE_STATE_PATH.write_text(
-        json.dumps(
-            {
-                "initialized": True,
-                "updated_at": utc_now_iso(),
-                "listings": payload,
-            },
-            indent=2,
-            ensure_ascii=False,
-            sort_keys=True,
-        ) + "\n"
+    write_json_if_changed(
+        ROCKROSE_STATE_PATH,
+        {
+            "initialized": True,
+            "updated_at": utc_now_iso(),
+            "listings": payload,
+        },
     )
 
 
@@ -3120,9 +3135,7 @@ def load_rockrose_history() -> dict:
 def save_rockrose_history(history: dict) -> None:
     history["version"] = 1
     history["updated_at"] = utc_now_iso()
-    ROCKROSE_HISTORY_PATH.write_text(
-        json.dumps(history, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
-    )
+    write_json_if_changed(ROCKROSE_HISTORY_PATH, history)
 
 
 def validate_rockrose_scrape(
@@ -3575,17 +3588,13 @@ def save_mns_state(listings: list[dict]) -> None:
         }
         for item in listings
     }
-    MNS_STATE_PATH.write_text(
-        json.dumps(
-            {
-                "initialized": True,
-                "updated_at": utc_now_iso(),
-                "listings": payload,
-            },
-            indent=2,
-            ensure_ascii=False,
-            sort_keys=True,
-        ) + "\n"
+    write_json_if_changed(
+        MNS_STATE_PATH,
+        {
+            "initialized": True,
+            "updated_at": utc_now_iso(),
+            "listings": payload,
+        },
     )
 
 
@@ -3604,9 +3613,7 @@ def load_mns_history() -> dict:
 def save_mns_history(history: dict) -> None:
     history["version"] = 1
     history["updated_at"] = utc_now_iso()
-    MNS_HISTORY_PATH.write_text(
-        json.dumps(history, indent=2, ensure_ascii=False, sort_keys=True) + "\n"
-    )
+    write_json_if_changed(MNS_HISTORY_PATH, history)
 
 
 def validate_mns_scrape(current: list[dict], previous_state: dict) -> None:
@@ -4276,7 +4283,7 @@ def hpdg_load(path, default):
 
 
 def hpdg_save(path,data):
-    path.write_text(json.dumps(data,indent=2,ensure_ascii=False,sort_keys=True)+"\n")
+    write_json_if_changed(path, data)
 
 
 def hpdg_fetch(state):
@@ -4850,7 +4857,7 @@ def mgny_load_json(path, default):
 
 
 def mgny_save_json(path, data):
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
+    write_json_if_changed(path, data)
 
 
 def mgny_fetch_with_retries(state):
@@ -5293,7 +5300,7 @@ def taxace_load(path, default):
 
 
 def taxace_save(path, data):
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
+    write_json_if_changed(path, data)
 
 
 def taxace_validate(listings, state):
@@ -5857,7 +5864,7 @@ def sjp_load(path, default):
 
 
 def sjp_save(path, data):
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
+    write_json_if_changed(path, data)
 
 
 def sjp_validate(listings, state):
@@ -6535,7 +6542,7 @@ def ahg_load(path, default):
 
 
 def ahg_save(path, data):
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
+    write_json_if_changed(path, data)
 
 
 def ahg_validate(listings, state):
@@ -7013,7 +7020,7 @@ def shf_load(path, default):
 
 
 def shf_save(path, data):
-    path.write_text(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
+    write_json_if_changed(path, data)
 
 
 def shf_validate(listings, state):

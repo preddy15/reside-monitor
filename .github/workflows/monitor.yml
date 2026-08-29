@@ -76,6 +76,15 @@ jobs:
           previous_failures = int(data.get("consecutive_failures", 0) or 0)
           alert_sent = bool(data.get("three_failure_alert_sent", False))
 
+          def material(d):
+              return (
+                  int(d.get("consecutive_failures", 0) or 0),
+                  bool(d.get("three_failure_alert_sent", False)),
+                  str(d.get("last_outcome") or ""),
+              )
+
+          before = material(data)
+
           def telegram(message):
               token = os.getenv("TELEGRAM_BOT_TOKEN", "").strip()
               chat_id = os.getenv("TELEGRAM_CHAT_ID", "").strip()
@@ -145,8 +154,13 @@ jobs:
               data["last_outcome"] = outcome or "success"
               print("Consecutive monitor failures reset to 0.")
 
-          data["updated_at"] = now
-          path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
+          # Only rewrite the file when something material changed; a fresh
+          # timestamp alone would force a git commit on every quiet run.
+          if material(data) != before or not path.exists():
+              data["updated_at"] = now
+              path.write_text(json.dumps(data, indent=2, sort_keys=True) + "\n")
+          else:
+              print("Action health unchanged; skipping write.")
           PY
 
       - name: Save monitor state, history, and health
