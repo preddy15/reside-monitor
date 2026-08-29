@@ -27,14 +27,24 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      # The runner image ships Python 3.12; skipping actions/setup-python and
+      # restoring a prebuilt venv saves several seconds on every ~40s cycle.
+      - name: Get system Python version
+        id: py
+        run: echo "version=$(python3 -V | cut -d' ' -f2)" >> "$GITHUB_OUTPUT"
+
+      - name: Restore Python environment
+        id: venv-cache
+        uses: actions/cache@v4
         with:
-          python-version: "3.12"
-          cache: "pip"
+          path: .venv
+          key: venv-${{ runner.os }}-${{ steps.py.outputs.version }}-${{ hashFiles('requirements.txt') }}
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        if: steps.venv-cache.outputs.cache-hit != 'true'
+        run: |
+          python3 -m venv .venv
+          .venv/bin/pip install -r requirements.txt
 
       - name: Check all NYC re-rental sources and notify Telegram
         id: monitor
@@ -47,7 +57,7 @@ jobs:
           AIRTABLE_FIELD_LABEL: "Project Applying For"
           AIRTABLE_ADD_UNIT_TEXT: "Add unit"
           TEST_LISTING: ${{ inputs.test_listing || '' }}
-        run: python monitor.py
+        run: .venv/bin/python monitor.py
 
       - name: Track consecutive monitor failures
         if: ${{ always() && inputs.test_listing == '' }}
@@ -56,7 +66,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: |
-          python - <<'PY'
+          python3 - <<'PY'
           import json
           import os
           import urllib.parse
