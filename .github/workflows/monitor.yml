@@ -155,7 +155,7 @@ jobs:
           git config user.name "airtable-monitor-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add state.json history.json health.json fac_state.json fac_history.json rockrose_state.json rockrose_history.json mns_state.json mns_history.json mgny_state.json mgny_history.json hpd_google_state.json hpd_google_history.json taxace_state.json taxace_history.json sjp_state.json sjp_history.json ahg_state.json ahg_history.json action_health.json 2>/dev/null || true
+          git add state.json history.json health.json fac_state.json fac_history.json rockrose_state.json rockrose_history.json mns_state.json mns_history.json mgny_state.json mgny_history.json hpd_google_state.json hpd_google_history.json taxace_state.json taxace_history.json sjp_state.json sjp_history.json ahg_state.json ahg_history.json shf_state.json shf_history.json action_health.json 2>/dev/null || true
 
           if git diff --cached --quiet; then
             echo "No persistent monitor changes."

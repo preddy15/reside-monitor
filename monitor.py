@@ -6815,6 +6815,440 @@ def run_ahg_monitor():
     )
 
 
+# ---------------------------------------------------------------------------
+# Settlement Housing Fund (SHF) Microsoft Forms re-rental monitor
+# ---------------------------------------------------------------------------
+
+SHF_FORM_ID = (
+    "16LZ_9BUgkmpOsX39EKwQ4y0VvZoZjhPj428CE41l_lUNjVJTk9ESks4MlEyU0lZTjlDQVJDTjVHWC4u"
+)
+SHF_TENANT_ID = "ffd9a2d7-54d0-4982-a93a-c5f7f442b043"
+SHF_OWNER_ID = "f656b48c-6668-4f38-8f8d-bc084e3597f9"
+SHF_FORM_URL = (
+    "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=" + SHF_FORM_ID
+)
+SHF_API_URL = (
+    f"https://forms.cloud.microsoft/formapi/api/{SHF_TENANT_ID}"
+    f"/users/{SHF_OWNER_ID}/light/runtimeForms('{SHF_FORM_ID}')"
+    "?$expand=questions($expand=choices)"
+)
+SHF_REQUEST_TIMEOUT = (2.5, 10.0)
+SHF_MAX_ATTEMPTS = 3
+SHF_RETRY_DELAYS = (0, 2, 5)
+SHF_STATE_PATH = Path(os.getenv("SHF_STATE_PATH", "shf_state.json"))
+SHF_HISTORY_PATH = Path(os.getenv("SHF_HISTORY_PATH", "shf_history.json"))
+SHF_USER_AGENT = "nyc-rerental-monitor/5.18 (personal affordable-housing availability notifier)"
+
+
+def shf_norm(v):
+    return re.sub(r"\s+", " ", str(v or "").replace("\u00a0", " ")).strip()
+
+
+def shf_key(item):
+    unit = shf_norm(item.get("unit"))
+    if unit:
+        project = re.sub(
+            r"[^a-z0-9]+", " ", shf_norm(item.get("project")).casefold()
+        ).strip()
+        unit = re.sub(r"[^a-z0-9]+", " ", unit.casefold()).strip()
+        return f"{project}||{unit}"
+    raw = re.sub(r"[^a-z0-9]+", " ", shf_norm(item.get("raw")).casefold()).strip()
+    return f"raw||{raw}"
+
+
+def shf_parse_option(text):
+    """Parse one checkbox label like '509 Third Avenue Unit 8F / 8G (130% AMI Studio)'."""
+    raw = shf_norm(html.unescape(text or ""))
+    if not raw:
+        return None
+
+    listing = {
+        "source": "Settlement Housing Fund",
+        "raw": raw,
+        "project": raw,
+        "unit": None,
+        "ami": None,
+        "unit_size": None,
+        "apply_url": SHF_FORM_URL,
+        "source_url": SHF_FORM_URL,
+    }
+
+    m = re.match(
+        r"^(?P<project>.+?)\s+Unit\s+(?P<unit>.+?)\s*\((?P<meta>[^)]*)\)\s*$",
+        raw,
+        re.I,
+    )
+    if not m:
+        return listing
+
+    listing["project"] = shf_norm(m.group("project"))
+    listing["unit"] = shf_norm(m.group("unit"))
+
+    meta = shf_norm(m.group("meta"))
+    ami_match = re.search(r"(\d+)\s*%", meta)
+    if ami_match:
+        listing["ami"] = f"{ami_match.group(1)}%"
+    size = re.sub(r"\d+\s*%", " ", meta)
+    size = re.sub(r"\bAMI\b", " ", size, flags=re.I)
+    listing["unit_size"] = shf_norm(size) or None
+    return listing
+
+
+def shf_parse_form(data):
+    questions = data.get("questions") or []
+    choice_questions = [
+        q for q in questions if (q.get("type") or "") == "Question.Choice"
+    ]
+
+    listings = []
+    for question in choice_questions:
+        question_title = shf_norm(question.get("title"))
+
+        descriptions = []
+        info_raw = question.get("questionInfo")
+        if info_raw:
+            try:
+                info = json.loads(info_raw)
+                descriptions = [
+                    c.get("Description")
+                    for c in (info.get("Choices") or [])
+                    if c.get("Description")
+                ]
+            except (ValueError, AttributeError):
+                descriptions = []
+        if not descriptions:
+            descriptions = [
+                c.get("displayText")
+                for c in (question.get("choices") or [])
+                if c.get("displayText")
+            ]
+
+        for description in descriptions:
+            listing = shf_parse_option(description)
+            if listing:
+                listing["question_title"] = question_title or None
+                listings.append(listing)
+
+    listings = list({shf_key(x): x for x in listings}.values())
+
+    if not listings:
+        raise RuntimeError(
+            "SHF form loaded but no checkbox options were parsed. "
+            f"title={shf_norm(data.get('title'))!r}; "
+            f"questions={len(questions)}; choice_questions={len(choice_questions)}"
+        )
+
+    print(f"SHF scrape: {len(listings)} live unit(s).")
+    return listings
+
+
+def shf_fetch_form_json(api_url):
+    r = requests.get(
+        api_url,
+        headers={"User-Agent": SHF_USER_AGENT, "Accept": "application/json"},
+        timeout=SHF_REQUEST_TIMEOUT,
+    )
+    r.raise_for_status()
+    return r.json()
+
+
+def shf_scrape():
+    try:
+        data = shf_fetch_form_json(SHF_API_URL)
+    except (requests.RequestException, ValueError) as exc:
+        # The tenant/owner path may change; recover the current runtimeForms
+        # API URL from the response page itself.
+        print(
+            f"SHF direct API fetch failed ({type(exc).__name__}: {exc}); "
+            "recovering API URL from the form page.",
+        )
+        page = requests.get(
+            SHF_FORM_URL,
+            headers={"User-Agent": SHF_USER_AGENT},
+            timeout=SHF_REQUEST_TIMEOUT,
+        )
+        page.raise_for_status()
+        text = page.text.replace("\\u0027", "'").replace("\\u0026", "&")
+        m = re.search(
+            r"(https://forms\.cloud\.microsoft/formapi/api/[^\s\"']*runtimeForms\('[^']+'\)[^\s\"']*)",
+            text,
+        )
+        if not m:
+            raise RuntimeError(
+                "SHF form page loaded but no runtimeForms API URL was found."
+            ) from exc
+        data = shf_fetch_form_json(m.group(1))
+
+    return shf_parse_form(data)
+
+
+def shf_load(path, default):
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text())
+    except Exception as exc:
+        raise RuntimeError(f"Could not read {path}: {exc}") from exc
+
+
+def shf_save(path, data):
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False, sort_keys=True) + "\n")
+
+
+def shf_validate(listings, state):
+    current = len(listings)
+    previous = len(state.get("listings", {}))
+
+    if current == 0:
+        raise IncompleteScrapeError("SHF captured 0 units. Previous baseline preserved.")
+
+    if previous:
+        ratio = current / previous
+        drop = previous - current
+        if previous >= 8 and drop >= 5 and ratio < 0.45:
+            raise IncompleteScrapeError(
+                f"Suspicious SHF listing-count drop: {previous} -> {current}. "
+                "Previous baseline preserved."
+            )
+
+
+def shf_fetch(state):
+    last_error = None
+
+    for attempt in range(1, SHF_MAX_ATTEMPTS + 1):
+        delay = SHF_RETRY_DELAYS[min(attempt - 1, len(SHF_RETRY_DELAYS) - 1)]
+        if delay:
+            print(f"SHF retry {attempt}/{SHF_MAX_ATTEMPTS}: waiting {delay}s...")
+            time.sleep(delay)
+
+        try:
+            listings = shf_scrape()
+            shf_validate(listings, state)
+            if attempt > 1:
+                print(f"SHF recovered on attempt {attempt}/{SHF_MAX_ATTEMPTS}.")
+            return listings
+        except (requests.RequestException, IncompleteScrapeError, RuntimeError, ValueError) as exc:
+            last_error = exc
+            print(
+                f"SHF attempt {attempt}/{SHF_MAX_ATTEMPTS} failed: "
+                f"{type(exc).__name__}: {exc}",
+                file=sys.stderr,
+            )
+
+    print(
+        f"SHF unavailable after {SHF_MAX_ATTEMPTS} attempts; "
+        "preserving prior state/history. "
+        f"Last error: {last_error}",
+        file=sys.stderr,
+    )
+    return None
+
+
+def shf_geocode_query(listing):
+    project = shf_norm(listing.get("project"))
+    if not project:
+        return ""
+    return f"{project}, New York, NY"
+
+
+def shf_message(listing, location, event, first_seen, last_removed_at=None):
+    priority = priority_for_location(location)
+    heading = (
+        "🔄 <b>SHF LISTING REAPPEARED</b>"
+        if event == "reappeared"
+        else "🏢 <b>NEW SETTLEMENT HOUSING FUND LISTING</b>"
+    )
+
+    if listing.get("unit"):
+        title = (
+            f"{html.escape(listing.get('project') or '')} "
+            f"— Unit {html.escape(listing['unit'])}"
+        )
+    else:
+        title = html.escape(listing.get("raw") or "")
+
+    lines = [
+        heading,
+        f"{priority['emoji']} <b>{priority['label']} · {priority['score']}/3</b>",
+        f"<i>{html.escape(priority['reason'])}</i>",
+        "",
+        f"🏠 <b>{title}</b>",
+    ]
+
+    if listing.get("ami"):
+        lines.append(f"🏷️ <b>{html.escape(listing['ami'])} AMI</b>")
+    if listing.get("unit_size"):
+        lines.append(f"🛏️ <b>{html.escape(listing['unit_size'])}</b>")
+
+    if location:
+        n = normalize(location.get("neighborhood"))
+        b = normalize(location.get("borough"))
+        z = normalize(location.get("postcode"))
+        if n and b:
+            lines.append(f"📍 <b>{html.escape(n)}, {html.escape(b)}</b>")
+        elif b:
+            lines.append(f"📍 <b>{html.escape(b)}</b>")
+        elif n:
+            lines.append(f"📍 <b>{html.escape(n)}</b>")
+        if z:
+            lines.append(f"📮 {html.escape(z)}")
+
+    lines.append(f"🕐 First detected: <b>{html.escape(format_et(first_seen))}</b>")
+
+    if event == "reappeared" and last_removed_at:
+        duration = human_duration(last_removed_at, utc_now_iso())
+        if duration:
+            lines.append(f"↩️ Reappeared after <b>{html.escape(duration)}</b>")
+
+    maps = html.escape(google_maps_url(shf_geocode_query(listing)), quote=True)
+    apply_url = html.escape(listing.get("apply_url") or SHF_FORM_URL, quote=True)
+    source_url = html.escape(SHF_FORM_URL, quote=True)
+
+    lines += [
+        "",
+        f'📝 <a href="{apply_url}"><b>Apply now</b></a>',
+        f'🗺️ <a href="{maps}">Open in Google Maps</a>',
+        f'📋 <a href="{source_url}">SHF re-rental vacancies form</a>',
+        "",
+        "<i>Location data: © OpenStreetMap contributors</i>",
+    ]
+    return "\n".join(lines)
+
+
+def run_shf_monitor():
+    state = shf_load(SHF_STATE_PATH, {"initialized": False, "listings": {}})
+    history = shf_load(
+        SHF_HISTORY_PATH,
+        {"version": 1, "created_at": utc_now_iso(), "listings": {}},
+    )
+
+    listings = shf_fetch(state)
+    if listings is None:
+        return
+
+    now = utc_now_iso()
+    entries = history.setdefault("listings", {})
+    current = {shf_key(x): x for x in listings}
+    current_keys = set(current)
+
+    if not state.get("initialized"):
+        for key, listing in current.items():
+            entries[key] = {
+                **listing,
+                "first_seen": now,
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": None,
+            }
+
+        history["updated_at"] = now
+        state = {
+            "initialized": True,
+            "updated_at": now,
+            "listings": {
+                key: {
+                    "project": listing.get("project"),
+                    "unit": listing.get("unit"),
+                    "ami": listing.get("ami"),
+                    "unit_size": listing.get("unit_size"),
+                }
+                for key, listing in current.items()
+            },
+        }
+        shf_save(SHF_HISTORY_PATH, history)
+        shf_save(SHF_STATE_PATH, state)
+        print(
+            f"SHF initialized with {len(listings)} existing unit(s); "
+            "no existing units alerted."
+        )
+        return
+
+    alerts = []
+    removed = []
+
+    for key, entry in entries.items():
+        if entry.get("active") and key not in current_keys:
+            entry["active"] = False
+            entry["last_removed_at"] = now
+            entry["removal_count"] = int(entry.get("removal_count", 0)) + 1
+            removed.append(entry)
+
+    for key, listing in current.items():
+        entry = entries.get(key)
+
+        if entry is None:
+            location = geocode_nyc_address(shf_geocode_query(listing))
+            entry = {
+                **listing,
+                "first_seen": now,
+                "last_seen": now,
+                "active": True,
+                "appearance_count": 1,
+                "removal_count": 0,
+                "last_removed_at": None,
+                "location": location,
+            }
+            entries[key] = entry
+            alerts.append((listing, entry, "new", None))
+            continue
+
+        was_active = bool(entry.get("active"))
+        last_removed_at = entry.get("last_removed_at")
+        entry.update(listing)
+        entry["last_seen"] = now
+        entry["active"] = True
+
+        if not was_active:
+            if not entry.get("location"):
+                entry["location"] = geocode_nyc_address(shf_geocode_query(listing))
+            entry["appearance_count"] = int(entry.get("appearance_count", 1)) + 1
+            alerts.append((listing, entry, "reappeared", last_removed_at))
+
+    for listing, entry, event, last_removed_at in alerts:
+        send_telegram(
+            shf_message(
+                listing,
+                entry.get("location"),
+                event,
+                entry.get("first_seen"),
+                last_removed_at,
+            ),
+            parse_mode="HTML",
+        )
+
+    for entry in removed:
+        print(
+            f"SHF removed: {entry.get('project')} "
+            f"Unit {entry.get('unit')} "
+            f"(removal #{entry.get('removal_count', 1)})"
+        )
+
+    history["updated_at"] = now
+    state = {
+        "initialized": True,
+        "updated_at": now,
+        "listings": {
+            key: {
+                "project": listing.get("project"),
+                "unit": listing.get("unit"),
+                "ami": listing.get("ami"),
+                "unit_size": listing.get("unit_size"),
+            }
+            for key, listing in current.items()
+        },
+    }
+
+    shf_save(SHF_HISTORY_PATH, history)
+    shf_save(SHF_STATE_PATH, state)
+
+    print(
+        f"SHF complete: {len(alerts)} alert event(s), "
+        f"{len(removed)} removal(s)."
+    )
+
 
 def run_normal_monitor() -> None:
     state = load_state()
@@ -6972,10 +7406,10 @@ def main() -> int:
         run_test_listing(TEST_LISTING)
         return 0
 
-    # Run all nine sources concurrently so one source does not block another.
+    # Run all ten sources concurrently so one source does not block another.
     errors = []
 
-    with ThreadPoolExecutor(max_workers=9) as executor:
+    with ThreadPoolExecutor(max_workers=10) as executor:
         futures = {
             executor.submit(run_normal_monitor): "Reside",
             executor.submit(run_fac_monitor): "FAC",
@@ -6994,6 +7428,7 @@ def main() -> int:
             executor.submit(run_taxace_monitor): "Taxace",
             executor.submit(run_sjp_monitor): "SJP",
             executor.submit(run_ahg_monitor): "AHG",
+            executor.submit(run_shf_monitor): "SHF",
         }
 
         for future in as_completed(futures):
