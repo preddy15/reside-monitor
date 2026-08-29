@@ -1,0 +1,60 @@
+{
+  "initialized": true,
+  "listings": {
+    "223 north 8th street||n 5k": {
+      "ami": "60%",
+      "project": "223 North 8th Street",
+      "unit": "N-5K",
+      "unit_size": "Studio"
+    },
+    "280 west 24th street||2d": {
+      "ami": "130%",
+      "project": "280 West 24th Street",
+      "unit": "2D",
+      "unit_size": "2-Bed"
+    },
+    "30th 11th apartments||15l": {
+      "ami": "60%",
+      "project": "30th & 11th Apartments",
+      "unit": "15L",
+      "unit_size": "Studio"
+    },
+    "509 third avenue||8f 8g": {
+      "ami": "130%",
+      "project": "509 Third Avenue",
+      "unit": "8F / 8G",
+      "unit_size": "Studio"
+    },
+    "515 w 36th street||11j": {
+      "ami": "130%",
+      "project": "515 W 36th Street",
+      "unit": "11J",
+      "unit_size": "Studio"
+    },
+    "515 west 36th street||30j": {
+      "ami": "60%",
+      "project": "515 West 36th Street",
+      "unit": "30J",
+      "unit_size": "Studio"
+    },
+    "572 eleventh avenue||4h": {
+      "ami": "130%",
+      "project": "572 Eleventh Avenue",
+      "unit": "4H",
+      "unit_size": "Studio"
+    },
+    "7 dey street||15h": {
+      "ami": "130%",
+      "project": "7 Dey Street",
+      "unit": "15H",
+      "unit_size": "1-Bed"
+    },
+    "7 dey street||16d": {
+      "ami": "130%",
+      "project": "7 Dey Street",
+      "unit": "16D",
+      "unit_size": "Studio"
+    }
+  },
+  "updated_at": "2026-08-29T19:26:32.001669+00:00"
+}
