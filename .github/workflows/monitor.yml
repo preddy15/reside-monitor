@@ -199,6 +199,7 @@ jobs:
           retention-days: 7
 
       - name: Start next monitor run
+        id: dispatch
         if: ${{ always() && inputs.test_listing == '' && vars.MONITOR_ENABLED == 'true' }}
         env:
           GH_TOKEN: ${{ github.token }}
@@ -215,6 +216,23 @@ jobs:
             -f ref="$GITHUB_REF_NAME"
 
           echo "Next monitor run dispatched."
+
+      - name: Alert if the next run could not be dispatched
+        if: ${{ always() && inputs.test_listing == '' && vars.MONITOR_ENABLED == 'true' && steps.dispatch.outcome == 'failure' }}
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          RUN_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          curl -sS --max-time 15 "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+            -d chat_id="${TELEGRAM_CHAT_ID}" \
+            -d disable_web_page_preview=true \
+            --data-urlencode text="🚨 Monitor loop is broken: this run could not dispatch the next one, so the monitor is STOPPED until restarted.
+
+          Failed run: ${RUN_URL}
+
+          Restart: Actions → Monitor NYC re-rentals → Run workflow" \
+            || echo "Could not send dispatch-failure alert."
 
       - name: Mark workflow failed when monitor failed
         if: steps.monitor.outcome == 'failure'

@@ -1,0 +1,91 @@
+name: Monitor watchdog
+
+# The monitor loop is self-perpetuating: each run dispatches the next. If a
+# run dies before dispatching (timeout, cancellation, runner crash, API
+# error), the loop stops silently. This independent schedule checks that a
+# monitor run started recently and Telegrams once when the loop dies and
+# once when it comes back.
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+    inputs:
+      test_alert:
+        description: "Send a test Telegram alert through the dead-loop path"
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  actions: read
+
+concurrency:
+  group: monitor-watchdog
+  cancel-in-progress: false
+
+jobs:
+  watchdog:
+    if: ${{ vars.MONITOR_ENABLED == 'true' || inputs.test_alert == true }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+      STALE_AFTER_MINUTES: 15
+    steps:
+      - name: Check that the monitor loop is alive
+        run: |
+          set -euo pipefail
+
+          send_telegram() {
+            curl -sS --max-time 15 "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+              -d chat_id="${TELEGRAM_CHAT_ID}" \
+              -d disable_web_page_preview=true \
+              --data-urlencode text="$1" \
+              || echo "Could not send Telegram message."
+          }
+
+          MONITOR_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/workflows/monitor.yml"
+
+          if [ "${{ inputs.test_alert || 'false' }}" = "true" ]; then
+            send_telegram "🧪 Watchdog test alert: this is what you will receive if the monitor loop dies.
+
+          Restart: ${MONITOR_URL} → Run workflow"
+            echo "Test alert sent."
+            exit 0
+          fi
+
+          LATEST=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/monitor.yml/runs?per_page=1" \
+            --jq '.workflow_runs[0].created_at // empty')
+
+          if [ -n "$LATEST" ]; then
+            AGE_MIN=$(( ( $(date -u +%s) - $(date -u -d "$LATEST" +%s) ) / 60 ))
+          else
+            AGE_MIN=999999
+          fi
+          echo "Latest monitor run started: ${LATEST:-never} (${AGE_MIN} min ago)."
+
+          # Previous watchdog conclusion, so alerts fire only on transitions
+          # instead of repeating every 30 minutes while the loop stays dead.
+          PREVIOUS=$(gh api "repos/$GITHUB_REPOSITORY/actions/workflows/watchdog.yml/runs?status=completed&per_page=1" \
+            --jq '.workflow_runs[0].conclusion // empty')
+
+          if [ "$AGE_MIN" -lt "$STALE_AFTER_MINUTES" ]; then
+            if [ "$PREVIOUS" = "failure" ]; then
+              send_telegram "✅ Monitor loop is running again. Latest run started ${AGE_MIN} min ago."
+            fi
+            echo "Monitor loop is alive."
+            exit 0
+          fi
+
+          if [ "$PREVIOUS" != "failure" ]; then
+            send_telegram "🚨 Monitor loop appears DEAD: no monitor run has started in ${AGE_MIN} minutes. New listings are NOT being watched.
+
+          Restart: ${MONITOR_URL} → Run workflow
+
+          (The watchdog stays quiet until the loop recovers.)"
+          fi
+          echo "Monitor loop is dead (latest run ${AGE_MIN} min ago)."
+          exit 1
