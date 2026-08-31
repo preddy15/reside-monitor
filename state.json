@@ -1,7 +1,6 @@
 {
-  "initialized": true,
-  "scraper_version": 3,
   "feature_version": 5,
+  "initialized": true,
   "options": [
     "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 - Senior Preferece 60+",
     "1010 Washington Avenue - Apt 521 - $5002 -",
@@ -48,6 +47,7 @@
     "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -",
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -",
     "34-21 109th Street Apartments - Apt 4F - $3000 -",
+    "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
     "3923 Carpenter Avenue - 3A - Apt 3A - $2855.36 -",
     "56 West 125 Street - Apt 810 - $2360.95 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
@@ -107,6 +107,7 @@
     "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -": "recBJzmON1paYdrll",
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -": "recb626NhM4wnZn5J",
     "34-21 109th Street Apartments - Apt 4F - $3000 -": "recb5sTiSmA7koT3q",
+    "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
     "3923 Carpenter Avenue - 3A - Apt 3A - $2855.36 -": "reckk9OJYXa77FVpY",
     "56 West 125 Street - Apt 810 - $2360.95 -": "recYLJ0ByR57puvBh",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
@@ -120,5 +121,6 @@
     "95-08 147th Place - Apt 404 - $1913.45 -": "rec9n9c3ts64Aww6V",
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
-  "updated_at": "2026-08-29T20:18:31.193655+00:00"
+  "scraper_version": 3,
+  "updated_at": "2026-08-31T15:01:02.920154+00:00"
 }
