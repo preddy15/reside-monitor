@@ -609,29 +609,6 @@
       "units_count": 4,
       "url": "https://mgnyconsulting.com/listing/forten/"
     },
-    "https://mgnyconsulting.com/listing/lighthouse-point": {
-      "address": "35R Bay Street, Staten Island, NY 10301",
-      "income_range": "$134,298 - $238,160",
-      "tiers": {
-        "130%||2-bedroom||$3,750.00||2-5 people": {
-          "active": true,
-          "ami": "130%",
-          "annual_income": "$134,298 – $238,160",
-          "appearance_count": 2,
-          "first_seen": "2026-08-20T04:04:39.814757+00:00",
-          "household_size": "2-5 people",
-          "last_removed_at": "2026-08-28T16:00:44.567472+00:00",
-          "last_seen": "2026-08-28T16:02:05.450004+00:00",
-          "removal_count": 1,
-          "rent": "$3,750.00",
-          "unit_size": "2-bedroom",
-          "units_available": 4
-        }
-      },
-      "title": "Lighthouse Point",
-      "units_count": 4,
-      "url": "https://mgnyconsulting.com/listing/lighthouse-point/"
-    },
     "https://mgnyconsulting.com/listing/lincoln-at-bankside": {
       "address": null,
       "income_range": "$119,795 - $273,520",
@@ -693,5 +670,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-31T15:48:36.008387+00:00"
+  "updated_at": "2026-08-31T16:15:06.438827+00:00"
 }
