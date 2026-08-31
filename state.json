@@ -32,6 +32,7 @@
     "2067 Anthony Ave - Apt 406 - $3088 -",
     "2072 Anthony Ave - Apt 4J - $3037.47 -",
     "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -",
+    "2075 Anthony - Apt 404 - $2777 -",
     "2140 Matthews Ave - Apt 4A - $2941.02 -",
     "2180 Walton Avenue - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -",
@@ -90,6 +91,7 @@
     "2067 Anthony Ave - Apt 406 - $3088 -": "recMrloqPshrYkeXk",
     "2072 Anthony Ave - Apt 4J - $3037.47 -": "rec3mMbZKu8pdpNCL",
     "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -": "rec4fzUTSapqZ9Aed",
+    "2075 Anthony - Apt 404 - $2777 -": "recjy400AEXTwVt0U",
     "2140 Matthews Ave - Apt 4A - $2941.02 -": "recoCiA3nWif6uMSG",
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -": "reclm0Vov81VspkPi",
@@ -118,5 +120,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-08-31T21:16:32.900777+00:00"
+  "updated_at": "2026-08-31T21:57:00.050806+00:00"
 }
