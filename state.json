@@ -21,7 +21,6 @@
     "147-35 95th Avenue - Apt 1012 - $2047.81 -",
     "147-35 95th Avenue - Apt 1312 - $2052.79 -",
     "148-09 90 ave Jamaica- Apt. 3A - Apt 3A - $3206.96 -",
-    "148-15 89th Avenue - Apt 2F - $3442.73 -",
     "1484 Watson avenue - Apt E33 - $3608.89 -",
     "1718 President Street - Apt 10B - $3412.21 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
@@ -81,7 +80,6 @@
     "147-35 95th Avenue - Apt 1012 - $2047.81 -": "recdqef3T8F6X7MrE",
     "147-35 95th Avenue - Apt 1312 - $2052.79 -": "recfV2NYbLa2rstVt",
     "148-09 90 ave Jamaica- Apt. 3A - Apt 3A - $3206.96 -": "rec91Qh0MtQqfbME9",
-    "148-15 89th Avenue - Apt 2F - $3442.73 -": "recjb1zriFSZpseq6",
     "1484 Watson avenue - Apt E33 - $3608.89 -": "recgmsge7E5Igxujb",
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
@@ -122,5 +120,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-08-31T17:41:47.804334+00:00"
+  "updated_at": "2026-08-31T17:44:35.758489+00:00"
 }
