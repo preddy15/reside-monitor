@@ -8,7 +8,6 @@
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
     "106 Mt. Hope Place - Apt 6C - $2727.02 -",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
-    "128 West 167th Street - Apt 3D - $3094.54 -",
     "1315 Findlay Avenue - Apt 4C - $2851 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -",
@@ -37,7 +36,6 @@
     "2180 Walton Avenue - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
-    "2460 White Plains Road - Apt 2B - $3094.54 -",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -",
     "25-01 Queens Plaza North - Apt 815 - $3653 -",
     "25-01 Queens Plaza North - Apt 903 - $4366 -",
@@ -67,7 +65,6 @@
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
     "106 Mt. Hope Place - Apt 6C - $2727.02 -": "recrpwbaoI352905D",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -": "recVseDWIs4g0C16L",
-    "128 West 167th Street - Apt 3D - $3094.54 -": "recpO6XUf57Th8s3N",
     "1315 Findlay Avenue - Apt 4C - $2851 -": "recUGRZH6cZimb82N",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -": "rec4pnZAXyQ1YMLXF",
@@ -96,7 +93,6 @@
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -": "reclm0Vov81VspkPi",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
-    "2460 White Plains Road - Apt 2B - $3094.54 -": "recG140q49vwz78ml",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -": "recghf35pdYrvl3yG",
     "25-01 Queens Plaza North - Apt 815 - $3653 -": "recaWCw4lUPbhNiHq",
     "25-01 Queens Plaza North - Apt 903 - $4366 -": "reckGonUx3gxKtG6Y",
@@ -120,5 +116,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-08-31T17:44:35.758489+00:00"
+  "updated_at": "2026-08-31T17:45:43.538314+00:00"
 }
