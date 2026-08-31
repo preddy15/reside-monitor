@@ -27,7 +27,6 @@
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -",
     "1718 President Street- Apt. 6D - Apt 6D - $3861.62 - Senior Preferece 60+",
-    "177-14 Wexford Terrace - Apt 404 - $2162.77 -",
     "1988 Anthony Avenue- Apt. 4I - Apt 4I - $2860.91 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
@@ -89,7 +88,6 @@
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -": "rec0LZW1q8H8l1GVN",
     "1718 President Street- Apt. 6D - Apt 6D - $3861.62 - Senior Preferece 60+": "reclUhaLWzgAX6Xqn",
-    "177-14 Wexford Terrace - Apt 404 - $2162.77 -": "recbBhIPKPvlxxxWk",
     "1988 Anthony Avenue- Apt. 4I - Apt 4I - $2860.91 -": "receByCOIDuPj4ANu",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
@@ -126,5 +124,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-08-31T17:29:04.732754+00:00"
+  "updated_at": "2026-08-31T17:31:37.827853+00:00"
 }
