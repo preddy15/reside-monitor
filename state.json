@@ -49,7 +49,6 @@
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
     "3923 Carpenter Avenue - 3A - Apt 3A - $2855.36 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
-    "65 Buchanan Place - Apt 3B-07 - $1928.65 -",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+",
     "661 Manida Street- Apt. 6B - Senior preference - Apt 6B - $1675.33 - Senior Preferece 60+",
     "69 Hope Street - Apt 4A - $3100 -",
@@ -109,7 +108,6 @@
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
     "3923 Carpenter Avenue - 3A - Apt 3A - $2855.36 -": "reckk9OJYXa77FVpY",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
-    "65 Buchanan Place - Apt 3B-07 - $1928.65 -": "reclA8OEL0jx0e9Fk",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+": "recLKAS4m2XJ6p2eN",
     "661 Manida Street- Apt. 6B - Senior preference - Apt 6B - $1675.33 - Senior Preferece 60+": "recTvpNYEFCmRZqiB",
     "69 Hope Street - Apt 4A - $3100 -": "recrDuFJYuMHXQZaO",
@@ -122,5 +120,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-01T13:40:16.648108+00:00"
+  "updated_at": "2026-09-01T14:13:53.044698+00:00"
 }
