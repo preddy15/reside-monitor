@@ -1,6 +1,38 @@
 {
   "initialized": true,
   "properties": {
+    "1441 teller ave bronx": {
+      "address": "1441 Teller Ave, Bronx",
+      "status": "unknown",
+      "tiers": {
+        "studio||$3,041.73||1": {
+          "active": true,
+          "appearance_count": 1,
+          "first_seen": "2026-09-01T21:11:38.751666+00:00",
+          "household_size": "1",
+          "last_removed_at": null,
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 0,
+          "rent": "$3,041.73",
+          "unit_size": "Studio"
+        },
+        "studio||$3,237.41||": {
+          "active": false,
+          "appearance_count": 1,
+          "first_seen": "2026-08-21T04:26:17.273123+00:00",
+          "household_size": null,
+          "last_removed_at": "2026-08-26T17:22:26.888354+00:00",
+          "last_seen": "2026-08-26T06:07:43.247241+00:00",
+          "one_person_eligible": false,
+          "one_person_income": null,
+          "removal_count": 1,
+          "rent": "$3,237.41",
+          "unit_size": "Studio"
+        }
+      }
+    },
     "156 erasmus st brooklyn": {
       "address": "156 Erasmus St, Brooklyn",
       "status": "unknown",
@@ -11,7 +43,7 @@
           "first_seen": "2026-08-25T15:19:40.147379+00:00",
           "household_size": "2-5",
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -30,7 +62,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -49,7 +81,7 @@
           "first_seen": "2026-08-27T17:06:46.601122+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -68,70 +100,12 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1-3",
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
           "rent": "$874.00",
           "unit_size": "1 Bedroom"
-        }
-      }
-    },
-    "329 gates ave brooklyn ny": {
-      "address": "329 Gates Ave, Brooklyn, NY",
-      "status": "on hold",
-      "tiers": {
-        "1 bedroom||||1": {
-          "active": false,
-          "appearance_count": 1,
-          "first_seen": "2026-08-27T17:06:46.601122+00:00",
-          "household_size": "1",
-          "last_removed_at": "2026-09-01T17:21:45.439781+00:00",
-          "last_seen": "2026-08-31T17:03:15.535731+00:00",
-          "one_person_eligible": false,
-          "one_person_income": null,
-          "removal_count": 1,
-          "rent": null,
-          "unit_size": "1 Bedroom"
-        },
-        "affordable unit||||1": {
-          "active": true,
-          "appearance_count": 1,
-          "first_seen": "2026-09-01T17:21:45.439781+00:00",
-          "household_size": "1",
-          "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
-          "one_person_eligible": false,
-          "one_person_income": null,
-          "removal_count": 0,
-          "rent": null,
-          "unit_size": "Affordable Unit"
-        },
-        "studio||$2,467.38||1": {
-          "active": false,
-          "appearance_count": 1,
-          "first_seen": "2026-08-26T17:22:26.888354+00:00",
-          "household_size": "1",
-          "last_removed_at": "2026-08-27T17:06:46.601122+00:00",
-          "last_seen": "2026-08-27T17:05:56.990618+00:00",
-          "one_person_eligible": false,
-          "one_person_income": null,
-          "removal_count": 1,
-          "rent": "$2,467.38",
-          "unit_size": "Studio"
-        },
-        "studio||||1": {
-          "active": true,
-          "appearance_count": 1,
-          "first_seen": "2026-08-27T17:06:46.601122+00:00",
-          "household_size": "1",
-          "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
-          "one_person_eligible": false,
-          "one_person_income": null,
-          "removal_count": 0,
-          "rent": null,
-          "unit_size": "Studio"
         }
       }
     },
@@ -145,7 +119,7 @@
           "first_seen": "2026-09-01T17:51:16.482885+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -164,7 +138,7 @@
           "first_seen": "2026-09-01T17:21:45.439781+00:00",
           "household_size": "1-3",
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -183,7 +157,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": null,
           "one_person_income": null,
           "removal_count": 0,
@@ -202,7 +176,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -215,7 +189,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": null,
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -234,7 +208,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -247,7 +221,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": null,
           "one_person_income": null,
           "removal_count": 0,
@@ -260,7 +234,7 @@
           "first_seen": "2026-08-21T04:26:17.273123+00:00",
           "household_size": "1",
           "last_removed_at": null,
-          "last_seen": "2026-09-01T17:51:16.482885+00:00",
+          "last_seen": "2026-09-01T21:11:38.751666+00:00",
           "one_person_eligible": false,
           "one_person_income": null,
           "removal_count": 0,
@@ -270,5 +244,5 @@
       }
     }
   },
-  "updated_at": "2026-09-01T17:51:16.482885+00:00"
+  "updated_at": "2026-09-01T21:11:38.751666+00:00"
 }
