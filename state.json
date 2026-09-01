@@ -5,6 +5,7 @@
     "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 - Senior Preferece 60+",
     "1010 Washington Avenue - Apt 1016 - $5002 -",
     "1010 Washington Avenue - Apt 521 - $5002 -",
+    "1042 President Street - Apt 3C - $1743 -",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
     "106 Mt. Hope Place - Apt 6C - $2727.02 -",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
@@ -65,6 +66,7 @@
     "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 - Senior Preferece 60+": "rec2MWfqNMK1MMCGZ",
     "1010 Washington Avenue - Apt 1016 - $5002 -": "rectC7Ck2HBukOk2y",
     "1010 Washington Avenue - Apt 521 - $5002 -": "recN0kOIIkTLYlMu5",
+    "1042 President Street - Apt 3C - $1743 -": "recqwj4gxfBWjChRI",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
     "106 Mt. Hope Place - Apt 6C - $2727.02 -": "recrpwbaoI352905D",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -": "recVseDWIs4g0C16L",
@@ -122,5 +124,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-01T15:54:40.335512+00:00"
+  "updated_at": "2026-09-01T16:57:54.035567+00:00"
 }
