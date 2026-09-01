@@ -255,29 +255,6 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/2423-barker-avenue-apartments/"
     },
-    "https://mgnyconsulting.com/listing/27-15-astoria-boulevard": {
-      "address": "27-15 Astoria Boulevard 27-15 Astoria Boulevard, Queens, NY 11102",
-      "income_range": "$82,115 - $189,540",
-      "tiers": {
-        "130%||1 bedroom||$2,233.30||1-3 people": {
-          "active": true,
-          "ami": "130%",
-          "annual_income": "$82,115 – $189,540",
-          "appearance_count": 1,
-          "first_seen": "2026-08-20T04:04:39.814757+00:00",
-          "household_size": "1-3 people",
-          "last_removed_at": null,
-          "last_seen": "2026-08-20T04:04:39.814757+00:00",
-          "removal_count": 0,
-          "rent": "$2,233.30",
-          "unit_size": "1 Bedroom",
-          "units_available": 2
-        }
-      },
-      "title": "27-15 Astoria Boulevard",
-      "units_count": 2,
-      "url": "https://mgnyconsulting.com/listing/27-15-astoria-boulevard/"
-    },
     "https://mgnyconsulting.com/listing/27-buchanan-place": {
       "address": "27 Buchanan Place 27 Buchanan Pl, Bronx, NY 10453",
       "income_range": "$73,759 - $198,510",
@@ -670,5 +647,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-08-31T16:59:32.645023+00:00"
+  "updated_at": "2026-09-01T13:44:28.837751+00:00"
 }
