@@ -19,7 +19,7 @@
       },
       "first_seen": "2026-08-21T04:56:15.360629+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-08-29T20:18:07.843503+00:00",
+      "last_seen": "2026-09-01T11:59:55.804160+00:00",
       "location": null,
       "opportunity_type": "Accessibility Units / Waiting List",
       "removal_count": 0,
@@ -28,7 +28,7 @@
       "url": "https://ahgleasing.com/accessibility-units/"
     },
     "https://www.ahgleasing.com/tribecaparkmod.pdf": {
-      "active": true,
+      "active": false,
       "appearance_count": 1,
       "details": {
         "accessibility_note": null,
@@ -44,16 +44,16 @@
         "utilities": null
       },
       "first_seen": "2026-08-21T04:56:15.360629+00:00",
-      "last_removed_at": null,
+      "last_removed_at": "2026-09-01T11:59:55.804160+00:00",
       "last_seen": "2026-08-29T20:18:07.843503+00:00",
       "location": null,
       "opportunity_type": "Accessibility Units / Waiting List",
-      "removal_count": 0,
+      "removal_count": 1,
       "source": "Affordable Housing Group",
       "title": "Tribeca Park at 400 Chambers Street, New York, NY 10282",
       "url": "https://www.ahgleasing.com/tribecaparkmod.pdf"
     }
   },
-  "updated_at": "2026-08-29T20:18:07.843503+00:00",
+  "updated_at": "2026-09-01T11:59:55.804160+00:00",
   "version": 1
 }
