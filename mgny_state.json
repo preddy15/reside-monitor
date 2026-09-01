@@ -109,6 +109,29 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/146-61-105-avenue/"
     },
+    "https://mgnyconsulting.com/listing/15-hanover-place": {
+      "address": "15 Hanover Place 15 Hanover Place, Brooklyn, NY 11201",
+      "income_range": "$119,349 - $238,160",
+      "tiers": {
+        "130%||1 bedroom / 2 bedroom||$3,317.00||1-3 people / 2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$119,349 – $238,160",
+          "appearance_count": 1,
+          "first_seen": "2026-09-01T14:47:34.810159+00:00",
+          "household_size": "1-3 people / 2-5 people",
+          "last_removed_at": null,
+          "last_seen": "2026-09-01T14:47:34.810159+00:00",
+          "removal_count": 0,
+          "rent": "$3,317.00",
+          "unit_size": "1 bedroom / 2 bedroom",
+          "units_available": 2
+        }
+      },
+      "title": "15 Hanover Place",
+      "units_count": 2,
+      "url": "https://mgnyconsulting.com/listing/15-hanover-place/"
+    },
     "https://mgnyconsulting.com/listing/1700-jerome-avenue": {
       "address": "1700 Jerome Avenue 1700 Jerome Ave, Bronx, NY 10453",
       "income_range": "$85,955 - $168,480",
@@ -639,5 +662,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-09-01T14:10:24.780214+00:00"
+  "updated_at": "2026-09-01T14:47:34.810159+00:00"
 }
