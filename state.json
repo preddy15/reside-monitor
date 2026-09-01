@@ -49,6 +49,7 @@
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
     "3923 Carpenter Avenue - 3A - Apt 3A - $2855.36 -",
+    "571 Jackson Avenue - Apt 7E - $2825.48 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+",
     "661 Manida Street- Apt. 6B - Senior preference - Apt 6B - $1675.33 - Senior Preferece 60+",
@@ -110,6 +111,7 @@
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -": "recb626NhM4wnZn5J",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
     "3923 Carpenter Avenue - 3A - Apt 3A - $2855.36 -": "reckk9OJYXa77FVpY",
+    "571 Jackson Avenue - Apt 7E - $2825.48 -": "recxRVd63ljCCEq86",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+": "recLKAS4m2XJ6p2eN",
     "661 Manida Street- Apt. 6B - Senior preference - Apt 6B - $1675.33 - Senior Preferece 60+": "recTvpNYEFCmRZqiB",
@@ -124,5 +126,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-01T16:57:54.035567+00:00"
+  "updated_at": "2026-09-01T17:02:03.766334+00:00"
 }
