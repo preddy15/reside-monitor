@@ -34,6 +34,7 @@
     "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -",
     "2075 Anthony - Apt 404 - $2777 -",
     "2140 Matthews Ave - Apt 4A - $2941.02 -",
+    "2180 Walton Ave. Apt. 4C - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
@@ -97,6 +98,7 @@
     "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -": "rec4fzUTSapqZ9Aed",
     "2075 Anthony - Apt 404 - $2777 -": "recjy400AEXTwVt0U",
     "2140 Matthews Ave - Apt 4A - $2941.02 -": "recoCiA3nWif6uMSG",
+    "2180 Walton Ave. Apt. 4C - Apt 4C - $3128 -": "recf4f8rAVNXoVdsZ",
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -": "reclm0Vov81VspkPi",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
@@ -128,5 +130,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-02T18:11:01.653729+00:00"
+  "updated_at": "2026-09-02T18:12:07.565111+00:00"
 }
