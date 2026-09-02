@@ -43,6 +43,7 @@
     "25-01 Queens Plaza North - Apt 903 - $4366 -",
     "25-01 Queens Plaza North - Apt 905 - $3653 -",
     "250 West 49th Street - Apt 406 - $4349 -",
+    "254 Amboy Street - Apt 2B - Apt 2B - $2882.8 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "27-51 Jackson Avenue Apartments - Apt 1 Bedroom - $3661 -",
     "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -",
@@ -108,6 +109,7 @@
     "25-01 Queens Plaza North - Apt 903 - $4366 -": "reckGonUx3gxKtG6Y",
     "25-01 Queens Plaza North - Apt 905 - $3653 -": "recj1oPgkyAqXrOkw",
     "250 West 49th Street - Apt 406 - $4349 -": "recaLi1wnzGPaSFxc",
+    "254 Amboy Street - Apt 2B - Apt 2B - $2882.8 -": "recm7FrbudUKjdu5J",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
     "27-51 Jackson Avenue Apartments - Apt 1 Bedroom - $3661 -": "receXMo2k5NlVofbN",
     "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -": "recBJzmON1paYdrll",
@@ -132,5 +134,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-02T18:15:24.398582+00:00"
+  "updated_at": "2026-09-02T18:45:07.502524+00:00"
 }
