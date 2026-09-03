@@ -10,6 +10,7 @@
     "106 Mt. Hope Place - Apt 6C - $2727.02 -",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
     "1315 Findlay Avenue - Apt 4C - $2851 -",
+    "132-53 41 Ave - Apt 4D - $2260.5 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -",
@@ -80,6 +81,7 @@
     "106 Mt. Hope Place - Apt 6C - $2727.02 -": "recrpwbaoI352905D",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -": "recVseDWIs4g0C16L",
     "1315 Findlay Avenue - Apt 4C - $2851 -": "recUGRZH6cZimb82N",
+    "132-53 41 Ave - Apt 4D - $2260.5 -": "recK5lyi5nTtxtMEL",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -": "rec4pnZAXyQ1YMLXF",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -": "recnW6xUrLgnwUkS8",
@@ -142,5 +144,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-03T17:54:11.788002+00:00"
+  "updated_at": "2026-09-03T18:39:28.447738+00:00"
 }
