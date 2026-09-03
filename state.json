@@ -30,6 +30,7 @@
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2061 Crotona Ave - Apt 2C - $3237.42 -",
     "2067 Anthony Ave - Apt 406 - $3088 -",
+    "2067 Anthony Avenue - Apt 305 - $3250.12 -",
     "2072 Anthony Ave - Apt 4J - $3037.47 -",
     "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -",
     "2075 Anthony - Apt 404 - $2777 -",
@@ -94,6 +95,7 @@
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2061 Crotona Ave - Apt 2C - $3237.42 -": "recl8wA3YDcWn44ag",
     "2067 Anthony Ave - Apt 406 - $3088 -": "recMrloqPshrYkeXk",
+    "2067 Anthony Avenue - Apt 305 - $3250.12 -": "reccFxrpOYLjcABhT",
     "2072 Anthony Ave - Apt 4J - $3037.47 -": "rec3mMbZKu8pdpNCL",
     "2072 Anthony Ave.- Apt. 8I - Apt 8I - $2949 -": "rec4fzUTSapqZ9Aed",
     "2075 Anthony - Apt 404 - $2777 -": "recjy400AEXTwVt0U",
@@ -130,5 +132,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-03T14:52:28.886566+00:00"
+  "updated_at": "2026-09-03T15:36:19.000677+00:00"
 }
