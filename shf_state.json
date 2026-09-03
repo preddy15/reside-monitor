@@ -19,10 +19,10 @@
       "unit": "15L",
       "unit_size": "Studio"
     },
-    "509 third avenue||8f 8g": {
+    "509 third avenue||8f": {
       "ami": "130%",
       "project": "509 Third Avenue",
-      "unit": "8F / 8G",
+      "unit": "8F",
       "unit_size": "Studio"
     },
     "515 w 36th street||11j": {
@@ -50,5 +50,5 @@
       "unit_size": "Studio"
     }
   },
-  "updated_at": "2026-09-03T01:26:09.542273+00:00"
+  "updated_at": "2026-09-03T15:40:11.147297+00:00"
 }
