@@ -49,17 +49,17 @@
       "rent": "$2,660.00",
       "unit": "3C"
     },
+    "2187 ryer avenue bronx ny||5g": {
+      "address": "2187 Ryer Avenue, Bronx, NY",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-25873/O9A4O4DFF9771USJYV",
+      "rent": "$2,835.00",
+      "unit": "5G"
+    },
     "2187 ryer avenue bronx ny||6d": {
       "address": "2187 Ryer Avenue, Bronx, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-8873/7YBOR67912I9V7B2ED",
       "rent": "$2,660.00",
       "unit": "6D"
-    },
-    "2316 grand avenue bronx ny||3c": {
-      "address": "2316 Grand Avenue, Bronx, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-25273/0M1ULINNUGXACT77O0",
-      "rent": "$2,835.00",
-      "unit": "3C"
     },
     "2710 decatur avenue bronx ny||1b": {
       "address": "2710 Decatur Avenue, Bronx, NY",
@@ -188,5 +188,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-09-03T20:29:51.115007+00:00"
+  "updated_at": "2026-09-03T21:06:29.677460+00:00"
 }
