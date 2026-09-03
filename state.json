@@ -53,6 +53,7 @@
     "27-51 Jackson Avenue Apartments - Apt 1 Bedroom - $3661 -",
     "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -",
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -",
+    "287 Maple STreet - Apt 4F - $2585.86 -",
     "3230 3rd Ave - Apt 6E - $3405 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
     "3923 Carpenter Avenue - 3A - Apt 3A - $2855.36 -",
@@ -123,6 +124,7 @@
     "27-51 Jackson Avenue Apartments - Apt 1 Bedroom - $3661 -": "receXMo2k5NlVofbN",
     "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -": "recBJzmON1paYdrll",
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -": "recb626NhM4wnZn5J",
+    "287 Maple STreet - Apt 4F - $2585.86 -": "recOj9Cx9pMEPMvRv",
     "3230 3rd Ave - Apt 6E - $3405 -": "recIdMfEEcPflfbYi",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
     "3923 Carpenter Avenue - 3A - Apt 3A - $2855.36 -": "reckk9OJYXa77FVpY",
@@ -142,5 +144,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-03T18:53:29.536399+00:00"
+  "updated_at": "2026-09-03T19:12:22.034343+00:00"
 }
