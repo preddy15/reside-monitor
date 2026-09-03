@@ -3,7 +3,6 @@
   "initialized": true,
   "options": [
     "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 - Senior Preferece 60+",
-    "1010 Pacific Street - Apt 305 - $1623.28 - MI",
     "1010 Washington Avenue - Apt 1016 - $5002 -",
     "1010 Washington Avenue - Apt 521 - $5002 -",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
@@ -73,7 +72,6 @@
   ],
   "project_record_ids": {
     "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 - Senior Preferece 60+": "rec2MWfqNMK1MMCGZ",
-    "1010 Pacific Street - Apt 305 - $1623.28 - MI": "recXyVASCdo2cdHiR",
     "1010 Washington Avenue - Apt 1016 - $5002 -": "rectC7Ck2HBukOk2y",
     "1010 Washington Avenue - Apt 521 - $5002 -": "recN0kOIIkTLYlMu5",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
@@ -142,5 +140,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-03T19:43:32.344995+00:00"
+  "updated_at": "2026-09-03T19:44:38.617407+00:00"
 }
