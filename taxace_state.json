@@ -13,12 +13,6 @@
       "rent": "$2,954.00",
       "unit": "1B"
     },
-    "1323 findlay ave bronx ny||5": {
-      "address": "1323 Findlay Ave, Bronx, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-23853/VK8DFKEXDZOTTQ09YQ",
-      "rent": "$2,835.00",
-      "unit": "5"
-    },
     "1323 findlay ave bronx ny||7": {
       "address": "1323 Findlay Ave, Bronx, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-23893/HQ066DC566UK3KXER7",
@@ -42,6 +36,12 @@
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-25473/I6UC4NE47R9JP5OBV7",
       "rent": "$2,998.00",
       "unit": "609"
+    },
+    "1952 anthony avenue bronx ny||2f": {
+      "address": "1952 Anthony Avenue, Bronx, NY",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-25793/VYK7OBTYXZR8A2CUFR",
+      "rent": "$2,850.00",
+      "unit": "2F"
     },
     "2187 ryer avenue bronx ny||3c": {
       "address": "2187 Ryer Avenue, Bronx, NY",
@@ -188,5 +188,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-08-29T20:18:07.871814+00:00"
+  "updated_at": "2026-09-03T20:29:51.115007+00:00"
 }
