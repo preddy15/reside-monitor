@@ -22,7 +22,6 @@
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -",
     "1847 Cross Brox - Apt 4B - $3454.62 -",
-    "1988 Anthony Avenue- Apt. 4I - Apt 4I - $2860.91 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2061 Crotona Ave - Apt 2C - $3237.42 -",
@@ -49,7 +48,6 @@
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -",
     "287 Maple STreet - Apt 4F - $2585.86 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
-    "3923 Carpenter Avenue - 3A - Apt 3A - $2855.36 -",
     "53 East 177 Street - Apt 3D - $3107.16 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+",
@@ -83,7 +81,6 @@
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -": "rec0LZW1q8H8l1GVN",
     "1847 Cross Brox - Apt 4B - $3454.62 -": "receLWeBvPjwO7LOb",
-    "1988 Anthony Avenue- Apt. 4I - Apt 4I - $2860.91 -": "receByCOIDuPj4ANu",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2061 Crotona Ave - Apt 2C - $3237.42 -": "recl8wA3YDcWn44ag",
@@ -110,7 +107,6 @@
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -": "recb626NhM4wnZn5J",
     "287 Maple STreet - Apt 4F - $2585.86 -": "recOj9Cx9pMEPMvRv",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
-    "3923 Carpenter Avenue - 3A - Apt 3A - $2855.36 -": "reckk9OJYXa77FVpY",
     "53 East 177 Street - Apt 3D - $3107.16 -": "recMO0ln8DodkKGft",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+": "recPVLGweU7WxkNBX",
@@ -124,5 +120,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-04T16:25:15.889712+00:00"
+  "updated_at": "2026-09-04T16:28:32.597310+00:00"
 }
