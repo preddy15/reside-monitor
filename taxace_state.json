@@ -49,6 +49,12 @@
       "rent": "$2,660.00",
       "unit": "3C"
     },
+    "2187 ryer avenue bronx ny||3g": {
+      "address": "2187 Ryer Avenue, Bronx, NY",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-25953/CZW2ZDYB5XLB5HFOYP",
+      "rent": "$2,835.00",
+      "unit": "3G"
+    },
     "2187 ryer avenue bronx ny||5g": {
       "address": "2187 Ryer Avenue, Bronx, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-25873/O9A4O4DFF9771USJYV",
@@ -66,12 +72,6 @@
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-23773/6F9DFDE4MFK690BXRA",
       "rent": "$3,035.00",
       "unit": "1B"
-    },
-    "533 concord avenue bronx ny||8c": {
-      "address": "533 Concord Avenue, Bronx, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-24793/GMRGT3KMPFK55AYHGJ",
-      "rent": "$2,972.00",
-      "unit": "8C"
     },
     "533 concord avenue||4f": {
       "address": "533 Concord Avenue",
@@ -188,5 +188,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-09-03T21:06:29.677460+00:00"
+  "updated_at": "2026-09-04T16:20:16.963272+00:00"
 }
