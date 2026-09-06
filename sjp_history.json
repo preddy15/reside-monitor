@@ -18,7 +18,7 @@
       },
       "first_seen": "2026-08-21T04:44:18.406024+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-09-06T16:36:32.712501+00:00",
+      "last_seen": "2026-09-06T16:38:07.760579+00:00",
       "location": null,
       "removal_count": 0,
       "source": "SJP Tax Consultants",
@@ -42,7 +42,7 @@
       },
       "first_seen": "2026-08-21T04:44:18.406024+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-09-06T16:36:32.712501+00:00",
+      "last_seen": "2026-09-06T16:38:07.760579+00:00",
       "location": null,
       "removal_count": 0,
       "source": "SJP Tax Consultants",
@@ -74,7 +74,7 @@
       "url": "https://www.sjpny.com/apartment-listings/available-re-rental-apartment-in-astoria-stud-3rd-819"
     },
     "https://www.sjpny.com/apartment-listings/available-re-rental-apartment-in-bedfordsty-12ass-44fges-jz3ts": {
-      "active": true,
+      "active": false,
       "appearance_count": 1,
       "details": {
         "ami": "130%",
@@ -89,10 +89,10 @@
         "utilities": "Tenant pays electricity. Landlord to provide domestic cold water only. *"
       },
       "first_seen": "2026-08-21T04:44:18.406024+00:00",
-      "last_removed_at": null,
+      "last_removed_at": "2026-09-06T16:38:07.760579+00:00",
       "last_seen": "2026-09-06T16:36:32.712501+00:00",
       "location": null,
-      "removal_count": 0,
+      "removal_count": 1,
       "source": "SJP Tax Consultants",
       "title": "Available Re Rental Apartment In Bedfordsty 12ass 44fges Jz3ts",
       "url": "https://www.sjpny.com/apartment-listings/available-re-rental-apartment-in-bedfordsty-12ass-44fges-jz3ts"
@@ -114,7 +114,7 @@
       },
       "first_seen": "2026-08-21T04:44:18.406024+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-09-06T16:36:32.712501+00:00",
+      "last_seen": "2026-09-06T16:38:07.760579+00:00",
       "location": null,
       "removal_count": 0,
       "source": "SJP Tax Consultants",
@@ -122,6 +122,6 @@
       "url": "https://www.sjpny.com/apartment-listings/available-re-rental-apartment-in-eflatbush-232124"
     }
   },
-  "updated_at": "2026-09-06T16:36:32.712501+00:00",
+  "updated_at": "2026-09-06T16:38:07.760579+00:00",
   "version": 1
 }
