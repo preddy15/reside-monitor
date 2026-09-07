@@ -37,7 +37,6 @@
     "237 West 167th Stret - Apt 4E - $3071.87 -",
     "2460 White Plains Road - Apt 2B - $3094.54 -",
     "2460 White Plains Road - Apt 3B - $3094.54 -",
-    "25 Water Street - Apt 812 - $932 -",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -",
     "25-01 Queens Plaza North - Apt 815 - $3653 -",
     "25-01 Queens Plaza North - Apt 903 - $4366 -",
@@ -105,7 +104,6 @@
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
     "2460 White Plains Road - Apt 2B - $3094.54 -": "recG140q49vwz78ml",
     "2460 White Plains Road - Apt 3B - $3094.54 -": "recyoeaOJoev0FvJs",
-    "25 Water Street - Apt 812 - $932 -": "recoz736OHSlv00wL",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -": "recghf35pdYrvl3yG",
     "25-01 Queens Plaza North - Apt 815 - $3653 -": "recaWCw4lUPbhNiHq",
     "25-01 Queens Plaza North - Apt 903 - $4366 -": "reckGonUx3gxKtG6Y",
@@ -138,5 +136,5 @@
     "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -": "recHQOXn9aw2jbTgc"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-07T18:03:19.845758+00:00"
+  "updated_at": "2026-09-07T18:05:37.645043+00:00"
 }
