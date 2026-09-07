@@ -59,6 +59,7 @@
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -",
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
+    "9-24 Main Ave - Apt 305 - $2830.76 -",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -",
     "95-08 147th Place - Apt 701 - $3811 -",
     "97-01 55th Avenue - Apt 4A - $2267 -",
@@ -125,6 +126,7 @@
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -": "recqKUYrmQ9p5uIRm",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -": "recDHccgkL8ARHZIb",
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
+    "9-24 Main Ave - Apt 305 - $2830.76 -": "recHLRrPA6Ooi1k76",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -": "recdgxlD1ca2pnbqF",
     "95-08 147th Place - Apt 701 - $3811 -": "recxKYHOiXIYXoIbu",
     "97-01 55th Avenue - Apt 4A - $2267 -": "recviDnmkiT2scIF2",
@@ -134,5 +136,5 @@
     "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -": "recHQOXn9aw2jbTgc"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-07T15:39:38.241823+00:00"
+  "updated_at": "2026-09-07T15:45:08.199514+00:00"
 }
