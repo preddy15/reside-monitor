@@ -10,6 +10,7 @@
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
     "1315 Findlay Avenue - Apt 4C - $2851 -",
     "132-53 41 Ave - Apt 4D - $2260.5 -",
+    "1351 Jerome Avenue - Apt 703 - $4347 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -",
     "1433 Teller Avenue - Apt 3D - $3322.82 -",
@@ -75,6 +76,7 @@
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -": "recVseDWIs4g0C16L",
     "1315 Findlay Avenue - Apt 4C - $2851 -": "recUGRZH6cZimb82N",
     "132-53 41 Ave - Apt 4D - $2260.5 -": "recK5lyi5nTtxtMEL",
+    "1351 Jerome Avenue - Apt 703 - $4347 -": "rect5jPIkHBmru0LD",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -": "recnW6xUrLgnwUkS8",
     "1433 Teller Avenue - Apt 3D - $3322.82 -": "recdt7Rkzq2giJTPr",
@@ -132,5 +134,5 @@
     "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -": "recHQOXn9aw2jbTgc"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-07T15:38:24.375357+00:00"
+  "updated_at": "2026-09-07T15:39:38.241823+00:00"
 }
