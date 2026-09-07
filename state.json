@@ -50,6 +50,7 @@
     "2817 Atlantic Ave - Apt 7C - $2818.93 -",
     "287 Maple STreet - Apt 4F - $2585.86 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
+    "516 East 147 Street - Apt 4A - $2074 -",
     "53 East 177 Street - Apt 3D - $3107.16 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+",
@@ -112,6 +113,7 @@
     "2817 Atlantic Ave - Apt 7C - $2818.93 -": "recqOG1wGfZ2VFPYR",
     "287 Maple STreet - Apt 4F - $2585.86 -": "recOj9Cx9pMEPMvRv",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
+    "516 East 147 Street - Apt 4A - $2074 -": "recM7oO1IWddOxqiF",
     "53 East 177 Street - Apt 3D - $3107.16 -": "recMO0ln8DodkKGft",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+": "recPVLGweU7WxkNBX",
@@ -126,5 +128,5 @@
     "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -": "recHQOXn9aw2jbTgc"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-07T15:20:32.935540+00:00"
+  "updated_at": "2026-09-07T15:23:44.249082+00:00"
 }
