@@ -7,12 +7,6 @@
       "rent": "$3,741.18",
       "unit": "6C"
     },
-    "1058 walton ave bronx ny||1b": {
-      "address": "1058 Walton Ave, Bronx, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-24173/IC9DANC860BS76OS2V",
-      "rent": "$2,954.00",
-      "unit": "1B"
-    },
     "1323 findlay ave bronx ny||7": {
       "address": "1323 Findlay Ave, Bronx, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-23893/HQ066DC566UK3KXER7",
@@ -73,6 +67,18 @@
       "rent": "$3,035.00",
       "unit": "1B"
     },
+    "2775 reservoir ave bronx ny||2c": {
+      "address": "2775 Reservoir Ave, Bronx, NY",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-26013/DLKK3VWNP7LBB2RNLD",
+      "rent": "$2,835.00",
+      "unit": "2C"
+    },
+    "2775 reservoir ave brooklyn ny||3d": {
+      "address": "2775 Reservoir Ave, Brooklyn, NY",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-26053/3F2S5Q9ZOIEYYYI1YN",
+      "rent": "$2,835.00",
+      "unit": "3D"
+    },
     "533 concord avenue||4f": {
       "address": "533 Concord Avenue",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-24953/01LH57Q20T6V3Y3ABN",
@@ -108,12 +114,6 @@
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22113/W4WFWN0DYWBDCLB1LG",
       "rent": "$2,999.00",
       "unit": "4B"
-    },
-    "962 bushwick avenue brooklyn ny||5b": {
-      "address": "962 Bushwick Avenue, Brooklyn, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22353/OX562B0IWXD8SJUAWO",
-      "rent": "$2,999.00",
-      "unit": "5B"
     },
     "962 bushwick avenue brooklyn ny||5e": {
       "address": "962 Bushwick Avenue, Brooklyn, NY",
@@ -188,5 +188,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-09-04T16:20:16.963272+00:00"
+  "updated_at": "2026-09-07T17:55:38.700214+00:00"
 }
