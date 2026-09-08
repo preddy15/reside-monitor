@@ -57,6 +57,7 @@
     "49 Borinquen - Apt 6B - $3697.21 -",
     "516 East 147 Street - Apt 4A - $2074 -",
     "53 East 177 Street - Apt 3D - $3107.16 -",
+    "58 Palmetto Street - Apt 2B - $2076.17 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+",
@@ -129,6 +130,7 @@
     "49 Borinquen - Apt 6B - $3697.21 -": "recVRlBe99H6u9bSn",
     "516 East 147 Street - Apt 4A - $2074 -": "recM7oO1IWddOxqiF",
     "53 East 177 Street - Apt 3D - $3107.16 -": "recMO0ln8DodkKGft",
+    "58 Palmetto Street - Apt 2B - $2076.17 -": "recdQYD2O27ziwTD4",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+": "recPVLGweU7WxkNBX",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+": "recLKAS4m2XJ6p2eN",
@@ -146,5 +148,5 @@
     "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -": "recHQOXn9aw2jbTgc"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-08T20:13:59.566086+00:00"
+  "updated_at": "2026-09-08T21:51:12.120560+00:00"
 }
