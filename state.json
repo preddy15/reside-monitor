@@ -51,6 +51,7 @@
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
+    "49 Borinquen - Apt 6B - $3697.21 -",
     "516 East 147 Street - Apt 4A - $2074 -",
     "53 East 177 Street - Apt 3D - $3107.16 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
@@ -118,6 +119,7 @@
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -": "recb626NhM4wnZn5J",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -": "recqOG1wGfZ2VFPYR",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
+    "49 Borinquen - Apt 6B - $3697.21 -": "recVRlBe99H6u9bSn",
     "516 East 147 Street - Apt 4A - $2074 -": "recM7oO1IWddOxqiF",
     "53 East 177 Street - Apt 3D - $3107.16 -": "recMO0ln8DodkKGft",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
@@ -136,5 +138,5 @@
     "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -": "recHQOXn9aw2jbTgc"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-08T16:32:00.382803+00:00"
+  "updated_at": "2026-09-08T16:32:53.171725+00:00"
 }
