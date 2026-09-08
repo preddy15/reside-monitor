@@ -20,7 +20,6 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1484 Watson avenue - Apt E33 - $3608.89 -",
-    "1484 Watson Aveue - Apt B33 - $2899.08 -",
     "1718 President Street - Apt 10B - $3412.21 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -",
@@ -86,7 +85,6 @@
     "1440 Amsterdam Avenue - Apt 702 - $3195 -": "recS5S5PuXzT0NriJ",
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
-    "1484 Watson Aveue - Apt B33 - $2899.08 -": "recjjTzakPAoDVJyh",
     "1484 Watson avenue - Apt E33 - $3608.89 -": "recgmsge7E5Igxujb",
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
@@ -136,5 +134,5 @@
     "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -": "recHQOXn9aw2jbTgc"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-08T14:51:40.556989+00:00"
+  "updated_at": "2026-09-08T16:07:00.377119+00:00"
 }
