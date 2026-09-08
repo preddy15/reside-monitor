@@ -1,12 +1,6 @@
 {
   "initialized": true,
   "listings": {
-    "118 fulton street||26f": {
-      "ami": "60%",
-      "project": "118 Fulton Street",
-      "unit": "26F",
-      "unit_size": "1-Bed"
-    },
     "223 north 8th street||n 5k": {
       "ami": "60%",
       "project": "223 North 8th Street",
@@ -56,5 +50,5 @@
       "unit_size": "Studio"
     }
   },
-  "updated_at": "2026-09-08T17:44:37.941750+00:00"
+  "updated_at": "2026-09-08T17:56:15.931054+00:00"
 }
