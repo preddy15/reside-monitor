@@ -25,6 +25,7 @@
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -",
     "1847 Cross Brox - Apt 4B - $3454.62 -",
     "2 Blue Slip - Apt 14N - $2370 -",
+    "2 Blue Slip - Apt 5D - $2589.74 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2061 Crotona Ave - Apt 2C - $3237.42 -",
@@ -94,6 +95,7 @@
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -": "rec0LZW1q8H8l1GVN",
     "1847 Cross Brox - Apt 4B - $3454.62 -": "receLWeBvPjwO7LOb",
     "2 Blue Slip - Apt 14N - $2370 -": "rec6rZfseLXfuO96r",
+    "2 Blue Slip - Apt 5D - $2589.74 -": "rec7vWSv71Wtxtz2F",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2061 Crotona Ave - Apt 2C - $3237.42 -": "recl8wA3YDcWn44ag",
@@ -140,5 +142,5 @@
     "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -": "recHQOXn9aw2jbTgc"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-08T17:06:17.897257+00:00"
+  "updated_at": "2026-09-08T17:12:05.577630+00:00"
 }
