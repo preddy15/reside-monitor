@@ -61,6 +61,12 @@
       "rent": "$2,660.00",
       "unit": "6D"
     },
+    "2187 ryer avenue bronx ny||8a": {
+      "address": "2187 Ryer Avenue, Bronx, NY",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-26233/M88WYNGMTKIXRPP1PE",
+      "rent": "$3,187.00",
+      "unit": "8A"
+    },
     "2710 decatur avenue bronx ny||1b": {
       "address": "2710 Decatur Avenue, Bronx, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-23773/6F9DFDE4MFK690BXRA",
@@ -114,12 +120,6 @@
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22113/W4WFWN0DYWBDCLB1LG",
       "rent": "$2,999.00",
       "unit": "4B"
-    },
-    "962 bushwick avenue brooklyn ny||5e": {
-      "address": "962 Bushwick Avenue, Brooklyn, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22433/ZOFHV9PFXN5154TOZV",
-      "rent": "$3,299.00",
-      "unit": "5E"
     },
     "972 bushwick avenue brooklyn ny||1a": {
       "address": "972 Bushwick Avenue, Brooklyn, NY",
@@ -188,5 +188,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-09-07T17:55:38.700214+00:00"
+  "updated_at": "2026-09-08T21:04:17.906422+00:00"
 }
