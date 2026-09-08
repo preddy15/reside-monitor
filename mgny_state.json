@@ -247,29 +247,6 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/2008-crotona-avenue/"
     },
-    "https://mgnyconsulting.com/listing/2245-creston-avenue": {
-      "address": "2245 Creston Avenue 2245 Creston Avenue, Bronx, NY 10453",
-      "income_range": "$57,907 - $176,410",
-      "tiers": {
-        "130%||studio||$1,481.95||1-2 people": {
-          "active": true,
-          "ami": "130%",
-          "annual_income": "$57,907 – $176,410",
-          "appearance_count": 1,
-          "first_seen": "2026-08-20T04:04:39.814757+00:00",
-          "household_size": "1-2 people",
-          "last_removed_at": null,
-          "last_seen": "2026-08-20T04:04:39.814757+00:00",
-          "removal_count": 0,
-          "rent": "$1,481.95",
-          "unit_size": "Studio",
-          "units_available": 1
-        }
-      },
-      "title": "2245 Creston Avenue",
-      "units_count": 1,
-      "url": "https://mgnyconsulting.com/listing/2245-creston-avenue/"
-    },
     "https://mgnyconsulting.com/listing/27-15-astoria-boulevard": {
       "address": "27-15 Astoria Boulevard 27-15 Astoria Boulevard, Queens, NY 11102",
       "income_range": "$82,115 - $189,540",
@@ -662,5 +639,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-09-08T16:12:23.505824+00:00"
+  "updated_at": "2026-09-08T16:16:39.112438+00:00"
 }
