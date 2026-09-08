@@ -32,6 +32,7 @@
     "2067 Anthony Avenue - Apt 305 - $3250.12 -",
     "2072 Anthony Ave - Apt 4J - $3037.47 -",
     "2140 Matthews Ave - Apt 4A - $2941.02 -",
+    "2150 Clinton Avenue - Apt CD - $3053.27 -",
     "2180 Walton Ave. Apt. 4C - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -",
@@ -98,6 +99,7 @@
     "2067 Anthony Avenue - Apt 305 - $3250.12 -": "reccFxrpOYLjcABhT",
     "2072 Anthony Ave - Apt 4J - $3037.47 -": "rec3mMbZKu8pdpNCL",
     "2140 Matthews Ave - Apt 4A - $2941.02 -": "recoCiA3nWif6uMSG",
+    "2150 Clinton Avenue - Apt CD - $3053.27 -": "reckcg5l1Y46jKKCu",
     "2180 Walton Ave. Apt. 4C - Apt 4C - $3128 -": "recf4f8rAVNXoVdsZ",
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -": "reclm0Vov81VspkPi",
@@ -134,5 +136,5 @@
     "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -": "recHQOXn9aw2jbTgc"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-07T20:26:58.985678+00:00"
+  "updated_at": "2026-09-08T14:51:40.556989+00:00"
 }
