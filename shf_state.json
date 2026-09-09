@@ -13,12 +13,6 @@
       "unit": "2D",
       "unit_size": "2-Bed"
     },
-    "30th 11th apartments||15l": {
-      "ami": "60%",
-      "project": "30th & 11th Apartments",
-      "unit": "15L",
-      "unit_size": "Studio"
-    },
     "509 third avenue||8f 8g": {
       "ami": "130%",
       "project": "509 Third Avenue",
@@ -50,5 +44,5 @@
       "unit_size": "Studio"
     }
   },
-  "updated_at": "2026-09-08T17:56:15.931054+00:00"
+  "updated_at": "2026-09-09T15:52:20.015647+00:00"
 }
