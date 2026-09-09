@@ -67,6 +67,12 @@
       "rent": "$3,187.00",
       "unit": "8A"
     },
+    "2710 decatur ave brooklyn ny||ph2": {
+      "address": "2710 Decatur Ave, Brooklyn, NY",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-26413/YGWVSKVFNMV7H65D5A",
+      "rent": "$3,035.00",
+      "unit": "PH2"
+    },
     "2710 decatur avenue bronx ny||1b": {
       "address": "2710 Decatur Avenue, Bronx, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-23773/6F9DFDE4MFK690BXRA",
@@ -188,5 +194,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-09-09T15:39:58.742799+00:00"
+  "updated_at": "2026-09-09T17:08:28.213169+00:00"
 }
