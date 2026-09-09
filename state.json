@@ -9,6 +9,7 @@
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
     "106 Mt. Hope Place - Apt 6C - $2727.02 -",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
+    "1315 Findlay Avenue - Apt 3C - $3000.68 -",
     "1315 Findlay Avenue - Apt 4C - $2851 -",
     "1351 Jerome Avenue - Apt 703 - $4347 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
@@ -73,6 +74,7 @@
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
     "106 Mt. Hope Place - Apt 6C - $2727.02 -": "recrpwbaoI352905D",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -": "recVseDWIs4g0C16L",
+    "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
     "1315 Findlay Avenue - Apt 4C - $2851 -": "recUGRZH6cZimb82N",
     "1351 Jerome Avenue - Apt 703 - $4347 -": "rect5jPIkHBmru0LD",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
@@ -130,5 +132,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-09T15:02:50.333991+00:00"
+  "updated_at": "2026-09-09T18:03:19.478425+00:00"
 }
