@@ -24,9 +24,6 @@
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -",
     "1847 Cross Brox - Apt 4B - $3454.62 -",
-    "2 Blue Slip - Apt 12N - $2513.09 -",
-    "2 Blue Slip - Apt 14N - $2370 -",
-    "2 Blue Slip - Apt 5D - $2589.74 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2061 Crotona Ave - Apt 2C - $3237.42 -",
@@ -59,13 +56,11 @@
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+",
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -",
-    "88-36 139 Street - Apt 3D - $2090 -",
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -",
     "95-08 147th Place - Apt 701 - $3811 -",
     "97-01 55th Avenue - Apt 4A - $2267 -",
     "Douglass Street Apartments - Apt 8L - $3689 -",
-    "Eagle & West - Apt 236 - $2876.05 -",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+"
   ],
   "project_record_ids": {
@@ -91,9 +86,6 @@
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -": "rec0LZW1q8H8l1GVN",
     "1847 Cross Brox - Apt 4B - $3454.62 -": "receLWeBvPjwO7LOb",
-    "2 Blue Slip - Apt 12N - $2513.09 -": "recC3UYLlRVlGoniq",
-    "2 Blue Slip - Apt 14N - $2370 -": "rec6rZfseLXfuO96r",
-    "2 Blue Slip - Apt 5D - $2589.74 -": "rec7vWSv71Wtxtz2F",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2061 Crotona Ave - Apt 2C - $3237.42 -": "recl8wA3YDcWn44ag",
@@ -126,15 +118,13 @@
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+": "recLKAS4m2XJ6p2eN",
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -": "recqKUYrmQ9p5uIRm",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -": "recDHccgkL8ARHZIb",
-    "88-36 139 Street - Apt 3D - $2090 -": "recVvGyL9jzBi0hkJ",
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -": "recdgxlD1ca2pnbqF",
     "95-08 147th Place - Apt 701 - $3811 -": "recxKYHOiXIYXoIbu",
     "97-01 55th Avenue - Apt 4A - $2267 -": "recviDnmkiT2scIF2",
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC",
-    "Eagle & West - Apt 236 - $2876.05 -": "reclymZzjnpkm3ZGM",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-09T13:35:35.728164+00:00"
+  "updated_at": "2026-09-09T15:00:08.875548+00:00"
 }
