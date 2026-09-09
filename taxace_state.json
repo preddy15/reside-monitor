@@ -57,7 +57,7 @@
     },
     "2187 ryer avenue bronx ny||6d": {
       "address": "2187 Ryer Avenue, Bronx, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-8873/7YBOR67912I9V7B2ED",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22653/VBI0D3SH7AO6FNAFC9",
       "rent": "$2,660.00",
       "unit": "6D"
     },
@@ -121,36 +121,6 @@
       "rent": "$2,999.00",
       "unit": "4B"
     },
-    "972 bushwick avenue brooklyn ny||1a": {
-      "address": "972 Bushwick Avenue, Brooklyn, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22653/VBI0D3SH7AO6FNAFC9",
-      "rent": "$2,999.00",
-      "unit": "1A"
-    },
-    "972 bushwick avenue brooklyn ny||2d": {
-      "address": "972 Bushwick Avenue, Brooklyn, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22733/TC3NIVWJ79JRW3IMEO",
-      "rent": "$2,999.00",
-      "unit": "2D"
-    },
-    "972 bushwick avenue brooklyn ny||3c": {
-      "address": "972 Bushwick Avenue, Brooklyn, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22853/LMETRP5OP3B2D0GE73",
-      "rent": "$3,299.00",
-      "unit": "3C"
-    },
-    "972 bushwick avenue brooklyn ny||3e": {
-      "address": "972 Bushwick Avenue, Brooklyn, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22873/Y0YECX87OMYWTJ9OGP",
-      "rent": "$3,299.00",
-      "unit": "3E"
-    },
-    "972 bushwick avenue brooklyn ny||4c": {
-      "address": "972 Bushwick Avenue, Brooklyn, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-23013/0ELWCUOWU88MLHD03S",
-      "rent": "$3,299.00",
-      "unit": "4C"
-    },
     "972 bushwick avenue brooklyn ny||4d": {
       "address": "972 Bushwick Avenue, Brooklyn, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-23093/3YR7F6PH3ALO1EFKL2",
@@ -188,5 +158,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-09-08T21:04:17.906422+00:00"
+  "updated_at": "2026-09-09T15:39:24.990900+00:00"
 }
