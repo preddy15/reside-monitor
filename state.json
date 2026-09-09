@@ -57,6 +57,7 @@
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -",
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
+    "94-15 Sutphin Blvd - Apt 1707 - $4376 -",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -",
     "95-08 147th Place - Apt 701 - $3811 -",
     "97-01 55th Avenue - Apt 4A - $2267 -",
@@ -119,6 +120,7 @@
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -": "recqKUYrmQ9p5uIRm",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -": "recDHccgkL8ARHZIb",
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
+    "94-15 Sutphin Blvd - Apt 1707 - $4376 -": "recL3cH6ZLzAu9V7O",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -": "recdgxlD1ca2pnbqF",
     "95-08 147th Place - Apt 701 - $3811 -": "recxKYHOiXIYXoIbu",
     "97-01 55th Avenue - Apt 4A - $2267 -": "recviDnmkiT2scIF2",
@@ -126,5 +128,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-09T15:00:08.875548+00:00"
+  "updated_at": "2026-09-09T15:01:52.669175+00:00"
 }
