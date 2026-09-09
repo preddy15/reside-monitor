@@ -66,8 +66,7 @@
     "97-01 55th Avenue - Apt 4A - $2267 -",
     "Douglass Street Apartments - Apt 8L - $3689 -",
     "Eagle & West - Apt 236 - $2876.05 -",
-    "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+",
-    "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -"
+    "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+"
   ],
   "project_record_ids": {
     "1000 Woodycrest Ave - Apt 6A - $3434.45 -": "recjhy22F3CHdBkZ2",
@@ -134,9 +133,8 @@
     "97-01 55th Avenue - Apt 4A - $2267 -": "recviDnmkiT2scIF2",
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC",
     "Eagle & West - Apt 236 - $2876.05 -": "reclymZzjnpkm3ZGM",
-    "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY",
-    "Vitagraph - 1277 East 14th Street - 2 Bed - Apt 408A - $3084.91 -": "recHQOXn9aw2jbTgc"
+    "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-08T22:00:32.209676+00:00"
+  "updated_at": "2026-09-09T13:35:35.728164+00:00"
 }
