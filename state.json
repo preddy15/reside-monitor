@@ -20,6 +20,7 @@
     "1440 Amsterdam Avenue - Apt 702 - $3195 -",
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
+    "148 Bleecker St - Apt 3C - $2680.04 -",
     "1484 Watson avenue - Apt E33 - $3608.89 -",
     "1718 President Street - Apt 10B - $3412.21 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
@@ -87,6 +88,7 @@
     "1440 Amsterdam Avenue - Apt 702 - $3195 -": "recS5S5PuXzT0NriJ",
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
+    "148 Bleecker St - Apt 3C - $2680.04 -": "recdpDReDl9NRDw72",
     "1484 Watson avenue - Apt E33 - $3608.89 -": "recgmsge7E5Igxujb",
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
@@ -136,5 +138,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-10T14:46:38.072005+00:00"
+  "updated_at": "2026-09-10T15:02:11.610043+00:00"
 }
