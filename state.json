@@ -55,6 +55,7 @@
     "2816 8Th Ave - Apt 5V - $3485.32 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
     "53 East 177 Street - Apt 3D - $3107.16 -",
+    "54-56 Fulton Street - Apt 6D - $2346.88 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+",
@@ -124,6 +125,7 @@
     "2816 8Th Ave - Apt 5V - $3485.32 -": "recWqF2x0PZhS7Tpu",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
     "53 East 177 Street - Apt 3D - $3107.16 -": "recMO0ln8DodkKGft",
+    "54-56 Fulton Street - Apt 6D - $2346.88 -": "recWswEKSJDJUt5Xn",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+": "recPVLGweU7WxkNBX",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+": "recLKAS4m2XJ6p2eN",
@@ -140,5 +142,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-10T15:22:24.582662+00:00"
+  "updated_at": "2026-09-10T15:23:54.015517+00:00"
 }
