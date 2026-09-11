@@ -63,56 +63,7 @@
       "rent": "$980.00",
       "status": "current",
       "unit": "N-308"
-    },
-    "sunset park apartment library||6f": {
-      "address": null,
-      "building": "Sunset Park Apartment & Library",
-      "rent": null,
-      "status": "current",
-      "unit": "6F"
-    },
-    "sunset park apartment library||6g": {
-      "address": null,
-      "building": "Sunset Park Apartment & Library",
-      "rent": null,
-      "status": "current",
-      "unit": "6G"
-    },
-    "sunset park apartment library||7h": {
-      "address": null,
-      "building": "Sunset Park Apartment & Library",
-      "rent": null,
-      "status": "current",
-      "unit": "7H"
-    },
-    "sunset ridge apartments||1b": {
-      "address": null,
-      "building": "Sunset Ridge Apartments",
-      "rent": null,
-      "status": "current",
-      "unit": "1B"
-    },
-    "sunset ridge apartments||3c": {
-      "address": null,
-      "building": "Sunset Ridge Apartments",
-      "rent": null,
-      "status": "current",
-      "unit": "3C"
-    },
-    "sunset ridge apartments||3j": {
-      "address": null,
-      "building": "Sunset Ridge Apartments",
-      "rent": null,
-      "status": "current",
-      "unit": "3J"
-    },
-    "sunset ridge apartments||8c": {
-      "address": null,
-      "building": "Sunset Ridge Apartments",
-      "rent": null,
-      "status": "current",
-      "unit": "8C"
     }
   },
-  "updated_at": "2026-09-11T14:53:55.972137+00:00"
+  "updated_at": "2026-09-11T19:12:51.092063+00:00"
 }
