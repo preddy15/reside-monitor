@@ -7,12 +7,6 @@
       "unit": "N-5K",
       "unit_size": "Studio"
     },
-    "280 west 24th street||2d": {
-      "ami": "130%",
-      "project": "280 West 24th Street",
-      "unit": "2D",
-      "unit_size": "2-Bed"
-    },
     "509 third avenue||8f 8g": {
       "ami": "130%",
       "project": "509 Third Avenue",
@@ -49,6 +43,12 @@
       "unit": null,
       "unit_size": null
     },
+    "raw||280 west 24th street unit 2d 130 ami 2 bed mobility set aside unit must meet mobility preference": {
+      "ami": null,
+      "project": "280 West 24th Street Unit 2D (130% AMI 2-Bed) - Mobility set-aside unit. Must meet Mobility preference.",
+      "unit": null,
+      "unit_size": null
+    },
     "raw||280 west 24th street unit 5r 40 studio age preference must be age 62 or over": {
       "ami": null,
       "project": "280 West 24th Street Unit 5R (40% Studio) - Age Preference - Must be age 62 or over)",
@@ -56,5 +56,5 @@
       "unit_size": null
     }
   },
-  "updated_at": "2026-09-14T16:02:14.678605+00:00"
+  "updated_at": "2026-09-14T16:02:56.580428+00:00"
 }
