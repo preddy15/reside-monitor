@@ -37,7 +37,6 @@
     "2180 Walton Ave. Apt. 4C - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -",
-    "231 W 149 St - Apt 4E - $1480.29 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
     "2460 White Plains Road - Apt 3B - $3094.54 -",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -",
@@ -105,7 +104,6 @@
     "2180 Walton Ave. Apt. 4C - Apt 4C - $3128 -": "recf4f8rAVNXoVdsZ",
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -": "reclm0Vov81VspkPi",
-    "231 W 149 St - Apt 4E - $1480.29 -": "recBmyPne1zUDhqVp",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
     "2460 White Plains Road - Apt 3B - $3094.54 -": "recyoeaOJoev0FvJs",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -": "recghf35pdYrvl3yG",
@@ -138,5 +136,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-14T17:56:27.815859+00:00"
+  "updated_at": "2026-09-14T17:57:39.578125+00:00"
 }
