@@ -54,6 +54,7 @@
     "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -",
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -",
     "2816 8Th Ave - Apt 5V - $3485.32 -",
+    "282 East 32nd Street - Apt 4B - $2449.04 -",
     "3031 Bronxwood Ave - Apt 2A - $2310.24 -",
     "370 east 158t 5B - Apt 5B - $2862 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
@@ -126,6 +127,7 @@
     "27-51 Jackson Avenue Apartments - Apt 2 Bedroom - $4376 -": "recBJzmON1paYdrll",
     "27-51 Jackson Avenue Apartments - Apt Studio - $3423 -": "recb626NhM4wnZn5J",
     "2816 8Th Ave - Apt 5V - $3485.32 -": "recWqF2x0PZhS7Tpu",
+    "282 East 32nd Street - Apt 4B - $2449.04 -": "recPCGu06oJnVxwQt",
     "3031 Bronxwood Ave - Apt 2A - $2310.24 -": "recsAzcnRYpROMZ6s",
     "370 east 158t 5B - Apt 5B - $2862 -": "recldH53M2kxqsWhS",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
@@ -146,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-14T14:32:56.041868+00:00"
+  "updated_at": "2026-09-14T14:41:01.584830+00:00"
 }
