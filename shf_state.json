@@ -1,12 +1,6 @@
 {
   "initialized": true,
   "listings": {
-    "146 pierrepont street||6d": {
-      "ami": "40%",
-      "project": "146 Pierrepont Street",
-      "unit": "6D",
-      "unit_size": "Studio"
-    },
     "223 north 8th street||n 5k": {
       "ami": "60%",
       "project": "223 North 8th Street",
@@ -49,12 +43,18 @@
       "unit": "16D",
       "unit_size": "Studio"
     },
-    "raw||280 west 24th street unit 5f 40 studio age preference 0": {
+    "raw||146 pierrepont street unit 6d 40 studio mobility set aside unit must meet mobility preference": {
       "ami": null,
-      "project": "280 West 24th Street Unit 5F (40% Studio) - Age Preference 0",
+      "project": "146 Pierrepont Street Unit 6D (40% Studio) - Mobility set-aside unit. Must meet Mobility preference.",
+      "unit": null,
+      "unit_size": null
+    },
+    "raw||280 west 24th street unit 5f 40 studio age preference must be age 62 or over": {
+      "ami": null,
+      "project": "280 West 24th Street Unit 5F (40% Studio) - Age Preference - Must be age 62 or over)",
       "unit": null,
       "unit_size": null
     }
   },
-  "updated_at": "2026-09-14T15:57:39.862933+00:00"
+  "updated_at": "2026-09-14T15:58:22.439959+00:00"
 }
