@@ -1270,14 +1270,74 @@ def normalize_borough(value: str | None) -> str | None:
     return None
 
 
+def leading_house_number(address: str) -> str | None:
+    match = re.match(r"\s*(\d+(?:-\d+)?)\s", address or "")
+    return match.group(1) if match else None
+
+
+def geocode_nyc_geosearch(address: str, house_number: str) -> dict | None:
+    """
+    NYC Planning GeoSearch — the city's official address data. It resolves
+    addresses OSM lacks (e.g. Harlem's "2588 7 Ave", which is Adam Clayton
+    Powell Jr Blvd in OSM), but it fuzzy-matches building names to unrelated
+    streets with high confidence, so it is only used for queries that lead
+    with a house number, and the result must lead with the same number.
+    """
+    try:
+        response = requests.get(
+            "https://geosearch.planninglabs.nyc/v2/search",
+            params={"text": address, "size": 1},
+            headers={
+                "User-Agent": (
+                    "reside-airtable-monitor/5.0 "
+                    "(personal NYC housing availability notifier)"
+                ),
+            },
+            timeout=(2.5, 10),
+        )
+        response.raise_for_status()
+        features = response.json().get("features") or []
+        if not features:
+            return None
+
+        properties = features[0].get("properties") or {}
+        label = normalize(properties.get("label"))
+        if leading_house_number(f"{label} ") != house_number:
+            return None
+
+        coordinates = (features[0].get("geometry") or {}).get("coordinates") or [None, None]
+        return {
+            "neighborhood": normalize(properties.get("neighbourhood")) or None,
+            "borough": normalize(properties.get("borough")) or None,
+            "postcode": normalize(properties.get("postalcode")) or None,
+            "lat": str(coordinates[1]) if coordinates[1] is not None else None,
+            "lon": str(coordinates[0]) if coordinates[0] is not None else None,
+            "display_name": label or None,
+        }
+    except Exception as exc:
+        print(f'GeoSearch lookup failed for "{address}": {exc}')
+        return None
+
+
 def geocode_nyc_address(address: str) -> dict | None:
     """
-    Uses the public OpenStreetMap Nominatim endpoint only for new/reappearing
-    listings. Multiple new lookups are spaced by >1 second by the caller.
+    Geocode via NYC GeoSearch first (house-number addresses only), falling
+    back to OpenStreetMap Nominatim. Multiple new lookups are spaced by
+    >1 second by the caller. Returns None rather than an unverified match.
     """
     if not address:
         return None
 
+    house_number = leading_house_number(address)
+    if house_number:
+        location = geocode_nyc_geosearch(address, house_number)
+        if location:
+            return location
+
+    return geocode_nyc_nominatim(address, house_number)
+
+
+def geocode_nyc_nominatim(address: str, house_number: str | None) -> dict | None:
     url = "https://nominatim.openstreetmap.org/search"
     params = {
         "q": f"{address}, New York City, New York, USA",
@@ -1310,6 +1370,20 @@ def geocode_nyc_address(address: str) -> dict | None:
 
         result = results[0]
         addr = result.get("address") or {}
+
+        # A numbered query answered without a matching house number means
+        # Nominatim fell back to a street-level match, which can be an
+        # arbitrary segment of the street (e.g. "2588 7 Ave" resolving to
+        # 7th Avenue in Chelsea instead of Harlem). Better no location than
+        # a confidently wrong one.
+        if house_number:
+            result_number = normalize(addr.get("house_number")).replace(" ", "")
+            if result_number != house_number:
+                print(
+                    f'Geocoder returned a street-level match for "{address}" '
+                    f'(house number {result_number or "missing"}); discarding.'
+                )
+                return None
 
         county = normalize(addr.get("county"))
         borough = (
@@ -2156,7 +2230,11 @@ def process_listings(
             if location is None:
                 if geocode_requests:
                     time.sleep(1.1)
-                location = geocode_nyc_address(parsed["address"])
+                # The Reside property page carries the authoritative address
+                # (with ZIP); the Airtable row's address can be abbreviated.
+                location = geocode_nyc_address(
+                    (reside or {}).get("property_address") or parsed["address"]
+                )
                 geocode_requests += 1
 
             entry = {
@@ -2209,7 +2287,10 @@ def process_listings(
                 if location is None:
                     if geocode_requests:
                         time.sleep(1.1)
-                    location = geocode_nyc_address(parsed["address"])
+                    location = geocode_nyc_address(
+                        (entry.get("reside") or {}).get("property_address")
+                        or parsed["address"]
+                    )
                     geocode_requests += 1
                 entry["location"] = location
 
@@ -7297,6 +7378,24 @@ def run_normal_monitor() -> None:
         del history["listings"][key]
     if junk:
         print(f"Purged {len(junk)} junk non-listing history entries.")
+
+    # Clear locations that came from a street-level geocoder fallback: a
+    # house-level match's display_name leads with the house number ("2588,
+    # 7th Avenue, ..."), while a fallback leads with something else ("7th
+    # Avenue, Chelsea District, ..."). Cleared entries re-geocode through the
+    # validated path on their next appearance.
+    repaired = 0
+    for entry in history.get("listings", {}).values():
+        house_number = leading_house_number(str(entry.get("address") or ""))
+        display = str((entry.get("location") or {}).get("display_name") or "")
+        if not house_number or not display:
+            continue
+        first_token = re.match(r"\s*([\w-]+)", display)
+        if not first_token or first_token.group(1) != house_number:
+            entry["location"] = None
+            repaired += 1
+    if repaired:
+        print(f"Cleared {repaired} street-level fallback location(s) for re-geocoding.")
 
     old_options = {
         normalize(x) for x in state.get("options", []) if normalize(x)
