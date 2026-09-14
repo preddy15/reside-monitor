@@ -30,7 +30,6 @@
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2061 Crotona Ave - Apt 2C - $3237.42 -",
-    "2067 Anthony Ave - Apt 406 - $3088 -",
     "2067 Anthony Avenue - Apt 305 - $3250.12 -",
     "2072 Anthony Ave - Apt 4J - $3037.47 -",
     "2140 Matthews Ave - Apt 4A - $2941.02 -",
@@ -39,7 +38,6 @@
     "2180 Walton Avenue - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
-    "2460 White Plains Road - Apt 2B - $3094.54 -",
     "2460 White Plains Road - Apt 3B - $3094.54 -",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -",
     "25-01 Queens Plaza North - Apt 815 - $3653 -",
@@ -99,7 +97,6 @@
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2061 Crotona Ave - Apt 2C - $3237.42 -": "recl8wA3YDcWn44ag",
-    "2067 Anthony Ave - Apt 406 - $3088 -": "recMrloqPshrYkeXk",
     "2067 Anthony Avenue - Apt 305 - $3250.12 -": "reccFxrpOYLjcABhT",
     "2072 Anthony Ave - Apt 4J - $3037.47 -": "rec3mMbZKu8pdpNCL",
     "2140 Matthews Ave - Apt 4A - $2941.02 -": "recoCiA3nWif6uMSG",
@@ -108,7 +105,6 @@
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -": "reclm0Vov81VspkPi",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
-    "2460 White Plains Road - Apt 2B - $3094.54 -": "recG140q49vwz78ml",
     "2460 White Plains Road - Apt 3B - $3094.54 -": "recyoeaOJoev0FvJs",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -": "recghf35pdYrvl3yG",
     "25-01 Queens Plaza North - Apt 815 - $3653 -": "recaWCw4lUPbhNiHq",
@@ -140,5 +136,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-14T17:35:29.180220+00:00"
+  "updated_at": "2026-09-14T17:36:14.329904+00:00"
 }
