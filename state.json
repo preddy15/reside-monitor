@@ -63,7 +63,6 @@
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
     "873 E 228th Street Apt. 1A - Apt 1A - $3697.97 -",
-    "874 Willoughby Avenue - Apt 413 - $1914.25 -",
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -",
     "95-08 147th Place - Apt 701 - $3811 -",
@@ -132,7 +131,6 @@
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -": "recDHccgkL8ARHZIb",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
     "873 E 228th Street Apt. 1A - Apt 1A - $3697.97 -": "recmyVrGxLSYWlJKg",
-    "874 Willoughby Avenue - Apt 413 - $1914.25 -": "recjpISTD7d1qp7AN",
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -": "recdgxlD1ca2pnbqF",
     "95-08 147th Place - Apt 701 - $3811 -": "recxKYHOiXIYXoIbu",
@@ -140,5 +138,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-14T17:53:57.767381+00:00"
+  "updated_at": "2026-09-14T17:56:27.815859+00:00"
 }
