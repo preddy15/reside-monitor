@@ -51,7 +51,6 @@
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "2816 8Th Ave - Apt 5V - $3485.32 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
-    "44-15 Colden Street - Apt 3D - $2593 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+",
@@ -114,7 +113,6 @@
     "256 Mount Hope Place - Apt 7B - $3595 -": "recD2oZ396qm8zEjy",
     "2816 8Th Ave - Apt 5V - $3485.32 -": "recWqF2x0PZhS7Tpu",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
-    "44-15 Colden Street - Apt 3D - $2593 -": "recZIFRiW8XbE2ltx",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+": "recPVLGweU7WxkNBX",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+": "recLKAS4m2XJ6p2eN",
@@ -128,5 +126,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-15T19:52:05.511795+00:00"
+  "updated_at": "2026-09-15T19:59:22.407801+00:00"
 }
