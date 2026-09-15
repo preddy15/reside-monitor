@@ -11,7 +11,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-09-15T15:28:36.582506+00:00",
+      "last_seen": "2026-09-15T15:29:17.278828+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$2,653.00",
@@ -22,7 +22,7 @@
       "url": "https://www.mns.com/details/240428/rental/morris+heights/bronx"
     },
     "260 gold st||102": {
-      "active": true,
+      "active": false,
       "address": "260 Gold ST",
       "appearance_count": 1,
       "bathrooms": "1",
@@ -38,7 +38,7 @@
       },
       "first_seen": "2026-08-27T19:03:57.714381+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-09-15T15:29:17.278828+00:00",
       "last_seen": "2026-09-15T15:28:36.582506+00:00",
       "location": {
         "borough": "Brooklyn",
@@ -48,7 +48,7 @@
         "neighborhood": null,
         "postcode": "11201"
       },
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$2,658.00",
       "source": "MNS",
       "sqft": "410",
@@ -106,7 +106,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-09-15T15:28:36.582506+00:00",
+      "last_seen": "2026-09-15T15:29:17.278828+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$3,160.00",
@@ -126,7 +126,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-09-15T15:28:36.582506+00:00",
+      "last_seen": "2026-09-15T15:29:17.278828+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$3,661.00",
@@ -154,7 +154,7 @@
       "first_seen": "2026-08-28T15:07:21.467852+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-09-15T15:28:36.582506+00:00",
+      "last_seen": "2026-09-15T15:29:17.278828+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "88, Leonard Street, Civic Center, Lower Manhattan, Manhattan, New York County, New York, 10013, United States",
@@ -172,6 +172,6 @@
       "url": "https://www.mns.com/details/240766/rental/tribeca/manhattan"
     }
   },
-  "updated_at": "2026-09-15T15:28:36.582823+00:00",
+  "updated_at": "2026-09-15T15:29:17.279139+00:00",
   "version": 1
 }

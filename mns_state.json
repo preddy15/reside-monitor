@@ -7,12 +7,6 @@
       "unit": "4N",
       "url": "https://www.mns.com/details/240428/rental/morris+heights/bronx"
     },
-    "260 gold st||102": {
-      "address": "260 Gold ST",
-      "rent": "$2,658.00",
-      "unit": "102",
-      "url": "https://www.mns.com/details/240884/rental/downtown+brooklyn/brooklyn"
-    },
     "65 dupont st||202": {
       "address": "65 Dupont ST",
       "rent": "$3,160.00",
@@ -32,5 +26,5 @@
       "url": "https://www.mns.com/details/240766/rental/tribeca/manhattan"
     }
   },
-  "updated_at": "2026-09-15T15:28:36.582559+00:00"
+  "updated_at": "2026-09-15T15:29:17.278879+00:00"
 }
