@@ -2,6 +2,7 @@
   "feature_version": 5,
   "initialized": true,
   "options": [
+    "1000 Woodycrest Ave - Apt 4A - $3603.6 -",
     "1000 Woodycrest Ave - Apt 6A - $3434.45 -",
     "1010 Washington Avenue - Apt 1016 - $5002 -",
     "1010 Washington Avenue - Apt 521 - $5002 -",
@@ -69,6 +70,7 @@
     "Douglass Street Apartments - Apt 8L - $3689 -"
   ],
   "project_record_ids": {
+    "1000 Woodycrest Ave - Apt 4A - $3603.6 -": "recULER5v0Cq9MVWt",
     "1000 Woodycrest Ave - Apt 6A - $3434.45 -": "recjhy22F3CHdBkZ2",
     "1010 Washington Avenue - Apt 1016 - $5002 -": "rectC7Ck2HBukOk2y",
     "1010 Washington Avenue - Apt 521 - $5002 -": "recN0kOIIkTLYlMu5",
@@ -136,5 +138,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-16T15:33:09.415340+00:00"
+  "updated_at": "2026-09-16T15:48:59.176562+00:00"
 }
