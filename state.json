@@ -56,7 +56,6 @@
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "2741 Creston Avenue - Apt 4B - $2721.77 -",
     "2816 8th Ave - Apt 4H - $1221.43 -",
-    "282 East 32nd Street - Apt 4B - $2449.04 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
     "44-15 Colden Street - Apt 2E - $2593 -",
     "44-72 11th Street - Apt A503 - $829.5 -",
@@ -131,7 +130,6 @@
     "256 Mount Hope Place - Apt 7B - $3595 -": "recD2oZ396qm8zEjy",
     "2741 Creston Avenue - Apt 4B - $2721.77 -": "recAMi52OzP4IcIkP",
     "2816 8th Ave - Apt 4H - $1221.43 -": "recIuTGi7fXvY40Nw",
-    "282 East 32nd Street - Apt 4B - $2449.04 -": "recPCGu06oJnVxwQt",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
     "44-15 Colden Street - Apt 2E - $2593 -": "recvxI4pVH2zTwCNI",
     "44-72 11th Street - Apt A503 - $829.5 -": "rec4KIPd10fyYJl55",
@@ -152,5 +150,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-16T19:47:53.192611+00:00"
+  "updated_at": "2026-09-16T19:50:29.954719+00:00"
 }
