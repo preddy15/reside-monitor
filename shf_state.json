@@ -19,12 +19,6 @@
       "unit": "11J",
       "unit_size": "Studio"
     },
-    "515 west 36th street||30j": {
-      "ami": "60%",
-      "project": "515 West 36th Street",
-      "unit": "30J",
-      "unit_size": "Studio"
-    },
     "572 eleventh avenue||4h": {
       "ami": "130%",
       "project": "572 Eleventh Avenue",
@@ -56,5 +50,5 @@
       "unit_size": null
     }
   },
-  "updated_at": "2026-09-14T16:02:56.580428+00:00"
+  "updated_at": "2026-09-16T14:57:27.493429+00:00"
 }
