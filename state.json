@@ -62,7 +62,6 @@
     "45-15 Colden Street - Apt 1B - $2593 -",
     "45-15 Colden Street - Apt 1C - $2593 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
-    "66 Linden St - Apt 2A - $2284.78 -",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+",
     "689 East 223rd - Apt 5D - $4341 -",
@@ -135,7 +134,6 @@
     "45-15 Colden Street - Apt 1B - $2593 -": "rec6i7x2t3sjIrNFi",
     "45-15 Colden Street - Apt 1C - $2593 -": "recAXAaUq2egNHVEg",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
-    "66 Linden St - Apt 2A - $2284.78 -": "rec5GVWvnmMotHOp2",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+": "recPVLGweU7WxkNBX",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+": "recLKAS4m2XJ6p2eN",
     "689 East 223rd - Apt 5D - $4341 -": "rec2OpqJtoRJVnTCN",
@@ -148,5 +146,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-16T17:53:05.532776+00:00"
+  "updated_at": "2026-09-16T18:24:00.228121+00:00"
 }
