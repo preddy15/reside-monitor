@@ -56,6 +56,8 @@
     "2816 8Th Ave - Apt 5V - $3485.32 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
     "44-15 Colden Street - Apt 2E - $2593 -",
+    "44-72 11th Street - Apt A503 - $829.5 -",
+    "44-72 11th Street - Apt B503 - $815.16 -",
     "45-15 Colden Street - Apt 1B - $2593 -",
     "45-15 Colden Street - Apt 1C - $2593 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
@@ -125,6 +127,8 @@
     "2816 8Th Ave - Apt 5V - $3485.32 -": "recWqF2x0PZhS7Tpu",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
     "44-15 Colden Street - Apt 2E - $2593 -": "recvxI4pVH2zTwCNI",
+    "44-72 11th Street - Apt A503 - $829.5 -": "rec4KIPd10fyYJl55",
+    "44-72 11th Street - Apt B503 - $815.16 -": "recYbw7P7VA8r7eza",
     "45-15 Colden Street - Apt 1B - $2593 -": "rec6i7x2t3sjIrNFi",
     "45-15 Colden Street - Apt 1C - $2593 -": "recAXAaUq2egNHVEg",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
@@ -140,5 +144,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-16T16:06:29.775130+00:00"
+  "updated_at": "2026-09-16T16:10:22.919642+00:00"
 }
