@@ -538,6 +538,14 @@
       "units_count": 4,
       "url": "https://mgnyconsulting.com/listing/forten/"
     },
+    "https://mgnyconsulting.com/listing/jasper-hunters-point": {
+      "address": null,
+      "income_range": "$118,766 - $198,510",
+      "tiers": {},
+      "title": "Jasper Hunter’s Point",
+      "units_count": 2,
+      "url": "https://mgnyconsulting.com/listing/jasper-hunters-point/"
+    },
     "https://mgnyconsulting.com/listing/lighthouse-point": {
       "address": "35R Bay Street, Staten Island, NY 10301",
       "income_range": "$134,298 - $238,160",
@@ -636,5 +644,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-09-16T19:50:55.136492+00:00"
+  "updated_at": "2026-09-16T22:40:04.725697+00:00"
 }
