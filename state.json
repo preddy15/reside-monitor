@@ -31,7 +31,6 @@
     "1718 President Street - Apt 10B - $3412.21 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "1718 President Street - Senior preference - Apt 5C - $3164.7 - Senior Preferece 60+",
-    "1718 President Street Apt. 7B - Apt 7B - $1663.69 - Senior Preferece 60+",
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -",
     "1847 Cross Brox - Apt 4B - $3454.62 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
@@ -104,7 +103,6 @@
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "1718 President Street - Senior preference - Apt 5C - $3164.7 - Senior Preferece 60+": "recMTjEjhKCuw5TDT",
-    "1718 President Street Apt. 7B - Apt 7B - $1663.69 - Senior Preferece 60+": "recX68wHiQmivS29v",
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -": "rec0LZW1q8H8l1GVN",
     "1847 Cross Brox - Apt 4B - $3454.62 -": "receLWeBvPjwO7LOb",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
@@ -148,5 +146,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-16T19:53:30.764498+00:00"
+  "updated_at": "2026-09-16T20:44:20.966320+00:00"
 }
