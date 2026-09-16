@@ -44,6 +44,7 @@
     "2180 Walton Ave. Apt. 4C - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt 4C - $3128 -",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -",
+    "230 w 150 St - Apt 4F - $2351.45 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
     "2460 White Plains Road - Apt 3B - $3094.54 -",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -",
@@ -116,6 +117,7 @@
     "2180 Walton Ave. Apt. 4C - Apt 4C - $3128 -": "recf4f8rAVNXoVdsZ",
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
     "2180 Walton Avenue - Apt. 10D - Apt 10B - $3128 -": "reclm0Vov81VspkPi",
+    "230 w 150 St - Apt 4F - $2351.45 -": "rec0XRsIJjXYKW9ZF",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
     "2460 White Plains Road - Apt 3B - $3094.54 -": "recyoeaOJoev0FvJs",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -": "recghf35pdYrvl3yG",
@@ -146,5 +148,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-16T16:33:27.862859+00:00"
+  "updated_at": "2026-09-16T16:34:15.810104+00:00"
 }
