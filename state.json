@@ -18,6 +18,7 @@
     "1315 Findlay Avenue - Apt 4C - $2851 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
     "138 Bruckner Blvd - 1203 - Apt 1203 - $3446.41 - Senior Preferece 60+",
+    "138 Bruckner Blvd - 303 - Apt 303 - $3088 -",
     "138 Bruckner Blvd - 522 - Apt 522 - $3396.94 -",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -",
@@ -90,6 +91,7 @@
     "1315 Findlay Avenue - Apt 4C - $2851 -": "recUGRZH6cZimb82N",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
     "138 Bruckner Blvd - 1203 - Apt 1203 - $3446.41 - Senior Preferece 60+": "rec4OerHLngtSlT75",
+    "138 Bruckner Blvd - 303 - Apt 303 - $3088 -": "recaOotG9MQh6HtNW",
     "138 Bruckner Blvd - 522 - Apt 522 - $3396.94 -": "recDKH50Q145bbmGg",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -": "rec4pnZAXyQ1YMLXF",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -": "recnW6xUrLgnwUkS8",
@@ -146,5 +148,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-16T20:44:20.966320+00:00"
+  "updated_at": "2026-09-17T15:07:47.306354+00:00"
 }
