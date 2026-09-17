@@ -114,7 +114,7 @@
       },
       "first_seen": "2026-08-21T04:44:18.406024+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-09-17T14:15:24.611927+00:00",
+      "last_seen": "2026-09-17T14:31:21.004466+00:00",
       "location": null,
       "removal_count": 0,
       "source": "SJP Tax Consultants",
@@ -122,8 +122,8 @@
       "url": "https://www.sjpny.com/apartment-listings/available-re-rental-apartment-in-eflatbush-232124"
     },
     "https://www.sjpny.com/apartment-listings/available-re-rental-apartment-in-williamsburg-34fd-gb54": {
-      "active": false,
-      "appearance_count": 1,
+      "active": true,
+      "appearance_count": 2,
       "details": {
         "ami": "130%",
         "apply_url": "https://www.sjpny.com/re-rental-forms",
@@ -138,7 +138,7 @@
       },
       "first_seen": "2026-09-17T14:12:34.181550+00:00",
       "last_removed_at": "2026-09-17T14:15:24.611927+00:00",
-      "last_seen": "2026-09-17T14:12:34.181550+00:00",
+      "last_seen": "2026-09-17T14:31:21.004466+00:00",
       "location": null,
       "removal_count": 1,
       "source": "SJP Tax Consultants",
@@ -146,6 +146,6 @@
       "url": "https://www.sjpny.com/apartment-listings/available-re-rental-apartment-in-williamsburg-34fd-gb54"
     }
   },
-  "updated_at": "2026-09-17T14:15:24.611927+00:00",
+  "updated_at": "2026-09-17T14:31:21.004466+00:00",
   "version": 1
 }
