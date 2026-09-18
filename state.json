@@ -66,6 +66,7 @@
     "44-72 11th Street - Apt B503 - $815.16 -",
     "45-15 Colden Street - Apt 1B - $2593 -",
     "45-15 Colden Street - Apt 1C - $2593 -",
+    "49 Borinquen - Apt 6B - $3697.21 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+",
@@ -144,6 +145,7 @@
     "44-72 11th Street - Apt B503 - $815.16 -": "recYbw7P7VA8r7eza",
     "45-15 Colden Street - Apt 1B - $2593 -": "rec6i7x2t3sjIrNFi",
     "45-15 Colden Street - Apt 1C - $2593 -": "recAXAaUq2egNHVEg",
+    "49 Borinquen - Apt 6B - $3697.21 -": "recVRlBe99H6u9bSn",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+": "recPVLGweU7WxkNBX",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+": "recLKAS4m2XJ6p2eN",
@@ -158,5 +160,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-18T16:14:45.652187+00:00"
+  "updated_at": "2026-09-18T16:26:22.515828+00:00"
 }
