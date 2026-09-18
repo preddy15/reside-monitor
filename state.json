@@ -72,6 +72,7 @@
     "689 East 223rd - Apt 5D - $4341 -",
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -",
+    "81-07 Kew garden Road - Apt 6E - $3753 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
     "873 E 228th Street Apt. 1A - Apt 1A - $3697.97 -",
     "875 4th Avenue - Apt 302 - $2157.63 - MI",
@@ -150,6 +151,7 @@
     "689 East 223rd - Apt 5D - $4341 -": "rec2OpqJtoRJVnTCN",
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -": "recqKUYrmQ9p5uIRm",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -": "recDHccgkL8ARHZIb",
+    "81-07 Kew garden Road - Apt 6E - $3753 -": "rectIGrz5EIu7ciir",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
     "873 E 228th Street Apt. 1A - Apt 1A - $3697.97 -": "recmyVrGxLSYWlJKg",
     "875 4th Avenue - Apt 302 - $2157.63 - MI": "recFS1kpEb5mtwbfH",
@@ -158,5 +160,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-18T16:29:27.391676+00:00"
+  "updated_at": "2026-09-18T17:08:38.952449+00:00"
 }
