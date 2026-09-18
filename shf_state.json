@@ -48,7 +48,19 @@
       "project": "280 West 24th Street Unit 5R (40% Studio) - Age Preference - Must be age 62 or over)",
       "unit": null,
       "unit_size": null
+    },
+    "raw||no": {
+      "ami": null,
+      "project": "No",
+      "unit": null,
+      "unit_size": null
+    },
+    "raw||yes": {
+      "ami": null,
+      "project": "Yes",
+      "unit": null,
+      "unit_size": null
     }
   },
-  "updated_at": "2026-09-18T15:31:32.820125+00:00"
+  "updated_at": "2026-09-18T16:23:56.890638+00:00"
 }
