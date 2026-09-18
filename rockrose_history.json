@@ -100,9 +100,9 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-911-income-restricted-unit-70-ami-rent-stabilized/"
     },
     "555 w 38 street manhattan ny 10018||multiple": {
-      "active": false,
+      "active": true,
       "address": "555 W 38 Street, Manhattan, NY 10018",
-      "appearance_count": 1,
+      "appearance_count": 2,
       "details": {
         "ami": null,
         "application_deadline": null,
@@ -113,7 +113,7 @@
       "first_seen": "2026-09-18T14:49:24.178283+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-09-18T14:52:44.791621+00:00",
-      "last_seen": "2026-09-18T14:49:24.178283+00:00",
+      "last_seen": "2026-09-18T15:06:31.794198+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "555 WEST 38 STREET, New York, NY, USA",
@@ -131,6 +131,6 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-waiting-list/"
     }
   },
-  "updated_at": "2026-09-18T14:52:44.871025+00:00",
+  "updated_at": "2026-09-18T15:06:32.588368+00:00",
   "version": 1
 }
