@@ -98,8 +98,39 @@
       "unit": "911",
       "unit_size": "Studio",
       "url": "https://rockrose.com/affordable-availabilities/lyra-911-income-restricted-unit-70-ami-rent-stabilized/"
+    },
+    "555 w 38 street manhattan ny 10018||multiple": {
+      "active": true,
+      "address": "555 W 38 Street, Manhattan, NY 10018",
+      "appearance_count": 1,
+      "details": {
+        "ami": null,
+        "application_deadline": null,
+        "application_email": "lyrarerental@housingpartnership.com",
+        "one_person_eligible": null,
+        "one_person_income": null
+      },
+      "first_seen": "2026-09-18T14:49:24.178283+00:00",
+      "first_seen_source": "observed",
+      "last_removed_at": null,
+      "last_seen": "2026-09-18T14:49:24.178283+00:00",
+      "location": {
+        "borough": "Manhattan",
+        "display_name": "555 WEST 38 STREET, New York, NY, USA",
+        "lat": "40.75847",
+        "lon": "-73.99964",
+        "neighborhood": "Hell's Kitchen",
+        "postcode": "10018"
+      },
+      "published_income_range": null,
+      "removal_count": 0,
+      "rent": null,
+      "source": "Rockrose",
+      "unit": "Multiple",
+      "unit_size": null,
+      "url": "https://rockrose.com/affordable-availabilities/lyra-waiting-list/"
     }
   },
-  "updated_at": "2026-08-29T20:18:07.694325+00:00",
+  "updated_at": "2026-09-18T14:49:25.452511+00:00",
   "version": 1
 }
