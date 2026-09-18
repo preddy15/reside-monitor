@@ -367,6 +367,43 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/50-varet-street-2/"
     },
+    "https://mgnyconsulting.com/listing/560-19th-street": {
+      "address": "560 19th Street 560 19th Street, Brooklyn, NY 11218",
+      "income_range": "$98,289 - $238,160",
+      "tiers": {
+        "130%||2-br||$2,568.75||2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$98,289 – $238,160",
+          "appearance_count": 2,
+          "first_seen": "2026-09-14T21:18:26.365440+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": "2026-09-18T17:11:07.449469+00:00",
+          "last_seen": "2026-09-18T17:21:34.481164+00:00",
+          "removal_count": 1,
+          "rent": "$2,568.75",
+          "unit_size": "2-BR",
+          "units_available": 1
+        },
+        "130%||2-br||$2,643.10||2-5 people": {
+          "active": false,
+          "ami": "130%",
+          "annual_income": "$100,838 – $238,160",
+          "appearance_count": 1,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": "2026-09-14T21:18:26.365440+00:00",
+          "last_seen": "2026-08-20T04:04:39.814757+00:00",
+          "removal_count": 1,
+          "rent": "$2,643.10",
+          "unit_size": "2-BR",
+          "units_available": 1
+        }
+      },
+      "title": "560 19th Street",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/560-19th-street/"
+    },
     "https://mgnyconsulting.com/listing/862-hunts-point-avenue": {
       "address": "862 Hunts Point Avenue 862 Hunts Point Ave, Bronx, NY 10474",
       "income_range": "$104,298 - $176,410",
@@ -607,5 +644,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-09-18T17:11:07.449469+00:00"
+  "updated_at": "2026-09-18T17:21:34.481164+00:00"
 }
