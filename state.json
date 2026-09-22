@@ -80,8 +80,7 @@
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
     "94 East 208th Street - Apt 1B - $3142 -",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -",
-    "Douglass Street Apartments - Apt 8L - $3689 -",
-    "J&J Tower - Apt 7C - $2170.54 -"
+    "Douglass Street Apartments - Apt 8L - $3689 -"
   ],
   "project_record_ids": {
     "1000 Woodycrest Ave - Apt 4A - $3603.6 -": "recULER5v0Cq9MVWt",
@@ -162,9 +161,8 @@
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
     "94 East 208th Street - Apt 1B - $3142 -": "recW7FtfzYflRxUsd",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -": "recdgxlD1ca2pnbqF",
-    "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC",
-    "J&J Tower - Apt 7C - $2170.54 -": "rec0Exqgwr9CR4qJf"
+    "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-22T21:19:03.075833+00:00"
+  "updated_at": "2026-09-22T21:19:41.776212+00:00"
 }
