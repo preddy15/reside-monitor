@@ -54,6 +54,7 @@
     "254 Amboy Street - Apt 2B - Apt 2B - $2882.8 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "2816 8th Ave - Apt 4H - $1221.43 -",
+    "2817 Atlantic Ave - Apt 7C - $2818.93 -",
     "3001 Grand Concourse - Unit 6D - Apt 6D - $3221.84 -",
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI",
     "346 Kent Ave - Apt 3103 - $2916.96 -",
@@ -135,6 +136,7 @@
     "254 Amboy Street - Apt 2B - Apt 2B - $2882.8 -": "recm7FrbudUKjdu5J",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recD2oZ396qm8zEjy",
     "2816 8th Ave - Apt 4H - $1221.43 -": "recIuTGi7fXvY40Nw",
+    "2817 Atlantic Ave - Apt 7C - $2818.93 -": "recqOG1wGfZ2VFPYR",
     "3001 Grand Concourse - Unit 6D - Apt 6D - $3221.84 -": "recRYTO5BrDJZR3ts",
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI": "recxJ9qyCliLXanX8",
     "346 Kent Ave - Apt 3103 - $2916.96 -": "recgmkmEwJhcMaqTb",
@@ -164,5 +166,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-22T21:19:41.776212+00:00"
+  "updated_at": "2026-09-22T21:41:02.606760+00:00"
 }
