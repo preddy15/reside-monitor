@@ -65,6 +65,7 @@
     "44-72 11th Street - Apt B503 - $815.16 -",
     "45-15 Colden Street - Apt 1B - $2593 -",
     "45-15 Colden Street - Apt 1C - $2593 -",
+    "503 Evergreen - Apt 3B - $2422.07 -",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "65 Buchanan Place - Apt 3B-07 - $1928.65 -",
@@ -145,6 +146,7 @@
     "44-72 11th Street - Apt B503 - $815.16 -": "recYbw7P7VA8r7eza",
     "45-15 Colden Street - Apt 1B - $2593 -": "rec6i7x2t3sjIrNFi",
     "45-15 Colden Street - Apt 1C - $2593 -": "recAXAaUq2egNHVEg",
+    "503 Evergreen - Apt 3B - $2422.07 -": "recpAEjLgRXVlwSf6",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -": "rec1mjyTZwgJKYMqh",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "65 Buchanan Place - Apt 3B-07 - $1928.65 -": "reclA8OEL0jx0e9Fk",
@@ -162,5 +164,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-22T20:00:40.696401+00:00"
+  "updated_at": "2026-09-22T21:08:45.250150+00:00"
 }
