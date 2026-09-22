@@ -32,6 +32,7 @@
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1499 Bedford Ave - Apt 8C - $3219.6 -",
     "16 Dupont Street - Apt 30A - $3128 -",
+    "1677 Townsend Ave - Apt 7A - $4367.03 -",
     "1718 President Street - Apt 10B - $3412.21 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "1718 President Street - Senior preference - Apt 5C - $3164.7 - Senior Preferece 60+",
@@ -115,6 +116,7 @@
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
     "1499 Bedford Ave - Apt 8C - $3219.6 -": "rec7QGgWrD02uGy0x",
     "16 Dupont Street - Apt 30A - $3128 -": "rec446AvWeh2q93mq",
+    "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "1718 President Street - Senior preference - Apt 5C - $3164.7 - Senior Preferece 60+": "recMTjEjhKCuw5TDT",
@@ -168,5 +170,5 @@
     "Douglass Street Apartments - Apt 8L - $3689 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-22T16:13:16.204750+00:00"
+  "updated_at": "2026-09-22T19:23:55.581226+00:00"
 }
