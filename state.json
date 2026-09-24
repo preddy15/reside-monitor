@@ -48,6 +48,8 @@
     "230 w 150 St - Apt 4F - $2351.45 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -",
+    "25-01 Queens Plaza North - Apt 325 - $3299 -",
+    "25-01 Queens Plaza North - Apt 503 - $4316 -",
     "25-01 Queens Plaza North - Apt 619 - $3500 -",
     "25-01 Queens Plaza North - Apt 903 - $4366 -",
     "25-01 Queens Plaza North - Apt 905 - $3653 -",
@@ -136,6 +138,8 @@
     "230 w 150 St - Apt 4F - $2351.45 -": "rec0XRsIJjXYKW9ZF",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -": "recghf35pdYrvl3yG",
+    "25-01 Queens Plaza North - Apt 325 - $3299 -": "rec8O2b4OoYtYR69e",
+    "25-01 Queens Plaza North - Apt 503 - $4316 -": "recGyzzmwpTqwM1SV",
     "25-01 Queens Plaza North - Apt 619 - $3500 -": "recK2qoBO5YdBqj7d",
     "25-01 Queens Plaza North - Apt 903 - $4366 -": "reckGonUx3gxKtG6Y",
     "25-01 Queens Plaza North - Apt 905 - $3653 -": "recj1oPgkyAqXrOkw",
@@ -178,5 +182,5 @@
     "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -": "recdb3IhqKG1bLhCM"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-24T19:31:12.445435+00:00"
+  "updated_at": "2026-09-24T19:45:55.163637+00:00"
 }
