@@ -11,6 +11,7 @@
     "1169 Hoe Ave - Apt 3E - $3466.27 -",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+",
+    "130 Hope St - Apt 208 - $3308.32 -",
     "130 Hope St - Apt 406 - $4069.25 -",
     "130 Hope Street - Apt 109 - $3094.54 -",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
@@ -97,6 +98,7 @@
     "1169 Hoe Ave - Apt 3E - $3466.27 -": "rec95OFuDXpzJHDgT",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+": "recinxqScEeOCdCIx",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+": "recQGrQVZ6q3xqovP",
+    "130 Hope St - Apt 208 - $3308.32 -": "recy9x1oZhZhjGiyZ",
     "130 Hope St - Apt 406 - $4069.25 -": "rectohTHRU24pNtMN",
     "130 Hope Street - Apt 109 - $3094.54 -": "rec3XS2TlDtdI33zD",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
@@ -174,5 +176,5 @@
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-24T17:27:01.794004+00:00"
+  "updated_at": "2026-09-24T18:06:06.256343+00:00"
 }
