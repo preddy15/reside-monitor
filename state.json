@@ -61,6 +61,7 @@
     "2816 8th Ave - Apt 4H - $1221.43 -",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -",
     "3001 Grand Concourse - Unit 6D - Apt 6D - $3221.84 -",
+    "312 Broadway - Apt 3E - $2251 -",
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI",
     "346 Kent Ave - Apt 3103 - $2916.96 -",
     "378 East 165 Street - Apt 202 - $2778.13 -",
@@ -151,6 +152,7 @@
     "2816 8th Ave - Apt 4H - $1221.43 -": "recIuTGi7fXvY40Nw",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -": "recqOG1wGfZ2VFPYR",
     "3001 Grand Concourse - Unit 6D - Apt 6D - $3221.84 -": "recRYTO5BrDJZR3ts",
+    "312 Broadway - Apt 3E - $2251 -": "recwrDS9tORbTMuhG",
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI": "recxJ9qyCliLXanX8",
     "346 Kent Ave - Apt 3103 - $2916.96 -": "recgmkmEwJhcMaqTb",
     "378 East 165 Street - Apt 202 - $2778.13 -": "recymYFzaYnDKIDmC",
@@ -182,5 +184,5 @@
     "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -": "recdb3IhqKG1bLhCM"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-24T19:45:55.163637+00:00"
+  "updated_at": "2026-09-24T19:54:55.807865+00:00"
 }
