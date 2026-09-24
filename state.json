@@ -9,6 +9,7 @@
     "106 Mt. Hope Place - Apt 7E - $2748.79 -",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
     "1169 Hoe Ave - Apt 3E - $3466.27 -",
+    "128 West 168 Street - Apt 7C - $3094.54 -",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
@@ -91,6 +92,7 @@
     "106 Mt. Hope Place - Apt 7E - $2748.79 -": "recOvNPkuQWqfZJLD",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -": "recVseDWIs4g0C16L",
     "1169 Hoe Ave - Apt 3E - $3466.27 -": "rec95OFuDXpzJHDgT",
+    "128 West 168 Street - Apt 7C - $3094.54 -": "recys2LjG23wJioig",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+": "recinxqScEeOCdCIx",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+": "recQGrQVZ6q3xqovP",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
@@ -166,5 +168,5 @@
     "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -": "recdb3IhqKG1bLhCM"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-24T20:02:31.169408+00:00"
+  "updated_at": "2026-09-24T20:06:47.320273+00:00"
 }
