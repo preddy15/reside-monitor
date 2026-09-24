@@ -53,6 +53,7 @@
     "250 West 49th Street - Apt 406 - $4349 -",
     "254 Amboy Street - Apt 2B - Apt 2B - $2882.8 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
+    "2588 7 Ave - Apt 2K - $2593 -",
     "2588 7th Ave - Apt 6F - $1437.04 -",
     "2816 8th Ave - Apt 4H - $1221.43 -",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -",
@@ -139,6 +140,7 @@
     "250 West 49th Street - Apt 406 - $4349 -": "recaLi1wnzGPaSFxc",
     "254 Amboy Street - Apt 2B - Apt 2B - $2882.8 -": "recm7FrbudUKjdu5J",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recD2oZ396qm8zEjy",
+    "2588 7 Ave - Apt 2K - $2593 -": "recRplPs2uHK6Bk80",
     "2588 7th Ave - Apt 6F - $1437.04 -": "recm0w4GWLUVSlIBl",
     "2816 8th Ave - Apt 4H - $1221.43 -": "recIuTGi7fXvY40Nw",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -": "recqOG1wGfZ2VFPYR",
@@ -174,5 +176,5 @@
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-24T16:23:54.268326+00:00"
+  "updated_at": "2026-09-24T17:00:40.896388+00:00"
 }
