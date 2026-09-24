@@ -20,8 +20,6 @@
     "1361 Teller Ave - Apt 3E - $2824.38 -",
     "137-20 45th Ave - Apt 5L - $2889 -",
     "137-20 Colden Street - Apt 2N - $2855 -",
-    "138 Bruckner Blvd - 1203 - Apt 1203 - $3446.41 - Senior Preferece 60+",
-    "138 Bruckner Blvd - 303 - Apt 303 - $3088 -",
     "138 Bruckner Blvd - 522 - Apt 522 - $3396.94 -",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -",
@@ -108,8 +106,6 @@
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
     "137-20 45th Ave - Apt 5L - $2889 -": "recHS1s4pi53z6hJ5",
     "137-20 Colden Street - Apt 2N - $2855 -": "recM20rige7e60u2p",
-    "138 Bruckner Blvd - 1203 - Apt 1203 - $3446.41 - Senior Preferece 60+": "rec4OerHLngtSlT75",
-    "138 Bruckner Blvd - 303 - Apt 303 - $3088 -": "recaOotG9MQh6HtNW",
     "138 Bruckner Blvd - 522 - Apt 522 - $3396.94 -": "recDKH50Q145bbmGg",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -": "rec4pnZAXyQ1YMLXF",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -": "recnW6xUrLgnwUkS8",
@@ -178,5 +174,5 @@
     "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -": "recdb3IhqKG1bLhCM"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-24T18:28:27.676717+00:00"
+  "updated_at": "2026-09-24T19:25:34.204312+00:00"
 }
