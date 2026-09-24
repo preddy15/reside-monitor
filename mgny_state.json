@@ -132,29 +132,6 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/1700-jerome-avenue/"
     },
-    "https://mgnyconsulting.com/listing/1728-townsend-avenue": {
-      "address": "1728 Townsend Avenue 1728 Townsend Avenue, Bronx, NY 10453",
-      "income_range": "$57,897 - $168,480",
-      "tiers": {
-        "130%||studio||$1,481.66||1-2 people": {
-          "active": true,
-          "ami": "130%",
-          "annual_income": "$$57,897 – $168,480",
-          "appearance_count": 2,
-          "first_seen": "2026-08-20T04:04:39.814757+00:00",
-          "household_size": "1-2 people",
-          "last_removed_at": "2026-08-27T16:53:06.567421+00:00",
-          "last_seen": "2026-08-27T17:00:00.345397+00:00",
-          "removal_count": 1,
-          "rent": "$1,481.66",
-          "unit_size": "Studio",
-          "units_available": 1
-        }
-      },
-      "title": "1728 Townsend Avenue",
-      "units_count": 1,
-      "url": "https://mgnyconsulting.com/listing/1728-townsend-avenue/"
-    },
     "https://mgnyconsulting.com/listing/188-11-hillside-avenue": {
       "address": "188-11 Hillside Avenue 188-11 Hillside Avenue, Queens, NY 11423",
       "income_range": "$98,366 - $176,410",
@@ -644,5 +621,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-09-23T19:41:46.117502+00:00"
+  "updated_at": "2026-09-24T18:33:33.999197+00:00"
 }
