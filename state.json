@@ -28,6 +28,7 @@
     "1440 Amsterdam Avenue - Apt 702 - $3195 -",
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
+    "1457 Flatbush Ave - Apt 406 - $1619.34 -",
     "1499 Bedford Ave - Apt 8C - $3219.6 -",
     "16 Dupont Street - Apt 30A - $3128 -",
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
@@ -114,6 +115,7 @@
     "1440 Amsterdam Avenue - Apt 702 - $3195 -": "recS5S5PuXzT0NriJ",
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
+    "1457 Flatbush Ave - Apt 406 - $1619.34 -": "reclO4wRSxsZmaStM",
     "1499 Bedford Ave - Apt 8C - $3219.6 -": "rec7QGgWrD02uGy0x",
     "16 Dupont Street - Apt 30A - $3128 -": "rec446AvWeh2q93mq",
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
@@ -174,5 +176,5 @@
     "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -": "recdb3IhqKG1bLhCM"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-24T19:25:34.204312+00:00"
+  "updated_at": "2026-09-24T19:27:36.277908+00:00"
 }
