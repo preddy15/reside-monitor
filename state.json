@@ -75,6 +75,7 @@
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+",
     "689 East 223rd - Apt 5D - $4341 -",
+    "762 East 32 Street - Apt 3B - $2544.93 -",
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
@@ -160,6 +161,7 @@
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+": "recPVLGweU7WxkNBX",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+": "recLKAS4m2XJ6p2eN",
     "689 East 223rd - Apt 5D - $4341 -": "rec2OpqJtoRJVnTCN",
+    "762 East 32 Street - Apt 3B - $2544.93 -": "rec3IvM6CWkEo8J4v",
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -": "recqKUYrmQ9p5uIRm",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -": "recDHccgkL8ARHZIb",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
@@ -172,5 +174,5 @@
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-09-24T14:27:01.697697+00:00"
+  "updated_at": "2026-09-24T15:06:21.254399+00:00"
 }
