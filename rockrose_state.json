@@ -1,6 +1,12 @@
 {
   "initialized": true,
   "listings": {
+    "43 12 hunter street long island city||multiple": {
+      "address": "43-12 Hunter Street, Long Island City",
+      "rent": null,
+      "unit": "Multiple",
+      "url": "https://rockrose.com/affordable-availabilities/the-cove-waitlist/"
+    },
     "555 w 38 street manhattan ny 10018||multiple": {
       "address": "555 W 38 Street, Manhattan, NY 10018",
       "rent": null,
@@ -8,5 +14,5 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-waiting-list/"
     }
   },
-  "updated_at": "2026-09-18T15:06:32.588107+00:00"
+  "updated_at": "2026-09-24T15:18:17.060851+00:00"
 }
