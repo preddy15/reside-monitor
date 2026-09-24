@@ -31,12 +31,6 @@
       "rent": "$2,998.00",
       "unit": "609"
     },
-    "1952 anthony avenue bronx ny||2f": {
-      "address": "1952 Anthony Avenue, Bronx, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-25793/VYK7OBTYXZR8A2CUFR",
-      "rent": "$2,850.00",
-      "unit": "2F"
-    },
     "2187 ryer avenue bronx ny||3c": {
       "address": "2187 Ryer Avenue, Bronx, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-13553/OMFXDOF8FNO94A1Z1U",
@@ -66,6 +60,12 @@
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-26233/M88WYNGMTKIXRPP1PE",
       "rent": "$3,187.00",
       "unit": "8A"
+    },
+    "22 milford street brooklyn ny||2g": {
+      "address": "22 Milford Street, Brooklyn, NY",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-27533/AEQ1G5AXRDQC2ZCNAR",
+      "rent": "$2,316.47",
+      "unit": "2G"
     },
     "2710 decatur ave brooklyn ny||ph2": {
       "address": "2710 Decatur Ave, Brooklyn, NY",
@@ -194,5 +194,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-09-09T17:08:28.213169+00:00"
+  "updated_at": "2026-09-24T20:51:40.956592+00:00"
 }
