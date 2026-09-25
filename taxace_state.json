@@ -97,6 +97,12 @@
       "rent": "$2,972.00",
       "unit": "4F"
     },
+    "69 amboy street brooklyn ny||4a": {
+      "address": "69 Amboy Street, Brooklyn, NY",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-27773/2FGGCS68YROPHNKKGJ",
+      "rent": "$2,954.00",
+      "unit": "4A"
+    },
     "962 bushwick avenue brooklyn ny||2a": {
       "address": "962 Bushwick Avenue, Brooklyn, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-21653/WUSCVUGYV4OZYTQYOM",
@@ -194,5 +200,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-09-25T15:00:49.658155+00:00"
+  "updated_at": "2026-09-25T16:09:42.138507+00:00"
 }
