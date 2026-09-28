@@ -1,12 +1,6 @@
 {
   "initialized": true,
   "listings": {
-    "223 north 8th street||n 5k": {
-      "ami": "60%",
-      "project": "223 North 8th Street",
-      "unit": "N-5K",
-      "unit_size": "Studio"
-    },
     "509 third avenue||8f 8g": {
       "ami": "130%",
       "project": "509 Third Avenue",
@@ -62,5 +56,5 @@
       "unit_size": null
     }
   },
-  "updated_at": "2026-09-18T16:23:56.890638+00:00"
+  "updated_at": "2026-09-28T14:04:52.805081+00:00"
 }
