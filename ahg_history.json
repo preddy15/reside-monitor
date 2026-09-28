@@ -19,7 +19,7 @@
       },
       "first_seen": "2026-08-21T04:56:15.360629+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-09-01T11:59:55.804160+00:00",
+      "last_seen": "2026-09-28T12:39:13.616383+00:00",
       "location": null,
       "opportunity_type": "Accessibility Units / Waiting List",
       "removal_count": 0,
@@ -52,8 +52,25 @@
       "source": "Affordable Housing Group",
       "title": "Tribeca Park at 400 Chambers Street, New York, NY 10282",
       "url": "https://www.ahgleasing.com/tribecaparkmod.pdf"
+    },
+    "https://www.ahgleasing.com/westport607ad": {
+      "active": true,
+      "appearance_count": 1,
+      "details": {
+        "status": "active",
+        "tiers": []
+      },
+      "first_seen": "2026-09-28T12:39:13.616383+00:00",
+      "last_removed_at": null,
+      "last_seen": "2026-09-28T12:39:13.616383+00:00",
+      "location": null,
+      "opportunity_type": "Accessibility Units / Waiting List",
+      "removal_count": 0,
+      "source": "Affordable Housing Group",
+      "title": "The Westport at 400 Chambers Street, New York, NY 10282",
+      "url": "https://www.ahgleasing.com/westport607ad"
     }
   },
-  "updated_at": "2026-09-01T11:59:55.804160+00:00",
+  "updated_at": "2026-09-28T12:39:13.616383+00:00",
   "version": 1
 }
