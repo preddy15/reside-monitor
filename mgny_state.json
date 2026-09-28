@@ -336,6 +336,29 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/50-varet-street-2/"
     },
+    "https://mgnyconsulting.com/listing/62-41-forest-avenue": {
+      "address": null,
+      "income_range": "$55,440 - $176,410",
+      "tiers": {
+        "130%||studio||$1,470.00||1-2 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$55,440 – $176,410",
+          "appearance_count": 1,
+          "first_seen": "2026-09-28T15:30:31.418032+00:00",
+          "household_size": "1-2 people",
+          "last_removed_at": null,
+          "last_seen": "2026-09-28T15:30:31.418032+00:00",
+          "removal_count": 0,
+          "rent": "$1,470.00",
+          "unit_size": "Studio",
+          "units_available": 1
+        }
+      },
+      "title": "62-41 Forest Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/62-41-forest-avenue/"
+    },
     "https://mgnyconsulting.com/listing/862-hunts-point-avenue": {
       "address": "862 Hunts Point Avenue 862 Hunts Point Ave, Bronx, NY 10474",
       "income_range": "$104,298 - $176,410",
@@ -576,5 +599,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-09-25T18:56:10.304583+00:00"
+  "updated_at": "2026-09-28T15:30:31.418032+00:00"
 }
