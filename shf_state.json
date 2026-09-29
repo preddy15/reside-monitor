@@ -1,6 +1,12 @@
 {
   "initialized": true,
   "listings": {
+    "30 kent street||310": {
+      "ami": "130%",
+      "project": "30 Kent Street",
+      "unit": "310",
+      "unit_size": "1-Bed"
+    },
     "509 third avenue||8f 8g": {
       "ami": "130%",
       "project": "509 Third Avenue",
@@ -56,5 +62,5 @@
       "unit_size": null
     }
   },
-  "updated_at": "2026-09-28T14:04:52.805081+00:00"
+  "updated_at": "2026-09-29T12:46:29.015729+00:00"
 }
