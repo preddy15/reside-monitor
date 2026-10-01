@@ -11,7 +11,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-09-21T17:01:42.853170+00:00",
+      "last_seen": "2026-10-01T13:56:40.055574+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$2,653.00",
@@ -97,7 +97,7 @@
       "url": "https://www.mns.com/details/240645/rental/downtown+brooklyn/brooklyn"
     },
     "65 dupont st||202": {
-      "active": true,
+      "active": false,
       "address": "65 Dupont ST",
       "appearance_count": 1,
       "bathrooms": "1",
@@ -105,10 +105,10 @@
       "details": null,
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
-      "last_removed_at": null,
+      "last_removed_at": "2026-10-01T13:56:40.055574+00:00",
       "last_seen": "2026-09-21T17:01:42.853170+00:00",
       "location": null,
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$3,160.00",
       "source": "MNS",
       "sqft": null,
@@ -117,7 +117,7 @@
       "url": "https://www.mns.com/details/240777/rental/greenpoint/brooklyn"
     },
     "65 dupont st||320": {
-      "active": true,
+      "active": false,
       "address": "65 Dupont ST",
       "appearance_count": 1,
       "bathrooms": "1",
@@ -125,10 +125,10 @@
       "details": null,
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
-      "last_removed_at": null,
+      "last_removed_at": "2026-10-01T13:56:40.055574+00:00",
       "last_seen": "2026-09-21T17:01:42.853170+00:00",
       "location": null,
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$3,661.00",
       "source": "MNS",
       "sqft": null,
@@ -172,6 +172,6 @@
       "url": "https://www.mns.com/details/240766/rental/tribeca/manhattan"
     }
   },
-  "updated_at": "2026-09-21T17:01:42.854900+00:00",
+  "updated_at": "2026-10-01T13:56:40.056291+00:00",
   "version": 1
 }
