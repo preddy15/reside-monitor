@@ -5,7 +5,7 @@
       "income_range": "$101,143 - $238,160",
       "tiers": {},
       "title": "111 Willoughby Street",
-      "units_count": 14,
+      "units_count": 11,
       "url": "https://mgnyconsulting.com/listing/111-willoughby-street/"
     },
     "https://mgnyconsulting.com/listing/1111-foster-avenue-apartments": {
@@ -525,5 +525,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-09-29T20:14:34.666807+00:00"
+  "updated_at": "2026-10-02T16:32:43.872763+00:00"
 }
