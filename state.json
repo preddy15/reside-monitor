@@ -81,7 +81,8 @@
     "94 East 208th Street - Apt 1B - $3142 -",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -",
     "99-49 66th Ave - Apt 4C - $3290.11 -",
-    "Douglass Street Apartments - Apt 8L - $3495 -"
+    "Douglass Street Apartments - Apt 8L - $3495 -",
+    "Eagle & West - Apt 736 - $2939.77 -"
   ],
   "project_record_ids": {
     "1000 Woodycrest Ave - Apt 6A - $3434.45 -": "recjhy22F3CHdBkZ2",
@@ -163,8 +164,9 @@
     "94 East 208th Street - Apt 1B - $3142 -": "recW7FtfzYflRxUsd",
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -": "recdgxlD1ca2pnbqF",
     "99-49 66th Ave - Apt 4C - $3290.11 -": "recfzsBPRGV26NTAs",
-    "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC"
+    "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC",
+    "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-05T15:36:13.432784+00:00"
+  "updated_at": "2026-10-05T17:19:27.219570+00:00"
 }
