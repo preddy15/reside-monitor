@@ -290,6 +290,14 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/336-himrod-street/"
     },
+    "https://mgnyconsulting.com/listing/445-gerard-avenue-apartments": {
+      "address": "445 Gerard Avenue Apartments 445 Gerard Ave, Bronx, NY 10451",
+      "income_range": "$95,452 - $198,511",
+      "tiers": {},
+      "title": "445 Gerard Avenue Apartments",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/445-gerard-avenue-apartments/"
+    },
     "https://mgnyconsulting.com/listing/50-varet-street-2": {
       "address": "50 Varet Street 50 Varet Street, Brooklyn, NY 11206",
       "income_range": "$77,139 - $176,410",
@@ -525,5 +533,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-10-05T17:28:40.963503+00:00"
+  "updated_at": "2026-10-05T18:24:16.548333+00:00"
 }
