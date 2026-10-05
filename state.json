@@ -65,7 +65,6 @@
     "45-15 Colden Street - Apt 1B - $2593 -",
     "45-15 Colden Street - Apt 1C - $2593 -",
     "510 East 148 - Apt 3B - $3164.7 -",
-    "540 Atlantic Avenue Apartments - OM - Apt 2 Bed - $4347 -",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "65 Buchanan Place - Apt 3B-07 - $1928.65 -",
@@ -147,7 +146,6 @@
     "45-15 Colden Street - Apt 1B - $2593 -": "rec6i7x2t3sjIrNFi",
     "45-15 Colden Street - Apt 1C - $2593 -": "recAXAaUq2egNHVEg",
     "510 East 148 - Apt 3B - $3164.7 -": "reclYEK93BvQLvNrV",
-    "540 Atlantic Avenue Apartments - OM - Apt 2 Bed - $4347 -": "rec9cOZn0MwZ6bkKw",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -": "rec1mjyTZwgJKYMqh",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "65 Buchanan Place - Apt 3B-07 - $1928.65 -": "reclA8OEL0jx0e9Fk",
@@ -166,5 +164,5 @@
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-05T13:36:21.542956+00:00"
+  "updated_at": "2026-10-05T13:41:48.746488+00:00"
 }
