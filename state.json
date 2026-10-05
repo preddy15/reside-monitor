@@ -31,6 +31,7 @@
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -",
     "1847 Cross Brox - Apt 4B - $3454.62 -",
+    "1988 Anthony Ave - Apt 2A - $2798.41 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2061 Crotona Ave - Apt 2C - $3237.42 -",
@@ -112,6 +113,7 @@
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "1718 President Street- Apt. 10B - Apt 10B - $3412.21 -": "rec0LZW1q8H8l1GVN",
     "1847 Cross Brox - Apt 4B - $3454.62 -": "receLWeBvPjwO7LOb",
+    "1988 Anthony Ave - Apt 2A - $2798.41 -": "reci5NoLFtD9rUQyH",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2061 Crotona Ave - Apt 2C - $3237.42 -": "recl8wA3YDcWn44ag",
@@ -164,5 +166,5 @@
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-05T13:41:48.746488+00:00"
+  "updated_at": "2026-10-05T15:36:13.432784+00:00"
 }
