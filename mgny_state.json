@@ -295,7 +295,7 @@
       "income_range": "$95,452 - $198,511",
       "tiers": {},
       "title": "445 Gerard Avenue Apartments",
-      "units_count": 1,
+      "units_count": 5,
       "url": "https://mgnyconsulting.com/listing/445-gerard-avenue-apartments/"
     },
     "https://mgnyconsulting.com/listing/50-varet-street-2": {
@@ -533,5 +533,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-10-05T18:24:16.548333+00:00"
+  "updated_at": "2026-10-05T18:24:55.688740+00:00"
 }
