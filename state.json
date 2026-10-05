@@ -9,6 +9,7 @@
     "106 Mt. Hope Place - Apt 7E - $2748.79 -",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
     "1169 Hoe Ave - Apt 3E - $3466.27 -",
+    "1202 Decatur St - Apt 201 - $2385.86 -",
     "128 West 167 Street - Apt 7C - $3094.54 -",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+",
@@ -93,6 +94,7 @@
     "106 Mt. Hope Place - Apt 7E - $2748.79 -": "recOvNPkuQWqfZJLD",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -": "recVseDWIs4g0C16L",
     "1169 Hoe Ave - Apt 3E - $3466.27 -": "rec95OFuDXpzJHDgT",
+    "1202 Decatur St - Apt 201 - $2385.86 -": "recM8dthrs3PS4WMW",
     "128 West 167 Street - Apt 7C - $3094.54 -": "recys2LjG23wJioig",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+": "recinxqScEeOCdCIx",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+": "recQGrQVZ6q3xqovP",
@@ -170,5 +172,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-05T18:10:43.373405+00:00"
+  "updated_at": "2026-10-05T18:34:58.780680+00:00"
 }
