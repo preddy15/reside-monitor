@@ -56,6 +56,7 @@
     "2816 8th Ave - Apt 4H - $1221.43 -",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -",
     "3001 Grand Concourse - Unit 6D - Apt 6D - $3221.84 -",
+    "3317 Parkside PL Apt 3B - Apt 3B - $1857.63 -",
     "378 East 165 Street - Apt 202 - $2778.13 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
     "44-15 Colden Street - Apt 1S - $2593 -",
@@ -139,6 +140,7 @@
     "2816 8th Ave - Apt 4H - $1221.43 -": "recIuTGi7fXvY40Nw",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -": "recqOG1wGfZ2VFPYR",
     "3001 Grand Concourse - Unit 6D - Apt 6D - $3221.84 -": "recRYTO5BrDJZR3ts",
+    "3317 Parkside PL Apt 3B - Apt 3B - $1857.63 -": "recFL0FQjAQbotYir",
     "378 East 165 Street - Apt 202 - $2778.13 -": "recymYFzaYnDKIDmC",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
     "44-15 Colden Street - Apt 1S - $2593 -": "recGeGVaGAnY3Fki3",
@@ -168,5 +170,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-05T17:19:27.219570+00:00"
+  "updated_at": "2026-10-05T18:10:43.373405+00:00"
 }
