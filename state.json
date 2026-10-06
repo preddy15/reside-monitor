@@ -19,6 +19,7 @@
     "1361 Teller Ave - Apt 3E - $2824.38 -",
     "137-20 45th Ave - Apt 5L - $2889 -",
     "137-20 Colden Street - Apt 2N - $2855 -",
+    "1395 Bristow Ave - Apt 3A - $4168.74 -",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -",
     "1433 Teller Avenue - Apt 3D - $3322.82 -",
@@ -105,6 +106,7 @@
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
     "137-20 45th Ave - Apt 5L - $2889 -": "recHS1s4pi53z6hJ5",
     "137-20 Colden Street - Apt 2N - $2855 -": "recM20rige7e60u2p",
+    "1395 Bristow Ave - Apt 3A - $4168.74 -": "rec87mTtTGTY7To19",
     "1433 Teller Ave -Apt. CA - Apt CA - $3041.73 -": "rec4pnZAXyQ1YMLXF",
     "1433 Teller Ave- Apt. 3D - Apt 3D - $3322.82 -": "recnW6xUrLgnwUkS8",
     "1433 Teller Avenue - Apt 3D - $3322.82 -": "recdt7Rkzq2giJTPr",
@@ -174,5 +176,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-06T15:35:45.872231+00:00"
+  "updated_at": "2026-10-06T15:36:31.049471+00:00"
 }
