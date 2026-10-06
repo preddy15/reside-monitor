@@ -62,6 +62,7 @@
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI",
     "378 East 165 Street - Apt 202 - $2778.13 -",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -",
+    "40 Bruckner - 515 - Apt 515 - $3227.9 -",
     "44-15 Colden Street - Apt 1S - $2593 -",
     "44-15 Colden Street - Apt 2E - $2593 -",
     "44-35 Colden Street - Apt 1L - $2816 -",
@@ -150,6 +151,7 @@
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI": "recxJ9qyCliLXanX8",
     "378 East 165 Street - Apt 202 - $2778.13 -": "recymYFzaYnDKIDmC",
     "3923 Carpenter Ave- Apt. 3C - Apt 3C - $2705.08 -": "recAiOWNrhoRLbMwB",
+    "40 Bruckner - 515 - Apt 515 - $3227.9 -": "recfC6Rg9waZ3hzAI",
     "44-15 Colden Street - Apt 1S - $2593 -": "recGeGVaGAnY3Fki3",
     "44-15 Colden Street - Apt 2E - $2593 -": "recvxI4pVH2zTwCNI",
     "44-35 Colden Street - Apt 1L - $2816 -": "recL2Vo8m3xdi1REp",
@@ -178,5 +180,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-06T19:24:45.006515+00:00"
+  "updated_at": "2026-10-06T19:35:44.834152+00:00"
 }
