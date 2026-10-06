@@ -54,6 +54,7 @@
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "2588 7 Ave - Apt 2K - $2593 -",
     "2588 7th Ave - Apt 6F - $1437.04 -",
+    "2741 Creston Avenue - Apt 3D - $2721.77 -",
     "2816 8th Ave - Apt 4H - $1221.43 -",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -",
     "3001 Grand Concourse - Unit 6D - Apt 6D - $3221.84 -",
@@ -139,6 +140,7 @@
     "256 Mount Hope Place - Apt 7B - $3595 -": "recD2oZ396qm8zEjy",
     "2588 7 Ave - Apt 2K - $2593 -": "recRplPs2uHK6Bk80",
     "2588 7th Ave - Apt 6F - $1437.04 -": "recm0w4GWLUVSlIBl",
+    "2741 Creston Avenue - Apt 3D - $2721.77 -": "reclZpTGFO29pP4t5",
     "2816 8th Ave - Apt 4H - $1221.43 -": "recIuTGi7fXvY40Nw",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -": "recqOG1wGfZ2VFPYR",
     "3001 Grand Concourse - Unit 6D - Apt 6D - $3221.84 -": "recRYTO5BrDJZR3ts",
@@ -172,5 +174,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-06T16:43:47.063125+00:00"
+  "updated_at": "2026-10-06T17:35:54.408597+00:00"
 }
