@@ -10,6 +10,7 @@
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
     "1169 Hoe Ave - Apt 3E - $3466.27 -",
     "1202 Decatur St - Apt 201 - $2385.86 -",
+    "1245 Edward L Grant Highway - Apt 4I - Apt 4I - $2146.04 -",
     "128 West 167 Street - Apt 7C - $3094.54 -",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+",
@@ -96,6 +97,7 @@
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -": "recVseDWIs4g0C16L",
     "1169 Hoe Ave - Apt 3E - $3466.27 -": "rec95OFuDXpzJHDgT",
     "1202 Decatur St - Apt 201 - $2385.86 -": "recM8dthrs3PS4WMW",
+    "1245 Edward L Grant Highway - Apt 4I - Apt 4I - $2146.04 -": "recYExMv6UyemcFVY",
     "128 West 167 Street - Apt 7C - $3094.54 -": "recys2LjG23wJioig",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+": "recinxqScEeOCdCIx",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+": "recQGrQVZ6q3xqovP",
@@ -174,5 +176,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-06T17:35:54.408597+00:00"
+  "updated_at": "2026-10-06T17:38:22.272524+00:00"
 }
