@@ -83,6 +83,7 @@
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -",
     "99-49 66th Ave - Apt 4C - $3290.11 -",
     "Douglass Street Apartments - Apt 8L - $3495 -",
+    "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -",
     "Eagle & West - Apt 736 - $2939.77 -"
   ],
   "project_record_ids": {
@@ -167,8 +168,9 @@
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -": "recdgxlD1ca2pnbqF",
     "99-49 66th Ave - Apt 4C - $3290.11 -": "recfzsBPRGV26NTAs",
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC",
+    "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -": "recdb3IhqKG1bLhCM",
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-06T14:25:16.005244+00:00"
+  "updated_at": "2026-10-06T15:20:06.353374+00:00"
 }
