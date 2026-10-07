@@ -650,6 +650,9 @@ def direct_reside_url_candidates(parsed: dict) -> list[str]:
                     f"{base_no_suffix}-{normalized_suffix}-apartment-unit-{unit_slug}",
                     f"{base_no_suffix}-{normalized_suffix}-apartments",
                     f"{base_no_suffix}-{normalized_suffix}-apartment",
+                    # e.g. /property/522-grand-street-unit-3f/
+                    f"{base_no_suffix}-{normalized_suffix}-unit-{unit_slug}",
+                    f"{base_no_suffix}-{normalized_suffix}-apt-{unit_slug}",
                 ]
             )
 
@@ -1216,6 +1219,9 @@ def extract_reside_details(property_match: dict, parsed: dict | None = None) -> 
                 candidate
                 and candidate.casefold() != "property address"
                 and re.search(r"\bNY\s+\d{5}\b", candidate, flags=re.I)
+                # Reside's office address sits in the site footer, which a
+                # page with an empty address block would otherwise reach.
+                and not re.search(r"\b349 Keap\b", candidate, flags=re.I)
             ):
                 details["property_address"] = candidate
                 break
@@ -1275,6 +1281,23 @@ def leading_house_number(address: str) -> str | None:
     return match.group(1) if match else None
 
 
+def address_names_borough_or_zip(address: str) -> bool:
+    text = normalize(address).casefold()
+    if re.search(r"\b\d{5}\b", text):
+        return True
+    return bool(
+        re.search(
+            r"\b(manhattan|new york|brooklyn|bronx|queens|staten island)\b",
+            text,
+        )
+    )
+
+
+def geosearch_street(label: str | None) -> str:
+    """'522 GRAND STREET, Brooklyn, NY, USA' -> '522 grand street'."""
+    return normalize((label or "").split(",")[0]).casefold()
+
+
 def geocode_nyc_geosearch(address: str, house_number: str) -> dict | None:
     """
     NYC Planning GeoSearch — the city's official address data. It resolves
@@ -1282,11 +1305,16 @@ def geocode_nyc_geosearch(address: str, house_number: str) -> dict | None:
     Powell Jr Blvd in OSM), but it fuzzy-matches building names to unrelated
     streets with high confidence, so it is only used for queries that lead
     with a house number, and the result must lead with the same number.
+
+    The same house number + street can exist in more than one borough
+    ("522 Grand Street" is both the Lower East Side and Williamsburg), and
+    GeoSearch ranks them as ties. When the query names no borough or ZIP,
+    return an ambiguous location listing every candidate instead of guessing.
     """
     try:
         response = requests.get(
             "https://geosearch.planninglabs.nyc/v2/search",
-            params={"text": address, "size": 1},
+            params={"text": address, "size": 5},
             headers={
                 "User-Agent": (
                     "reside-airtable-monitor/5.0 "
@@ -1300,19 +1328,58 @@ def geocode_nyc_geosearch(address: str, house_number: str) -> dict | None:
         if not features:
             return None
 
-        properties = features[0].get("properties") or {}
-        label = normalize(properties.get("label"))
-        if leading_house_number(f"{label} ") != house_number:
+        locations = []
+        for feature in features:
+            properties = feature.get("properties") or {}
+            label = normalize(properties.get("label"))
+            coordinates = (feature.get("geometry") or {}).get("coordinates") or [None, None]
+            locations.append({
+                "neighborhood": normalize(properties.get("neighbourhood")) or None,
+                "borough": normalize(properties.get("borough")) or None,
+                "postcode": normalize(properties.get("postalcode")) or None,
+                "lat": str(coordinates[1]) if coordinates[1] is not None else None,
+                "lon": str(coordinates[0]) if coordinates[0] is not None else None,
+                "display_name": label or None,
+            })
+
+        top = locations[0]
+        if leading_house_number(f"{top['display_name'] or ''} ") != house_number:
             return None
 
-        coordinates = (features[0].get("geometry") or {}).get("coordinates") or [None, None]
+        if address_names_borough_or_zip(address):
+            return top
+
+        # Same house number and street name in other boroughs.
+        street = geosearch_street(top["display_name"])
+        candidates = []
+        seen_boroughs = set()
+        for location in locations:
+            if geosearch_street(location["display_name"]) != street:
+                continue
+            if location["borough"] in seen_boroughs:
+                continue
+            seen_boroughs.add(location["borough"])
+            candidates.append(location)
+
+        if len(candidates) < 2:
+            return top
+
+        print(
+            f'GeoSearch found "{address}" in {len(candidates)} boroughs: '
+            + "; ".join(c["display_name"] or "" for c in candidates)
+        )
         return {
-            "neighborhood": normalize(properties.get("neighbourhood")) or None,
-            "borough": normalize(properties.get("borough")) or None,
-            "postcode": normalize(properties.get("postalcode")) or None,
-            "lat": str(coordinates[1]) if coordinates[1] is not None else None,
-            "lon": str(coordinates[0]) if coordinates[0] is not None else None,
-            "display_name": label or None,
+            "ambiguous": True,
+            "candidates": candidates,
+            "neighborhood": " or ".join(
+                f"{c['neighborhood']} ({c['borough']})" if c["neighborhood"] else c["borough"] or "?"
+                for c in candidates
+            ),
+            "borough": None,
+            "postcode": " / ".join(c["postcode"] or "?" for c in candidates),
+            "lat": None,
+            "lon": None,
+            "display_name": " | ".join(c["display_name"] or "" for c in candidates),
         }
     except Exception as exc:
         print(f'GeoSearch lookup failed for "{address}": {exc}')
@@ -1473,6 +1540,31 @@ def priority_for_location(location: dict | None) -> dict:
             "label": "REVIEW",
             "emoji": "🟢",
             "reason": "Location could not be verified.",
+        }
+
+    if location.get("ambiguous"):
+        candidates = location.get("candidates") or []
+        options = " or ".join(
+            ", ".join(p for p in (c.get("neighborhood"), c.get("borough")) if p)
+            + (f" ({c['postcode']})" if c.get("postcode") else "")
+            for c in candidates
+        )
+        reason = (
+            f"Address matches {len(candidates)} buildings: {options}. "
+            "Check the actual location before applying."
+        )
+        if any(c.get("postcode") in TARGET_HIGH_PRIORITY_ZIPS for c in candidates):
+            return {
+                "score": 3,
+                "label": "HIGH PRIORITY — VERIFY LOCATION",
+                "emoji": "⚠️🔥",
+                "reason": reason,
+            }
+        return {
+            "score": 2,
+            "label": "REVIEW — VERIFY LOCATION",
+            "emoji": "⚠️",
+            "reason": reason,
         }
 
     postcode = normalize(location.get("postcode"))
@@ -2226,15 +2318,18 @@ def process_listings(
             # for genuinely new/reappearing listings.
             reside = enrich_from_reside(parsed)
 
-            location = find_cached_location(history, parsed["address"])
+            # The Reside property page carries the authoritative address
+            # (with ZIP); the Airtable row's address can be abbreviated or
+            # exist in several boroughs, so it beats any cached location.
+            property_address = (reside or {}).get("property_address")
+            location = (
+                None if property_address
+                else find_cached_location(history, parsed["address"])
+            )
             if location is None:
                 if geocode_requests:
                     time.sleep(1.1)
-                # The Reside property page carries the authoritative address
-                # (with ZIP); the Airtable row's address can be abbreviated.
-                location = geocode_nyc_address(
-                    (reside or {}).get("property_address") or parsed["address"]
-                )
+                location = geocode_nyc_address(property_address or parsed["address"])
                 geocode_requests += 1
 
             entry = {
@@ -2282,15 +2377,18 @@ def process_listings(
             if not entry.get("reside"):
                 entry["reside"] = enrich_from_reside(parsed)
 
-            if not entry.get("location"):
-                location = find_cached_location(history, parsed["address"])
+            property_address = (entry.get("reside") or {}).get("property_address")
+            if not entry.get("location") or (
+                property_address and entry["location"].get("ambiguous")
+            ):
+                location = (
+                    None if property_address
+                    else find_cached_location(history, parsed["address"])
+                )
                 if location is None:
                     if geocode_requests:
                         time.sleep(1.1)
-                    location = geocode_nyc_address(
-                        (entry.get("reside") or {}).get("property_address")
-                        or parsed["address"]
-                    )
+                    location = geocode_nyc_address(property_address or parsed["address"])
                     geocode_requests += 1
                 entry["location"] = location
 
@@ -7396,6 +7494,33 @@ def run_normal_monitor() -> None:
             repaired += 1
     if repaired:
         print(f"Cleared {repaired} street-level fallback location(s) for re-geocoding.")
+
+    # One-time recheck of GeoSearch locations stored before ambiguity
+    # detection existed: "522 Grand Street" was stored as the Lower East
+    # Side, though the same address exists in Williamsburg. Ambiguous
+    # results replace the stored guess so the address cache stops reusing it.
+    rechecked = 0
+    for entry in history.get("listings", {}).values():
+        location = entry.get("location")
+        address = str(entry.get("address") or "")
+        house_number = leading_house_number(address)
+        if (
+            not isinstance(location, dict)
+            or location.get("ambiguous")
+            or location.get("ambiguity_checked")
+            or not re.search(r", NY, USA$", str(location.get("display_name") or ""))
+            or not house_number
+            or address_names_borough_or_zip(address)
+        ):
+            continue
+        result = geocode_nyc_geosearch(address, house_number)
+        if result and result.get("ambiguous"):
+            entry["location"] = result
+            rechecked += 1
+        else:
+            location["ambiguity_checked"] = True
+    if rechecked:
+        print(f"Replaced {rechecked} stored location(s) whose address exists in several boroughs.")
 
     old_options = {
         normalize(x) for x in state.get("options", []) if normalize(x)
