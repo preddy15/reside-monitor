@@ -27,6 +27,7 @@
     "1440 Amsterdam Avenue - Apt 702 - $3195 -",
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
+    "1499 Bedfrod Ave - Apt 3C - $2976.7 -",
     "16 Dupont Street - Apt 30A - $3128 -",
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
     "1718 President Street - Apt 10B - $3412.21 -",
@@ -117,6 +118,7 @@
     "1440 Amsterdam Avenue - Apt 702 - $3195 -": "recS5S5PuXzT0NriJ",
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
+    "1499 Bedfrod Ave - Apt 3C - $2976.7 -": "recQSirQNvQnRDC3j",
     "16 Dupont Street - Apt 30A - $3128 -": "rec446AvWeh2q93mq",
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
@@ -182,5 +184,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-07T18:08:13.103041+00:00"
+  "updated_at": "2026-10-07T19:21:24.981908+00:00"
 }
