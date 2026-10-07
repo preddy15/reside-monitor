@@ -14,7 +14,6 @@
     "128 West 167 Street - Apt 7C - $3094.54 -",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+",
-    "130 Hope St - Apt 208 - $3308.32 -",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
     "1315 Findlay Avenue - Apt 4C - $2851 -",
     "1351 Jerome Avenue - Apt 608 - $3405 -",
@@ -106,7 +105,6 @@
     "128 West 167 Street - Apt 7C - $3094.54 -": "recys2LjG23wJioig",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+": "recinxqScEeOCdCIx",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+": "recQGrQVZ6q3xqovP",
-    "130 Hope St - Apt 208 - $3308.32 -": "recy9x1oZhZhjGiyZ",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
     "1315 Findlay Avenue - Apt 4C - $2851 -": "recUGRZH6cZimb82N",
     "1351 Jerome Avenue - Apt 608 - $3405 -": "recPIQCE6bPQkRFy2",
@@ -186,5 +184,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-07T16:50:51.633440+00:00"
+  "updated_at": "2026-10-07T17:02:15.205122+00:00"
 }
