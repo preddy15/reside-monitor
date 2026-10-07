@@ -14,7 +14,10 @@ permissions:
   actions: write
 
 concurrency:
-  group: airtable-dropdown-monitor
+  # Test alerts get their own group: GitHub keeps only one pending run per
+  # group, so the loop's next self-dispatch would otherwise cancel a queued
+  # test. Test mode writes no state, so it can safely overlap the loop.
+  group: ${{ inputs.test_listing != '' && 'reside-test-alert' || 'airtable-dropdown-monitor' }}
   cancel-in-progress: false
 
 jobs:
