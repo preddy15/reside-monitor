@@ -85,6 +85,7 @@
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
+    "864 49th Street - Apt D1 - $3544 -",
     "873 E 228th Street Apt. 1A - Apt 1A - $3697.97 -",
     "875 4th Avenue - Apt 302 - $2157.63 - MI",
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
@@ -181,6 +182,7 @@
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -": "recqKUYrmQ9p5uIRm",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -": "recDHccgkL8ARHZIb",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
+    "864 49th Street - Apt D1 - $3544 -": "recnKNPdrNNQcuiw8",
     "873 E 228th Street Apt. 1A - Apt 1A - $3697.97 -": "recmyVrGxLSYWlJKg",
     "875 4th Avenue - Apt 302 - $2157.63 - MI": "recFS1kpEb5mtwbfH",
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
@@ -194,5 +196,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-08T15:11:29.444781+00:00"
+  "updated_at": "2026-10-08T15:15:36.480079+00:00"
 }
