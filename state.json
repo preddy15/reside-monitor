@@ -59,6 +59,7 @@
     "254 Amboy Street - Apt 2B - Apt 2B - $2882.8 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "2588 7 Ave - Apt 2K - $2593 -",
+    "2588 7th Ave - Apt 6D - $1437.04 -",
     "2588 7th Ave - Apt 6F - $1437.04 -",
     "2741 Creston Avenue - Apt 3D - $2721.77 -",
     "2816 8th Ave - Apt 4H - $1221.43 -",
@@ -156,6 +157,7 @@
     "254 Amboy Street - Apt 2B - Apt 2B - $2882.8 -": "recm7FrbudUKjdu5J",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recD2oZ396qm8zEjy",
     "2588 7 Ave - Apt 2K - $2593 -": "recRplPs2uHK6Bk80",
+    "2588 7th Ave - Apt 6D - $1437.04 -": "recuNHEMR0C0e1ztb",
     "2588 7th Ave - Apt 6F - $1437.04 -": "recm0w4GWLUVSlIBl",
     "2741 Creston Avenue - Apt 3D - $2721.77 -": "reclZpTGFO29pP4t5",
     "2816 8th Ave - Apt 4H - $1221.43 -": "recIuTGi7fXvY40Nw",
@@ -196,5 +198,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-08T17:13:50.494846+00:00"
+  "updated_at": "2026-10-08T17:15:52.160786+00:00"
 }
