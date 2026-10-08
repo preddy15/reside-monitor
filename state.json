@@ -61,6 +61,7 @@
     "2588 7th Ave - Apt 6F - $1437.04 -",
     "26 Sherman Ave - Apt 4I - $3035.41 -",
     "2741 Creston Avenue - Apt 3D - $2721.77 -",
+    "2754 Creston Avenue - Unit 402 - Apt 402 - $3128 -",
     "2816 8th Ave - Apt 4H - $1221.43 -",
     "2816 8th Ave - Apt 6D - $1602.17 -",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -",
@@ -157,6 +158,7 @@
     "2588 7th Ave - Apt 6F - $1437.04 -": "recm0w4GWLUVSlIBl",
     "26 Sherman Ave - Apt 4I - $3035.41 -": "reckwbU5QDoXxPkcl",
     "2741 Creston Avenue - Apt 3D - $2721.77 -": "reclZpTGFO29pP4t5",
+    "2754 Creston Avenue - Unit 402 - Apt 402 - $3128 -": "recdxwbWkbU4FY5Z6",
     "2816 8th Ave - Apt 4H - $1221.43 -": "recIuTGi7fXvY40Nw",
     "2816 8th Ave - Apt 6D - $1602.17 -": "reclt3MOjENPoQA4f",
     "2817 Atlantic Ave - Apt 7C - $2818.93 -": "recqOG1wGfZ2VFPYR",
@@ -194,5 +196,5 @@
     "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -": "recdb3IhqKG1bLhCM"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-08T18:46:01.717047+00:00"
+  "updated_at": "2026-10-08T19:04:43.557663+00:00"
 }
