@@ -11,7 +11,6 @@
     "1135 Teller Ave - Apt 4E - $3237.41 -",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
     "1169 Hoe Ave - Apt 3E - $3466.27 -",
-    "1202 Decatur St - Apt 201 - $2385.86 -",
     "1245 Edward L Grant Highway - Apt 4I - Apt 4I - $2146.04 -",
     "128 West 167 Street - Apt 7C - $3094.54 -",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+",
@@ -30,7 +29,6 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1484 Watson Avenue - Apt E63 - $3615.9 -",
-    "1499 Bedfrod Ave - Apt 3C - $2976.7 -",
     "16 Dupont Street - Apt 30A - $3128 -",
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
     "1718 President Street - Apt 10B - $3412.21 -",
@@ -96,8 +94,7 @@
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -",
     "99-49 66th Ave - Apt 4C - $3290.11 -",
     "Douglass Street Apartments - Apt 8L - $3495 -",
-    "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -",
-    "Eagle & West - Apt 736 - $2939.77 -"
+    "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -"
   ],
   "project_record_ids": {
     "100 Belmont Place - Apt 4B - $1383.75 -": "reclHBaPxKBwDbnFW",
@@ -109,7 +106,6 @@
     "1135 Teller Ave - Apt 4E - $3237.41 -": "recHukEvuqgsdsJbf",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -": "recVseDWIs4g0C16L",
     "1169 Hoe Ave - Apt 3E - $3466.27 -": "rec95OFuDXpzJHDgT",
-    "1202 Decatur St - Apt 201 - $2385.86 -": "recM8dthrs3PS4WMW",
     "1245 Edward L Grant Highway - Apt 4I - Apt 4I - $2146.04 -": "recYExMv6UyemcFVY",
     "128 West 167 Street - Apt 7C - $3094.54 -": "recys2LjG23wJioig",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+": "recinxqScEeOCdCIx",
@@ -128,7 +124,6 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
     "1484 Watson Avenue - Apt E63 - $3615.9 -": "reclY3TfUrotuJUNi",
-    "1499 Bedfrod Ave - Apt 3C - $2976.7 -": "recQSirQNvQnRDC3j",
     "16 Dupont Street - Apt 30A - $3128 -": "rec446AvWeh2q93mq",
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
@@ -194,9 +189,8 @@
     "947 Sheridan Ave. Apt. 3C - Apt 3C - $3221.84 -": "recdgxlD1ca2pnbqF",
     "99-49 66th Ave - Apt 4C - $3290.11 -": "recfzsBPRGV26NTAs",
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC",
-    "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -": "recdb3IhqKG1bLhCM",
-    "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
+    "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -": "recdb3IhqKG1bLhCM"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-08T17:15:52.160786+00:00"
+  "updated_at": "2026-10-08T17:30:32.730564+00:00"
 }
