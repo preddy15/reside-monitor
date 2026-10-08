@@ -7,6 +7,7 @@
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
     "106 Mt. Hope Place - Apt 6C - $2727.02 -",
     "106 Mt. Hope Place - Apt 7E - $2748.79 -",
+    "1135 Teller Ave - Apt 4E - $3237.41 -",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
     "1169 Hoe Ave - Apt 3E - $3466.27 -",
     "1202 Decatur St - Apt 201 - $2385.86 -",
@@ -100,6 +101,7 @@
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
     "106 Mt. Hope Place - Apt 6C - $2727.02 -": "recrpwbaoI352905D",
     "106 Mt. Hope Place - Apt 7E - $2748.79 -": "recOvNPkuQWqfZJLD",
+    "1135 Teller Ave - Apt 4E - $3237.41 -": "recHukEvuqgsdsJbf",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -": "recVseDWIs4g0C16L",
     "1169 Hoe Ave - Apt 3E - $3466.27 -": "rec95OFuDXpzJHDgT",
     "1202 Decatur St - Apt 201 - $2385.86 -": "recM8dthrs3PS4WMW",
@@ -188,5 +190,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-08T14:38:47.619654+00:00"
+  "updated_at": "2026-10-08T14:59:17.842695+00:00"
 }
