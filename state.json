@@ -29,6 +29,7 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1484 Watson Avenue - Apt E63 - $3615.9 -",
+    "1499 Bedford Ave - Apt 8C - $3219.6 -",
     "16 Dupont Street - Apt 30A - $3128 -",
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
     "1718 President Street - Apt 10B - $3412.21 -",
@@ -126,6 +127,7 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
     "1484 Watson Avenue - Apt E63 - $3615.9 -": "reclY3TfUrotuJUNi",
+    "1499 Bedford Ave - Apt 8C - $3219.6 -": "rec7QGgWrD02uGy0x",
     "16 Dupont Street - Apt 30A - $3128 -": "rec446AvWeh2q93mq",
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
@@ -196,5 +198,5 @@
     "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -": "recdb3IhqKG1bLhCM"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-08T19:33:18.720985+00:00"
+  "updated_at": "2026-10-08T19:35:29.143368+00:00"
 }
