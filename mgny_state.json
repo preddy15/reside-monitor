@@ -292,7 +292,7 @@
     },
     "https://mgnyconsulting.com/listing/445-gerard-avenue-apartments": {
       "address": "445 Gerard Avenue Apartments 445 Gerard Ave, Bronx, NY 10451",
-      "income_range": "$95,452 - $198,511",
+      "income_range": "$95,452 - $198,510",
       "tiers": {},
       "title": "445 Gerard Avenue Apartments",
       "units_count": 5,
@@ -589,5 +589,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-10-06T18:10:32.744139+00:00"
+  "updated_at": "2026-10-08T16:10:53.470602+00:00"
 }
