@@ -77,6 +77,7 @@
     "65 Buchanan Place - Apt 3B-07 - $1928.65 -",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+",
+    "661 Manida Street- Apt. 6B - Senior preference - Apt 6B - $1675.33 - Senior Preferece 60+",
     "689 East 223rd - Apt 5D - $4341 -",
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -",
@@ -169,6 +170,7 @@
     "65 Buchanan Place - Apt 3B-07 - $1928.65 -": "reclA8OEL0jx0e9Fk",
     "661 Manida Street - Apt 3C - $1608.1 - Senior Preferece 60+": "recPVLGweU7WxkNBX",
     "661 Manida Street - Apt 4A - $1801.77 - Senior Preferece 60+": "recLKAS4m2XJ6p2eN",
+    "661 Manida Street- Apt. 6B - Senior preference - Apt 6B - $1675.33 - Senior Preferece 60+": "recTvpNYEFCmRZqiB",
     "689 East 223rd - Apt 5D - $4341 -": "rec2OpqJtoRJVnTCN",
     "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -": "recqKUYrmQ9p5uIRm",
     "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -": "recDHccgkL8ARHZIb",
@@ -186,5 +188,5 @@
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-07T21:13:57.598555+00:00"
+  "updated_at": "2026-10-08T13:46:43.846414+00:00"
 }
