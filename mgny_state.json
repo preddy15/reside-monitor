@@ -32,6 +32,14 @@
       "units_count": 6,
       "url": "https://mgnyconsulting.com/listing/1215fulton12halsey/"
     },
+    "https://mgnyconsulting.com/listing/1295-rodman-place-apartments": {
+      "address": "1295 Rodman Place Apartments 1295 Rodman Place, Bronx, NY 10460",
+      "income_range": "$116,487 - $198,510",
+      "tiers": {},
+      "title": "1295 Rodman Place Apartments",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/1295-rodman-place-apartments/"
+    },
     "https://mgnyconsulting.com/listing/132-134-waverly-avenue-apartments": {
       "address": "132-134 Waverly Avenue Apartments 132–134 Waverly Avenue, Brooklyn, NY 11205",
       "income_range": "$130,663 - $238,160",
@@ -597,5 +605,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-10-08T20:18:19.728163+00:00"
+  "updated_at": "2026-10-09T18:40:05.038188+00:00"
 }
