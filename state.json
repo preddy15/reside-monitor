@@ -8,7 +8,6 @@
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
     "106 Mt. Hope Place - Apt 6C - $2727.02 -",
     "106 Mt. Hope Place - Apt 7E - $2748.79 -",
-    "1135 Teller Ave - Apt 4E - $3237.41 -",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -",
     "1169 Hoe Ave - Apt 3E - $3466.27 -",
     "1245 Edward L Grant Highway - Apt 4I - Apt 4I - $2146.04 -",
@@ -105,7 +104,6 @@
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
     "106 Mt. Hope Place - Apt 6C - $2727.02 -": "recrpwbaoI352905D",
     "106 Mt. Hope Place - Apt 7E - $2748.79 -": "recOvNPkuQWqfZJLD",
-    "1135 Teller Ave - Apt 4E - $3237.41 -": "recHukEvuqgsdsJbf",
     "1135 Teller Ave - Unit 3E - Apt 3E - $3219.6 -": "recVseDWIs4g0C16L",
     "1169 Hoe Ave - Apt 3E - $3466.27 -": "rec95OFuDXpzJHDgT",
     "1245 Edward L Grant Highway - Apt 4I - Apt 4I - $2146.04 -": "recYExMv6UyemcFVY",
@@ -196,5 +194,5 @@
     "Dutch House - 37-05 30th Street - Apt 319 - $2513.52 -": "recdb3IhqKG1bLhCM"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-08T21:41:35.861917+00:00"
+  "updated_at": "2026-10-09T15:44:01.985450+00:00"
 }
