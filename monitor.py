@@ -187,6 +187,26 @@ def human_duration(start_iso: str | None, end_iso: str | None) -> str | None:
     return f"{max(1, minutes)}m"
 
 
+REAPPEAR_QUIET_MINUTES = 30
+
+
+def recently_removed(last_removed_at: str | None) -> bool:
+    """
+    True when a listing disappeared less than REAPPEAR_QUIET_MINUTES ago.
+    Sources flicker (a scrape briefly misses a row), so a listing that
+    comes back that quickly is tracked as active again without a
+    "reappeared" alert.
+    """
+    removed = parse_iso(last_removed_at)
+    if not removed:
+        return False
+    elapsed = (datetime.now(timezone.utc) - removed).total_seconds()
+    if elapsed < REAPPEAR_QUIET_MINUTES * 60:
+        print(f"Skipping reappeared alert: removed only {int(elapsed // 60)}m ago.")
+        return True
+    return False
+
+
 def send_telegram(message: str, parse_mode: str | None = None) -> None:
     if not BOT_TOKEN or not CHAT_ID:
         raise RuntimeError(
@@ -3023,6 +3043,8 @@ def run_fac_monitor() -> None:
     # Alert before committing the new baseline. If Telegram errors, the FAC
     # state stays on the prior snapshot and the event can be retried next run.
     for event in alert_events:
+        if event["event_type"] == "reappeared" and recently_removed(event.get("last_removed_at")):
+            continue
         message = build_fac_notification(
             listing=event["listing"],
             location=event["entry"].get("location"),
@@ -3533,6 +3555,8 @@ def run_rockrose_monitor() -> None:
             )
 
     for event in alerts:
+        if event["event_type"] == "reappeared" and recently_removed(event.get("last_removed_at")):
+            continue
         entry = event["entry"]
         send_telegram(
             build_rockrose_notification(
@@ -4043,6 +4067,8 @@ def run_mns_monitor() -> None:
             )
 
     for event in alerts:
+        if event["event_type"] == "reappeared" and recently_removed(event.get("last_removed_at")):
+            continue
         entry = event["entry"]
         send_telegram(
             build_mns_notification(
@@ -4575,6 +4601,8 @@ def run_hpd_google_monitor():
             for t in entry.get("tiers",{}).values():
                 if t.get("active"): t["active"]=False; t["last_removed_at"]=now; t["removal_count"]=int(t.get("removal_count",0))+1
     for prop,t,event,prev,removed,loc in alerts:
+        if event == "reappeared" and recently_removed(removed):
+            continue
         send_telegram(hpdg_message(prop,t,loc,event,t.get("first_seen"),prev,removed),parse_mode="HTML")
     history["updated_at"]=now
     state={"initialized":True,"updated_at":now,"properties":{k:{"address":v.get("address"),"status":v.get("status"),"tiers":v.get("tiers",{})} for k,v in hist.items() if v.get("active")}}
@@ -5272,6 +5300,8 @@ def run_mgny_monitor(send_telegram, geocode_fn, priority_fn, maps_fn, utc_now_fn
                     tier["removal_count"] = int(tier.get("removal_count", 0)) + 1
 
     for b, tier, location, event, previous_units in alerts:
+        if event == "reappeared" and recently_removed(tier.get("last_removed_at")):
+            continue
         send_telegram(
             mgny_notification(b, tier, location, priority_fn, maps_fn, format_et_fn, event, tier.get("first_seen"), previous_units),
             parse_mode="HTML",
@@ -5692,6 +5722,8 @@ def run_taxace_monitor():
             alerts.append((listing, entry, "reappeared", last_removed_at))
 
     for listing, entry, event, last_removed_at in alerts:
+        if event == "reappeared" and recently_removed(last_removed_at):
+            continue
         send_telegram(
             taxace_message(
                 listing,
@@ -6307,6 +6339,8 @@ def run_sjp_monitor():
                 alerts.append((listing, entry, "reappeared", last_removed_at))
 
     for listing, entry, event, last_removed_at in alerts:
+        if event == "reappeared" and recently_removed(last_removed_at):
+            continue
         send_telegram(
             sjp_message(
                 listing,
@@ -6985,6 +7019,8 @@ def run_ahg_monitor():
             alerts.append((listing, entry, "reappeared", last_removed_at))
 
     for listing, entry, event, last_removed_at in alerts:
+        if event == "reappeared" and recently_removed(last_removed_at):
+            continue
         send_telegram(
             ahg_message(
                 listing,
@@ -7415,6 +7451,8 @@ def run_shf_monitor():
             alerts.append((listing, entry, "reappeared", last_removed_at))
 
     for listing, entry, event, last_removed_at in alerts:
+        if event == "reappeared" and recently_removed(last_removed_at):
+            continue
         send_telegram(
             shf_message(
                 listing,
@@ -7584,6 +7622,8 @@ def run_normal_monitor() -> None:
         # Send alerts before saving state/history. If Telegram fails, the run fails
         # and the prior baseline stays intact so the alert can be retried later.
         for event in new_events + reappeared_events:
+            if event["event_type"] == "reappeared" and recently_removed(event.get("last_removed_at")):
+                continue
             entry = event["entry"]
             message = build_listing_notification(
                 parsed=event["parsed"],
