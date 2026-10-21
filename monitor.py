@@ -3087,20 +3087,39 @@ def rockrose_listing_key(listing: dict) -> str:
     return f"{address}||{unit}"
 
 
-def scrape_rockrose_index() -> tuple[list[dict], bool]:
-    response = requests.get(
-        ROCKROSE_URL,
-        headers={
-            "User-Agent": (
-                "nyc-rerental-monitor/5.9 "
-                "(personal affordable-housing availability notifier)"
-            )
-        },
-        timeout=ROCKROSE_REQUEST_TIMEOUT,
-    )
-    response.raise_for_status()
+def fetch_rockrose_index_html() -> str:
+    """
+    Rockrose's page cache has served this page truncated at exactly 16 KB,
+    before any listing cards. A cache-busting query string gets a freshly
+    rendered copy; a page without </html> is retried once, then reported.
+    """
+    for attempt in range(2):
+        response = requests.get(
+            ROCKROSE_URL,
+            params={"nocache": f"{int(time.time())}{attempt}"},
+            headers={
+                "User-Agent": (
+                    "nyc-rerental-monitor/5.9 "
+                    "(personal affordable-housing availability notifier)"
+                ),
+                "Cache-Control": "no-cache",
+                "Pragma": "no-cache",
+            },
+            timeout=ROCKROSE_REQUEST_TIMEOUT,
+        )
+        response.raise_for_status()
+        if "</html>" in response.text.casefold():
+            return response.text
+        print(f"Rockrose returned a truncated page ({len(response.content)} bytes); retrying.")
 
-    soup = BeautifulSoup(response.text, "html.parser")
+    raise RuntimeError(
+        f"Rockrose returned a truncated page ({len(response.content)} bytes) "
+        "twice. Previous Rockrose baseline preserved."
+    )
+
+
+def scrape_rockrose_index() -> tuple[list[dict], bool]:
+    soup = BeautifulSoup(fetch_rockrose_index_html(), "html.parser")
     listings = []
 
     for anchor in soup.find_all("a", href=True):
