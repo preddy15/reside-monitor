@@ -91,6 +91,12 @@
       "rent": "$2,835.00",
       "unit": "3D"
     },
+    "2895 valentine ave bronx ny||4e": {
+      "address": "2895 Valentine Ave, Bronx, NY",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-28773/8HTPOW1VPEDFA15VSP",
+      "rent": "$3,492.00",
+      "unit": "4E"
+    },
     "2895 valentine avenue||4g": {
       "address": "2895 Valentine Avenue",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-28693/6F9KWT6V30SHSCZ24L",
@@ -145,12 +151,6 @@
       "rent": "$2,999.00",
       "unit": "2D"
     },
-    "972 bushwick avenue brooklyn ny||3c": {
-      "address": "972 Bushwick Avenue, Brooklyn, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22853/LMETRP5OP3B2D0GE73",
-      "rent": "$3,299.00",
-      "unit": "3C"
-    },
     "972 bushwick avenue brooklyn ny||3e": {
       "address": "972 Bushwick Avenue, Brooklyn, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22873/Y0YECX87OMYWTJ9OGP",
@@ -200,5 +200,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-10-21T17:15:06.921969+00:00"
+  "updated_at": "2026-10-22T21:04:16.443802+00:00"
 }
