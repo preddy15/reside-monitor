@@ -436,7 +436,7 @@
     },
     "https://mgnyconsulting.com/listing/arris-grand": {
       "address": "445 Grand Avenue, Brooklyn, NY 11238",
-      "income_range": "$64,202 - $198,510",
+      "income_range": "$64,202 - $122,150",
       "tiers": {},
       "title": "Arris Grand",
       "units_count": 1,
@@ -686,5 +686,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-10-21T22:19:04.607337+00:00"
+  "updated_at": "2026-10-22T14:21:36.161615+00:00"
 }
