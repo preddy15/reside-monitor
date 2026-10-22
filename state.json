@@ -65,7 +65,7 @@
     "44-15 Colden St - Apt 2G - $2855 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "682 Chauncey Street - Apt 2L - $2434.14 -",
-    "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -",
+    "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
     "875 4th Avenue - Apt 302 - $2157.63 - MI",
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
@@ -139,7 +139,7 @@
     "44-15 Colden St - Apt 2G - $2855 -": "rechB5UdNE3pQ0jZH",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "682 Chauncey Street - Apt 2L - $2434.14 -": "recKJ15N4Rqr8whLR",
-    "765 East 214 Street Apt. 703 - Apt 703 - $3019.9 -": "recDHccgkL8ARHZIb",
+    "765 East 214 - Apt. 302 - Apt 302 - $3036.6 -": "recqKUYrmQ9p5uIRm",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
     "875 4th Avenue - Apt 302 - $2157.63 - MI": "recFS1kpEb5mtwbfH",
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
@@ -150,5 +150,5 @@
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-22T14:52:34.463399+00:00"
+  "updated_at": "2026-10-22T17:28:28.512845+00:00"
 }
