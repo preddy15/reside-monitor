@@ -55,7 +55,6 @@
     "2588 7th Ave - Apt 4J - $3377.25 -",
     "2588 7th Ave - Apt 4N - $3236.46 -",
     "2588 7th Ave - Apt 5N - $2902.61 -",
-    "2795 Fulton St - Apt 201 - $1099 -",
     "28-08 38th Avenue - Apt 1 BR - $3661 -",
     "28-08 38th Avenue - Apt 2 BR - $4376 -",
     "28-08 38th Avenue - Apt 2F - $3423 -",
@@ -130,7 +129,6 @@
     "2588 7th Ave - Apt 4J - $3377.25 -": "recVUSedPPX7aGBtq",
     "2588 7th Ave - Apt 4N - $3236.46 -": "reckhm8XtsQc0VbuV",
     "2588 7th Ave - Apt 5N - $2902.61 -": "recoGIhWlT8qkA6Ai",
-    "2795 Fulton St - Apt 201 - $1099 -": "recrXrDgrc6qHlhEu",
     "28-08 38th Avenue - Apt 1 BR - $3661 -": "recwvBBTFfBtVk1tt",
     "28-08 38th Avenue - Apt 2 BR - $4376 -": "recuZY0O8LXq72UvI",
     "28-08 38th Avenue - Apt 2F - $3423 -": "recQY4FRCnuwpn0T0",
@@ -152,5 +150,5 @@
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-23T17:01:49.600893+00:00"
+  "updated_at": "2026-10-23T17:03:14.051445+00:00"
 }
