@@ -1,13 +1,6 @@
 {
   "initialized": true,
   "listings": {
-    "3 eleven||511": {
-      "address": "3 Eleven",
-      "building": "3 Eleven",
-      "rent": "$779.90",
-      "status": "current",
-      "unit": "511"
-    },
     "539 vanderbilt avenue||6f": {
       "address": "539 Vanderbilt Avenue",
       "building": "The Axel -539 Vanderbilt Avenue, Brooklyn NY",
@@ -114,5 +107,5 @@
       "unit": "8C"
     }
   },
-  "updated_at": "2026-10-15T15:04:46.735234+00:00"
+  "updated_at": "2026-10-23T14:43:09.009584+00:00"
 }
