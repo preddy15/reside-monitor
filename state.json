@@ -63,6 +63,7 @@
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
     "44-15 Colden St - Apt 2G - $2855 -",
+    "633 East 230th Street Apt. 7D - Apt 7D - $3835 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "682 Chauncey Street - Apt 2L - $2434.14 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
@@ -137,6 +138,7 @@
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
     "44-15 Colden St - Apt 2G - $2855 -": "rechB5UdNE3pQ0jZH",
+    "633 East 230th Street Apt. 7D - Apt 7D - $3835 -": "rec1mjyTZwgJKYMqh",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "682 Chauncey Street - Apt 2L - $2434.14 -": "recKJ15N4Rqr8whLR",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
@@ -150,5 +152,5 @@
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-22T20:53:12.061877+00:00"
+  "updated_at": "2026-10-23T14:38:27.068027+00:00"
 }
