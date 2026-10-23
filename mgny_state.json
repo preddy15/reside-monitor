@@ -530,7 +530,7 @@
     },
     "https://mgnyconsulting.com/listing/jasper-hunters-point": {
       "address": null,
-      "income_range": "$118,766 - $198,510",
+      "income_range": "$104,298 - $198,510",
       "tiers": {},
       "title": "Jasper Hunter’s Point",
       "units_count": 2,
@@ -662,5 +662,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-10-22T21:40:51.714606+00:00"
+  "updated_at": "2026-10-23T15:59:13.326173+00:00"
 }
