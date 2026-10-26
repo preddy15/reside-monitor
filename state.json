@@ -76,7 +76,6 @@
     "94-15 Sutphin Boulevard - Apt 1807 - $4376 -",
     "94-15 Sutphin Boulevard - Apt 2205 - $3661 -",
     "947 Sheridan Ave - Apt 1D - $3128 -",
-    "959 Anderson Ave - Apt 7B - $3171.18 -",
     "Douglass Street Apartments - Apt 8L - $3495 -",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+"
   ],
@@ -155,10 +154,9 @@
     "94-15 Sutphin Boulevard - Apt 1807 - $4376 -": "recNFT0wpy2zXnZ4X",
     "94-15 Sutphin Boulevard - Apt 2205 - $3661 -": "rec75e1opy14O1cIC",
     "947 Sheridan Ave - Apt 1D - $3128 -": "recsPrCPAboZUyWj7",
-    "959 Anderson Ave - Apt 7B - $3171.18 -": "recE0PeQm9ZJ7js24",
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-26T15:36:02.452635+00:00"
+  "updated_at": "2026-10-26T15:38:57.028634+00:00"
 }
