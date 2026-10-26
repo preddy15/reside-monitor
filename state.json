@@ -2,7 +2,6 @@
   "feature_version": 5,
   "initialized": true,
   "options": [
-    "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 -",
     "1024 Manhattan Avenue - Apt 505 - Apt 505 - $3050 -",
     "1052 Greene Ave - Apt 4A - $2283.63 -",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
@@ -79,7 +78,6 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+"
   ],
   "project_record_ids": {
-    "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 -": "rec2MWfqNMK1MMCGZ",
     "1024 Manhattan Avenue - Apt 505 - Apt 505 - $3050 -": "recad9WyQ6iw6pNG5",
     "1052 Greene Ave - Apt 4A - $2283.63 -": "rec4KtvC0daQ3VZ6u",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
@@ -156,5 +154,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-26T16:41:47.015960+00:00"
+  "updated_at": "2026-10-26T17:14:36.099272+00:00"
 }
