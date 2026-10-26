@@ -1,9 +1,9 @@
 {
-  "consecutive_failures": 0,
-  "last_failure_at": "2026-10-26T08:47:18.402536+00:00",
-  "last_outcome": "success",
+  "consecutive_failures": 1,
+  "last_failure_at": "2026-10-26T09:08:40.055429+00:00",
+  "last_outcome": "failure",
   "last_success_at": "2026-10-26T08:47:49.949556+00:00",
   "three_failure_alert_at": "2026-10-21T22:14:31.109483+00:00",
   "three_failure_alert_sent": false,
-  "updated_at": "2026-10-26T08:47:49.949556+00:00"
+  "updated_at": "2026-10-26T09:08:40.055429+00:00"
 }
