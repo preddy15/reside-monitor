@@ -57,26 +57,47 @@
       "status": "upcoming",
       "unit": "6G"
     },
+    "sunset park apartments and library||3d": {
+      "address": null,
+      "building": "Sunset Park Apartments and Library",
+      "rent": "$1,509.00",
+      "status": "current",
+      "unit": "3D"
+    },
     "sunset park apartments and library||6f": {
       "address": null,
       "building": "Sunset Park Apartments and Library",
-      "rent": null,
+      "rent": "$927.00",
       "status": "current",
       "unit": "6F"
     },
     "sunset park apartments and library||6g": {
       "address": null,
       "building": "Sunset Park Apartments and Library",
-      "rent": null,
+      "rent": "$1,045.00",
       "status": "current",
       "unit": "6G"
+    },
+    "sunset park apartments and library||7g": {
+      "address": null,
+      "building": "Sunset Park Apartments and Library",
+      "rent": "$1,267.00",
+      "status": "current",
+      "unit": "7G"
     },
     "sunset park apartments and library||7h": {
       "address": null,
       "building": "Sunset Park Apartments and Library",
-      "rent": null,
+      "rent": "$1,528.00",
       "status": "current",
       "unit": "7H"
+    },
+    "sunset park apartments and library||8b": {
+      "address": null,
+      "building": "Sunset Park Apartments and Library",
+      "rent": "$1,926.00",
+      "status": "current",
+      "unit": "8B"
     },
     "sunset ridge apartments||1b": {
       "address": null,
@@ -107,5 +128,5 @@
       "unit": "8C"
     }
   },
-  "updated_at": "2026-10-23T14:43:09.009584+00:00"
+  "updated_at": "2026-10-26T22:42:34.819938+00:00"
 }
