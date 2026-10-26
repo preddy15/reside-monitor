@@ -6,7 +6,6 @@
     "1024 Manhattan Avenue - Apt 505 - Apt 505 - $3050 -",
     "1052 Greene Ave - Apt 4A - $2283.63 -",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
-    "106 Mt. Hope Place - Apt 7E - $2748.79 -",
     "1169 Hoe Ave - Apt 3E - $3466.27 -",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+",
@@ -84,7 +83,6 @@
     "1024 Manhattan Avenue - Apt 505 - Apt 505 - $3050 -": "recad9WyQ6iw6pNG5",
     "1052 Greene Ave - Apt 4A - $2283.63 -": "rec4KtvC0daQ3VZ6u",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
-    "106 Mt. Hope Place - Apt 7E - $2748.79 -": "recOvNPkuQWqfZJLD",
     "1169 Hoe Ave - Apt 3E - $3466.27 -": "rec95OFuDXpzJHDgT",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+": "recinxqScEeOCdCIx",
     "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+": "recQGrQVZ6q3xqovP",
@@ -158,5 +156,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-26T16:21:50.100433+00:00"
+  "updated_at": "2026-10-26T16:41:47.015960+00:00"
 }
