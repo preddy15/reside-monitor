@@ -44,6 +44,7 @@
     "2183 Morris Ave - Apt 2B - $3445.35 -",
     "234 East 203 Apt 2A - Apt 2A - $2890 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
+    "246 W 150 Street - Apt 2B - $3207.43 -",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -",
     "25-01 Queens Plaza North - Apt 325 - $3299 -",
     "25-01 Queens Plaza North - Apt 503 - $4316 -",
@@ -118,6 +119,7 @@
     "2183 Morris Ave - Apt 2B - $3445.35 -": "recFCqfgjQA8U7Kv6",
     "234 East 203 Apt 2A - Apt 2A - $2890 -": "recJqR2Y6aThN0PRJ",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
+    "246 W 150 Street - Apt 2B - $3207.43 -": "recMyzNh9eE7eMjw8",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -": "recghf35pdYrvl3yG",
     "25-01 Queens Plaza North - Apt 325 - $3299 -": "rec8O2b4OoYtYR69e",
     "25-01 Queens Plaza North - Apt 503 - $4316 -": "recGyzzmwpTqwM1SV",
@@ -150,5 +152,5 @@
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-26T14:36:21.886747+00:00"
+  "updated_at": "2026-10-26T14:37:21.213970+00:00"
 }
