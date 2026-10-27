@@ -5,6 +5,7 @@
     "1024 Manhattan Avenue - Apt 505 - Apt 505 - $3050 -",
     "1052 Greene Ave - Apt 4A - $2283.63 -",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
+    "1181 Sherman - Apt 4A - $2283.2 -",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+",
     "130 Hope St - Apt 406 - $4069.25 -",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
@@ -71,6 +72,7 @@
     "1024 Manhattan Avenue - Apt 505 - Apt 505 - $3050 -": "recad9WyQ6iw6pNG5",
     "1052 Greene Ave - Apt 4A - $2283.63 -": "rec4KtvC0daQ3VZ6u",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
+    "1181 Sherman - Apt 4A - $2283.2 -": "recVC3sWU4rPcfiww",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+": "recinxqScEeOCdCIx",
     "130 Hope St - Apt 406 - $4069.25 -": "rectohTHRU24pNtMN",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
@@ -134,5 +136,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-26T21:40:46.108332+00:00"
+  "updated_at": "2026-10-27T14:41:36.365914+00:00"
 }
