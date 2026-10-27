@@ -64,8 +64,6 @@
     "9-24 Main Ave - Apt 305 - $2830.76 -",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -",
     "94-15 Sutphin Boulevard - Apt 1807 - $4376 -",
-    "94-15 Sutphin Boulevard - Apt 2205 - $3661 -",
-    "94-15 Sutphin Boulevard - Apt 813 - $2065 -",
     "947 Sheridan Ave - Apt 1D - $3128 -",
     "Douglass Street Apartments - Apt 8L - $3495 -",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+"
@@ -133,12 +131,10 @@
     "9-24 Main Ave - Apt 305 - $2830.76 -": "recHLRrPA6Ooi1k76",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -": "recL3cH6ZLzAu9V7O",
     "94-15 Sutphin Boulevard - Apt 1807 - $4376 -": "recNFT0wpy2zXnZ4X",
-    "94-15 Sutphin Boulevard - Apt 2205 - $3661 -": "rec75e1opy14O1cIC",
-    "94-15 Sutphin Boulevard - Apt 813 - $2065 -": "recnK0lqv6JfWRu6e",
     "947 Sheridan Ave - Apt 1D - $3128 -": "recsPrCPAboZUyWj7",
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-27T16:03:44.937343+00:00"
+  "updated_at": "2026-10-27T16:09:41.178930+00:00"
 }
