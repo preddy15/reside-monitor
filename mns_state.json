@@ -6,7 +6,13 @@
       "rent": "$2,653.00",
       "unit": "4N",
       "url": "https://www.mns.com/details/240428/rental/morris+heights/bronx"
+    },
+    "88 leonard st||510": {
+      "address": "88 Leonard ST",
+      "rent": "$3,123.00",
+      "unit": "510",
+      "url": "https://www.mns.com/details/240766/rental/tribeca/manhattan"
     }
   },
-  "updated_at": "2026-10-15T01:22:53.754608+00:00"
+  "updated_at": "2026-10-27T18:51:30.784653+00:00"
 }
