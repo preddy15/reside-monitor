@@ -1,7 +1,7 @@
 {
-  "consecutive_failures": 1,
+  "consecutive_failures": 0,
   "failure_alert_sent": false,
-  "last_error": "IncompleteScrapeError: Captured 53 option(s) but only 0 contain a rent amount — this looks like the wrong dropdown (e.g. the State field), not the listings picker. Baseline preserved.",
+  "last_error": null,
   "last_failure": "2026-10-27T21:07:54.905341+00:00",
-  "last_success": "2026-10-27T20:07:56.740800+00:00"
+  "last_success": "2026-10-27T21:08:31.809007+00:00"
 }
