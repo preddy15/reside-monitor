@@ -10,7 +10,6 @@
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
     "1315 Findlay Avenue - Apt 4C - $2851 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
-    "1395 Bristow Ave - Apt 3A - $4168.74 -",
     "1410 Vyse Ave - Apt 2D - $3221.84 -",
     "1433 Teller Avenue - Apt 3D - $3322.82 -",
     "1440 Amsterdam Avenue - Apt 2 bedroom - $4568 -",
@@ -78,7 +77,6 @@
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
     "1315 Findlay Avenue - Apt 4C - $2851 -": "recUGRZH6cZimb82N",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
-    "1395 Bristow Ave - Apt 3A - $4168.74 -": "rec87mTtTGTY7To19",
     "1410 Vyse Ave - Apt 2D - $3221.84 -": "recBT5AW0uEdStEtz",
     "1433 Teller Avenue - Apt 3D - $3322.82 -": "recdt7Rkzq2giJTPr",
     "1440 Amsterdam Avenue - Apt 2 bedroom - $4568 -": "recN9sJ60POwokBlF",
@@ -138,5 +136,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-27T16:39:56.563041+00:00"
+  "updated_at": "2026-10-27T16:43:27.399518+00:00"
 }
