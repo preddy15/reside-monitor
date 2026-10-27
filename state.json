@@ -57,6 +57,7 @@
     "522 Evergreen - Apt 4A - $2222.84 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
+    "8 Palmetto Street Apartments - Apt 308 - $2949 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
     "875 4th Avenue - Apt 302 - $2157.63 - MI",
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
@@ -123,6 +124,7 @@
     "522 Evergreen - Apt 4A - $2222.84 -": "recX845sAonQ1dcrU",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
+    "8 Palmetto Street Apartments - Apt 308 - $2949 -": "recTS11bAefkGROKc",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
     "875 4th Avenue - Apt 302 - $2157.63 - MI": "recFS1kpEb5mtwbfH",
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
@@ -134,5 +136,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-27T14:47:24.295191+00:00"
+  "updated_at": "2026-10-27T14:49:06.299487+00:00"
 }
