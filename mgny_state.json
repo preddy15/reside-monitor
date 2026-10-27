@@ -138,6 +138,29 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/188-11-hillside-avenue/"
     },
+    "https://mgnyconsulting.com/listing/2008-crotona-avenue": {
+      "address": "2008 Crotona Avenue 2008 Crotona Avenue, Bronx, NY 10457",
+      "income_range": "$85,852 - $238,160",
+      "tiers": {
+        "130%||2 bedroom||$2,250.00||2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$85,852 – $238,160",
+          "appearance_count": 4,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": "2026-10-27T21:17:51.871124+00:00",
+          "last_seen": "2026-10-27T21:18:34.050696+00:00",
+          "removal_count": 3,
+          "rent": "$2,250.00",
+          "unit_size": "2 Bedroom",
+          "units_available": 1
+        }
+      },
+      "title": "2008 Crotona Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/2008-crotona-avenue/"
+    },
     "https://mgnyconsulting.com/listing/27-15-astoria-boulevard": {
       "address": "27-15 Astoria Boulevard 27-15 Astoria Boulevard, Queens, NY 11102",
       "income_range": "$82,115 - $189,540",
@@ -257,14 +280,6 @@
       "title": "336 Himrod Street",
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/336-himrod-street/"
-    },
-    "https://mgnyconsulting.com/listing/3365-cruger-avenue-apartments": {
-      "address": "3365 Cruger Avenue Apartments 3365 Cruger Avenue, Bronx, NY 10467",
-      "income_range": "$73,198 - $198,510",
-      "tiers": {},
-      "title": "3365 Cruger Avenue Apartments",
-      "units_count": 1,
-      "url": "https://mgnyconsulting.com/listing/3365-cruger-avenue-apartments/"
     },
     "https://mgnyconsulting.com/listing/62-41-forest-avenue": {
       "address": null,
@@ -477,5 +492,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-10-27T21:17:51.871124+00:00"
+  "updated_at": "2026-10-27T21:18:34.050696+00:00"
 }
