@@ -57,6 +57,7 @@
     "3914 15th Ave - Apt 2 Br - $3400 -",
     "522 Evergreen - Apt 4A - $2222.84 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
+    "701 Elton Ave - Apt 5E - $2433.41 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
     "8 Palmetto Street Apartments - Apt 308 - $2949 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
@@ -125,6 +126,7 @@
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
     "522 Evergreen - Apt 4A - $2222.84 -": "recX845sAonQ1dcrU",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
+    "701 Elton Ave - Apt 5E - $2433.41 -": "recznuGeXqQ8v53uX",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
     "8 Palmetto Street Apartments - Apt 308 - $2949 -": "recTS11bAefkGROKc",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
@@ -138,5 +140,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-27T17:08:27.724921+00:00"
+  "updated_at": "2026-10-27T18:03:37.517810+00:00"
 }
