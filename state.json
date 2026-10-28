@@ -10,7 +10,6 @@
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
     "1315 Findlay Avenue - Apt 4C - $2851 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
-    "1399 Myrtle Ave - Apt 4F - $2152.62 -",
     "1410 Vyse Ave - Apt 2D - $3221.84 -",
     "1433 Teller Avenue - Apt 3D - $3322.82 -",
     "1440 Amsterdam Avenue - Apt 2 bedroom - $4568 -",
@@ -57,6 +56,7 @@
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
     "522 Evergreen - Apt 4A - $2222.84 -",
+    "56 W 125 St - Apt 1105 - $3002.94 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "701 Elton Ave - Apt 5E - $2433.41 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
@@ -81,7 +81,6 @@
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
     "1315 Findlay Avenue - Apt 4C - $2851 -": "recUGRZH6cZimb82N",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
-    "1399 Myrtle Ave - Apt 4F - $2152.62 -": "recEokyG7V3f1zUCX",
     "1410 Vyse Ave - Apt 2D - $3221.84 -": "recBT5AW0uEdStEtz",
     "1433 Teller Avenue - Apt 3D - $3322.82 -": "recdt7Rkzq2giJTPr",
     "1440 Amsterdam Avenue - Apt 2 bedroom - $4568 -": "recN9sJ60POwokBlF",
@@ -128,6 +127,7 @@
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
     "522 Evergreen - Apt 4A - $2222.84 -": "recX845sAonQ1dcrU",
+    "56 W 125 St - Apt 1105 - $3002.94 -": "recxiH9OUeLySn03P",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "701 Elton Ave - Apt 5E - $2433.41 -": "recznuGeXqQ8v53uX",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
@@ -144,5 +144,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-28T16:23:38.862059+00:00"
+  "updated_at": "2026-10-28T16:30:53.607169+00:00"
 }
