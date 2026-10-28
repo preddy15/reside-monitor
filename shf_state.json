@@ -19,18 +19,6 @@
       "unit": "11J",
       "unit_size": "Studio"
     },
-    "572 eleventh avenue||4h": {
-      "ami": "130%",
-      "project": "572 Eleventh Avenue",
-      "unit": "4H",
-      "unit_size": "Studio"
-    },
-    "7 dey street||16d": {
-      "ami": "130%",
-      "project": "7 Dey Street",
-      "unit": "16D",
-      "unit_size": "Studio"
-    },
     "raw||146 pierrepont street unit 6d 40 studio mobility set aside unit must meet mobility preference": {
       "ami": null,
       "project": "146 Pierrepont Street Unit 6D (40% Studio) - Mobility set-aside unit. Must meet Mobility preference.",
@@ -55,6 +43,12 @@
       "unit": null,
       "unit_size": null
     },
+    "raw||option 5": {
+      "ami": null,
+      "project": "Option 5",
+      "unit": null,
+      "unit_size": null
+    },
     "raw||yes": {
       "ami": null,
       "project": "Yes",
@@ -62,5 +56,5 @@
       "unit_size": null
     }
   },
-  "updated_at": "2026-10-14T14:15:35.622828+00:00"
+  "updated_at": "2026-10-28T22:07:42.784451+00:00"
 }
