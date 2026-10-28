@@ -7,6 +7,12 @@
       "unit": "310",
       "unit_size": "1-Bed"
     },
+    "30 kent street||509": {
+      "ami": "130%",
+      "project": "30 Kent Street",
+      "unit": "509",
+      "unit_size": "2-Bed"
+    },
     "509 third avenue||8f 8g": {
       "ami": "130%",
       "project": "509 Third Avenue",
@@ -43,18 +49,18 @@
       "unit": null,
       "unit_size": null
     },
-    "raw||option 5": {
-      "ami": null,
-      "project": "Option 5",
-      "unit": null,
-      "unit_size": null
-    },
     "raw||yes": {
       "ami": null,
       "project": "Yes",
       "unit": null,
       "unit_size": null
+    },
+    "the biltmore||15k": {
+      "ami": "130%",
+      "project": "The Biltmore",
+      "unit": "15K",
+      "unit_size": "Studio"
     }
   },
-  "updated_at": "2026-10-28T22:07:42.784451+00:00"
+  "updated_at": "2026-10-28T22:38:22.306780+00:00"
 }
