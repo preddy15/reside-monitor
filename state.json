@@ -5,6 +5,7 @@
     "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 -",
     "1052 Greene Ave - Apt 4A - $2283.63 -",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
+    "115 Park Place - Apt 4C - $1884.94 -",
     "1245 Edward L Grant Highway - Apt 7G - $1294.65 -",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+",
     "130 Hope St - Apt 406 - $4069.25 -",
@@ -78,6 +79,7 @@
     "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 -": "rec2MWfqNMK1MMCGZ",
     "1052 Greene Ave - Apt 4A - $2283.63 -": "rec4KtvC0daQ3VZ6u",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
+    "115 Park Place - Apt 4C - $1884.94 -": "recsMbHc1ZUWGnkGz",
     "1245 Edward L Grant Highway - Apt 7G - $1294.65 -": "recHvHsSbhTcm7gKo",
     "1281 Hoe Ave - Apt 7E - $1601.25 - Senior Preferece 60+": "recinxqScEeOCdCIx",
     "130 Hope St - Apt 406 - $4069.25 -": "rectohTHRU24pNtMN",
@@ -148,5 +150,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-29T20:01:19.803606+00:00"
+  "updated_at": "2026-10-29T20:48:36.832858+00:00"
 }
