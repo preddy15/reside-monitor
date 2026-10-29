@@ -21,7 +21,6 @@
     "1457 Flatbush Ave - Apt 408 - $3290.11 -",
     "1543 E 19th - Apt 3E - $2484.69 -",
     "16 Dupont Street - Apt 30A - $3128 -",
-    "1616 Crosby Ave - Apt 4H - $3445.35 -",
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
     "1718 President Street - Apt 10B - $3412.21 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
@@ -95,7 +94,6 @@
     "1457 Flatbush Ave - Apt 408 - $3290.11 -": "rec0jytu8SdmI6Oa3",
     "1543 E 19th - Apt 3E - $2484.69 -": "rec5kmMNaiGF8Z2tX",
     "16 Dupont Street - Apt 30A - $3128 -": "rec446AvWeh2q93mq",
-    "1616 Crosby Ave - Apt 4H - $3445.35 -": "recGw22RbQMzS8UEE",
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
@@ -150,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-29T17:15:45.039373+00:00"
+  "updated_at": "2026-10-29T17:49:55.041210+00:00"
 }
