@@ -39,7 +39,6 @@
     "2183 Morris Ave - Apt 2B - $3445.35 -",
     "2203 Clarendon Road - Apt 3D - $2221 -",
     "234 East 203 Apt 2A - Apt 2A - $2890 -",
-    "237 West 167 Street - Apt 3B - $3677.34 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
     "246 W 150 Street - Apt 2B - $3207.43 -",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -",
@@ -113,7 +112,6 @@
     "2183 Morris Ave - Apt 2B - $3445.35 -": "recFCqfgjQA8U7Kv6",
     "2203 Clarendon Road - Apt 3D - $2221 -": "recLdVS6G303vVpFF",
     "234 East 203 Apt 2A - Apt 2A - $2890 -": "recJqR2Y6aThN0PRJ",
-    "237 West 167 Street - Apt 3B - $3677.34 -": "recOTjP3tzOSBVSlu",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
     "246 W 150 Street - Apt 2B - $3207.43 -": "recMyzNh9eE7eMjw8",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -": "recghf35pdYrvl3yG",
@@ -150,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-29T19:59:20.672088+00:00"
+  "updated_at": "2026-10-29T20:01:19.803606+00:00"
 }
