@@ -49,7 +49,6 @@
     "25-01 Queens Plaza North - Apt 805 - $3653 -",
     "25-01 Queens Plaza North - Apt 905 - $3653 -",
     "250 West 49th Street - Apt 406 - $4349 -",
-    "254 Amboy Street - Apt 2B - Apt 2B - $2882.8 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "28-08 38th Avenue - Apt 1 BR - $3661 -",
     "28-08 38th Avenue - Apt 2 BR - $4376 -",
@@ -123,7 +122,6 @@
     "25-01 Queens Plaza North - Apt 805 - $3653 -": "rec1GMecGYMic6You",
     "25-01 Queens Plaza North - Apt 905 - $3653 -": "recj1oPgkyAqXrOkw",
     "250 West 49th Street - Apt 406 - $4349 -": "recaLi1wnzGPaSFxc",
-    "254 Amboy Street - Apt 2B - Apt 2B - $2882.8 -": "recm7FrbudUKjdu5J",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
     "28-08 38th Avenue - Apt 1 BR - $3661 -": "recwvBBTFfBtVk1tt",
     "28-08 38th Avenue - Apt 2 BR - $4376 -": "recuZY0O8LXq72UvI",
@@ -150,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-29T14:12:28.940469+00:00"
+  "updated_at": "2026-10-29T14:15:08.825494+00:00"
 }
