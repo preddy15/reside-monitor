@@ -18,7 +18,6 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -",
-    "1499 Bedford Ave - Apt 8C - $3219.6 -",
     "1543 E 19th - Apt 3E - $2484.69 -",
     "16 Dupont Street - Apt 30A - $3128 -",
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
@@ -92,7 +91,6 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -": "rec0jytu8SdmI6Oa3",
-    "1499 Bedford Ave - Apt 8C - $3219.6 -": "rec7QGgWrD02uGy0x",
     "1543 E 19th - Apt 3E - $2484.69 -": "rec5kmMNaiGF8Z2tX",
     "16 Dupont Street - Apt 30A - $3128 -": "rec446AvWeh2q93mq",
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
@@ -150,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-29T13:34:34.540517+00:00"
+  "updated_at": "2026-10-29T13:58:01.016313+00:00"
 }
