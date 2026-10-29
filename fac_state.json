@@ -64,13 +64,6 @@
       "status": "current",
       "unit": "3D"
     },
-    "sunset park apartments and library||6f": {
-      "address": null,
-      "building": "Sunset Park Apartments and Library",
-      "rent": "$927.00",
-      "status": "current",
-      "unit": "6F"
-    },
     "sunset park apartments and library||6g": {
       "address": null,
       "building": "Sunset Park Apartments and Library",
@@ -128,5 +121,5 @@
       "unit": "8C"
     }
   },
-  "updated_at": "2026-10-26T22:42:34.819938+00:00"
+  "updated_at": "2026-10-29T14:43:18.581026+00:00"
 }

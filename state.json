@@ -58,6 +58,7 @@
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
+    "46-02 70th Street - J&J Tower - Apt 4F v2 - Apt 4F - $2787.06 -",
     "522 Evergreen - Apt 4A - $2222.84 -",
     "56 W 125 St - Apt 1105 - $3002.94 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
@@ -132,6 +133,7 @@
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI": "recxJ9qyCliLXanX8",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
+    "46-02 70th Street - J&J Tower - Apt 4F v2 - Apt 4F - $2787.06 -": "rec0MzEQA7B2RmEo5",
     "522 Evergreen - Apt 4A - $2222.84 -": "recX845sAonQ1dcrU",
     "56 W 125 St - Apt 1105 - $3002.94 -": "recxiH9OUeLySn03P",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
@@ -150,5 +152,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-29T14:41:03.581639+00:00"
+  "updated_at": "2026-10-29T14:43:59.599600+00:00"
 }
