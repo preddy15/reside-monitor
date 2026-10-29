@@ -69,6 +69,7 @@
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
     "9-24 Main Ave - Apt 305 - $2830.76 -",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -",
+    "94-15 Sutphin Boulevard - Apt 2225 - $3661 -",
     "947 Sheridan Ave - Apt 1D - $3128 -",
     "95-08 147th Place - Apt 701 - $3811 -",
     "Douglass Street Apartments - Apt 8L - $3495 -",
@@ -142,11 +143,12 @@
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
     "9-24 Main Ave - Apt 305 - $2830.76 -": "recHLRrPA6Ooi1k76",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -": "recL3cH6ZLzAu9V7O",
+    "94-15 Sutphin Boulevard - Apt 2225 - $3661 -": "recRcfVXRnXfdHvNP",
     "947 Sheridan Ave - Apt 1D - $3128 -": "recsPrCPAboZUyWj7",
     "95-08 147th Place - Apt 701 - $3811 -": "recxKYHOiXIYXoIbu",
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-29T14:15:08.825494+00:00"
+  "updated_at": "2026-10-29T14:41:03.581639+00:00"
 }
