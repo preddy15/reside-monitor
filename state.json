@@ -25,7 +25,6 @@
     "1718 President Street - Apt 10B - $3412.21 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "187 Johnson Ave - Apt 2F - $2762.83 -",
-    "188 Humboldt Street - Apt 7K - $2418.06 -",
     "1988 Anthony Ave - Apt 2A - $2798.41 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
@@ -101,7 +100,6 @@
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "187 Johnson Ave - Apt 2F - $2762.83 -": "recOpelG2vjBUKABK",
-    "188 Humboldt Street - Apt 7K - $2418.06 -": "recJhPGR84aIrOOUR",
     "1988 Anthony Ave - Apt 2A - $2798.41 -": "reci5NoLFtD9rUQyH",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
@@ -154,5 +152,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-28T20:42:36.961855+00:00"
+  "updated_at": "2026-10-29T13:33:56.394381+00:00"
 }
