@@ -58,7 +58,6 @@
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
     "56 W 125 St - Apt 1105 - $3002.94 -",
-    "63-68 Austin Street - 3K - Apt 3K - $1843 -",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "701 Elton Ave - Apt 5E - $2433.41 -",
@@ -132,7 +131,6 @@
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
     "56 W 125 St - Apt 1105 - $3002.94 -": "recxiH9OUeLySn03P",
-    "63-68 Austin Street - 3K - Apt 3K - $1843 -": "recP5vfRb01vJ9Q3R",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -": "rec1mjyTZwgJKYMqh",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "701 Elton Ave - Apt 5E - $2433.41 -": "recznuGeXqQ8v53uX",
@@ -150,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-29T19:22:17.524631+00:00"
+  "updated_at": "2026-10-29T19:23:41.439630+00:00"
 }
