@@ -138,6 +138,29 @@
       "units_count": 2,
       "url": "https://mgnyconsulting.com/listing/188-11-hillside-avenue/"
     },
+    "https://mgnyconsulting.com/listing/2008-crotona-avenue": {
+      "address": "2008 Crotona Avenue 2008 Crotona Avenue, Bronx, NY 10457",
+      "income_range": "$85,852 - $238,160",
+      "tiers": {
+        "130%||2 bedroom||$2,250.00||2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$85,852 – $238,160",
+          "appearance_count": 5,
+          "first_seen": "2026-08-20T04:04:39.814757+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": "2026-10-30T18:33:40.199808+00:00",
+          "last_seen": "2026-10-30T18:34:43.068873+00:00",
+          "removal_count": 4,
+          "rent": "$2,250.00",
+          "unit_size": "2 Bedroom",
+          "units_available": 1
+        }
+      },
+      "title": "2008 Crotona Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/2008-crotona-avenue/"
+    },
     "https://mgnyconsulting.com/listing/2454-east-15th-street-apartments": {
       "address": "2454 East 15th Street Apartments 2454 East 15th Street, Brooklyn, NY 11235",
       "income_range": "$86,053 - $198,510",
@@ -463,5 +486,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-10-30T18:33:40.199808+00:00"
+  "updated_at": "2026-10-30T18:34:43.068873+00:00"
 }
