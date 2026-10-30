@@ -54,7 +54,6 @@
     "28-08 38th Avenue - Apt 1 BR - $3661 -",
     "28-08 38th Avenue - Apt 2 BR - $4376 -",
     "28-08 38th Avenue - Apt 2F - $3423 -",
-    "3031 Bronxwood Ave - Apt 2A - $2310.24 -",
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
@@ -128,7 +127,6 @@
     "28-08 38th Avenue - Apt 1 BR - $3661 -": "recwvBBTFfBtVk1tt",
     "28-08 38th Avenue - Apt 2 BR - $4376 -": "recuZY0O8LXq72UvI",
     "28-08 38th Avenue - Apt 2F - $3423 -": "recQY4FRCnuwpn0T0",
-    "3031 Bronxwood Ave - Apt 2A - $2310.24 -": "recsAzcnRYpROMZ6s",
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI": "recxJ9qyCliLXanX8",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
@@ -150,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-30T13:44:15.367438+00:00"
+  "updated_at": "2026-10-30T15:42:18.643470+00:00"
 }
