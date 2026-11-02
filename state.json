@@ -66,6 +66,8 @@
     "94-15 Sutphin Boulevard - Apt 2225 - $3661 -",
     "947 Sheridan Ave - Apt 1D - $3128 -",
     "95-08 147th Place - Apt 701 - $3811 -",
+    "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -",
+    "Atlantic BK - OM - Apt 614 - $3345 -",
     "Douglass Street Apartments - Apt 8L - $3495 -",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+"
   ],
@@ -134,9 +136,11 @@
     "94-15 Sutphin Boulevard - Apt 2225 - $3661 -": "recRcfVXRnXfdHvNP",
     "947 Sheridan Ave - Apt 1D - $3128 -": "recsPrCPAboZUyWj7",
     "95-08 147th Place - Apt 701 - $3811 -": "recxKYHOiXIYXoIbu",
+    "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -": "recwLikKsGtISsuMF",
+    "Atlantic BK - OM - Apt 614 - $3345 -": "recrtSVHpb2hG0Q39",
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-02T17:16:45.053316+00:00"
+  "updated_at": "2026-11-02T17:48:23.443973+00:00"
 }
