@@ -54,7 +54,6 @@
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
-    "540 Atlantic Avenue Apartments - OM - Apt 2 Bed - $4347 -",
     "56 W 125 St - Apt 1105 - $3002.94 -",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
@@ -128,7 +127,6 @@
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI": "recxJ9qyCliLXanX8",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
-    "540 Atlantic Avenue Apartments - OM - Apt 2 Bed - $4347 -": "rec9cOZn0MwZ6bkKw",
     "56 W 125 St - Apt 1105 - $3002.94 -": "recxiH9OUeLySn03P",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -": "rec1mjyTZwgJKYMqh",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
@@ -150,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-02T18:48:01.560453+00:00"
+  "updated_at": "2026-11-02T18:48:43.643970+00:00"
 }
