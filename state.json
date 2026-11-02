@@ -50,9 +50,6 @@
     "25-01 Queens Plaza North - Apt 905 - $3653 -",
     "250 West 49th Street - Apt 406 - $4349 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
-    "28-08 38th Avenue - Apt 1 BR - $3661 -",
-    "28-08 38th Avenue - Apt 2 BR - $4376 -",
-    "28-08 38th Avenue - Apt 2F - $3423 -",
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
@@ -121,9 +118,6 @@
     "25-01 Queens Plaza North - Apt 905 - $3653 -": "recj1oPgkyAqXrOkw",
     "250 West 49th Street - Apt 406 - $4349 -": "recaLi1wnzGPaSFxc",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
-    "28-08 38th Avenue - Apt 1 BR - $3661 -": "recwvBBTFfBtVk1tt",
-    "28-08 38th Avenue - Apt 2 BR - $4376 -": "recuZY0O8LXq72UvI",
-    "28-08 38th Avenue - Apt 2F - $3423 -": "recQY4FRCnuwpn0T0",
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI": "recxJ9qyCliLXanX8",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
@@ -144,5 +138,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-02T16:17:13.738877+00:00"
+  "updated_at": "2026-11-02T17:16:45.053316+00:00"
 }
