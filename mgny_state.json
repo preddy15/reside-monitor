@@ -16,14 +16,6 @@
       "units_count": 6,
       "url": "https://mgnyconsulting.com/listing/1215-fulton-street-aka-12-halsey-street/"
     },
-    "https://mgnyconsulting.com/listing/1215fulton12halsey": {
-      "address": null,
-      "income_range": "$126,583 - $198,510",
-      "tiers": {},
-      "title": "1215 Fulton Street aka 12 Halsey Street",
-      "units_count": 5,
-      "url": "https://mgnyconsulting.com/listing/1215fulton12halsey/"
-    },
     "https://mgnyconsulting.com/listing/1295-rodman-place-apartments": {
       "address": "1295 Rodman Place Apartments 1295 Rodman Place, Bronx, NY 10460",
       "income_range": "$116,487 - $198,510",
@@ -486,5 +478,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-10-30T18:34:43.068873+00:00"
+  "updated_at": "2026-11-02T14:53:01.530250+00:00"
 }
