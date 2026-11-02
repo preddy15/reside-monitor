@@ -26,6 +26,7 @@
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "187 Johnson Ave - Apt 2F - $2762.83 -",
     "1988 Anthony Ave - Apt 2A - $2798.41 -",
+    "1988 Anthony Ave - Apt 2J - $3357.17 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2061 Crotona - Apt 4C - $3237.41 -",
@@ -96,6 +97,7 @@
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "187 Johnson Ave - Apt 2F - $2762.83 -": "recOpelG2vjBUKABK",
     "1988 Anthony Ave - Apt 2A - $2798.41 -": "reci5NoLFtD9rUQyH",
+    "1988 Anthony Ave - Apt 2J - $3357.17 -": "recIsLOY2sLQQmFy4",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2061 Crotona - Apt 4C - $3237.41 -": "rectsKHgamEGuMbTd",
@@ -142,5 +144,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-10-30T17:04:17.807178+00:00"
+  "updated_at": "2026-11-02T16:17:13.738877+00:00"
 }
