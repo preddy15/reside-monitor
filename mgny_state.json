@@ -47,6 +47,29 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/132-134-waverly-avenue-apartments/"
     },
+    "https://mgnyconsulting.com/listing/1431-vyse-avenue-2": {
+      "address": null,
+      "income_range": "$66,892 - $238,160",
+      "tiers": {
+        "130%||2 bedroom||$1,697.00||2-5 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$66,892 – $238,160",
+          "appearance_count": 1,
+          "first_seen": "2026-11-02T17:55:04.682234+00:00",
+          "household_size": "2-5 people",
+          "last_removed_at": null,
+          "last_seen": "2026-11-02T17:55:04.682234+00:00",
+          "removal_count": 0,
+          "rent": "$1,697.00",
+          "unit_size": "2 Bedroom",
+          "units_available": 1
+        }
+      },
+      "title": "1431 Vyse Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/1431-vyse-avenue-2/"
+    },
     "https://mgnyconsulting.com/listing/146-61-105-avenue": {
       "address": "146-61 105 Avenue 146-61 105 Avenue, Queens, NY 11435",
       "income_range": "$118,869 - $198,510",
@@ -455,5 +478,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-02T16:27:44.393859+00:00"
+  "updated_at": "2026-11-02T17:55:04.682234+00:00"
 }
