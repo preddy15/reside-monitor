@@ -41,6 +41,7 @@
     "2183 Morris Ave - Apt 2B - $3445.35 -",
     "234 East 203 Apt 2A - Apt 2A - $2890 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
+    "2383 Lorillard Place - Apt 3R - $2005.41 -",
     "246 W 150 Street - Apt 2B - $3207.43 -",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -",
     "25-01 Queens Plaza North - Apt 304 - $3300 -",
@@ -116,6 +117,7 @@
     "2183 Morris Ave - Apt 2B - $3445.35 -": "recFCqfgjQA8U7Kv6",
     "234 East 203 Apt 2A - Apt 2A - $2890 -": "recJqR2Y6aThN0PRJ",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
+    "2383 Lorillard Place - Apt 3R - $2005.41 -": "recevsv7pbhmlgFK9",
     "246 W 150 Street - Apt 2B - $3207.43 -": "recMyzNh9eE7eMjw8",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -": "recghf35pdYrvl3yG",
     "25-01 Queens Plaza North - Apt 304 - $3300 -": "recsmid2IyQjaqpJ7",
@@ -152,5 +154,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-03T16:06:43.664597+00:00"
+  "updated_at": "2026-11-03T16:25:25.673066+00:00"
 }
