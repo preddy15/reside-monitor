@@ -55,6 +55,7 @@
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
+    "45-15 Colden St - Apt 4D - $2593 -",
     "45-15 Colden St - Apt 5Y - $2816 -",
     "56 W 125 St - Apt 1105 - $3002.94 -",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -",
@@ -132,6 +133,7 @@
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI": "recxJ9qyCliLXanX8",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
+    "45-15 Colden St - Apt 4D - $2593 -": "recD5PrHJJjG0UbQI",
     "45-15 Colden St - Apt 5Y - $2816 -": "recu9eKLou6pZjkQ7",
     "56 W 125 St - Apt 1105 - $3002.94 -": "recxiH9OUeLySn03P",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -": "rec1mjyTZwgJKYMqh",
@@ -156,5 +158,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-03T16:27:18.711684+00:00"
+  "updated_at": "2026-11-03T16:29:28.120273+00:00"
 }
