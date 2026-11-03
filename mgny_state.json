@@ -276,6 +276,29 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/865-rogers-avenue/"
     },
+    "https://mgnyconsulting.com/listing/903-eagle-avenue-apartments": {
+      "address": "903 Eagle Avenue Apartments 903 Eagle Avenue, Bronx, NY 10456",
+      "income_range": "$77,407 - $198,510",
+      "tiers": {
+        "130%||1 bedroom||$1,983.70||1-3 people": {
+          "active": true,
+          "ami": "130%",
+          "annual_income": "$77,407 – $198,510",
+          "appearance_count": 1,
+          "first_seen": "2026-11-03T16:13:12.502508+00:00",
+          "household_size": "1-3 people",
+          "last_removed_at": null,
+          "last_seen": "2026-11-03T16:13:12.502508+00:00",
+          "removal_count": 0,
+          "rent": "$1,983.70",
+          "unit_size": "1 Bedroom",
+          "units_available": 1
+        }
+      },
+      "title": "903 Eagle Avenue Apartments",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/903-eagle-avenue-apartments/"
+    },
     "https://mgnyconsulting.com/listing/forten": {
       "address": "410 W 126th St, New York, NY 10027",
       "income_range": "$143,658 - $238,160",
@@ -478,5 +501,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-02T17:55:04.682234+00:00"
+  "updated_at": "2026-11-03T16:13:12.502508+00:00"
 }
