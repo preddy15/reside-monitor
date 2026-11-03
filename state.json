@@ -33,7 +33,6 @@
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2061 Crotona - Apt 4C - $3237.41 -",
     "2061 Crotona Ave - Apt 2C - $3237.42 -",
-    "2061Crotona - Apt 4B - $3787.95 -",
     "2072 Anthony Ave - Apt 4J - $3037.47 -",
     "2072 Anthony Ave - Apt 6I - $3037.47 -",
     "2140 Matthews Ave - Apt 4A - $2941.02 -",
@@ -110,7 +109,6 @@
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2061 Crotona - Apt 4C - $3237.41 -": "rectsKHgamEGuMbTd",
     "2061 Crotona Ave - Apt 2C - $3237.42 -": "recl8wA3YDcWn44ag",
-    "2061Crotona - Apt 4B - $3787.95 -": "recpT0cpxzm2HwTe5",
     "2072 Anthony Ave - Apt 4J - $3037.47 -": "rec3mMbZKu8pdpNCL",
     "2072 Anthony Ave - Apt 6I - $3037.47 -": "recqHoPOQboy3J40q",
     "2140 Matthews Ave - Apt 4A - $2941.02 -": "recoCiA3nWif6uMSG",
@@ -156,5 +154,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-03T16:43:59.584891+00:00"
+  "updated_at": "2026-11-03T19:20:18.766317+00:00"
 }
