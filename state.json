@@ -25,6 +25,7 @@
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
     "1718 President Street - Apt 10B - $3412.21 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
+    "1730 Bedford Ave - Apt 605 - $2515 -",
     "187 Johnson Ave - Apt 2F - $2762.83 -",
     "1988 Anthony Ave - Apt 2A - $2798.41 -",
     "1988 Anthony Ave - Apt 2J - $3357.17 -",
@@ -103,6 +104,7 @@
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
+    "1730 Bedford Ave - Apt 605 - $2515 -": "recA4Bhz0dMoOPfYt",
     "187 Johnson Ave - Apt 2F - $2762.83 -": "recOpelG2vjBUKABK",
     "1988 Anthony Ave - Apt 2A - $2798.41 -": "reci5NoLFtD9rUQyH",
     "1988 Anthony Ave - Apt 2J - $3357.17 -": "recIsLOY2sLQQmFy4",
@@ -158,5 +160,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-03T16:29:28.120273+00:00"
+  "updated_at": "2026-11-03T16:31:52.413872+00:00"
 }
