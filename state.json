@@ -50,7 +50,6 @@
     "25-01 Queens Plaza North - Apt 805 - $3653 -",
     "25-01 Queens Plaza North - Apt 905 - $3653 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
-    "3073 Barker Ave Apartments - OM - Studio - Apt Studio - $2835 -",
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
@@ -127,7 +126,6 @@
     "25-01 Queens Plaza North - Apt 805 - $3653 -": "rec1GMecGYMic6You",
     "25-01 Queens Plaza North - Apt 905 - $3653 -": "recj1oPgkyAqXrOkw",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
-    "3073 Barker Ave Apartments - OM - Studio - Apt Studio - $2835 -": "recXXFkhGz9Kax7P8",
     "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI": "recxJ9qyCliLXanX8",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
@@ -156,5 +154,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-03T19:44:15.400871+00:00"
+  "updated_at": "2026-11-03T19:44:57.310219+00:00"
 }
