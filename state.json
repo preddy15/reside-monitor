@@ -64,6 +64,7 @@
     "86 West 174 St - Apt 3B - $3950.05 -",
     "864 49th Street - Apt D8 - $2620.13 -",
     "875 4th Avenue - Apt 302 - $2157.63 - MI",
+    "88-36 139 Street - Apt 3D - $2090 -",
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
     "9-24 Main Ave - Apt 305 - $2830.76 -",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -",
@@ -140,6 +141,7 @@
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
     "864 49th Street - Apt D8 - $2620.13 -": "recRQQ47UfGzhX4CJ",
     "875 4th Avenue - Apt 302 - $2157.63 - MI": "recFS1kpEb5mtwbfH",
+    "88-36 139 Street - Apt 3D - $2090 -": "recVvGyL9jzBi0hkJ",
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
     "9-24 Main Ave - Apt 305 - $2830.76 -": "recHLRrPA6Ooi1k76",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -": "recL3cH6ZLzAu9V7O",
@@ -154,5 +156,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-03T19:44:57.310219+00:00"
+  "updated_at": "2026-11-03T19:50:13.377692+00:00"
 }
