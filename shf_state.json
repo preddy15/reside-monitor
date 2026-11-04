@@ -31,12 +31,6 @@
       "unit": "11J",
       "unit_size": "Studio"
     },
-    "raw||146 pierrepont street unit 6d 40 studio mobility set aside unit must meet mobility preference": {
-      "ami": null,
-      "project": "146 Pierrepont Street Unit 6D (40% Studio) - Mobility set-aside unit. Must meet Mobility preference.",
-      "unit": null,
-      "unit_size": null
-    },
     "raw||280 west 24th street unit 2d 130 ami 2 bed mobility set aside unit must meet mobility preference": {
       "ami": null,
       "project": "280 West 24th Street Unit 2D (130% AMI 2-Bed) - Mobility set-aside unit. Must meet Mobility preference.",
@@ -62,5 +56,5 @@
       "unit_size": "Studio"
     }
   },
-  "updated_at": "2026-11-04T18:00:24.997142+00:00"
+  "updated_at": "2026-11-04T18:01:38.968896+00:00"
 }
