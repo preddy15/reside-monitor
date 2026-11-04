@@ -49,6 +49,7 @@
     "25-01 Queens Plaza North - Apt 805 - $3653 -",
     "25-01 Queens Plaza North - Apt 905 - $3653 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
+    "3187 Grand Concourse - Apt 8B - $2312.35 -",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
     "44-35 Colden St - Apt 4E - $2593 -",
@@ -121,6 +122,7 @@
     "25-01 Queens Plaza North - Apt 805 - $3653 -": "rec1GMecGYMic6You",
     "25-01 Queens Plaza North - Apt 905 - $3653 -": "recj1oPgkyAqXrOkw",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
+    "3187 Grand Concourse - Apt 8B - $2312.35 -": "recwipXqix1uTvK1E",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
     "44-35 Colden St - Apt 4E - $2593 -": "recR2lCxi5QogUoxj",
@@ -146,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-04T18:34:18.294399+00:00"
+  "updated_at": "2026-11-04T18:40:32.491731+00:00"
 }
