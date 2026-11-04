@@ -1,12 +1,6 @@
 {
   "initialized": true,
   "listings": {
-    "266 west 96th street||402": {
-      "ami": "70%",
-      "project": "266 West 96th Street",
-      "unit": "402",
-      "unit_size": "Studio"
-    },
     "30 kent street||310": {
       "ami": "130%",
       "project": "30 Kent Street",
@@ -68,5 +62,5 @@
       "unit_size": "Studio"
     }
   },
-  "updated_at": "2026-11-04T17:59:48.364266+00:00"
+  "updated_at": "2026-11-04T18:00:24.997142+00:00"
 }
