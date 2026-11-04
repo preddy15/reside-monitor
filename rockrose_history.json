@@ -15,7 +15,7 @@
       "first_seen": "2026-09-24T15:18:15.929333+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-11-04T20:16:06.545333+00:00",
+      "last_seen": "2026-11-04T20:17:21.356288+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "43-12 HUNTER STREET, Long Island City, NY, USA",
@@ -29,7 +29,7 @@
       "rent": null,
       "source": "Rockrose",
       "unit": "Multiple",
-      "unit_size": null,
+      "unit_size": "Studios - 2 Bedrooms",
       "url": "https://rockrose.com/affordable-availabilities/the-cove-waitlist/"
     },
     "43 14 queens street long island city ny 11101||5j": {
@@ -144,7 +144,7 @@
       "first_seen": "2026-09-18T14:49:24.178283+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-09-18T14:52:44.791621+00:00",
-      "last_seen": "2026-11-04T20:16:06.545333+00:00",
+      "last_seen": "2026-11-04T20:17:21.356288+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "555 WEST 38 STREET, New York, NY, USA",
@@ -162,6 +162,6 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-waiting-list/"
     }
   },
-  "updated_at": "2026-11-04T20:16:06.545499+00:00",
+  "updated_at": "2026-11-04T20:17:21.357349+00:00",
   "version": 1
 }
