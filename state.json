@@ -63,7 +63,6 @@
     "701 Elton Ave - Apt 2A - $2415.32 -",
     "701 Elton Ave - Apt 5E - $2433.41 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
-    "824 East New York Ave - Apt 2G - $2374.74 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
     "864 49th Street - Apt D8 - $2620.13 -",
     "875 4th Avenue - Apt 302 - $2157.63 - MI",
@@ -142,7 +141,6 @@
     "701 Elton Ave - Apt 2A - $2415.32 -": "rec1dV8Ss27Y4RpWP",
     "701 Elton Ave - Apt 5E - $2433.41 -": "recznuGeXqQ8v53uX",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
-    "824 East New York Ave - Apt 2G - $2374.74 -": "recDpX48BfZhOecb4",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
     "864 49th Street - Apt D8 - $2620.13 -": "recRQQ47UfGzhX4CJ",
     "875 4th Avenue - Apt 302 - $2157.63 - MI": "recFS1kpEb5mtwbfH",
@@ -160,5 +158,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-04T21:52:35.406265+00:00"
+  "updated_at": "2026-11-04T21:56:22.092512+00:00"
 }
