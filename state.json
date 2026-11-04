@@ -24,7 +24,6 @@
     "1718 President Street - Apt 10B - $3412.21 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "1730 Bedford Ave - Apt 605 - $2515 -",
-    "187 Johnson Ave - Apt 2F - $2762.83 -",
     "1988 Anthony Ave - Apt 2A - $2798.41 -",
     "1988 Anthony Ave - Apt 2J - $3357.17 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
@@ -48,7 +47,6 @@
     "25-01 Queens Plaza North - Apt 805 - $3653 -",
     "25-01 Queens Plaza North - Apt 905 - $3653 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
-    "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
     "45-15 Colden St - Apt 4D - $2593 -",
@@ -70,7 +68,6 @@
     "Atlantic BK - OM - Apt 614 - $3345 -",
     "Castleton - 1546 Castleton Avenue, Staten Island - Apt 4E - $843 -",
     "Douglass Street Apartments - Apt 8L - $3495 -",
-    "Kent Avenue Apartments - Apt 303 - $3731.69 -",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+"
   ],
   "project_record_ids": {
@@ -96,7 +93,6 @@
     "1718 President Street - Apt 10B - $3412.21 -": "rec2jghR27k38Pqxn",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "1730 Bedford Ave - Apt 605 - $2515 -": "recA4Bhz0dMoOPfYt",
-    "187 Johnson Ave - Apt 2F - $2762.83 -": "recOpelG2vjBUKABK",
     "1988 Anthony Ave - Apt 2A - $2798.41 -": "reci5NoLFtD9rUQyH",
     "1988 Anthony Ave - Apt 2J - $3357.17 -": "recIsLOY2sLQQmFy4",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
@@ -120,7 +116,6 @@
     "25-01 Queens Plaza North - Apt 805 - $3653 -": "rec1GMecGYMic6You",
     "25-01 Queens Plaza North - Apt 905 - $3653 -": "recj1oPgkyAqXrOkw",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
-    "346 Kent Ave - Apt 1001 - $3166.35 - HI-VI": "recxJ9qyCliLXanX8",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
     "45-15 Colden St - Apt 4D - $2593 -": "recD5PrHJJjG0UbQI",
@@ -142,9 +137,8 @@
     "Atlantic BK - OM - Apt 614 - $3345 -": "recrtSVHpb2hG0Q39",
     "Castleton - 1546 Castleton Avenue, Staten Island - Apt 4E - $843 -": "recRdXXS6GcFgU0Ui",
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC",
-    "Kent Avenue Apartments - Apt 303 - $3731.69 -": "recJ3PQKL7jn1qnGd",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-04T15:39:11.803389+00:00"
+  "updated_at": "2026-11-04T15:39:43.960964+00:00"
 }
