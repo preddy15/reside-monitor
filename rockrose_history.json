@@ -15,7 +15,7 @@
       "first_seen": "2026-09-24T15:18:15.929333+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-11-04T20:19:25.696157+00:00",
+      "last_seen": "2026-11-04T20:57:37.917075+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "43-12 HUNTER STREET, Long Island City, NY, USA",
@@ -94,6 +94,37 @@
       "unit_size": "Studio",
       "url": "https://rockrose.com/affordable-availabilities/eagle-lofts-collection-phase-2-apt-2p-income-restricted-unit-130-ami-rent-stabilized/"
     },
+    "43 14 queens street long island city ny 11101||multiple": {
+      "active": true,
+      "address": "43-14 Queens Street, Long Island City, NY 11101",
+      "appearance_count": 1,
+      "details": {
+        "ami": null,
+        "application_deadline": null,
+        "application_email": "affordablerental@rockrose.com",
+        "one_person_eligible": null,
+        "one_person_income": null
+      },
+      "first_seen": "2026-11-04T20:57:37.917075+00:00",
+      "first_seen_source": "observed",
+      "last_removed_at": null,
+      "last_seen": "2026-11-04T20:57:37.917075+00:00",
+      "location": {
+        "borough": "Queens",
+        "display_name": "43-14 QUEENS STREET, Long Island City, NY, USA",
+        "lat": "40.74767",
+        "lon": "-73.93984",
+        "neighborhood": "Long Island City",
+        "postcode": "11101"
+      },
+      "published_income_range": null,
+      "removal_count": 0,
+      "rent": null,
+      "source": "Rockrose",
+      "unit": "Multiple",
+      "unit_size": null,
+      "url": "https://rockrose.com/affordable-availabilities/eagle-lofts-phase-2-waitlist/"
+    },
     "555 w 38 street manhattan ny 10018||1908": {
       "active": false,
       "address": "555 W 38 Street, Manhattan, NY 10018",
@@ -144,7 +175,7 @@
       "first_seen": "2026-09-18T14:49:24.178283+00:00",
       "first_seen_source": "observed",
       "last_removed_at": "2026-09-18T14:52:44.791621+00:00",
-      "last_seen": "2026-11-04T20:19:25.696157+00:00",
+      "last_seen": "2026-11-04T20:57:37.917075+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "555 WEST 38 STREET, New York, NY, USA",
@@ -162,6 +193,6 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-waiting-list/"
     }
   },
-  "updated_at": "2026-11-04T20:19:25.696776+00:00",
+  "updated_at": "2026-11-04T20:57:39.081106+00:00",
   "version": 1
 }
