@@ -51,6 +51,7 @@
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
+    "44-35 Colden St - Apt 4E - $2593 -",
     "45-15 Colden St - Apt 4D - $2593 -",
     "45-15 Colden St - Apt 5Y - $2816 -",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -",
@@ -122,6 +123,7 @@
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
+    "44-35 Colden St - Apt 4E - $2593 -": "recR2lCxi5QogUoxj",
     "45-15 Colden St - Apt 4D - $2593 -": "recD5PrHJJjG0UbQI",
     "45-15 Colden St - Apt 5Y - $2816 -": "recu9eKLou6pZjkQ7",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -": "rec1mjyTZwgJKYMqh",
@@ -144,5 +146,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-04T16:19:40.040631+00:00"
+  "updated_at": "2026-11-04T18:10:41.013023+00:00"
 }
