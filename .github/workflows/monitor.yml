@@ -190,7 +190,15 @@ jobs:
           fi
 
           git commit -m "Update rerental monitor data [skip ci]"
-          git push
+
+          # GitHub intermittently rejects pushes with a server error; retry
+          # with backoff rather than losing this run's state.
+          for delay in 0 5 15 30; do
+            sleep "$delay"
+            git pull --rebase --quiet && git push && exit 0
+            echo "Push failed; retrying..."
+          done
+          exit 1
 
       - name: Upload debug files if monitor failed
         if: steps.monitor.outcome == 'failure'
@@ -209,16 +217,21 @@ jobs:
         run: |
           echo "Dispatching next monitor run..."
 
-          WORKFLOW_ID=$(gh api \
-            "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
-            --jq '.workflow_id')
-
-          gh api \
-            --method POST \
-            "repos/$GITHUB_REPOSITORY/actions/workflows/$WORKFLOW_ID/dispatches" \
-            -f ref="$GITHUB_REF_NAME"
-
-          echo "Next monitor run dispatched."
+          # A failed dispatch stops the loop entirely, and GitHub's API
+          # intermittently returns 502s, so retry with backoff.
+          for delay in 0 5 15 30 60; do
+            sleep "$delay"
+            WORKFLOW_ID=$(gh api \
+              "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" \
+              --jq '.workflow_id') \
+            && gh api \
+              --method POST \
+              "repos/$GITHUB_REPOSITORY/actions/workflows/$WORKFLOW_ID/dispatches" \
+              -f ref="$GITHUB_REF_NAME" \
+            && { echo "Next monitor run dispatched."; exit 0; }
+            echo "Dispatch failed; retrying..."
+          done
+          exit 1
 
       - name: Alert if the next run could not be dispatched
         if: ${{ always() && inputs.test_listing == '' && vars.MONITOR_ENABLED == 'true' && steps.dispatch.outcome == 'failure' }}
