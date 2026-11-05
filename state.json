@@ -42,7 +42,6 @@
     "231 Chester Street - Apt 4B - $3442.73 -",
     "234 East 203 Apt 2A - Apt 2A - $2890 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
-    "246 W 150 Street - Apt 2B - $3207.43 -",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -",
     "25-01 Queens Plaza North - Apt 304 - $3300 -",
     "25-01 Queens Plaza North - Apt 325 - $3299 -",
@@ -59,8 +58,6 @@
     "45-15 Colden St - Apt 5Y - $2816 -",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
-    "701 Elton Ave - Apt 2A - $2415.32 -",
-    "701 Elton Ave - Apt 5E - $2433.41 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
     "864 49th Street - Apt D8 - $2620.13 -",
@@ -118,7 +115,6 @@
     "231 Chester Street - Apt 4B - $3442.73 -": "recjpRNfvlvB45USy",
     "234 East 203 Apt 2A - Apt 2A - $2890 -": "recJqR2Y6aThN0PRJ",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
-    "246 W 150 Street - Apt 2B - $3207.43 -": "recMyzNh9eE7eMjw8",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -": "recghf35pdYrvl3yG",
     "25-01 Queens Plaza North - Apt 304 - $3300 -": "recsmid2IyQjaqpJ7",
     "25-01 Queens Plaza North - Apt 325 - $3299 -": "rec8O2b4OoYtYR69e",
@@ -135,8 +131,6 @@
     "45-15 Colden St - Apt 5Y - $2816 -": "recu9eKLou6pZjkQ7",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -": "rec1mjyTZwgJKYMqh",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
-    "701 Elton Ave - Apt 2A - $2415.32 -": "rec1dV8Ss27Y4RpWP",
-    "701 Elton Ave - Apt 5E - $2433.41 -": "recznuGeXqQ8v53uX",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
     "864 49th Street - Apt D8 - $2620.13 -": "recRQQ47UfGzhX4CJ",
@@ -154,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-05T16:00:19.970420+00:00"
+  "updated_at": "2026-11-05T16:10:50.451261+00:00"
 }
