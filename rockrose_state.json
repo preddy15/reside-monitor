@@ -7,12 +7,6 @@
       "unit": "Multiple",
       "url": "https://rockrose.com/affordable-availabilities/the-cove-waitlist/"
     },
-    "43 14 queens street long island city ny 11101||multiple": {
-      "address": "43-14 Queens Street, Long Island City, NY 11101",
-      "rent": null,
-      "unit": "Multiple",
-      "url": "https://rockrose.com/affordable-availabilities/eagle-lofts-phase-2-waitlist/"
-    },
     "555 w 38 street manhattan ny 10018||multiple": {
       "address": "555 W 38 Street, Manhattan, NY 10018",
       "rent": null,
@@ -20,5 +14,5 @@
       "url": "https://rockrose.com/affordable-availabilities/lyra-waiting-list/"
     }
   },
-  "updated_at": "2026-11-05T14:28:40.329498+00:00"
+  "updated_at": "2026-11-05T14:30:10.249555+00:00"
 }
