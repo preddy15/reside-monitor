@@ -19,6 +19,7 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -",
+    "1499 Bedfrod Ave - Apt 3C - $2976.7 -",
     "150 Lenox Ave - Apt 2A - $2430.13 -",
     "1543 E 19th - Apt 3E - $2484.69 -",
     "1616 Crosby Ave - Apt 4H - $3445.35 -",
@@ -97,6 +98,7 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -": "rec0jytu8SdmI6Oa3",
+    "1499 Bedfrod Ave - Apt 3C - $2976.7 -": "recQSirQNvQnRDC3j",
     "150 Lenox Ave - Apt 2A - $2430.13 -": "recrLKA9dRzYz4qE4",
     "1543 E 19th - Apt 3E - $2484.69 -": "rec5kmMNaiGF8Z2tX",
     "1616 Crosby Ave - Apt 4H - $3445.35 -": "recGw22RbQMzS8UEE",
@@ -158,5 +160,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-05T15:09:15.367156+00:00"
+  "updated_at": "2026-11-05T15:39:28.837388+00:00"
 }
