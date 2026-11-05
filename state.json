@@ -63,7 +63,6 @@
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -",
     "947 Sheridan Ave - Apt 1D - $3128 -",
-    "95-08 147th Place - Apt 701 - $3811 -",
     "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -",
     "Atlantic BK - OM - Apt 614 - $3345 -",
     "Castleton - 1546 Castleton Avenue, Staten Island - Apt 4E - $843 -",
@@ -133,7 +132,6 @@
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -": "recL3cH6ZLzAu9V7O",
     "947 Sheridan Ave - Apt 1D - $3128 -": "recsPrCPAboZUyWj7",
-    "95-08 147th Place - Apt 701 - $3811 -": "recxKYHOiXIYXoIbu",
     "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -": "recwLikKsGtISsuMF",
     "Atlantic BK - OM - Apt 614 - $3345 -": "recrtSVHpb2hG0Q39",
     "Castleton - 1546 Castleton Avenue, Staten Island - Apt 4E - $843 -": "recRdXXS6GcFgU0Ui",
@@ -142,5 +140,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-05T21:13:52.868173+00:00"
+  "updated_at": "2026-11-05T21:14:27.545596+00:00"
 }
