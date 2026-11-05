@@ -62,7 +62,6 @@
     "875 4th Avenue - Apt 302 - $2157.63 - MI",
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -",
-    "94-15 Sutphin Boulevard - Apt 2225 - $3661 -",
     "947 Sheridan Ave - Apt 1D - $3128 -",
     "95-08 147th Place - Apt 701 - $3811 -",
     "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -",
@@ -133,7 +132,6 @@
     "875 4th Avenue - Apt 302 - $2157.63 - MI": "recFS1kpEb5mtwbfH",
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -": "recL3cH6ZLzAu9V7O",
-    "94-15 Sutphin Boulevard - Apt 2225 - $3661 -": "recRcfVXRnXfdHvNP",
     "947 Sheridan Ave - Apt 1D - $3128 -": "recsPrCPAboZUyWj7",
     "95-08 147th Place - Apt 701 - $3811 -": "recxKYHOiXIYXoIbu",
     "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -": "recwLikKsGtISsuMF",
@@ -144,5 +142,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-05T21:02:42.909821+00:00"
+  "updated_at": "2026-11-05T21:13:52.868173+00:00"
 }
