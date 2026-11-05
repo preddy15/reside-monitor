@@ -62,6 +62,7 @@
     "637 East 176 St - Apt 2C - $1493.03 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
+    "829 East 55th Street - Apt 3A - $5530.14 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
     "864 49th St - Apt C10 - $2899 -",
     "864 49th Street - Apt D8 - $2620.13 -",
@@ -140,6 +141,7 @@
     "637 East 176 St - Apt 2C - $1493.03 -": "recNpJ9IJmTpKqe52",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
+    "829 East 55th Street - Apt 3A - $5530.14 -": "recavXOsQKeWHLLyn",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
     "864 49th St - Apt C10 - $2899 -": "recZqicA7BJNMmLeh",
     "864 49th Street - Apt D8 - $2620.13 -": "recRQQ47UfGzhX4CJ",
@@ -158,5 +160,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-05T17:35:48.287851+00:00"
+  "updated_at": "2026-11-05T18:00:57.193808+00:00"
 }
