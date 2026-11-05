@@ -58,6 +58,7 @@
     "44-35 Colden St - Apt 4E - $2593 -",
     "45-15 Colden St - Apt 4D - $2593 -",
     "45-15 Colden St - Apt 5Y - $2816 -",
+    "510 East 148 - Apt 3B - $3164.7 -",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "701 Elton Ave - Apt 2A - $2415.32 -",
@@ -136,6 +137,7 @@
     "44-35 Colden St - Apt 4E - $2593 -": "recR2lCxi5QogUoxj",
     "45-15 Colden St - Apt 4D - $2593 -": "recD5PrHJJjG0UbQI",
     "45-15 Colden St - Apt 5Y - $2816 -": "recu9eKLou6pZjkQ7",
+    "510 East 148 - Apt 3B - $3164.7 -": "reclYEK93BvQLvNrV",
     "633 East 230th Street Apt. 7D - Apt 7D - $3835 -": "rec1mjyTZwgJKYMqh",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "701 Elton Ave - Apt 2A - $2415.32 -": "rec1dV8Ss27Y4RpWP",
@@ -158,5 +160,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-04T21:56:22.092512+00:00"
+  "updated_at": "2026-11-05T15:07:26.124735+00:00"
 }
