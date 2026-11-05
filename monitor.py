@@ -1318,6 +1318,70 @@ def geosearch_street(label: str | None) -> str:
     return normalize((label or "").split(",")[0]).casefold()
 
 
+STREET_SUFFIX_WORDS = {
+    "street", "st", "avenue", "ave", "av", "road", "rd", "place", "pl",
+    "boulevard", "blvd", "drive", "dr", "lane", "ln", "court", "ct",
+    "parkway", "pkwy", "terrace", "ter", "expressway", "expy",
+    "highway", "hwy",
+}
+# Words some sources append after the street ("137 Frost Street Brooklyn, NY").
+STREET_TRAILING_WORDS = {
+    "apartments", "brooklyn", "bronx", "queens", "manhattan", "ny",
+}
+STREET_WORD_ALIASES = {
+    "north": "n", "south": "s", "east": "e", "west": "w",
+    "first": "1", "second": "2", "third": "3", "fourth": "4", "fifth": "5",
+    "sixth": "6", "seventh": "7", "eighth": "8", "ninth": "9", "tenth": "10",
+    "bway": "broadway", "bx": "bronx",
+}
+
+
+def street_core(address: str | None) -> str:
+    """
+    The street name alone, in a form comparable across spellings:
+    '74 North 1st. St, Bronx' and '74 NORTH 1 STREET, Brooklyn, NY, USA'
+    both give 'n 1'.
+    """
+    text = normalize((address or "").split(",")[0]).casefold()
+    text = re.sub(r"\s+(?:apt|unit|#).*$", "", text)
+    text = re.sub(r"^\s*\d+(?:-\d+)?[a-z]?\b", "", text)
+    text = re.sub(r"\b(?:new york|staten island|\d{5})\s*$", "", text)
+    text = re.sub(r"['’]", "", text)
+    words = re.sub(r"[^\w\s]", " ", text).split()
+    while len(words) > 1 and words[-1] in STREET_TRAILING_WORDS:
+        words.pop()
+    tokens = []
+    for token in words:
+        token = re.sub(r"^(\d+)(?:st|nd|rd|th)$", r"\1", token)
+        token = STREET_WORD_ALIASES.get(token, token)
+        if token not in STREET_SUFFIX_WORDS:
+            tokens.append(token)
+    return " ".join(tokens)
+
+
+def streets_match(address: str | None, label: str | None) -> bool:
+    """
+    Whether a geocoder result is on the street the address names. GeoSearch
+    swaps a misspelled street for an unrelated one with the same house
+    number ("1499 Bedfrod Ave" -> "1499 1 AVENUE" on the Upper East Side),
+    so a result is only trusted when the street names agree, allowing small
+    typos but never a different street number ("10 St" is not "110 St").
+    """
+    # Only GeoSearch labels ("1499 1 AVENUE, New York, NY, USA") lead with
+    # the street; Nominatim's lead with the number or a place name and are
+    # already checked against the house number.
+    if not leading_house_number(address or "") or not re.search(
+        r", NY, USA$", label or ""
+    ):
+        return True
+    wanted, found = street_core(address), street_core(label)
+    if not wanted or not found or wanted == found:
+        return True
+    if re.findall(r"\d+", wanted) != re.findall(r"\d+", found):
+        return False
+    return SequenceMatcher(None, wanted, found).ratio() >= 0.8
+
+
 def geocode_nyc_geosearch(address: str, house_number: str) -> dict | None:
     """
     NYC Planning GeoSearch — the city's official address data. It resolves
@@ -1362,9 +1426,18 @@ def geocode_nyc_geosearch(address: str, house_number: str) -> dict | None:
                 "display_name": label or None,
             })
 
-        top = locations[0]
-        if leading_house_number(f"{top['display_name'] or ''} ") != house_number:
+        matches = [
+            location for location in locations
+            if leading_house_number(f"{location['display_name'] or ''} ") == house_number
+            and streets_match(address, location["display_name"])
+        ]
+        if not matches:
+            print(
+                f'GeoSearch has no match on the street "{address}" names '
+                f'(top result: {locations[0]["display_name"]}).'
+            )
             return None
+        top = matches[0]
 
         if address_names_borough_or_zip(address):
             return top
@@ -1373,7 +1446,7 @@ def geocode_nyc_geosearch(address: str, house_number: str) -> dict | None:
         street = geosearch_street(top["display_name"])
         candidates = []
         seen_boroughs = set()
-        for location in locations:
+        for location in matches:
             if geosearch_street(location["display_name"]) != street:
                 continue
             if location["borough"] in seen_boroughs:
@@ -1527,7 +1600,43 @@ def find_cached_location(history: dict, address: str) -> dict | None:
         if normalize(entry.get("address", "")).casefold() != wanted:
             continue
         location = entry.get("location")
-        if isinstance(location, dict) and location:
+        if (
+            isinstance(location, dict)
+            and location
+            and streets_match(entry.get("address"), location.get("display_name"))
+        ):
+            return location
+
+    return find_similar_cached_location(history, address)
+
+
+def find_similar_cached_location(
+    history: dict, address: str, exclude: dict | None = None
+) -> dict | None:
+    """
+    A stored location for the same house number on a near-identically
+    spelled street, so a typo'd Airtable row ("1499 Bedfrod Ave") reuses
+    the building's verified location ("1499 Bedford Ave", Crown Heights).
+    Only locations whose own street matches their entry's address count.
+    """
+    house_number = leading_house_number(address or "")
+    if not house_number:
+        return None
+
+    for entry in history.get("listings", {}).values():
+        if entry is exclude:
+            continue
+        other = str(entry.get("address") or "")
+        location = entry.get("location")
+        if (
+            leading_house_number(other) == house_number
+            and isinstance(location, dict)
+            and location
+            and not location.get("ambiguous")
+            and streets_match(address, other)
+            and streets_match(other, location.get("display_name"))
+            and normalize(other).casefold() != normalize(address).casefold()
+        ):
             return location
 
     return None
@@ -7578,6 +7687,31 @@ def run_normal_monitor() -> None:
             location["ambiguity_checked"] = True
     if rechecked:
         print(f"Replaced {rechecked} stored location(s) whose address exists in several boroughs.")
+
+    # GeoSearch used to accept any street with the right house number, so a
+    # typo ("1499 Bedfrod Ave") was stored as an unrelated street ("1499 1
+    # AVENUE", Upper East Side). Replace such locations with the building's
+    # verified location under a correctly spelled address, or clear them.
+    mismatched = 0
+    for entry in history.get("listings", {}).values():
+        location = entry.get("location")
+        if (
+            not isinstance(location, dict)
+            or location.get("ambiguous")
+            or streets_match(entry.get("address"), location.get("display_name"))
+        ):
+            continue
+        entry["location"] = find_similar_cached_location(
+            history, str(entry.get("address") or ""), exclude=entry
+        )
+        mismatched += 1
+        print(
+            f'Replaced location for "{entry.get("address")}": '
+            f'{location.get("display_name")} -> '
+            f'{(entry["location"] or {}).get("display_name")}'
+        )
+    if mismatched:
+        print(f"Replaced {mismatched} stored location(s) on a different street than the address.")
 
     old_options = {
         normalize(x) for x in state.get("options", []) if normalize(x)
