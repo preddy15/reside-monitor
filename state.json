@@ -42,6 +42,7 @@
     "231 Chester Street - Apt 4B - $3442.73 -",
     "234 East 203 Apt 2A - Apt 2A - $2890 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
+    "2422 Lyvere Street - Apt 2C - $3374.31 -",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -",
     "25-01 Queens Plaza North - Apt 304 - $3300 -",
     "25-01 Queens Plaza North - Apt 325 - $3299 -",
@@ -117,6 +118,7 @@
     "231 Chester Street - Apt 4B - $3442.73 -": "recjpRNfvlvB45USy",
     "234 East 203 Apt 2A - Apt 2A - $2890 -": "recJqR2Y6aThN0PRJ",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
+    "2422 Lyvere Street - Apt 2C - $3374.31 -": "recPSh1xOWbklXlZS",
     "25-01 Queens Plaza North - Apt 1019 - $3653 -": "recghf35pdYrvl3yG",
     "25-01 Queens Plaza North - Apt 304 - $3300 -": "recsmid2IyQjaqpJ7",
     "25-01 Queens Plaza North - Apt 325 - $3299 -": "rec8O2b4OoYtYR69e",
@@ -152,5 +154,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-05T17:24:39.307580+00:00"
+  "updated_at": "2026-11-05T17:26:34.238347+00:00"
 }
