@@ -299,29 +299,6 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/865-rogers-avenue/"
     },
-    "https://mgnyconsulting.com/listing/forten": {
-      "address": "410 W 126th St, New York, NY 10027",
-      "income_range": "$143,658 - $238,160",
-      "tiers": {
-        "130%||2-bedroom||$3,995.00||2-5 people": {
-          "active": true,
-          "ami": "130%",
-          "annual_income": "$143,658 – $238,160",
-          "appearance_count": 1,
-          "first_seen": "2026-08-20T04:04:39.814757+00:00",
-          "household_size": "2-5 people",
-          "last_removed_at": null,
-          "last_seen": "2026-08-20T04:04:39.814757+00:00",
-          "removal_count": 0,
-          "rent": "$3,995.00",
-          "unit_size": "2-bedroom",
-          "units_available": 4
-        }
-      },
-      "title": "Forten",
-      "units_count": 4,
-      "url": "https://mgnyconsulting.com/listing/forten/"
-    },
     "https://mgnyconsulting.com/listing/house-55-apartments": {
       "address": "55 Apartments 55 Willoughby St, Brooklyn, NY 11201",
       "income_range": "$126,412 - $198,510",
@@ -464,5 +441,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-06T13:47:51.784999+00:00"
+  "updated_at": "2026-11-06T17:09:49.801942+00:00"
 }
