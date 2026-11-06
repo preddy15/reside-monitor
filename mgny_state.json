@@ -176,6 +176,14 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/2008-crotona-avenue/"
     },
+    "https://mgnyconsulting.com/listing/2164-hughes-avenue-apartments": {
+      "address": "2164 Hughes Avenue Apartments 2164 Hughes Avenue, Bronx, NY 10457",
+      "income_range": "$98,572 - $238,160",
+      "tiers": {},
+      "title": "2164 Hughes Avenue Apartments",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/2164-hughes-avenue-apartments/"
+    },
     "https://mgnyconsulting.com/listing/2454-east-15th-street-apartments": {
       "address": "2454 East 15th Street Apartments 2454 East 15th Street, Brooklyn, NY 11235",
       "income_range": "$86,053 - $198,510",
@@ -441,5 +449,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-06T17:09:49.801942+00:00"
+  "updated_at": "2026-11-06T20:29:52.132619+00:00"
 }
