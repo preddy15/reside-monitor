@@ -3,7 +3,6 @@
   "initialized": true,
   "options": [
     "100 South 9 St - Apt 406 - $2999 -",
-    "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 -",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
     "1281 Hoe Ave - Apt 5C - $1673.31 - Senior Preferece 60+",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
@@ -52,7 +51,6 @@
     "3914 15th Ave - Apt 2 Br - $3400 -",
     "44-35 Colden St - Apt 4E - $2593 -",
     "4656 Park Avenue - Apt 6D - $2622.75 -",
-    "633 East 230th Street Apt. 7D - Apt 7D - $3835 -",
     "637 East 176 St - Apt 2C - $1493.03 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
@@ -73,7 +71,6 @@
   ],
   "project_record_ids": {
     "100 South 9 St - Apt 406 - $2999 -": "recPVAo3YKcG06iLD",
-    "1000 Woodycrest Avenue - Apt. 5B - Apt 5B - $3442.8 -": "rec2MWfqNMK1MMCGZ",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
     "1281 Hoe Ave - Apt 5C - $1673.31 - Senior Preferece 60+": "recTsZK8Xso9gA3jf",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
@@ -122,7 +119,6 @@
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
     "44-35 Colden St - Apt 4E - $2593 -": "recR2lCxi5QogUoxj",
     "4656 Park Avenue - Apt 6D - $2622.75 -": "recpmiz6DPG5kocDE",
-    "633 East 230th Street Apt. 7D - Apt 7D - $3835 -": "rec1mjyTZwgJKYMqh",
     "637 East 176 St - Apt 2C - $1493.03 -": "recNpJ9IJmTpKqe52",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
@@ -142,5 +138,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-06T14:58:46.292446+00:00"
+  "updated_at": "2026-11-06T15:38:56.205212+00:00"
 }
