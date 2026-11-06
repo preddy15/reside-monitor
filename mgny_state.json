@@ -2,7 +2,7 @@
   "buildings": {
     "https://mgnyconsulting.com/listing/111-willoughby-street": {
       "address": "111 Willoughby Street 111 Willoughby Street, Brooklyn NY 11201",
-      "income_range": "$101,143 - $238,160",
+      "income_range": "$149,040 - $238,160",
       "tiers": {},
       "title": "111 Willoughby Street",
       "units_count": 4,
@@ -464,5 +464,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-04T21:54:17.771842+00:00"
+  "updated_at": "2026-11-06T13:47:51.784999+00:00"
 }
