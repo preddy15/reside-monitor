@@ -21,6 +21,7 @@
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "1730 Bedford Ave - Apt 605 - $2515 -",
+    "188 Humboldt Street - Apt 7K - $2418.06 -",
     "1988 Anthony Ave - Apt 2A - $2798.41 -",
     "1988 Anthony Ave - Apt 2J - $3357.17 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
@@ -90,6 +91,7 @@
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "1730 Bedford Ave - Apt 605 - $2515 -": "recA4Bhz0dMoOPfYt",
+    "188 Humboldt Street - Apt 7K - $2418.06 -": "recJhPGR84aIrOOUR",
     "1988 Anthony Ave - Apt 2A - $2798.41 -": "reci5NoLFtD9rUQyH",
     "1988 Anthony Ave - Apt 2J - $3357.17 -": "recIsLOY2sLQQmFy4",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
@@ -140,5 +142,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-05T21:14:27.545596+00:00"
+  "updated_at": "2026-11-06T14:04:10.023145+00:00"
 }
