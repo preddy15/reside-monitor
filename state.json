@@ -34,7 +34,6 @@
     "2180 Walton Ave - Apt 7J - $3128 -",
     "2180 Walton Avenue - Apt 4C - $3128 -",
     "2183 Morris Ave - Apt 6D - $3345 -",
-    "2203 Clarendon Road - Apt 3D - $2221 -",
     "231 Chester Street - Apt 4B - $3442.73 -",
     "234 East 203 Apt 2A - Apt 2A - $2890 -",
     "237 West 167th Stret - Apt 4E - $3071.87 -",
@@ -100,7 +99,6 @@
     "2180 Walton Ave - Apt 7J - $3128 -": "rec4hTwcXPFNYFTeX",
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
     "2183 Morris Ave - Apt 6D - $3345 -": "recfv5In1UtM5w5s4",
-    "2203 Clarendon Road - Apt 3D - $2221 -": "recLdVS6G303vVpFF",
     "231 Chester Street - Apt 4B - $3442.73 -": "recjpRNfvlvB45USy",
     "234 East 203 Apt 2A - Apt 2A - $2890 -": "recJqR2Y6aThN0PRJ",
     "237 West 167th Stret - Apt 4E - $3071.87 -": "recHEaZh5bE35y3F3",
@@ -134,5 +132,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-09T20:54:58.234850+00:00"
+  "updated_at": "2026-11-09T20:55:34.794814+00:00"
 }
