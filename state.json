@@ -4,6 +4,7 @@
   "options": [
     "100 South 9 St - Apt 406 - $2999 -",
     "1047 Ogden Ave - Apt 5E - $2887.2 -",
+    "1047 Ogden Ave - Apt 7C - $3808.91 -",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -",
     "1281 Hoe Ave - Apt 5C - $1673.31 - Senior Preferece 60+",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
@@ -67,6 +68,7 @@
   "project_record_ids": {
     "100 South 9 St - Apt 406 - $2999 -": "recPVAo3YKcG06iLD",
     "1047 Ogden Ave - Apt 5E - $2887.2 -": "recHd2NjfepK1FKCE",
+    "1047 Ogden Ave - Apt 7C - $3808.91 -": "recajgpyGA9pSYlwI",
     "106 Mt. Hope Place - Apt 3D - $2747.44 -": "recX5UI8jXOGMGZBL",
     "1281 Hoe Ave - Apt 5C - $1673.31 - Senior Preferece 60+": "recTsZK8Xso9gA3jf",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
@@ -128,5 +130,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-09T17:01:08.790651+00:00"
+  "updated_at": "2026-11-09T17:02:38.780715+00:00"
 }
