@@ -20,6 +20,7 @@
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "173 Tompkins Ave - Apt 1F - $2990 -",
+    "173 Tompkins Ave - Apt 2 br - $3250 -",
     "1730 Bedford Ave - Apt 605 - $2515 -",
     "1988 Anthony Ave - Apt 2J - $3357.17 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
@@ -84,6 +85,7 @@
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "173 Tompkins Ave - Apt 1F - $2990 -": "recSOyGgTs4QMX2f9",
+    "173 Tompkins Ave - Apt 2 br - $3250 -": "recCfLoyuMqAIx7mC",
     "1730 Bedford Ave - Apt 605 - $2515 -": "recA4Bhz0dMoOPfYt",
     "1988 Anthony Ave - Apt 2J - $3357.17 -": "recIsLOY2sLQQmFy4",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
@@ -130,5 +132,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-09T19:52:54.397380+00:00"
+  "updated_at": "2026-11-09T20:45:42.449586+00:00"
 }
