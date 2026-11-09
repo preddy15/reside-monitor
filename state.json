@@ -61,9 +61,7 @@
     "947 Sheridan Ave - Apt 1D - $3128 -",
     "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -",
     "Atlantic BK - OM - Apt 614 - $3345 -",
-    "Castleton - 1546 Castleton Avenue, Staten Island - Apt 4E - $843 -",
     "Douglass Street Apartments - Apt 8L - $3495 -",
-    "Dutch House - 37-05 30th Street - Apt 419 - $2513.52 -",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+"
   ],
   "project_record_ids": {
@@ -126,11 +124,9 @@
     "947 Sheridan Ave - Apt 1D - $3128 -": "recsPrCPAboZUyWj7",
     "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -": "recwLikKsGtISsuMF",
     "Atlantic BK - OM - Apt 614 - $3345 -": "recrtSVHpb2hG0Q39",
-    "Castleton - 1546 Castleton Avenue, Staten Island - Apt 4E - $843 -": "recRdXXS6GcFgU0Ui",
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC",
-    "Dutch House - 37-05 30th Street - Apt 419 - $2513.52 -": "recq2dotlu8SkkesZ",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-09T14:24:32.728970+00:00"
+  "updated_at": "2026-11-09T14:34:19.340557+00:00"
 }
