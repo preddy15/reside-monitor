@@ -49,7 +49,6 @@
     "44-35 Colden St - Apt 4E - $2593 -",
     "4656 Park Avenue - Apt 6D - $2622.75 -",
     "63 Lewis Ave - Apt 2E - $2328.31 -",
-    "633 East 230th Street Apt. 7D - Apt 7D - $3835 -",
     "637 East 176 St - Apt 2C - $1493.03 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
@@ -114,7 +113,6 @@
     "44-35 Colden St - Apt 4E - $2593 -": "recR2lCxi5QogUoxj",
     "4656 Park Avenue - Apt 6D - $2622.75 -": "recpmiz6DPG5kocDE",
     "63 Lewis Ave - Apt 2E - $2328.31 -": "reck3cSrOrNu9BSL0",
-    "633 East 230th Street Apt. 7D - Apt 7D - $3835 -": "rec1mjyTZwgJKYMqh",
     "637 East 176 St - Apt 2C - $1493.03 -": "recNpJ9IJmTpKqe52",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
@@ -132,5 +130,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-09T20:55:34.794814+00:00"
+  "updated_at": "2026-11-09T21:28:59.320259+00:00"
 }
