@@ -79,11 +79,11 @@
       "rent": "$3,035.00",
       "unit": "PH2"
     },
-    "2710 decatur avenue bronx ny||1b": {
-      "address": "2710 Decatur Avenue, Bronx, NY",
+    "2718 church avenue brooklyn ny||3e": {
+      "address": "2718 Church Avenue, Brooklyn, NY",
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-28253/0DM1HHYXYINVVB5Z0D",
-      "rent": "$3,035.00",
-      "unit": "1B"
+      "rent": "$3,045.00",
+      "unit": "3E"
     },
     "2775 reservoir ave brooklyn ny||3d": {
       "address": "2775 Reservoir Ave, Brooklyn, NY",
@@ -200,5 +200,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-10-22T21:04:16.443802+00:00"
+  "updated_at": "2026-11-09T21:20:46.082289+00:00"
 }
