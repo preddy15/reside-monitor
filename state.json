@@ -8,7 +8,6 @@
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
     "1410 Vyse Ave - Apt 2D - $3221.84 -",
-    "1433 Teller Ave - Apt 2C - $3058.56 -",
     "1440 Amsterdam Avenue - Apt 2 bedroom - $4568 -",
     "1440 Amsterdam Avenue - Apt 702 - $3195 -",
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
@@ -72,7 +71,6 @@
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
     "1410 Vyse Ave - Apt 2D - $3221.84 -": "recBT5AW0uEdStEtz",
-    "1433 Teller Ave - Apt 2C - $3058.56 -": "recVehRNrfIyPghcw",
     "1440 Amsterdam Avenue - Apt 2 bedroom - $4568 -": "recN9sJ60POwokBlF",
     "1440 Amsterdam Avenue - Apt 702 - $3195 -": "recS5S5PuXzT0NriJ",
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
@@ -130,5 +128,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-09T16:02:38.052542+00:00"
+  "updated_at": "2026-11-09T16:12:02.169429+00:00"
 }
