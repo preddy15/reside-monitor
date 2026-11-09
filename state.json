@@ -28,7 +28,6 @@
     "2061 Crotona Ave - Apt 2C - $3237.42 -",
     "2072 Anthony Ave - Apt 4J - $3037.47 -",
     "2072 Anthony Ave - Apt 6I - $3037.47 -",
-    "2136 Honeywell - Apt 7A - $3883 -",
     "217 Eckford Street - 301 - Apt 301 - $3423 -",
     "2180 Walton Ave - Apt 7J - $3128 -",
     "2180 Walton Avenue - Apt 4C - $3128 -",
@@ -93,7 +92,6 @@
     "2061 Crotona Ave - Apt 2C - $3237.42 -": "recl8wA3YDcWn44ag",
     "2072 Anthony Ave - Apt 4J - $3037.47 -": "rec3mMbZKu8pdpNCL",
     "2072 Anthony Ave - Apt 6I - $3037.47 -": "recqHoPOQboy3J40q",
-    "2136 Honeywell - Apt 7A - $3883 -": "recSaWohJkLsjUCDX",
     "217 Eckford Street - 301 - Apt 301 - $3423 -": "recErh72Vv2QEAX0m",
     "2180 Walton Ave - Apt 7J - $3128 -": "rec4hTwcXPFNYFTeX",
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
@@ -132,5 +130,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-09T17:28:30.961847+00:00"
+  "updated_at": "2026-11-09T17:55:07.288293+00:00"
 }
