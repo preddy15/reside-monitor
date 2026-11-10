@@ -16,6 +16,7 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -",
+    "15 Cedar Street - Apt 2E - $1989.22 -",
     "1543 E 19th - Apt 3E - $2484.69 -",
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
@@ -82,6 +83,7 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -": "rec0jytu8SdmI6Oa3",
+    "15 Cedar Street - Apt 2E - $1989.22 -": "recKZxRRgMDFQlUwE",
     "1543 E 19th - Apt 3E - $2484.69 -": "rec5kmMNaiGF8Z2tX",
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
@@ -134,5 +136,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-10T19:29:58.722872+00:00"
+  "updated_at": "2026-11-10T20:02:48.211587+00:00"
 }
