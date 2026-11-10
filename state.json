@@ -44,6 +44,7 @@
     "25-01 Queens Plaza North - Apt 619 - $3500 -",
     "250 Lenox Road - Apt 3A v3 - Apt 3A - $2359.37 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
+    "340 Evergreen Avenue - Apt 308 - $2282.65 -",
     "350 Rutland Rd - Apt 3B - $2179.07 -",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
@@ -110,6 +111,7 @@
     "25-01 Queens Plaza North - Apt 619 - $3500 -": "recK2qoBO5YdBqj7d",
     "250 Lenox Road - Apt 3A v3 - Apt 3A - $2359.37 -": "recgHpf5DekvwKiS5",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
+    "340 Evergreen Avenue - Apt 308 - $2282.65 -": "reco3W93ihtR9bWm2",
     "350 Rutland Rd - Apt 3B - $2179.07 -": "recUA2qVYoWMUZssa",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
@@ -134,5 +136,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-10T18:28:27.944692+00:00"
+  "updated_at": "2026-11-10T18:37:55.264400+00:00"
 }
