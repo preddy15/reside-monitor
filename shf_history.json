@@ -144,7 +144,7 @@
       "apply_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=16LZ_9BUgkmpOsX39EKwQ4y0VvZoZjhPj428CE41l_lUNjVJTk9ESks4MlEyU0lZTjlDQVJDTjVHWC4u",
       "first_seen": "2026-09-29T12:46:29.015729+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-11-06T17:03:05.884982+00:00",
+      "last_seen": "2026-11-10T12:59:06.978200+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "30 KENT STREET, Brooklyn, NY, USA",
@@ -169,7 +169,7 @@
       "apply_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=16LZ_9BUgkmpOsX39EKwQ4y0VvZoZjhPj428CE41l_lUNjVJTk9ESks4MlEyU0lZTjlDQVJDTjVHWC4u",
       "first_seen": "2026-10-28T22:38:22.306780+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-11-06T17:03:05.884982+00:00",
+      "last_seen": "2026-11-10T12:59:06.978200+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "30 KENT STREET, Brooklyn, NY, USA",
@@ -206,12 +206,12 @@
       "unit_size": "Studio"
     },
     "4650 broadway||1001": {
-      "active": true,
+      "active": false,
       "ami": "130%",
       "appearance_count": 1,
       "apply_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=16LZ_9BUgkmpOsX39EKwQ4y0VvZoZjhPj428CE41l_lUNjVJTk9ESks4MlEyU0lZTjlDQVJDTjVHWC4u",
       "first_seen": "2026-11-06T17:03:05.884982+00:00",
-      "last_removed_at": null,
+      "last_removed_at": "2026-11-10T12:59:06.978200+00:00",
       "last_seen": "2026-11-06T17:03:05.884982+00:00",
       "location": {
         "borough": "Manhattan",
@@ -224,7 +224,7 @@
       "project": "4650 Broadway",
       "question_title": "The units below reflect 130% AMI AMI rents:",
       "raw": "4650 Broadway Unit 1001 (130% AMI 1-Bed)",
-      "removal_count": 0,
+      "removal_count": 1,
       "source": "Settlement Housing Fund",
       "source_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=16LZ_9BUgkmpOsX39EKwQ4y0VvZoZjhPj428CE41l_lUNjVJTk9ESks4MlEyU0lZTjlDQVJDTjVHWC4u",
       "unit": "1001",
@@ -312,7 +312,7 @@
       "apply_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=16LZ_9BUgkmpOsX39EKwQ4y0VvZoZjhPj428CE41l_lUNjVJTk9ESks4MlEyU0lZTjlDQVJDTjVHWC4u",
       "first_seen": "2026-08-29T19:26:32.001669+00:00",
       "last_removed_at": "2026-09-03T15:40:11.147297+00:00",
-      "last_seen": "2026-11-06T17:03:05.884982+00:00",
+      "last_seen": "2026-11-10T12:59:06.978200+00:00",
       "location": {
         "borough": null,
         "display_name": "509, 3rd Avenue, City of Watervliet, Albany County, New York, 12189, United States",
@@ -337,7 +337,7 @@
       "apply_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=16LZ_9BUgkmpOsX39EKwQ4y0VvZoZjhPj428CE41l_lUNjVJTk9ESks4MlEyU0lZTjlDQVJDTjVHWC4u",
       "first_seen": "2026-08-29T19:26:32.001669+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-11-06T17:03:05.884982+00:00",
+      "last_seen": "2026-11-10T12:59:06.978200+00:00",
       "location": null,
       "project": "515 W 36th Street",
       "question_title": "The units below reflect 130% AMI AMI rents:",
@@ -463,7 +463,7 @@
       "apply_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=16LZ_9BUgkmpOsX39EKwQ4y0VvZoZjhPj428CE41l_lUNjVJTk9ESks4MlEyU0lZTjlDQVJDTjVHWC4u",
       "first_seen": "2026-09-14T16:02:56.580428+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-11-06T17:03:05.884982+00:00",
+      "last_seen": "2026-11-10T12:59:06.978200+00:00",
       "location": null,
       "project": "280 West 24th Street Unit 2D (130% AMI 2-Bed) - Mobility set-aside unit. Must meet Mobility preference.",
       "question_title": "The units below reflect 130% AMI AMI rents:",
@@ -560,7 +560,7 @@
       "apply_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=16LZ_9BUgkmpOsX39EKwQ4y0VvZoZjhPj428CE41l_lUNjVJTk9ESks4MlEyU0lZTjlDQVJDTjVHWC4u",
       "first_seen": "2026-09-18T16:23:56.890638+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-11-06T17:03:05.884982+00:00",
+      "last_seen": "2026-11-10T12:59:06.978200+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "49th Road, Brooklyn, Kings County, New York, 11204, United States",
@@ -646,7 +646,7 @@
       "apply_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=16LZ_9BUgkmpOsX39EKwQ4y0VvZoZjhPj428CE41l_lUNjVJTk9ESks4MlEyU0lZTjlDQVJDTjVHWC4u",
       "first_seen": "2026-09-18T16:23:56.890638+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-11-06T17:03:05.884982+00:00",
+      "last_seen": "2026-11-10T12:59:06.978200+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "Dominick Sabatino Bridge, 13th Avenue, Dyker Heights, Brooklyn, Kings County, New York, 11219, United States",
@@ -671,7 +671,7 @@
       "apply_url": "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=16LZ_9BUgkmpOsX39EKwQ4y0VvZoZjhPj428CE41l_lUNjVJTk9ESks4MlEyU0lZTjlDQVJDTjVHWC4u",
       "first_seen": "2026-10-28T22:38:22.306780+00:00",
       "last_removed_at": null,
-      "last_seen": "2026-11-06T17:03:05.884982+00:00",
+      "last_seen": "2026-11-10T12:59:06.978200+00:00",
       "location": null,
       "project": "The Biltmore",
       "question_title": "The units below reflect 130% AMI AMI rents:",
@@ -708,6 +708,6 @@
       "unit_size": "Studio"
     }
   },
-  "updated_at": "2026-11-06T17:03:05.884982+00:00",
+  "updated_at": "2026-11-10T12:59:06.978200+00:00",
   "version": 1
 }
