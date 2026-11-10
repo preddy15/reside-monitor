@@ -27,6 +27,7 @@
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2043 Webster Avenue - Apt 2 Bedroom - $3236 -",
     "2043 Webster Avenue - Apt Studio - $2858 -",
+    "2061 Crotona - Apt 4C - $3237.41 -",
     "2061 Crotona Ave - Apt 2C - $3237.42 -",
     "2072 Anthony Ave - Apt 4J - $3037.47 -",
     "2072 Anthony Ave - Apt 6I - $3037.47 -",
@@ -92,6 +93,7 @@
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2043 Webster Avenue - Apt 2 Bedroom - $3236 -": "recUTiWpz8HJjpCTj",
     "2043 Webster Avenue - Apt Studio - $2858 -": "recOGOidyO3F6Gsc4",
+    "2061 Crotona - Apt 4C - $3237.41 -": "rectsKHgamEGuMbTd",
     "2061 Crotona Ave - Apt 2C - $3237.42 -": "recl8wA3YDcWn44ag",
     "2072 Anthony Ave - Apt 4J - $3037.47 -": "rec3mMbZKu8pdpNCL",
     "2072 Anthony Ave - Apt 6I - $3037.47 -": "recqHoPOQboy3J40q",
@@ -132,5 +134,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-10T19:18:19.795970+00:00"
+  "updated_at": "2026-11-10T19:29:58.722872+00:00"
 }
