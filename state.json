@@ -17,7 +17,6 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -",
-    "147-35 95th Avenue - Apt 1416 - $1920.4 -",
     "1543 E 19th - Apt 3E - $2484.69 -",
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
@@ -50,7 +49,6 @@
     "3914 15th Ave - Apt 2 Br - $3400 -",
     "44-35 Colden St - Apt 4E - $2593 -",
     "4656 Park Avenue - Apt 6D - $2622.75 -",
-    "63 Lewis Ave - Apt 2E - $2328.31 -",
     "637 East 176 St - Apt 2C - $1493.03 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
@@ -84,7 +82,6 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -": "rec0jytu8SdmI6Oa3",
-    "147-35 95th Avenue - Apt 1416 - $1920.4 -": "recuJ8B52TSqmeK6t",
     "1543 E 19th - Apt 3E - $2484.69 -": "rec5kmMNaiGF8Z2tX",
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
@@ -117,7 +114,6 @@
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
     "44-35 Colden St - Apt 4E - $2593 -": "recR2lCxi5QogUoxj",
     "4656 Park Avenue - Apt 6D - $2622.75 -": "recpmiz6DPG5kocDE",
-    "63 Lewis Ave - Apt 2E - $2328.31 -": "reck3cSrOrNu9BSL0",
     "637 East 176 St - Apt 2C - $1493.03 -": "recNpJ9IJmTpKqe52",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
@@ -136,5 +132,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-10T15:30:25.458472+00:00"
+  "updated_at": "2026-11-10T15:34:04.418812+00:00"
 }
