@@ -7,6 +7,12 @@
       "unit": "4N",
       "url": "https://www.mns.com/details/240428/rental/morris+heights/bronx"
     },
+    "36 20 steinway st||432": {
+      "address": "36-20 Steinway ST",
+      "rent": "$3,369.00",
+      "unit": "432",
+      "url": "https://www.mns.com/details/241052/rental/long+island+city/queens"
+    },
     "54 crown st||1221": {
       "address": "54 Crown ST",
       "rent": "$5,292.00",
@@ -20,5 +26,5 @@
       "url": "https://www.mns.com/details/240766/rental/tribeca/manhattan"
     }
   },
-  "updated_at": "2026-11-07T21:41:53.121797+00:00"
+  "updated_at": "2026-11-10T22:07:52.203053+00:00"
 }
