@@ -41,6 +41,7 @@
     "25-01 Queens Plaza North - Apt 325 - $3299 -",
     "25-01 Queens Plaza North - Apt 503 - $4316 -",
     "25-01 Queens Plaza North - Apt 619 - $3500 -",
+    "250 Lenox Road - Apt 3A v3 - Apt 3A - $2359.37 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "350 Rutland Rd - Apt 3B - $2179.07 -",
     "3914 15th Ave - Apt 1 Br - $3300 -",
@@ -104,6 +105,7 @@
     "25-01 Queens Plaza North - Apt 325 - $3299 -": "rec8O2b4OoYtYR69e",
     "25-01 Queens Plaza North - Apt 503 - $4316 -": "recGyzzmwpTqwM1SV",
     "25-01 Queens Plaza North - Apt 619 - $3500 -": "recK2qoBO5YdBqj7d",
+    "250 Lenox Road - Apt 3A v3 - Apt 3A - $2359.37 -": "recgHpf5DekvwKiS5",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
     "350 Rutland Rd - Apt 3B - $2179.07 -": "recUA2qVYoWMUZssa",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
@@ -128,5 +130,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-10T17:51:39.699027+00:00"
+  "updated_at": "2026-11-10T17:59:37.552596+00:00"
 }
