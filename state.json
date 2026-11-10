@@ -23,6 +23,7 @@
     "173 Tompkins Ave - Apt 2 br - $3250 -",
     "1730 Bedford Ave - Apt 605 - $2515 -",
     "1988 Anthony Ave - Apt 2J - $3357.17 -",
+    "2 Blue Slip - Apt 5D - $2589.74 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2043 Webster Avenue - Apt 2 Bedroom - $3236 -",
@@ -87,6 +88,7 @@
     "173 Tompkins Ave - Apt 2 br - $3250 -": "recCfLoyuMqAIx7mC",
     "1730 Bedford Ave - Apt 605 - $2515 -": "recA4Bhz0dMoOPfYt",
     "1988 Anthony Ave - Apt 2J - $3357.17 -": "recIsLOY2sLQQmFy4",
+    "2 Blue Slip - Apt 5D - $2589.74 -": "rec7vWSv71Wtxtz2F",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2043 Webster Avenue - Apt 2 Bedroom - $3236 -": "recUTiWpz8HJjpCTj",
@@ -130,5 +132,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-10T16:10:38.577703+00:00"
+  "updated_at": "2026-11-10T17:00:08.484589+00:00"
 }
