@@ -56,6 +56,7 @@
     "765 East 214th Street - Apt 101 - $3459.55 -",
     "829 East 55th Street - Apt 3A - $5530.14 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
+    "864 49th St - Apt D12 - $2985.97 -",
     "864 49th Street - Apt D8 - $2620.13 -",
     "872 Home Street Bronx, NY 10459 - Apt 2B - $2762.98 -",
     "875 4th Avenue - Apt 302 - $2157.63 - MI",
@@ -123,6 +124,7 @@
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
     "829 East 55th Street - Apt 3A - $5530.14 -": "recavXOsQKeWHLLyn",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
+    "864 49th St - Apt D12 - $2985.97 -": "recdfBXRhe75J7TiG",
     "864 49th Street - Apt D8 - $2620.13 -": "recRQQ47UfGzhX4CJ",
     "872 Home Street Bronx, NY 10459 - Apt 2B - $2762.98 -": "recXY8ZyzdrbjwtTB",
     "875 4th Avenue - Apt 302 - $2157.63 - MI": "recFS1kpEb5mtwbfH",
@@ -136,5 +138,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-10T20:05:46.232666+00:00"
+  "updated_at": "2026-11-10T20:07:47.202832+00:00"
 }
