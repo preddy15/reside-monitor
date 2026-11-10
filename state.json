@@ -65,6 +65,7 @@
     "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -",
     "Atlantic BK - OM - Apt 614 - $3345 -",
     "Douglass Street Apartments - Apt 8L - $3495 -",
+    "Jackson Waitlist - Apt - $ -",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+"
   ],
   "project_record_ids": {
@@ -131,8 +132,9 @@
     "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -": "recwLikKsGtISsuMF",
     "Atlantic BK - OM - Apt 614 - $3345 -": "recrtSVHpb2hG0Q39",
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC",
+    "Jackson Waitlist - Apt - $ -": "recWoT6NKPfAsNdo2",
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-10T21:06:08.440923+00:00"
+  "updated_at": "2026-11-10T22:55:13.533309+00:00"
 }
