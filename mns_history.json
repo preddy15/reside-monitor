@@ -11,7 +11,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-11-11T14:58:50.876781+00:00",
+      "last_seen": "2026-11-11T14:59:33.031718+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$2,653.00",
@@ -184,7 +184,7 @@
       "first_seen": "2026-11-07T21:41:51.004345+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-11-11T14:58:50.876781+00:00",
+      "last_seen": "2026-11-11T14:59:33.031718+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "54 CROWN STREET, Brooklyn, NY, USA",
@@ -202,17 +202,32 @@
       "url": "https://www.mns.com/details/240257/rental/crown+heights/brooklyn"
     },
     "65 dupont st||202": {
-      "active": false,
+      "active": true,
       "address": "65 Dupont ST",
-      "appearance_count": 1,
+      "appearance_count": 2,
       "bathrooms": "1",
       "bedrooms": "0",
-      "details": null,
+      "details": {
+        "available_now": true,
+        "contact_phone": "718-222-0211",
+        "minimum_income": "$122,298.00",
+        "neighborhood": null,
+        "one_person_eligible": true,
+        "one_person_income_range": "$122,298.00 – $154,440.00",
+        "one_person_max_income": "$154,440.00"
+      },
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": "2026-10-01T13:56:40.055574+00:00",
-      "last_seen": "2026-09-21T17:01:42.853170+00:00",
-      "location": null,
+      "last_seen": "2026-11-11T14:59:33.031718+00:00",
+      "location": {
+        "borough": "Brooklyn",
+        "display_name": "65 DUPONT STREET, Brooklyn, NY, USA",
+        "lat": "40.73596",
+        "lon": "-73.95802",
+        "neighborhood": "Greenpoint",
+        "postcode": "11222"
+      },
       "removal_count": 1,
       "rent": "$3,160.00",
       "source": "MNS",
@@ -239,7 +254,7 @@
       "first_seen": "2026-11-11T14:58:50.876781+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-11-11T14:58:50.876781+00:00",
+      "last_seen": "2026-11-11T14:59:33.031718+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "65 DUPONT STREET, Brooklyn, NY, USA",
@@ -294,7 +309,7 @@
       "first_seen": "2026-11-11T14:58:50.876781+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-11-11T14:58:50.876781+00:00",
+      "last_seen": "2026-11-11T14:59:33.031718+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "65 DUPONT STREET, Brooklyn, NY, USA",
@@ -364,7 +379,7 @@
       "first_seen": "2026-10-27T18:51:29.894403+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-11-11T14:58:50.876781+00:00",
+      "last_seen": "2026-11-11T14:59:33.031718+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "88 LEONARD STREET, New York, NY, USA",
@@ -382,6 +397,6 @@
       "url": "https://www.mns.com/details/240766/rental/tribeca/manhattan"
     }
   },
-  "updated_at": "2026-11-11T14:58:53.407563+00:00",
+  "updated_at": "2026-11-11T14:59:34.451022+00:00",
   "version": 1
 }
