@@ -11,7 +11,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": null,
-      "last_seen": "2026-11-11T14:59:33.031718+00:00",
+      "last_seen": "2026-11-11T18:26:03.194163+00:00",
       "location": null,
       "removal_count": 0,
       "rent": "$2,653.00",
@@ -184,7 +184,7 @@
       "first_seen": "2026-11-07T21:41:51.004345+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-11-11T14:59:33.031718+00:00",
+      "last_seen": "2026-11-11T18:26:03.194163+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "54 CROWN STREET, Brooklyn, NY, USA",
@@ -219,7 +219,7 @@
       "first_seen": "2026-08-20T03:36:15.929478+00:00",
       "first_seen_source": "mns_history_migration",
       "last_removed_at": "2026-10-01T13:56:40.055574+00:00",
-      "last_seen": "2026-11-11T14:59:33.031718+00:00",
+      "last_seen": "2026-11-11T18:26:03.194163+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "65 DUPONT STREET, Brooklyn, NY, USA",
@@ -254,7 +254,7 @@
       "first_seen": "2026-11-11T14:58:50.876781+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-11-11T14:59:33.031718+00:00",
+      "last_seen": "2026-11-11T18:26:03.194163+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "65 DUPONT STREET, Brooklyn, NY, USA",
@@ -309,7 +309,7 @@
       "first_seen": "2026-11-11T14:58:50.876781+00:00",
       "first_seen_source": "observed",
       "last_removed_at": null,
-      "last_seen": "2026-11-11T14:59:33.031718+00:00",
+      "last_seen": "2026-11-11T18:26:03.194163+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "65 DUPONT STREET, Brooklyn, NY, USA",
@@ -362,7 +362,7 @@
       "url": "https://www.mns.com/details/240766/rental/tribeca/manhattan"
     },
     "88 leonard st||510": {
-      "active": true,
+      "active": false,
       "address": "88 Leonard ST",
       "appearance_count": 1,
       "bathrooms": "1",
@@ -378,7 +378,7 @@
       },
       "first_seen": "2026-10-27T18:51:29.894403+00:00",
       "first_seen_source": "observed",
-      "last_removed_at": null,
+      "last_removed_at": "2026-11-11T18:26:03.194163+00:00",
       "last_seen": "2026-11-11T14:59:33.031718+00:00",
       "location": {
         "borough": "Manhattan",
@@ -388,7 +388,7 @@
         "neighborhood": "Tribeca",
         "postcode": "10013"
       },
-      "removal_count": 0,
+      "removal_count": 1,
       "rent": "$3,123.00",
       "source": "MNS",
       "sqft": null,
@@ -397,6 +397,6 @@
       "url": "https://www.mns.com/details/240766/rental/tribeca/manhattan"
     }
   },
-  "updated_at": "2026-11-11T14:59:34.451022+00:00",
+  "updated_at": "2026-11-11T18:26:03.194538+00:00",
   "version": 1
 }
