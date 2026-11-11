@@ -49,6 +49,7 @@
     "4656 Park Avenue - Apt 6D - $2622.75 -",
     "637 East 176 St - Apt 2C - $1493.03 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
+    "68 Gold Street - Apt 2N - $2786.23 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
     "829 East 55th Street - Apt 3A - $5530.14 -",
     "86 West 174 St - Apt 3B - $3950.05 -",
@@ -114,6 +115,7 @@
     "4656 Park Avenue - Apt 6D - $2622.75 -": "recpmiz6DPG5kocDE",
     "637 East 176 St - Apt 2C - $1493.03 -": "recNpJ9IJmTpKqe52",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
+    "68 Gold Street - Apt 2N - $2786.23 -": "rec4RJHIKrDtNuv7i",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
     "829 East 55th Street - Apt 3A - $5530.14 -": "recavXOsQKeWHLLyn",
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
@@ -132,5 +134,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-11T15:55:41.824791+00:00"
+  "updated_at": "2026-11-11T16:39:33.529378+00:00"
 }
