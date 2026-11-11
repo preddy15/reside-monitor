@@ -323,29 +323,6 @@
       "units_count": 2,
       "url": "https://mgnyconsulting.com/listing/jasper-hunters-point/"
     },
-    "https://mgnyconsulting.com/listing/lighthouse-point": {
-      "address": "35R Bay Street, Staten Island, NY 10301",
-      "income_range": "$134,298 - $238,160",
-      "tiers": {
-        "130%||2-bedroom||$3,750.00||2-5 people": {
-          "active": true,
-          "ami": "130%",
-          "annual_income": "$134,298 – $238,160",
-          "appearance_count": 4,
-          "first_seen": "2026-08-20T04:04:39.814757+00:00",
-          "household_size": "2-5 people",
-          "last_removed_at": "2026-11-09T15:46:57.111823+00:00",
-          "last_seen": "2026-11-09T15:48:45.284815+00:00",
-          "removal_count": 3,
-          "rent": "$3,750.00",
-          "unit_size": "2-bedroom",
-          "units_available": 4
-        }
-      },
-      "title": "Lighthouse Point",
-      "units_count": 4,
-      "url": "https://mgnyconsulting.com/listing/lighthouse-point/"
-    },
     "https://mgnyconsulting.com/listing/lincoln-at-bankside": {
       "address": null,
       "income_range": "$119,795 - $273,520",
@@ -449,5 +426,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-09T21:15:11.571911+00:00"
+  "updated_at": "2026-11-11T13:10:20.908991+00:00"
 }
