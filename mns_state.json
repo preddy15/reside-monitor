@@ -13,6 +13,18 @@
       "unit": "1221",
       "url": "https://www.mns.com/details/240257/rental/crown+heights/brooklyn"
     },
+    "65 dupont st||313": {
+      "address": "65 Dupont ST",
+      "rent": "$3,423.00",
+      "unit": "313",
+      "url": "https://www.mns.com/details/241055/rental/greenpoint/brooklyn"
+    },
+    "65 dupont st||524": {
+      "address": "65 Dupont ST",
+      "rent": "$3,423.00",
+      "unit": "524",
+      "url": "https://www.mns.com/details/241054/rental/greenpoint/brooklyn"
+    },
     "88 leonard st||510": {
       "address": "88 Leonard ST",
       "rent": "$3,123.00",
@@ -20,5 +32,5 @@
       "url": "https://www.mns.com/details/240766/rental/tribeca/manhattan"
     }
   },
-  "updated_at": "2026-11-11T14:02:51.269016+00:00"
+  "updated_at": "2026-11-11T14:58:53.402895+00:00"
 }
