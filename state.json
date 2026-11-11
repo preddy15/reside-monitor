@@ -22,6 +22,7 @@
     "173 Tompkins Ave - Apt 2 br - $3250 -",
     "1730 Bedford Ave - Apt 605 - $2515 -",
     "188 Humboldt Street - Apt 3H - $2529.63 -",
+    "1975 Madison - Apt 104 - $3300 -",
     "1988 Anthony Ave - Apt 2J - $3357.17 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
@@ -89,6 +90,7 @@
     "173 Tompkins Ave - Apt 2 br - $3250 -": "recCfLoyuMqAIx7mC",
     "1730 Bedford Ave - Apt 605 - $2515 -": "recA4Bhz0dMoOPfYt",
     "188 Humboldt Street - Apt 3H - $2529.63 -": "recjkUJYQ8A2QfCqL",
+    "1975 Madison - Apt 104 - $3300 -": "reciqpPUO1grN6fKi",
     "1988 Anthony Ave - Apt 2J - $3357.17 -": "recIsLOY2sLQQmFy4",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
@@ -136,5 +138,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-11T18:37:21.950435+00:00"
+  "updated_at": "2026-11-11T18:38:14.259329+00:00"
 }
