@@ -81,7 +81,7 @@
     },
     "2718 church avenue brooklyn ny||3e": {
       "address": "2718 Church Avenue, Brooklyn, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-28253/0DM1HHYXYINVVB5Z0D",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-29093/O3ZOEAPES0OMJSYLQ1",
       "rent": "$3,045.00",
       "unit": "3E"
     },
@@ -91,11 +91,11 @@
       "rent": "$2,835.00",
       "unit": "3D"
     },
-    "2895 valentine ave bronx ny||4e": {
+    "2895 valentine ave bronx ny||9c": {
       "address": "2895 Valentine Ave, Bronx, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-28773/8HTPOW1VPEDFA15VSP",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-29173/2WECUED1ETTXXW5VJI",
       "rent": "$3,492.00",
-      "unit": "4E"
+      "unit": "9C"
     },
     "2895 valentine avenue||4g": {
       "address": "2895 Valentine Avenue",
@@ -108,6 +108,12 @@
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-28193/1XT2OUVPEAG35T2MR0",
       "rent": "$2,954.00",
       "unit": "4B"
+    },
+    "845 crotona park north bronx ny||1a": {
+      "address": "845 Crotona Park North, Bronx, NY",
+      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-29233/V9SSOREKXMKMN8IKDT",
+      "rent": "$2,835.00",
+      "unit": "1A"
     },
     "962 bushwick avenue brooklyn ny||2a": {
       "address": "962 Bushwick Avenue, Brooklyn, NY",
@@ -150,12 +156,6 @@
       "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22733/TC3NIVWJ79JRW3IMEO",
       "rent": "$2,999.00",
       "unit": "2D"
-    },
-    "972 bushwick avenue brooklyn ny||3e": {
-      "address": "972 Bushwick Avenue, Brooklyn, NY",
-      "apply_url": "https://forms.clickup.com/14203750/f/dhev6-22873/Y0YECX87OMYWTJ9OGP",
-      "rent": "$3,299.00",
-      "unit": "3E"
     },
     "972 bushwick avenue brooklyn ny||4c": {
       "address": "972 Bushwick Avenue, Brooklyn, NY",
@@ -200,5 +200,5 @@
       "unit": "7A"
     }
   },
-  "updated_at": "2026-11-09T21:20:46.082289+00:00"
+  "updated_at": "2026-11-11T23:27:57.501376+00:00"
 }
