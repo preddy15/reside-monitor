@@ -161,6 +161,14 @@
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/2164-hughes-avenue-apartments/"
     },
+    "https://mgnyconsulting.com/listing/2180-arthur-avenue": {
+      "address": "2180 Arthur Avenue 2180 Arthur Avenue, Bronx, NY 10457",
+      "income_range": "$115,771 - $198,510",
+      "tiers": {},
+      "title": "2180 Arthur Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/2180-arthur-avenue/"
+    },
     "https://mgnyconsulting.com/listing/2454-east-15th-street-apartments": {
       "address": "2454 East 15th Street Apartments 2454 East 15th Street, Brooklyn, NY 11235",
       "income_range": "$86,053 - $198,510",
@@ -426,5 +434,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-11T13:12:25.676107+00:00"
+  "updated_at": "2026-11-11T16:53:07.172498+00:00"
 }
