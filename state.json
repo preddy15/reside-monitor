@@ -44,6 +44,7 @@
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -",
     "2500 Barker Ave - Apt 706 - $4161.2 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
+    "2823 Snyder Avenue - Apt 4A - $2066.77 -",
     "350 Rutland Rd - Apt 3B - $2179.07 -",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
@@ -111,6 +112,7 @@
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -": "reczcZDsaGNexFaW5",
     "2500 Barker Ave - Apt 706 - $4161.2 -": "rec3NNM2lB4q81uvr",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
+    "2823 Snyder Avenue - Apt 4A - $2066.77 -": "recOl14E8tgq8NrID",
     "350 Rutland Rd - Apt 3B - $2179.07 -": "recUA2qVYoWMUZssa",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
@@ -136,5 +138,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-12T15:59:07.161919+00:00"
+  "updated_at": "2026-11-12T16:07:49.782344+00:00"
 }
