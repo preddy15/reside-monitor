@@ -50,6 +50,7 @@
     "3914 15th Ave - Apt 2 Br - $3400 -",
     "44-35 Colden St - Apt 4E - $2593 -",
     "4656 Park Avenue - Apt 6D - $2622.75 -",
+    "540 Atlantic Avenue Apartments - OM - Apt Studio - $3405 -",
     "637 East 176 St - Apt 2C - $1493.03 -",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
@@ -118,6 +119,7 @@
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
     "44-35 Colden St - Apt 4E - $2593 -": "recR2lCxi5QogUoxj",
     "4656 Park Avenue - Apt 6D - $2622.75 -": "recpmiz6DPG5kocDE",
+    "540 Atlantic Avenue Apartments - OM - Apt Studio - $3405 -": "recFSspojBMJprRxT",
     "637 East 176 St - Apt 2C - $1493.03 -": "recNpJ9IJmTpKqe52",
     "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
@@ -138,5 +140,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-12T19:37:43.607028+00:00"
+  "updated_at": "2026-11-12T19:43:20.056492+00:00"
 }
