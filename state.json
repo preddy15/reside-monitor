@@ -14,6 +14,7 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -",
+    "147-35 95th Avenue - Apt 1726 - Apt 1726 - $4081.89 -",
     "1526 Sedgwick Ave - Apt 602 - $3316.37 -",
     "1543 E 19th - Apt 3E - $2484.69 -",
     "1677 Townsend Ave - Apt 7A - $4367.03 -",
@@ -85,6 +86,7 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -": "rec0jytu8SdmI6Oa3",
+    "147-35 95th Avenue - Apt 1726 - Apt 1726 - $4081.89 -": "recpVISScUTd1siq3",
     "1526 Sedgwick Ave - Apt 602 - $3316.37 -": "recwjhv6HVrOoKHYr",
     "1543 E 19th - Apt 3E - $2484.69 -": "rec5kmMNaiGF8Z2tX",
     "1677 Townsend Ave - Apt 7A - $4367.03 -": "recR09j4tKmLTbaVj",
@@ -144,5 +146,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-12T17:36:36.642538+00:00"
+  "updated_at": "2026-11-12T17:40:20.709016+00:00"
 }
