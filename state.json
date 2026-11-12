@@ -21,7 +21,6 @@
     "173 Tompkins Ave - Apt 1F - $2990 -",
     "173 Tompkins Ave - Apt 2 br - $3250 -",
     "1730 Bedford Ave - Apt 605 - $2515 -",
-    "190 East 205 St - Apt 3D - $3681.22 -",
     "1975 Madison - Apt 104 - $3300 -",
     "1975 Madison Ave - Apt 309 - $3300 -",
     "1988 Anthony Ave - Apt 2J - $3357.17 -",
@@ -92,7 +91,6 @@
     "173 Tompkins Ave - Apt 1F - $2990 -": "recSOyGgTs4QMX2f9",
     "173 Tompkins Ave - Apt 2 br - $3250 -": "recCfLoyuMqAIx7mC",
     "1730 Bedford Ave - Apt 605 - $2515 -": "recA4Bhz0dMoOPfYt",
-    "190 East 205 St - Apt 3D - $3681.22 -": "rec6rdjS4kKMmYZbn",
     "1975 Madison - Apt 104 - $3300 -": "reciqpPUO1grN6fKi",
     "1975 Madison Ave - Apt 309 - $3300 -": "recYbq33Kpp2IDgJ4",
     "1988 Anthony Ave - Apt 2J - $3357.17 -": "recIsLOY2sLQQmFy4",
@@ -144,5 +142,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-12T17:56:58.400277+00:00"
+  "updated_at": "2026-11-12T19:01:41.164088+00:00"
 }
