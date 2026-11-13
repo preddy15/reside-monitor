@@ -130,6 +130,14 @@
       "units_count": 2,
       "url": "https://mgnyconsulting.com/listing/188-11-hillside-avenue/"
     },
+    "https://mgnyconsulting.com/listing/1893-crotona-avenue": {
+      "address": "1893 Crotona Avenue 1893 Crotona Avenue, Bronx, NY 10457",
+      "income_range": "$56,642 - $198,510",
+      "tiers": {},
+      "title": "1893 Crotona Avenue",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/1893-crotona-avenue/"
+    },
     "https://mgnyconsulting.com/listing/2008-crotona-avenue": {
       "address": "2008 Crotona Avenue 2008 Crotona Avenue, Bronx, NY 10457",
       "income_range": "$85,852 - $238,160",
@@ -457,5 +465,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-12T16:43:46.171410+00:00"
+  "updated_at": "2026-11-13T18:04:27.520997+00:00"
 }
