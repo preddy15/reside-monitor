@@ -3,6 +3,7 @@
   "initialized": true,
   "options": [
     "100 South 9 St - Apt 406 - $2999 -",
+    "1039 Washington Avenue - Apt 6I - $3366 -",
     "1047 Ogden Ave - Apt 5E - $2887.2 -",
     "1281 Hoe Ave - Apt 5C - $1673.31 - Senior Preferece 60+",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
@@ -22,6 +23,8 @@
     "1730 Bedford Ave - Apt 605 - $2515 -",
     "1975 Madison - Apt 104 - $3300 -",
     "1975 Madison Ave - Apt 309 - $3300 -",
+    "1975 Madison Ave - Apt 704 - $4230 -",
+    "1975 Madison Ave - Apt 706 - $3995 -",
     "1988 Anthony Ave - Apt 2J - $3357.17 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
@@ -69,6 +72,7 @@
   ],
   "project_record_ids": {
     "100 South 9 St - Apt 406 - $2999 -": "recPVAo3YKcG06iLD",
+    "1039 Washington Avenue - Apt 6I - $3366 -": "recC3RVWdo1Mi3bIE",
     "1047 Ogden Ave - Apt 5E - $2887.2 -": "recHd2NjfepK1FKCE",
     "1281 Hoe Ave - Apt 5C - $1673.31 - Senior Preferece 60+": "recTsZK8Xso9gA3jf",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
@@ -88,6 +92,8 @@
     "1730 Bedford Ave - Apt 605 - $2515 -": "recA4Bhz0dMoOPfYt",
     "1975 Madison - Apt 104 - $3300 -": "reciqpPUO1grN6fKi",
     "1975 Madison Ave - Apt 309 - $3300 -": "recYbq33Kpp2IDgJ4",
+    "1975 Madison Ave - Apt 704 - $4230 -": "receYAKSjTBL745A3",
+    "1975 Madison Ave - Apt 706 - $3995 -": "recWhEnpwtEaNKFI1",
     "1988 Anthony Ave - Apt 2J - $3357.17 -": "recIsLOY2sLQQmFy4",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
@@ -134,5 +140,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-16T15:06:46.983157+00:00"
+  "updated_at": "2026-11-16T19:01:03.077788+00:00"
 }
