@@ -7,12 +7,6 @@
       "unit": "4N",
       "url": "https://www.mns.com/details/240428/rental/morris+heights/bronx"
     },
-    "54 crown st||1221": {
-      "address": "54 Crown ST",
-      "rent": "$5,292.00",
-      "unit": "1221",
-      "url": "https://www.mns.com/details/240257/rental/crown+heights/brooklyn"
-    },
     "65 dupont st||202": {
       "address": "65 Dupont ST",
       "rent": "$3,160.00",
@@ -32,5 +26,5 @@
       "url": "https://www.mns.com/details/241054/rental/greenpoint/brooklyn"
     }
   },
-  "updated_at": "2026-11-11T18:26:03.194215+00:00"
+  "updated_at": "2026-11-17T07:02:45.621760+00:00"
 }
