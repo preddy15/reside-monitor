@@ -32,6 +32,7 @@
     "2043 Webster Avenue - Apt Studio - $2858 -",
     "2061 Crotona - Apt 4C - $3237.41 -",
     "2061 Crotona Ave - Apt 2C - $3237.42 -",
+    "2069 Anthony Avenue - Apt 401 - $2541.92 -",
     "2072 Anthony Ave - Apt 4J - $3037.47 -",
     "2072 Anthony Ave - Apt 6I - $3037.47 -",
     "217 Eckford Street - 301 - Apt 301 - $3423 -",
@@ -107,6 +108,7 @@
     "2043 Webster Avenue - Apt Studio - $2858 -": "recOGOidyO3F6Gsc4",
     "2061 Crotona - Apt 4C - $3237.41 -": "rectsKHgamEGuMbTd",
     "2061 Crotona Ave - Apt 2C - $3237.42 -": "recl8wA3YDcWn44ag",
+    "2069 Anthony Avenue - Apt 401 - $2541.92 -": "recDUTOQFmx2l1BML",
     "2072 Anthony Ave - Apt 4J - $3037.47 -": "rec3mMbZKu8pdpNCL",
     "2072 Anthony Ave - Apt 6I - $3037.47 -": "recqHoPOQboy3J40q",
     "217 Eckford Street - 301 - Apt 301 - $3423 -": "recErh72Vv2QEAX0m",
@@ -152,5 +154,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-17T19:46:02.563279+00:00"
+  "updated_at": "2026-11-17T19:47:49.457907+00:00"
 }
