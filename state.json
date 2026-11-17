@@ -55,7 +55,6 @@
     "44-35 Colden St - Apt 4E - $2593 -",
     "637 East 176 St - Apt 2C - $1493.03 -",
     "637 East 176 St - Apt 7B - $1481.66 -",
-    "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -",
     "701 Elton Ave - Apt 3D - $2475.84 -",
     "72-01 Queens Blvd - Apt 2 Bedrooms - $3450 -",
     "72-01 Queens Blvd Apartments - OM - Apt 3 Bedrooms - $4200 -",
@@ -130,7 +129,6 @@
     "44-35 Colden St - Apt 4E - $2593 -": "recR2lCxi5QogUoxj",
     "637 East 176 St - Apt 2C - $1493.03 -": "recNpJ9IJmTpKqe52",
     "637 East 176 St - Apt 7B - $1481.66 -": "recBpV51rjMCPFvIJ",
-    "647 Sheffield Ave- Apt. 1A - Apt 1A - $2800.41 -": "recroF9t4eeGJVbOq",
     "701 Elton Ave - Apt 3D - $2475.84 -": "recRcROdZS6f19Tmc",
     "72-01 Queens Blvd - Apt 2 Bedrooms - $3450 -": "rec6jcYk7P3kKLmnl",
     "72-01 Queens Blvd Apartments - OM - Apt 3 Bedrooms - $4200 -": "reclHdbJSiJtRBSPx",
@@ -152,5 +150,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-17T19:49:53.741888+00:00"
+  "updated_at": "2026-11-17T20:09:36.633028+00:00"
 }
