@@ -45,6 +45,7 @@
     "2500 Barker Ave - Apt 706 - $4161.2 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "32-53 101 St - Apt 2D - $2878.85 -",
+    "346 Kent Ave - Apt 3403 - $2832 -",
     "350 Rutland Rd - Apt 3B - $2179.07 -",
     "376 Franklin Ave - Apt 2C - $1161.02 - MI",
     "390 East Mosholu Pkwy - Apt 6D - $3264.58 -",
@@ -117,6 +118,7 @@
     "2500 Barker Ave - Apt 706 - $4161.2 -": "rec3NNM2lB4q81uvr",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
     "32-53 101 St - Apt 2D - $2878.85 -": "recovkBpWzE4XkZqJ",
+    "346 Kent Ave - Apt 3403 - $2832 -": "recJDQfQoDwAR6qI6",
     "350 Rutland Rd - Apt 3B - $2179.07 -": "recUA2qVYoWMUZssa",
     "376 Franklin Ave - Apt 2C - $1161.02 - MI": "recNNLYUvfJ1tg8Ym",
     "390 East Mosholu Pkwy - Apt 6D - $3264.58 -": "rec8UUXmXhuZrw1Sz",
@@ -146,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-18T16:29:14.418007+00:00"
+  "updated_at": "2026-11-18T17:25:35.386894+00:00"
 }
