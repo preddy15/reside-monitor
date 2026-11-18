@@ -34,6 +34,7 @@
     "2072 Anthony Ave - Apt 6I - $3037.47 -",
     "217 Eckford Street - 301 - Apt 301 - $3423 -",
     "2180 Walton Avenue - Apt 4C - $3128 -",
+    "2189 Arthur Ave - Apt 6A - $2941.02 -",
     "231 Chester Street - Apt 4B - $3442.73 -",
     "234 East 203 Apt 2A - Apt 2A - $2890 -",
     "2422 Lyvere Street - Apt 2C - $3374.31 -",
@@ -105,6 +106,7 @@
     "2072 Anthony Ave - Apt 6I - $3037.47 -": "recqHoPOQboy3J40q",
     "217 Eckford Street - 301 - Apt 301 - $3423 -": "recErh72Vv2QEAX0m",
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
+    "2189 Arthur Ave - Apt 6A - $2941.02 -": "recw7Nuwu0tL92tLD",
     "231 Chester Street - Apt 4B - $3442.73 -": "recjpRNfvlvB45USy",
     "234 East 203 Apt 2A - Apt 2A - $2890 -": "recJqR2Y6aThN0PRJ",
     "2422 Lyvere Street - Apt 2C - $3374.31 -": "recPSh1xOWbklXlZS",
@@ -144,5 +146,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-18T15:41:45.480586+00:00"
+  "updated_at": "2026-11-18T15:44:47.456315+00:00"
 }
