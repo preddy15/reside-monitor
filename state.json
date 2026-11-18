@@ -36,7 +36,6 @@
     "2189 Arthur Ave - Apt 6A - $2941.02 -",
     "231 Chester Street - Apt 4B - $3442.73 -",
     "234 East 203 Apt 2A - Apt 2A - $2890 -",
-    "2361 Morris Avenue - Apt 3F - $3308.33 -",
     "2422 Lyvere Street - Apt 2C - $3374.31 -",
     "25-01 Queens Plaza North - Apt 304 - $3300 -",
     "25-01 Queens Plaza North - Apt 325 - $3299 -",
@@ -111,7 +110,6 @@
     "2189 Arthur Ave - Apt 6A - $2941.02 -": "recw7Nuwu0tL92tLD",
     "231 Chester Street - Apt 4B - $3442.73 -": "recjpRNfvlvB45USy",
     "234 East 203 Apt 2A - Apt 2A - $2890 -": "recJqR2Y6aThN0PRJ",
-    "2361 Morris Avenue - Apt 3F - $3308.33 -": "recKoU41TXXxnByvJ",
     "2422 Lyvere Street - Apt 2C - $3374.31 -": "recPSh1xOWbklXlZS",
     "25-01 Queens Plaza North - Apt 304 - $3300 -": "recsmid2IyQjaqpJ7",
     "25-01 Queens Plaza North - Apt 325 - $3299 -": "rec8O2b4OoYtYR69e",
@@ -152,5 +150,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-18T17:38:04.709083+00:00"
+  "updated_at": "2026-11-18T17:39:45.742277+00:00"
 }
