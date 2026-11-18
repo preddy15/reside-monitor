@@ -62,7 +62,6 @@
     "86 West 174 St - Apt 3B - $3950.05 -",
     "864 49th St - Apt D12 - $2985.97 -",
     "864 49th Street - Apt D8 - $2620.13 -",
-    "867 Dekalb Ave - 2B - Apt 2B - $2440.91 -",
     "872 Home Street Bronx, NY 10459 - Apt 2B - $2762.98 -",
     "875 4th Avenue - Apt 302 - $2157.63 - MI",
     "88 East 127th Street - Apt 14A - $965 - HI-VI",
@@ -137,7 +136,6 @@
     "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
     "864 49th St - Apt D12 - $2985.97 -": "recdfBXRhe75J7TiG",
     "864 49th Street - Apt D8 - $2620.13 -": "recRQQ47UfGzhX4CJ",
-    "867 Dekalb Ave - 2B - Apt 2B - $2440.91 -": "recmvYvAFimHbkU7G",
     "872 Home Street Bronx, NY 10459 - Apt 2B - $2762.98 -": "recXY8ZyzdrbjwtTB",
     "875 4th Avenue - Apt 302 - $2157.63 - MI": "recFS1kpEb5mtwbfH",
     "88 East 127th Street - Apt 14A - $965 - HI-VI": "rec3s9i50wxDx0WRH",
@@ -152,5 +150,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-18T18:54:08.120796+00:00"
+  "updated_at": "2026-11-18T19:29:28.727039+00:00"
 }
