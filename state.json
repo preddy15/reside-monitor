@@ -66,6 +66,7 @@
     "875 4th Avenue - Apt 302 - $2157.63 - MI",
     "88 East 127th Street - Apt 14A - $965 - HI-VI",
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
+    "938 Bushwick Ave - Apt 4F - $2477.59 -",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -",
     "947 Sheridan Ave - Apt 1D - $3128 -",
     "984 Madison St - Apt 2B - $2399.01 -",
@@ -140,6 +141,7 @@
     "875 4th Avenue - Apt 302 - $2157.63 - MI": "recFS1kpEb5mtwbfH",
     "88 East 127th Street - Apt 14A - $965 - HI-VI": "rec3s9i50wxDx0WRH",
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
+    "938 Bushwick Ave - Apt 4F - $2477.59 -": "recjlYwamOBUWZGwl",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -": "recL3cH6ZLzAu9V7O",
     "947 Sheridan Ave - Apt 1D - $3128 -": "recsPrCPAboZUyWj7",
     "984 Madison St - Apt 2B - $2399.01 -": "recJZcmKWulnS9qzA",
@@ -150,5 +152,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-18T19:29:28.727039+00:00"
+  "updated_at": "2026-11-18T20:32:00.189531+00:00"
 }
