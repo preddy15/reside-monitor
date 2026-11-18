@@ -5,6 +5,7 @@
     "100 South 9 St - Apt 406 - $2999 -",
     "1047 Ogden Ave - Apt 5E - $2887.2 -",
     "1135 Teller Ave - Apt 7B - $3229.56 -",
+    "1259 Bedford Avenue #2B v2 Apartments - Apt 2B - $2161.84 -",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
     "1410 Vyse Ave - Apt 2D - $3221.84 -",
@@ -79,6 +80,7 @@
     "100 South 9 St - Apt 406 - $2999 -": "recPVAo3YKcG06iLD",
     "1047 Ogden Ave - Apt 5E - $2887.2 -": "recHd2NjfepK1FKCE",
     "1135 Teller Ave - Apt 7B - $3229.56 -": "recP6ba3jCPZUINKK",
+    "1259 Bedford Avenue #2B v2 Apartments - Apt 2B - $2161.84 -": "rec3KJi7NTViwVU20",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
     "1410 Vyse Ave - Apt 2D - $3221.84 -": "recBT5AW0uEdStEtz",
@@ -150,5 +152,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-18T17:52:36.392130+00:00"
+  "updated_at": "2026-11-18T18:01:43.710020+00:00"
 }
