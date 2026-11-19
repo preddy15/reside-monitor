@@ -48,7 +48,6 @@
     "32-53 101 St - Apt 2D - $2878.85 -",
     "346 Kent Ave - Apt 3403 - $2832 -",
     "350 Rutland Rd - Apt 3B - $2179.07 -",
-    "365 Bond Street - Apt C514 - $1047.99 -",
     "390 East Mosholu Pkwy - Apt 6D - $3264.58 -",
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "3914 15th Ave - Apt 2 Br - $3400 -",
@@ -125,7 +124,6 @@
     "32-53 101 St - Apt 2D - $2878.85 -": "recovkBpWzE4XkZqJ",
     "346 Kent Ave - Apt 3403 - $2832 -": "recJDQfQoDwAR6qI6",
     "350 Rutland Rd - Apt 3B - $2179.07 -": "recUA2qVYoWMUZssa",
-    "365 Bond Street - Apt C514 - $1047.99 -": "rec5htSXsHy5iVcDS",
     "390 East Mosholu Pkwy - Apt 6D - $3264.58 -": "rec8UUXmXhuZrw1Sz",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "3914 15th Ave - Apt 2 Br - $3400 -": "recLH0otaWwP6r8gw",
@@ -156,5 +154,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-19T18:34:19.698883+00:00"
+  "updated_at": "2026-11-19T20:18:02.707310+00:00"
 }
