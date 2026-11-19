@@ -44,7 +44,6 @@
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -",
     "2500 Barker Ave - Apt 706 - $4161.2 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
-    "28-08 38th Avenue - Apt 2 BR - $4376 -",
     "32-53 101 St - Apt 2D - $2878.85 -",
     "346 Kent Ave - Apt 3403 - $2832 -",
     "350 Rutland Rd - Apt 3B - $2179.07 -",
@@ -120,7 +119,6 @@
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -": "reczcZDsaGNexFaW5",
     "2500 Barker Ave - Apt 706 - $4161.2 -": "rec3NNM2lB4q81uvr",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
-    "28-08 38th Avenue - Apt 2 BR - $4376 -": "recuZY0O8LXq72UvI",
     "32-53 101 St - Apt 2D - $2878.85 -": "recovkBpWzE4XkZqJ",
     "346 Kent Ave - Apt 3403 - $2832 -": "recJDQfQoDwAR6qI6",
     "350 Rutland Rd - Apt 3B - $2179.07 -": "recUA2qVYoWMUZssa",
@@ -154,5 +152,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-19T16:49:19.317972+00:00"
+  "updated_at": "2026-11-19T16:53:49.360478+00:00"
 }
