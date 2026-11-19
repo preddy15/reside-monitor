@@ -5,7 +5,6 @@
     "100 South 9 St - Apt 406 - $2999 -",
     "1047 Ogden Ave - Apt 5E - $2887.2 -",
     "1135 Teller Ave - Apt 7B - $3229.56 -",
-    "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
     "1361 Teller Ave - Apt 3E - $2824.38 -",
     "1410 Vyse Ave - Apt 2D - $3221.84 -",
@@ -82,7 +81,6 @@
     "100 South 9 St - Apt 406 - $2999 -": "recPVAo3YKcG06iLD",
     "1047 Ogden Ave - Apt 5E - $2887.2 -": "recHd2NjfepK1FKCE",
     "1135 Teller Ave - Apt 7B - $3229.56 -": "recP6ba3jCPZUINKK",
-    "1281 Hoe Ave - Apt 8A - $1601.25 - Senior Preferece 60+": "recQGrQVZ6q3xqovP",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
     "1361 Teller Ave - Apt 3E - $2824.38 -": "recDHYN6KsPNGhoLR",
     "1410 Vyse Ave - Apt 2D - $3221.84 -": "recBT5AW0uEdStEtz",
@@ -156,5 +154,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-19T14:55:34.988063+00:00"
+  "updated_at": "2026-11-19T14:56:18.771777+00:00"
 }
