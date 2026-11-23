@@ -18,7 +18,7 @@
     },
     "https://mgnyconsulting.com/listing/1295-rodman-place-apartments": {
       "address": "1295 Rodman Place Apartments 1295 Rodman Place, Bronx, NY 10460",
-      "income_range": "$116,487 - $198,510",
+      "income_range": "$110,675 - $198,510",
       "tiers": {},
       "title": "1295 Rodman Place Apartments",
       "units_count": 1,
@@ -465,5 +465,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-23T13:05:15.069217+00:00"
+  "updated_at": "2026-11-23T16:18:07.907826+00:00"
 }
