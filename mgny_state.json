@@ -254,6 +254,14 @@
       "units_count": 2,
       "url": "https://mgnyconsulting.com/listing/27-15-astoria-boulevard/"
     },
+    "https://mgnyconsulting.com/listing/285-east-163-street-apartments": {
+      "address": "285 East 163 Street Apartments 285 East 163 Street, Bronx, NY 10451",
+      "income_range": "$115,691 - $198,510",
+      "tiers": {},
+      "title": "285 East 163 Street Apartments",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/285-east-163-street-apartments/"
+    },
     "https://mgnyconsulting.com/listing/303-west-137th-street": {
       "address": "303 West 137th Street 303 W 137th St, New York, NY 10030",
       "income_range": "$103,420 - $238,160",
@@ -465,5 +473,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-23T16:18:07.907826+00:00"
+  "updated_at": "2026-11-23T17:18:51.056798+00:00"
 }
