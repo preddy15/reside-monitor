@@ -13,7 +13,6 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -",
-    "1526 Sedgwick Ave - Apt 602 - $3316.37 -",
     "1543 E 19th - Apt 3E - $2484.69 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "173 Tompkins Ave - Apt 1F - $2990 -",
@@ -39,7 +38,6 @@
     "25-01 Queens Plaza North - Apt 503 - $4316 -",
     "25-01 Queens Plaza North - Apt 619 - $3500 -",
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -",
-    "2500 Barker Ave - Apt 706 - $4161.2 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "26 Sherman Ave - Apt 4B - $3052.21 -",
     "2817 Atlantic Avenue - Apt 6B - $3805.74 -",
@@ -88,7 +86,6 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -": "rec0jytu8SdmI6Oa3",
-    "1526 Sedgwick Ave - Apt 602 - $3316.37 -": "recwjhv6HVrOoKHYr",
     "1543 E 19th - Apt 3E - $2484.69 -": "rec5kmMNaiGF8Z2tX",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "173 Tompkins Ave - Apt 1F - $2990 -": "recSOyGgTs4QMX2f9",
@@ -114,7 +111,6 @@
     "25-01 Queens Plaza North - Apt 503 - $4316 -": "recGyzzmwpTqwM1SV",
     "25-01 Queens Plaza North - Apt 619 - $3500 -": "recK2qoBO5YdBqj7d",
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -": "reczcZDsaGNexFaW5",
-    "2500 Barker Ave - Apt 706 - $4161.2 -": "rec3NNM2lB4q81uvr",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
     "26 Sherman Ave - Apt 4B - $3052.21 -": "rec1cvBziswRj5JIS",
     "2817 Atlantic Avenue - Apt 6B - $3805.74 -": "reccWpBNjuxi0m9ll",
@@ -152,5 +148,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-23T18:20:39.984873+00:00"
+  "updated_at": "2026-11-23T18:51:59.661335+00:00"
 }
