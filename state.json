@@ -31,6 +31,7 @@
     "2072 Anthony Ave - Apt 6I - $3037.47 -",
     "217 Eckford Street - 301 - Apt 301 - $3423 -",
     "2180 Walton Avenue - Apt 4C - $3128 -",
+    "2189 Arthur Ave - Apt 1A - $3375.11 -",
     "2189 Arthur Ave - Apt 6A - $2941.02 -",
     "2422 Lyvere Street - Apt 2C - $3374.31 -",
     "25-01 Queens Plaza North - Apt 304 - $3300 -",
@@ -106,6 +107,7 @@
     "2072 Anthony Ave - Apt 6I - $3037.47 -": "recqHoPOQboy3J40q",
     "217 Eckford Street - 301 - Apt 301 - $3423 -": "recErh72Vv2QEAX0m",
     "2180 Walton Avenue - Apt 4C - $3128 -": "reczZeXLpx20TDBSu",
+    "2189 Arthur Ave - Apt 1A - $3375.11 -": "recH8VC3sk2SO7gtq",
     "2189 Arthur Ave - Apt 6A - $2941.02 -": "recw7Nuwu0tL92tLD",
     "2422 Lyvere Street - Apt 2C - $3374.31 -": "recPSh1xOWbklXlZS",
     "25-01 Queens Plaza North - Apt 304 - $3300 -": "recsmid2IyQjaqpJ7",
@@ -152,5 +154,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-23T20:00:26.739136+00:00"
+  "updated_at": "2026-11-23T20:42:06.392790+00:00"
 }
