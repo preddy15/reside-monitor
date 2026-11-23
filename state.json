@@ -13,7 +13,6 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -",
-    "1526 Sedgwick Ave - Apt 602 - $3316.37 -",
     "1543 E 19th - Apt 3E - $2484.69 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
     "173 Tompkins Ave - Apt 1F - $2990 -",
@@ -23,7 +22,6 @@
     "1975 Madison Ave - Apt 309 - $3300 -",
     "1975 Madison Ave - Apt 704 - $4230 -",
     "1975 Madison Ave - Apt 706 - $3995 -",
-    "1988 Anthony Ave - Apt 2J - $3357.17 -",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2043 Webster Avenue - Apt 2 Bedroom - $3236 -",
@@ -87,7 +85,6 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -": "rec0jytu8SdmI6Oa3",
-    "1526 Sedgwick Ave - Apt 602 - $3316.37 -": "recwjhv6HVrOoKHYr",
     "1543 E 19th - Apt 3E - $2484.69 -": "rec5kmMNaiGF8Z2tX",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
     "173 Tompkins Ave - Apt 1F - $2990 -": "recSOyGgTs4QMX2f9",
@@ -97,7 +94,6 @@
     "1975 Madison Ave - Apt 309 - $3300 -": "recYbq33Kpp2IDgJ4",
     "1975 Madison Ave - Apt 704 - $4230 -": "receYAKSjTBL745A3",
     "1975 Madison Ave - Apt 706 - $3995 -": "recWhEnpwtEaNKFI1",
-    "1988 Anthony Ave - Apt 2J - $3357.17 -": "recIsLOY2sLQQmFy4",
     "20 & 30 Halletts Point - Studios - Apt - $3261 -": "recY1Y7wg2tY7S9MR",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2043 Webster Avenue - Apt 2 Bedroom - $3236 -": "recUTiWpz8HJjpCTj",
@@ -150,5 +146,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-23T15:27:29.271124+00:00"
+  "updated_at": "2026-11-23T15:29:14.483606+00:00"
 }
