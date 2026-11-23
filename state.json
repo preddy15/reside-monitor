@@ -74,8 +74,7 @@
     "Atlantic BK - OM - Apt 614 - $3345 -",
     "Douglass Street Apartments - Apt 8L - $3495 -",
     "Eagle & West - Apt 736 - $2939.77 -",
-    "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+",
-    "The Vitagraph - 1277 East 14th Street - 303A - Apt 303A - $2151.28 -"
+    "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+"
   ],
   "project_record_ids": {
     "100 South 9 St - Apt 406 - $2999 -": "recPVAo3YKcG06iLD",
@@ -150,9 +149,8 @@
     "Atlantic BK - OM - Apt 614 - $3345 -": "recrtSVHpb2hG0Q39",
     "Douglass Street Apartments - Apt 8L - $3495 -": "recUrzXl68Pa7YphC",
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb",
-    "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY",
-    "The Vitagraph - 1277 East 14th Street - 303A - Apt 303A - $2151.28 -": "recb8JLuSHAWLiNPW"
+    "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-23T18:08:31.024739+00:00"
+  "updated_at": "2026-11-23T18:20:39.984873+00:00"
 }
