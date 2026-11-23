@@ -42,6 +42,7 @@
     "2500 Barker Ave - Apt 706 - $4161.2 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "26 Sherman Ave - Apt 4B - $3052.21 -",
+    "2817 Atlantic Avenue - Apt 6B - $3805.74 -",
     "32-53 101 St - Apt 2D - $2878.85 -",
     "346 Kent Ave - Apt 3403 - $2832 -",
     "350 Rutland Rd - Apt 3B - $2179.07 -",
@@ -116,6 +117,7 @@
     "2500 Barker Ave - Apt 706 - $4161.2 -": "rec3NNM2lB4q81uvr",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
     "26 Sherman Ave - Apt 4B - $3052.21 -": "rec1cvBziswRj5JIS",
+    "2817 Atlantic Avenue - Apt 6B - $3805.74 -": "reccWpBNjuxi0m9ll",
     "32-53 101 St - Apt 2D - $2878.85 -": "recovkBpWzE4XkZqJ",
     "346 Kent Ave - Apt 3403 - $2832 -": "recJDQfQoDwAR6qI6",
     "350 Rutland Rd - Apt 3B - $2179.07 -": "recUA2qVYoWMUZssa",
@@ -150,5 +152,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-23T17:22:56.593072+00:00"
+  "updated_at": "2026-11-23T17:59:26.684765+00:00"
 }
