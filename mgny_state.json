@@ -8,6 +8,14 @@
       "units_count": 4,
       "url": "https://mgnyconsulting.com/listing/111-willoughby-street/"
     },
+    "https://mgnyconsulting.com/listing/1215-fulton-street-aka-12-halsey-street": {
+      "address": null,
+      "income_range": "$126,583 - $198,510",
+      "tiers": {},
+      "title": "1215 Fulton Street aka 12 Halsey Street",
+      "units_count": 3,
+      "url": "https://mgnyconsulting.com/listing/1215-fulton-street-aka-12-halsey-street/"
+    },
     "https://mgnyconsulting.com/listing/1295-rodman-place-apartments": {
       "address": "1295 Rodman Place Apartments 1295 Rodman Place, Bronx, NY 10460",
       "income_range": "$110,675 - $198,510",
@@ -199,29 +207,6 @@
       "title": "2454 East 15th Street Apartments",
       "units_count": 1,
       "url": "https://mgnyconsulting.com/listing/2454-east-15th-street-apartments/"
-    },
-    "https://mgnyconsulting.com/listing/2633-ocean-avenue": {
-      "address": null,
-      "income_range": "$99,398 - $238,160",
-      "tiers": {
-        "130%||2 bedroom||$2,476.10||2-5 people": {
-          "active": true,
-          "ami": "130%",
-          "annual_income": "$99,398 – $238,160",
-          "appearance_count": 1,
-          "first_seen": "2026-11-18T18:41:29.616572+00:00",
-          "household_size": "2-5 people",
-          "last_removed_at": null,
-          "last_seen": "2026-11-18T18:41:29.616572+00:00",
-          "removal_count": 0,
-          "rent": "$2,476.10",
-          "unit_size": "2 Bedroom",
-          "units_available": 1
-        }
-      },
-      "title": "2633 Ocean Avenue",
-      "units_count": 1,
-      "url": "https://mgnyconsulting.com/listing/2633-ocean-avenue/"
     },
     "https://mgnyconsulting.com/listing/27-15-astoria-boulevard": {
       "address": "27-15 Astoria Boulevard 27-15 Astoria Boulevard, Queens, NY 11102",
@@ -442,5 +427,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-24T21:02:04.741654+00:00"
+  "updated_at": "2026-11-24T21:07:36.922121+00:00"
 }
