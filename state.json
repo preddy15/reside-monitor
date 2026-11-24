@@ -3,6 +3,7 @@
   "initialized": true,
   "options": [
     "100 South 9 St - Apt 406 - $2999 -",
+    "1024 Manhattan Avenue - Apt 302 - Apt 302 - $2700 -",
     "1047 Ogden Ave - Apt 5E - $2887.2 -",
     "1169 Hoe Ave - Apt 4E - $3570.26 -",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -",
@@ -82,6 +83,7 @@
   ],
   "project_record_ids": {
     "100 South 9 St - Apt 406 - $2999 -": "recPVAo3YKcG06iLD",
+    "1024 Manhattan Avenue - Apt 302 - Apt 302 - $2700 -": "recnevSD7j5G43zeE",
     "1047 Ogden Ave - Apt 5E - $2887.2 -": "recHd2NjfepK1FKCE",
     "1169 Hoe Ave - Apt 4E - $3570.26 -": "recezVK2mCAW5PVa9",
     "1315 Findlay Avenue - Apt 3C - $3000.68 -": "recQyC4UpVCYifW3k",
@@ -160,5 +162,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-24T19:44:30.559397+00:00"
+  "updated_at": "2026-11-24T20:16:19.052059+00:00"
 }
