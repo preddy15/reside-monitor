@@ -1,5 +1,13 @@
 {
   "buildings": {
+    "https://mgnyconsulting.com/listing/101-19-rockaway-beach-boulevard": {
+      "address": null,
+      "income_range": "$64,581 - $176,410",
+      "tiers": {},
+      "title": "Beach 101 Apartments",
+      "units_count": 1,
+      "url": "https://mgnyconsulting.com/listing/101-19-rockaway-beach-boulevard/"
+    },
     "https://mgnyconsulting.com/listing/111-willoughby-street": {
       "address": "111 Willoughby Street 111 Willoughby Street, Brooklyn NY 11201",
       "income_range": "$149,040 - $238,160",
@@ -411,5 +419,5 @@
     }
   },
   "initialized": true,
-  "updated_at": "2026-11-25T14:41:02.846996+00:00"
+  "updated_at": "2026-11-25T20:52:53.608295+00:00"
 }
