@@ -170,7 +170,7 @@
       "url": "https://www.sjpny.com/apartment-listings/available-re-rental-apartment-in-williamsburg-34fd-gb54"
     },
     "https://www.sjpny.com/apartment-listings/there-are-no-re-rental-apartments-available-at-this-time-please-check-back-later-thank-you": {
-      "active": true,
+      "active": false,
       "appearance_count": 2,
       "details": {
         "ami": null,
@@ -185,15 +185,39 @@
         "utilities": null
       },
       "first_seen": "2026-10-07T01:34:02.702778+00:00",
-      "last_removed_at": "2026-11-09T20:01:10.182665+00:00",
+      "last_removed_at": "2026-11-25T14:46:57.351547+00:00",
       "last_seen": "2026-11-25T14:44:57.531199+00:00",
       "location": null,
-      "removal_count": 1,
+      "removal_count": 2,
       "source": "SJP Tax Consultants",
       "title": "There Are No Re Rental Apartments Available At This Time Please Check Back Later Thank You",
       "url": "https://www.sjpny.com/apartment-listings/there-are-no-re-rental-apartments-available-at-this-time-please-check-back-later-thank-you"
+    },
+    "https://www.sjpny.com/apartment-listings/there-are-no-re-rental-apartments-available-at-this-time-please-check-back-later-thank-you-nyyy6": {
+      "active": true,
+      "appearance_count": 1,
+      "details": {
+        "ami": null,
+        "apply_url": null,
+        "household_size": null,
+        "location_label": null,
+        "one_person_eligible": null,
+        "one_person_income": null,
+        "rent": null,
+        "status": "available",
+        "unit_size": null,
+        "utilities": null
+      },
+      "first_seen": "2026-11-25T14:46:57.351547+00:00",
+      "last_removed_at": null,
+      "last_seen": "2026-11-25T14:46:57.351547+00:00",
+      "location": null,
+      "removal_count": 0,
+      "source": "SJP Tax Consultants",
+      "title": "There Are No Re Rental Apartments Available At This Time Please Check Back Later Thank You Nyyy6",
+      "url": "https://www.sjpny.com/apartment-listings/there-are-no-re-rental-apartments-available-at-this-time-please-check-back-later-thank-you-nyyy6"
     }
   },
-  "updated_at": "2026-11-25T14:44:57.531199+00:00",
+  "updated_at": "2026-11-25T14:46:57.351547+00:00",
   "version": 1
 }
