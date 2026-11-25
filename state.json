@@ -70,6 +70,7 @@
     "89-10 150th Street Apt 803 - Apt 803 - $3982 -",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -",
     "947 Sheridan Ave - Apt 1D - $3128 -",
+    "947 Sheridan Ave - Apt 2E - $3358.65 -",
     "959 Anderson Ave - Apt 7B - $3171.18 -",
     "98 Himrod Street - Apt 4F - $2332.91 -",
     "984 Madison St - Apt 2B - $2399.01 -",
@@ -150,6 +151,7 @@
     "89-10 150th Street Apt 803 - Apt 803 - $3982 -": "recISuGtp6OfPNat8",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -": "recL3cH6ZLzAu9V7O",
     "947 Sheridan Ave - Apt 1D - $3128 -": "recsPrCPAboZUyWj7",
+    "947 Sheridan Ave - Apt 2E - $3358.65 -": "recai6WaiOidpRXg5",
     "959 Anderson Ave - Apt 7B - $3171.18 -": "recE0PeQm9ZJ7js24",
     "98 Himrod Street - Apt 4F - $2332.91 -": "recKJr4uXlhqSjx6Y",
     "984 Madison St - Apt 2B - $2399.01 -": "recJZcmKWulnS9qzA",
@@ -162,5 +164,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-25T19:28:42.507779+00:00"
+  "updated_at": "2026-11-25T19:30:38.869772+00:00"
 }
