@@ -22,7 +22,6 @@
     "173 Tompkins Ave - Apt 1F - $2990 -",
     "173 Tompkins Ave - Apt 2 br - $3250 -",
     "1730 Bedford Ave - Apt 605 - $2515 -",
-    "1840 Harrison Avenue - 1B - Apt 1B - $2991 -",
     "1975 Madison - Apt 104 - $3300 -",
     "1975 Madison Ave - Apt 309 - $3300 -",
     "1975 Madison Ave - Apt 704 - $4230 -",
@@ -102,7 +101,6 @@
     "173 Tompkins Ave - Apt 1F - $2990 -": "recSOyGgTs4QMX2f9",
     "173 Tompkins Ave - Apt 2 br - $3250 -": "recCfLoyuMqAIx7mC",
     "1730 Bedford Ave - Apt 605 - $2515 -": "recA4Bhz0dMoOPfYt",
-    "1840 Harrison Avenue - 1B - Apt 1B - $2991 -": "recWcriBHiyHWjual",
     "1975 Madison - Apt 104 - $3300 -": "reciqpPUO1grN6fKi",
     "1975 Madison Ave - Apt 309 - $3300 -": "recYbq33Kpp2IDgJ4",
     "1975 Madison Ave - Apt 704 - $4230 -": "receYAKSjTBL745A3",
@@ -162,5 +160,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-25T18:04:25.475372+00:00"
+  "updated_at": "2026-11-25T18:31:53.568024+00:00"
 }
