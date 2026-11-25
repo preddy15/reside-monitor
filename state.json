@@ -36,6 +36,7 @@
     "36-10 31st Street - Unit 3A - Apt 3A - $3308.31 -",
     "390 East Mosholu Pkwy - Apt 6D - $3264.58 -",
     "3914 15th Ave - Apt 1 Br - $3300 -",
+    "540 Atlantic Avenue Apartments - OM - Apt Studio - $3405 -",
     "637 East 176 St - Apt 7B - $1481.66 -",
     "72-01 Queens Blvd - Apt 2 Bedrooms - $3450 -",
     "72-01 Queens Blvd - Apt 3 Bedrooms - $4200 -",
@@ -88,6 +89,7 @@
     "36-10 31st Street - Unit 3A - Apt 3A - $3308.31 -": "reczy8IaY87tZ4yWS",
     "390 East Mosholu Pkwy - Apt 6D - $3264.58 -": "rec8UUXmXhuZrw1Sz",
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
+    "540 Atlantic Avenue Apartments - OM - Apt Studio - $3405 -": "recFSspojBMJprRxT",
     "637 East 176 St - Apt 7B - $1481.66 -": "recBpV51rjMCPFvIJ",
     "72-01 Queens Blvd - Apt 2 Bedrooms - $3450 -": "rec6jcYk7P3kKLmnl",
     "72-01 Queens Blvd - Apt 3 Bedrooms - $4200 -": "reclHdbJSiJtRBSPx",
@@ -106,5 +108,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-25T20:06:00.404599+00:00"
+  "updated_at": "2026-11-25T20:25:16.221848+00:00"
 }
