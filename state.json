@@ -18,8 +18,6 @@
     "1601 Dekalb Ave - 3 Bedroom - Apt - $3544 -",
     "1694 Nelson Street - Apt 2B - $3161.07 -",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+",
-    "173 Tompkins Ave - Apt 1F - $2990 -",
-    "173 Tompkins Ave - Apt 2 br - $3250 -",
     "1975 Madison - Apt 104 - $3300 -",
     "1975 Madison Ave - Apt 309 - $3300 -",
     "1975 Madison Ave - Apt 704 - $4230 -",
@@ -41,7 +39,6 @@
     "25-01 Queens Plaza North - Apt 619 - $3500 -",
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
-    "26 Sherman Ave - Apt 4B - $3052.21 -",
     "32-53 101 St - Apt 2D - $2878.85 -",
     "346 Kent Ave - Apt 3403 - $2832 -",
     "36-10 31st Street - Unit 3A - Apt 3A - $3308.31 -",
@@ -57,8 +54,6 @@
     "947 Sheridan Ave - Apt 1D - $3128 -",
     "947 Sheridan Ave - Apt 2E - $3358.65 -",
     "959 Anderson Ave - Apt 7B - $3171.18 -",
-    "98 Himrod Street - Apt 4F - $2332.91 -",
-    "984 Madison St - Apt 2B - $2399.01 -",
     "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -",
     "Atlantic BK - OM - Apt 614 - $3345 -",
     "Eagle & West - Apt 736 - $2939.77 -",
@@ -83,8 +78,6 @@
     "1601 Dekalb Ave - 3 Bedroom - Apt - $3544 -": "recW0lRTfdx1kgdou",
     "1694 Nelson Street - Apt 2B - $3161.07 -": "recVvBZ23LnFrxlx6",
     "1718 President Street - Apt 6D - $3861.62 - Senior Preferece 60+": "recSUSfR9IXFm78yr",
-    "173 Tompkins Ave - Apt 1F - $2990 -": "recSOyGgTs4QMX2f9",
-    "173 Tompkins Ave - Apt 2 br - $3250 -": "recCfLoyuMqAIx7mC",
     "1975 Madison - Apt 104 - $3300 -": "reciqpPUO1grN6fKi",
     "1975 Madison Ave - Apt 309 - $3300 -": "recYbq33Kpp2IDgJ4",
     "1975 Madison Ave - Apt 704 - $4230 -": "receYAKSjTBL745A3",
@@ -106,7 +99,6 @@
     "25-01 Queens Plaza North - Apt 619 - $3500 -": "recK2qoBO5YdBqj7d",
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -": "reczcZDsaGNexFaW5",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
-    "26 Sherman Ave - Apt 4B - $3052.21 -": "rec1cvBziswRj5JIS",
     "32-53 101 St - Apt 2D - $2878.85 -": "recovkBpWzE4XkZqJ",
     "346 Kent Ave - Apt 3403 - $2832 -": "recJDQfQoDwAR6qI6",
     "36-10 31st Street - Unit 3A - Apt 3A - $3308.31 -": "reczy8IaY87tZ4yWS",
@@ -122,8 +114,6 @@
     "947 Sheridan Ave - Apt 1D - $3128 -": "recsPrCPAboZUyWj7",
     "947 Sheridan Ave - Apt 2E - $3358.65 -": "recai6WaiOidpRXg5",
     "959 Anderson Ave - Apt 7B - $3171.18 -": "recE0PeQm9ZJ7js24",
-    "98 Himrod Street - Apt 4F - $2332.91 -": "recKJr4uXlhqSjx6Y",
-    "984 Madison St - Apt 2B - $2399.01 -": "recJZcmKWulnS9qzA",
     "Atlantic BK - OM - Apt 1018, 1205, 1218 - $3684 -": "recwLikKsGtISsuMF",
     "Atlantic BK - OM - Apt 614 - $3345 -": "recrtSVHpb2hG0Q39",
     "Eagle & West - Apt 736 - $2939.77 -": "rec2ICjjByY2ycEYb",
@@ -132,5 +122,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-25T20:02:24.358910+00:00"
+  "updated_at": "2026-11-25T20:03:01.004894+00:00"
 }
