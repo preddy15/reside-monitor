@@ -2,12 +2,12 @@
   "buildings": {
     "https://mgnyconsulting.com/listing/101-19-rockaway-beach-boulevard": {
       "active": true,
-      "address": "101-19 Rockaway Beach Blvd, Far Rockaway, NY 11694",
+      "address": null,
       "current_tiers": {},
       "first_seen": "2026-11-25T20:52:53.608295+00:00",
       "income_range": "$64,581 - $176,410",
       "index_fingerprint": "{\"income_range\": \"$64,581 - $176,410\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/101-19-rockaway-beach-boulevard/\"}",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "101-19 ROCKAWAY BEACH BOULEVARD, Rockaway Park, NY, USA",
@@ -27,7 +27,7 @@
       "first_seen": "2026-08-27T20:54:18.183996+00:00",
       "income_range": "$149,040 - $238,160",
       "index_fingerprint": "{\"income_range\": \"$149,040 - $238,160\", \"units_count\": 4, \"url\": \"https://mgnyconsulting.com/listing/111-willoughby-street/\"}",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "111, Willoughby Street, Downtown Brooklyn, Brooklyn, Kings County, New York, 11201, United States",
@@ -105,7 +105,7 @@
       "income_range": "$126,583 - $198,510",
       "index_fingerprint": "{\"income_range\": \"$126,583 - $198,510\", \"units_count\": 3, \"url\": \"https://mgnyconsulting.com/listing/1215-fulton-street-aka-12-halsey-street/\"}",
       "last_removed_at": "2026-11-24T21:02:04.741654+00:00",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "12, Halsey Street, Brooklyn, Kings County, New York, 11216, United States",
@@ -146,7 +146,7 @@
       "first_seen": "2026-10-09T18:40:05.038188+00:00",
       "income_range": "$110,675 - $198,510",
       "index_fingerprint": "{\"income_range\": \"$110,675 - $198,510\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/1295-rodman-place-apartments/\"}",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "1295 RODMAN PLACE, Bronx, NY, USA",
@@ -182,7 +182,7 @@
       "income_range": "$130,663 - $238,160",
       "index_fingerprint": "{\"income_range\": \"$130,663 - $238,160\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/132-134-waverly-avenue-apartments/\"}",
       "last_removed_at": "2026-09-25T18:52:42.351352+00:00",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "Waverly Avenue, Clinton Hill, Brooklyn, Kings County, New York, 11205, United States",
@@ -304,7 +304,7 @@
       "income_range": "$118,869 - $198,510",
       "index_fingerprint": "{\"income_range\": \"$118,869 - $198,510\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/146-61-105-avenue/\"}",
       "last_removed_at": "2026-11-25T14:31:28.919877+00:00",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "146-61 105 AVENUE, Jamaica, NY, USA",
@@ -339,7 +339,7 @@
       "first_seen": "2026-09-01T14:47:34.810159+00:00",
       "income_range": "$122,761 - $198,510",
       "index_fingerprint": "{\"income_range\": \"$122,761 - $198,510\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/15-hanover-place/\"}",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "15, Hanover Place, Downtown Brooklyn, Brooklyn, Kings County, New York, 11201, United States",
@@ -604,7 +604,7 @@
       "income_range": "$85,852 - $238,160",
       "index_fingerprint": "{\"income_range\": \"$85,852 - $238,160\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/2008-crotona-avenue/\"}",
       "last_removed_at": "2026-10-30T18:33:40.199808+00:00",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "2008, Crotona Avenue, East Tremont, The Bronx, Bronx County, New York, 10457, United States",
@@ -624,7 +624,7 @@
       "first_seen": "2026-11-06T20:29:52.132619+00:00",
       "income_range": "$98,572 - $238,160",
       "index_fingerprint": "{\"income_range\": \"$98,572 - $238,160\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/2164-hughes-avenue-apartments/\"}",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "2164 HUGHES AVENUE, Bronx, NY, USA",
@@ -644,7 +644,7 @@
       "first_seen": "2026-11-11T16:53:07.172498+00:00",
       "income_range": "$115,771 - $198,510",
       "index_fingerprint": "{\"income_range\": \"$115,771 - $198,510\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/2180-arthur-avenue/\"}",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "2180 ARTHUR AVENUE, Bronx, NY, USA",
@@ -715,7 +715,7 @@
       "first_seen": "2026-11-11T16:56:51.774141+00:00",
       "income_range": "$75,991 - $238,160",
       "index_fingerprint": "{\"income_range\": \"$75,991 - $238,160\", \"units_count\": 2, \"url\": \"https://mgnyconsulting.com/listing/2321-belmont-avenue/\"}",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "2321 BELMONT AVENUE, Bronx, NY, USA",
@@ -850,7 +850,7 @@
       "income_range": "$82,115 - $189,540",
       "index_fingerprint": "{\"income_range\": \"$82,115 - $189,540\", \"units_count\": 2, \"url\": \"https://mgnyconsulting.com/listing/27-15-astoria-boulevard/\"}",
       "last_removed_at": "2026-09-01T13:44:28.837751+00:00",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "27-15, Astoria Boulevard, Queens, Queens County, New York, 11102, United States",
@@ -963,7 +963,7 @@
       "first_seen": "2026-11-23T17:18:51.056798+00:00",
       "income_range": "$115,691 - $198,510",
       "index_fingerprint": "{\"income_range\": \"$115,691 - $198,510\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/285-east-163-street-apartments/\"}",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "285 EAST 163 STREET, Bronx, NY, USA",
@@ -999,7 +999,7 @@
       "income_range": "$103,420 - $238,160",
       "index_fingerprint": "{\"income_range\": \"$103,420 - $238,160\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/303-west-137th-street/\"}",
       "last_removed_at": "2026-11-25T14:30:49.645185+00:00",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Manhattan",
         "display_name": "303 WEST 137 STREET, New York, NY, USA",
@@ -1463,7 +1463,7 @@
       "first_seen": "2026-08-20T04:04:39.814757+00:00",
       "income_range": "$80,289 - $176,410",
       "index_fingerprint": "{\"income_range\": \"$80,289 - $176,410\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/865-rogers-avenue/\"}",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "865, Rogers Avenue, Brooklyn Community District 17, Brooklyn, Kings County, New York, 11226, United States",
@@ -1585,7 +1585,7 @@
       "income_range": "$56,042 - $176,410",
       "index_fingerprint": "{\"income_range\": \"$56,042 - $176,410\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/91-09-roosevelt-avenue/\"}",
       "last_removed_at": "2026-10-23T16:18:53.570024+00:00",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "91-09 ROOSEVELT AVENUE, Jackson Heights, NY, USA",
@@ -1790,7 +1790,7 @@
       "first_seen": "2026-10-15T15:14:58.002691+00:00",
       "income_range": "$126,412 - $198,510",
       "index_fingerprint": "{\"income_range\": \"$126,412 - $198,510\", \"units_count\": 46, \"url\": \"https://mgnyconsulting.com/listing/house-55-apartments/\"}",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Brooklyn",
         "display_name": "55 WILLOUGHBY STREET, Brooklyn, NY, USA",
@@ -1810,7 +1810,7 @@
       "first_seen": "2026-09-16T22:40:04.725697+00:00",
       "income_range": "$104,298 - $198,510",
       "index_fingerprint": "{\"income_range\": \"$104,298 - $198,510\", \"units_count\": 1, \"url\": \"https://mgnyconsulting.com/listing/jasper-hunters-point/\"}",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "2-33 50 AVENUE, Long Island City, NY, USA",
@@ -1846,7 +1846,7 @@
       "income_range": "$134,298 - $238,160",
       "index_fingerprint": "{\"income_range\": \"$134,298 - $238,160\", \"units_count\": 4, \"url\": \"https://mgnyconsulting.com/listing/lighthouse-point/\"}",
       "last_removed_at": "2026-11-11T13:10:20.908991+00:00",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Staten Island",
         "display_name": "Bay Street, Staten Island, Richmond County, New York, 10301, United States",
@@ -1952,7 +1952,7 @@
       "income_range": "$119,795 - $273,520",
       "index_fingerprint": "{\"income_range\": \"$119,795 - $273,520\", \"units_count\": 5, \"url\": \"https://mgnyconsulting.com/listing/lincoln-at-bankside/\"}",
       "last_removed_at": "2026-10-21T18:19:03.783608+00:00",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Bronx",
         "display_name": "101, Lincoln Avenue, The Bronx, Bronx County, New York, 10454, United States",
@@ -1973,7 +1973,7 @@
       "income_range": "$109,372 - $238,160",
       "index_fingerprint": "{\"income_range\": \"$109,372 - $238,160\", \"units_count\": 92, \"url\": \"https://mgnyconsulting.com/listing/lumen-lic-apartments/\"}",
       "last_removed_at": "2026-11-04T21:52:11.499865+00:00",
-      "last_seen": "2026-11-25T20:52:53.608295+00:00",
+      "last_seen": "2026-11-25T20:53:34.789385+00:00",
       "location": {
         "borough": "Queens",
         "display_name": "44th Road, Court Square, Long Island City, Queens, Queens County, New York, 11101, United States",
@@ -2037,6 +2037,6 @@
       "url": "https://mgnyconsulting.com/listing/one-archer/"
     }
   },
-  "updated_at": "2026-11-25T20:52:53.608295+00:00",
+  "updated_at": "2026-11-25T20:53:34.789385+00:00",
   "version": 1
 }
