@@ -38,6 +38,7 @@
     "2189 Arthur Ave - Apt 1A - $3375.11 -",
     "2189 Arthur Ave - Apt 6A - $2941.02 -",
     "2422 Lyvere Street - Apt 2C - $3374.31 -",
+    "243 East 203 Street - Apt 4C - $2890 -",
     "25-01 Queens Plaza North - Apt 304 - $3300 -",
     "25-01 Queens Plaza North - Apt 325 - $3299 -",
     "25-01 Queens Plaza North - Apt 503 - $4316 -",
@@ -117,6 +118,7 @@
     "2189 Arthur Ave - Apt 1A - $3375.11 -": "recH8VC3sk2SO7gtq",
     "2189 Arthur Ave - Apt 6A - $2941.02 -": "recw7Nuwu0tL92tLD",
     "2422 Lyvere Street - Apt 2C - $3374.31 -": "recPSh1xOWbklXlZS",
+    "243 East 203 Street - Apt 4C - $2890 -": "recD1RrQcaxaBh1D1",
     "25-01 Queens Plaza North - Apt 304 - $3300 -": "recsmid2IyQjaqpJ7",
     "25-01 Queens Plaza North - Apt 325 - $3299 -": "rec8O2b4OoYtYR69e",
     "25-01 Queens Plaza North - Apt 503 - $4316 -": "recGyzzmwpTqwM1SV",
@@ -160,5 +162,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-25T18:31:53.568024+00:00"
+  "updated_at": "2026-11-25T19:28:42.507779+00:00"
 }
