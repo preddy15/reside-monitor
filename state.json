@@ -44,7 +44,6 @@
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -",
     "256 Mount Hope Place - Apt 7B - $3595 -",
     "26 Sherman Ave - Apt 4B - $3052.21 -",
-    "2817 Atlantic Avenue - Apt 6B - $3805.74 -",
     "32-53 101 St - Apt 2D - $2878.85 -",
     "346 Kent Ave - Apt 3403 - $2832 -",
     "350 Rutland Rd - Apt 3B - $2179.07 -",
@@ -59,11 +58,8 @@
     "72-01 Queens Blvd - Apt 2 Bedrooms - $3450 -",
     "72-01 Queens Blvd - Apt 3 Bedrooms - $4200 -",
     "765 East 214th Street - Apt 101 - $3459.55 -",
-    "829 East 55th Street - Apt 3A - $5530.14 -",
-    "86 West 174 St - Apt 3B - $3950.05 -",
     "864 49th St - Apt D12 - $2985.97 -",
     "864 49th Street - Apt D8 - $2620.13 -",
-    "872 Home Street Bronx, NY 10459 - Apt 2B - $2762.98 -",
     "885 Rogers Avenue - Apt 407 - $2590.63 -",
     "89-10 150th Street Apt 803 - Apt 803 - $3982 -",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -",
@@ -122,7 +118,6 @@
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -": "reczcZDsaGNexFaW5",
     "256 Mount Hope Place - Apt 7B - $3595 -": "recqt1ifOHxps1Uzn",
     "26 Sherman Ave - Apt 4B - $3052.21 -": "rec1cvBziswRj5JIS",
-    "2817 Atlantic Avenue - Apt 6B - $3805.74 -": "reccWpBNjuxi0m9ll",
     "32-53 101 St - Apt 2D - $2878.85 -": "recovkBpWzE4XkZqJ",
     "346 Kent Ave - Apt 3403 - $2832 -": "recJDQfQoDwAR6qI6",
     "350 Rutland Rd - Apt 3B - $2179.07 -": "recUA2qVYoWMUZssa",
@@ -137,11 +132,8 @@
     "72-01 Queens Blvd - Apt 2 Bedrooms - $3450 -": "rec6jcYk7P3kKLmnl",
     "72-01 Queens Blvd - Apt 3 Bedrooms - $4200 -": "reclHdbJSiJtRBSPx",
     "765 East 214th Street - Apt 101 - $3459.55 -": "recBE9cKDkqbCNq7u",
-    "829 East 55th Street - Apt 3A - $5530.14 -": "recavXOsQKeWHLLyn",
-    "86 West 174 St - Apt 3B - $3950.05 -": "recHvWbrCDaGRfD6U",
     "864 49th St - Apt D12 - $2985.97 -": "recdfBXRhe75J7TiG",
     "864 49th Street - Apt D8 - $2620.13 -": "recRQQ47UfGzhX4CJ",
-    "872 Home Street Bronx, NY 10459 - Apt 2B - $2762.98 -": "recXY8ZyzdrbjwtTB",
     "885 Rogers Avenue - Apt 407 - $2590.63 -": "recqYTTsnxol1A5cK",
     "89-10 150th Street Apt 803 - Apt 803 - $3982 -": "recISuGtp6OfPNat8",
     "94-15 Sutphin Blvd - Apt 1707 - $4376 -": "recL3cH6ZLzAu9V7O",
@@ -158,5 +150,5 @@
     "The Pianist - 5J - Apt 5J - $1900 - Senior Preferece 60+": "recM3nGT4J63EMskY"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-25T20:00:30.966795+00:00"
+  "updated_at": "2026-11-25T20:01:35.674228+00:00"
 }
