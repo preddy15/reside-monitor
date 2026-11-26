@@ -23,6 +23,7 @@
     "1975 Madison Ave - Apt 309 - $3300 -",
     "1975 Madison Ave - Apt 704 - $4230 -",
     "1975 Madison Ave - Apt 706 - $3995 -",
+    "2 Blue Slip - Apt 8A - $2588.48 -",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -",
     "2043 Webster Avenue - Apt 2 Bedroom - $3236 -",
     "2072 Anthony Ave - Apt 6I - $3037.47 -",
@@ -85,6 +86,7 @@
     "1975 Madison Ave - Apt 309 - $3300 -": "recYbq33Kpp2IDgJ4",
     "1975 Madison Ave - Apt 704 - $4230 -": "receYAKSjTBL745A3",
     "1975 Madison Ave - Apt 706 - $3995 -": "recWhEnpwtEaNKFI1",
+    "2 Blue Slip - Apt 8A - $2588.48 -": "recieoNzGDtdjyy4k",
     "20 & 30 Halletts Point - Two 2 BRs - Apt - $3986 -": "rec8QdL8gJOo0huZw",
     "2043 Webster Avenue - Apt 2 Bedroom - $3236 -": "recUTiWpz8HJjpCTj",
     "2072 Anthony Ave - Apt 6I - $3037.47 -": "recqHoPOQboy3J40q",
@@ -126,5 +128,5 @@
     "The Hartby - Apt 117 - $2495 -": "reciPVIoPOiy3J8Qa"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-26T18:17:00.691052+00:00"
+  "updated_at": "2026-11-26T19:21:40.083336+00:00"
 }
