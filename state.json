@@ -39,6 +39,7 @@
     "25-01 Queens Plaza North - Apt 806 - $3653 -",
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -",
     "26 Sherman Ave - Apt 4B - $3052.21 -",
+    "28-08 38th Avenue - Apt 2 BR - $4376 -",
     "32-53 101 St - Apt 2D - $2878.85 -",
     "346 Kent Ave - Apt 3403 - $2832 -",
     "36-10 31st Street - Unit 3A - Apt 3A - $3308.31 -",
@@ -102,6 +103,7 @@
     "25-01 Queens Plaza North - Apt 806 - $3653 -": "recdTq3SZinFRrrtG",
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -": "reczcZDsaGNexFaW5",
     "26 Sherman Ave - Apt 4B - $3052.21 -": "rec1cvBziswRj5JIS",
+    "28-08 38th Avenue - Apt 2 BR - $4376 -": "recuZY0O8LXq72UvI",
     "32-53 101 St - Apt 2D - $2878.85 -": "recovkBpWzE4XkZqJ",
     "346 Kent Ave - Apt 3403 - $2832 -": "recJDQfQoDwAR6qI6",
     "36-10 31st Street - Unit 3A - Apt 3A - $3308.31 -": "reczy8IaY87tZ4yWS",
@@ -128,5 +130,5 @@
     "The Hartby - Apt 117 - $2495 -": "reciPVIoPOiy3J8Qa"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-26T19:21:40.083336+00:00"
+  "updated_at": "2026-11-26T20:06:05.469580+00:00"
 }
