@@ -31,6 +31,7 @@
     "25-01 Queens Plaza North - Apt 325 - $3299 -",
     "25-01 Queens Plaza North - Apt 619 - $3500 -",
     "25-01 Queens Plaza North - Apt 623 - $3500 -",
+    "25-01 Queens Plaza North - Apt 806 - $3653 -",
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -",
     "26 Sherman Ave - Apt 4B - $3052.21 -",
     "32-53 101 St - Apt 2D - $2878.85 -",
@@ -86,6 +87,7 @@
     "25-01 Queens Plaza North - Apt 325 - $3299 -": "rec8O2b4OoYtYR69e",
     "25-01 Queens Plaza North - Apt 619 - $3500 -": "recK2qoBO5YdBqj7d",
     "25-01 Queens Plaza North - Apt 623 - $3500 -": "recacNVHPf8gbQRvq",
+    "25-01 Queens Plaza North - Apt 806 - $3653 -": "recdTq3SZinFRrrtG",
     "250 West 49th Street - OM - Apt 2 Bedroom - $4349 -": "reczcZDsaGNexFaW5",
     "26 Sherman Ave - Apt 4B - $3052.21 -": "rec1cvBziswRj5JIS",
     "32-53 101 St - Apt 2D - $2878.85 -": "recovkBpWzE4XkZqJ",
@@ -112,5 +114,5 @@
     "The Hartby - Apt 117 - $2495 -": "reciPVIoPOiy3J8Qa"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-26T16:00:03.807198+00:00"
+  "updated_at": "2026-11-26T16:03:33.332360+00:00"
 }
