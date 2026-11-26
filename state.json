@@ -44,6 +44,7 @@
     "3914 15th Ave - Apt 1 Br - $3300 -",
     "604 Beech Terrace - Apt 1A - $3114.72 -",
     "637 East 176 St - Apt 7B - $1481.66 -",
+    "71-82 Parsons Blvd - Apt 202 - $1697.68 - Senior Preferece 60+",
     "72-01 Queens Blvd - Apt 2 Bedrooms - $3450 -",
     "72-01 Queens Blvd - Apt 3 Bedrooms - $4200 -",
     "731-729 E 32nd Street Brooklyn, NY 11210 - Apt 5 - $2648.89 -",
@@ -103,6 +104,7 @@
     "3914 15th Ave - Apt 1 Br - $3300 -": "recLSxJ19wRUZsX6n",
     "604 Beech Terrace - Apt 1A - $3114.72 -": "recQMGwrGQyux5hYb",
     "637 East 176 St - Apt 7B - $1481.66 -": "recBpV51rjMCPFvIJ",
+    "71-82 Parsons Blvd - Apt 202 - $1697.68 - Senior Preferece 60+": "recMvMHGU3W2wFBo0",
     "72-01 Queens Blvd - Apt 2 Bedrooms - $3450 -": "rec6jcYk7P3kKLmnl",
     "72-01 Queens Blvd - Apt 3 Bedrooms - $4200 -": "reclHdbJSiJtRBSPx",
     "731-729 E 32nd Street Brooklyn, NY 11210 - Apt 5 - $2648.89 -": "recD0s3w1qtVKmNgn",
@@ -120,5 +122,5 @@
     "The Hartby - Apt 117 - $2495 -": "reciPVIoPOiy3J8Qa"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-26T16:38:08.283902+00:00"
+  "updated_at": "2026-11-26T16:49:18.884313+00:00"
 }
