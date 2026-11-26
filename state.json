@@ -16,7 +16,7 @@
     "1543 E 19th - Apt 3E - $2484.69 -",
     "16 Dupont Street - Apt 30A - $3128 -",
     "1601 Dekalb Ave - 3 Bedroom - Apt - $3544 -",
-    "1601 Dekalb Ave - Apt 301 - 3 Bedroom - Apt - $3544 - MI",
+    "1601 Dekalb Ave - 3 Bedroom - Apt 301 - $3544 - MI",
     "1613 Brooklyn Ave - Apt 301 - $3095.94 -",
     "1694 Nelson Street - Apt 2B - $3161.07 -",
     "1975 Madison - Apt 104 - $3300 -",
@@ -78,7 +78,7 @@
     "1543 E 19th - Apt 3E - $2484.69 -": "rec5kmMNaiGF8Z2tX",
     "16 Dupont Street - Apt 30A - $3128 -": "rec446AvWeh2q93mq",
     "1601 Dekalb Ave - 3 Bedroom - Apt - $3544 -": "recW0lRTfdx1kgdou",
-    "1601 Dekalb Ave - Apt 301 - 3 Bedroom - Apt - $3544 - MI": "recd90tDGJ4T0hvfK",
+    "1601 Dekalb Ave - 3 Bedroom - Apt 301 - $3544 - MI": "recd90tDGJ4T0hvfK",
     "1613 Brooklyn Ave - Apt 301 - $3095.94 -": "recQjGuApB8yVzwF1",
     "1694 Nelson Street - Apt 2B - $3161.07 -": "recVvBZ23LnFrxlx6",
     "1975 Madison - Apt 104 - $3300 -": "reciqpPUO1grN6fKi",
@@ -126,5 +126,5 @@
     "The Hartby - Apt 117 - $2495 -": "reciPVIoPOiy3J8Qa"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-26T18:01:46.258574+00:00"
+  "updated_at": "2026-11-26T18:02:28.038164+00:00"
 }
