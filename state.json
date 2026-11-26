@@ -2,6 +2,7 @@
   "feature_version": 5,
   "initialized": true,
   "options": [
+    "100 South 9 St - Apt 406 - $2999 -",
     "1024 Manhattan Avenue - Apt 302 - Apt 302 - $2700 -",
     "1044 Bedford Ave - Apt 3B - $2970.2 -",
     "1047 Ogden Ave - Apt 5E - $2887.2 -",
@@ -59,6 +60,7 @@
     "The Hartby - Apt 117 - $2495 -"
   ],
   "project_record_ids": {
+    "100 South 9 St - Apt 406 - $2999 -": "recPVAo3YKcG06iLD",
     "1024 Manhattan Avenue - Apt 302 - Apt 302 - $2700 -": "recnevSD7j5G43zeE",
     "1044 Bedford Ave - Apt 3B - $2970.2 -": "recUivCyjjys5SFjm",
     "1047 Ogden Ave - Apt 5E - $2887.2 -": "recHd2NjfepK1FKCE",
@@ -116,5 +118,5 @@
     "The Hartby - Apt 117 - $2495 -": "reciPVIoPOiy3J8Qa"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-26T16:34:33.334383+00:00"
+  "updated_at": "2026-11-26T16:36:03.214637+00:00"
 }
