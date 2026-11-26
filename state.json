@@ -11,6 +11,7 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -",
+    "1484 Watson Avenue - Apt E33 - $3608.89 -",
     "1543 E 19th - Apt 3E - $2484.69 -",
     "16 Dupont Street - Apt 30A - $3128 -",
     "1601 Dekalb Ave - 3 Bedroom - Apt - $3544 -",
@@ -67,6 +68,7 @@
     "1440 Amsterdam Avenue - Apt : 1 Bedroom - $3595 -": "recfXtIqykxtNB3g9",
     "1440 Amsterdam Avenue - Apt Studio - $3195 -": "recI4FJHu3ObeTUOA",
     "1457 Flatbush Ave - Apt 408 - $3290.11 -": "rec0jytu8SdmI6Oa3",
+    "1484 Watson Avenue - Apt E33 - $3608.89 -": "recWsBUW2VU886p6O",
     "1543 E 19th - Apt 3E - $2484.69 -": "rec5kmMNaiGF8Z2tX",
     "16 Dupont Street - Apt 30A - $3128 -": "rec446AvWeh2q93mq",
     "1601 Dekalb Ave - 3 Bedroom - Apt - $3544 -": "recW0lRTfdx1kgdou",
@@ -114,5 +116,5 @@
     "The Hartby - Apt 117 - $2495 -": "reciPVIoPOiy3J8Qa"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-26T16:03:33.332360+00:00"
+  "updated_at": "2026-11-26T16:07:51.107169+00:00"
 }
