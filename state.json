@@ -41,6 +41,7 @@
     "26 Sherman Ave - Apt 4B - $3052.21 -",
     "28-08 38th Avenue - Apt 2 BR - $4376 -",
     "32-53 101 St - Apt 2D - $2878.85 -",
+    "321 Franklin Ave - Apt 4B - $3963 -",
     "346 Kent Ave - Apt 3403 - $2832 -",
     "36-10 31st Street - Unit 3A - Apt 3A - $3308.31 -",
     "390 East Mosholu Pkwy - Apt 6D - $3264.58 -",
@@ -105,6 +106,7 @@
     "26 Sherman Ave - Apt 4B - $3052.21 -": "rec1cvBziswRj5JIS",
     "28-08 38th Avenue - Apt 2 BR - $4376 -": "recuZY0O8LXq72UvI",
     "32-53 101 St - Apt 2D - $2878.85 -": "recovkBpWzE4XkZqJ",
+    "321 Franklin Ave - Apt 4B - $3963 -": "recUwztWOboO6OELC",
     "346 Kent Ave - Apt 3403 - $2832 -": "recJDQfQoDwAR6qI6",
     "36-10 31st Street - Unit 3A - Apt 3A - $3308.31 -": "reczy8IaY87tZ4yWS",
     "390 East Mosholu Pkwy - Apt 6D - $3264.58 -": "rec8UUXmXhuZrw1Sz",
@@ -130,5 +132,5 @@
     "The Hartby - Apt 117 - $2495 -": "reciPVIoPOiy3J8Qa"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-26T20:06:05.469580+00:00"
+  "updated_at": "2026-11-26T20:30:30.890791+00:00"
 }
