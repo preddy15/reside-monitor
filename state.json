@@ -31,8 +31,8 @@
     "217 Eckford Street - 301 - Apt 301 - $3423 -",
     "2189 Arthur Ave - Apt 1A - $3375.11 -",
     "2189 Arthur Ave - Apt 6A - $2941.02 -",
+    "234 East 203 Street - Apt 4C - $2890 -",
     "2422 Lyvere Street - Apt 2C - $3374.31 -",
-    "243 East 203 Street - Apt 4C - $2890 -",
     "25-01 Queens Plaza North - Apt 325 - $3299 -",
     "25-01 Queens Plaza North - Apt 619 - $3500 -",
     "25-01 Queens Plaza North - Apt 623 - $3500 -",
@@ -96,8 +96,8 @@
     "217 Eckford Street - 301 - Apt 301 - $3423 -": "recErh72Vv2QEAX0m",
     "2189 Arthur Ave - Apt 1A - $3375.11 -": "recH8VC3sk2SO7gtq",
     "2189 Arthur Ave - Apt 6A - $2941.02 -": "recw7Nuwu0tL92tLD",
+    "234 East 203 Street - Apt 4C - $2890 -": "recD1RrQcaxaBh1D1",
     "2422 Lyvere Street - Apt 2C - $3374.31 -": "recPSh1xOWbklXlZS",
-    "243 East 203 Street - Apt 4C - $2890 -": "recD1RrQcaxaBh1D1",
     "25-01 Queens Plaza North - Apt 325 - $3299 -": "rec8O2b4OoYtYR69e",
     "25-01 Queens Plaza North - Apt 619 - $3500 -": "recK2qoBO5YdBqj7d",
     "25-01 Queens Plaza North - Apt 623 - $3500 -": "recacNVHPf8gbQRvq",
@@ -132,5 +132,5 @@
     "The Hartby - Apt 117 - $2495 -": "reciPVIoPOiy3J8Qa"
   },
   "scraper_version": 3,
-  "updated_at": "2026-11-26T20:30:30.890791+00:00"
+  "updated_at": "2026-11-27T14:44:13.339801+00:00"
 }
